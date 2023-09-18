@@ -31,7 +31,7 @@ EPOCHS = 200 # number of epochs to (re)fit the model on the newly observed data
 SAMPLE_RATE = 100 # the rate at which we sample the interval we want to train on
 NEW_DATA_RATE = 10 # how much new data to obtain each round
 ITERATIONS = 20 # iterations to be plotted
-PLOT = True
+PLOT = False
 
 ## Approximated function
 def toy_function(input):
@@ -90,11 +90,22 @@ if __name__ == "__main__":
         ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
         plt.show(block=False)
     # define model to be retrained later
+
+    simple_model = get_dropout_model()
     current_model = get_dropout_model()
     current_x_train, current_y_train = x_train[0:NEW_DATA_RATE], y_train[0:NEW_DATA_RATE] # grab empty at the start
     
     # iteratively retrain on new data
     for i in range(ITERATIONS):
+
+        start, end = i, i + NEW_DATA_RATE
+        current_x_train, current_y_train = x_train[start:end], y_train[start:end]
+        y_pred_mean, y_pred_std, simple_model = retrain_dropout_model(simple_model, current_x_train, current_y_train, domain)
+        score = gaussian_interval_score(domain_y, y_pred_mean, y_pred_std)
+        calib_err = regressor_calibration_error(y_pred_mean, domain_y, y_pred_std)
+        print(f"BASELINE iteration: {i} score: {score:.2f} calib_err: {calib_err:.2f}")
+
+
         # obtain input and train the model
         current_x, current_y = x_train[NEW_DATA_RATE + i: NEW_DATA_RATE + i+1], y_train[NEW_DATA_RATE + i:NEW_DATA_RATE + i+1]
         predicted_stds = get_pred(current_model, current_x_train.reshape((-1, 1)))
@@ -113,7 +124,7 @@ if __name__ == "__main__":
 
         score = gaussian_interval_score(domain_y, y_pred_mean, y_pred_std)
         calib_err = regressor_calibration_error(y_pred_mean, domain_y, y_pred_std)
-        print(f"iteration: {i} score: {score:.2f} calib_err: {calib_err:.2f}")
+        print(f"ACTIVE BUFFER iteration: {i} score: {score:.2f} calib_err: {calib_err:.2f}")
 
         y_pred_mean = y_pred_mean.reshape((-1,))
         y_pred_std = y_pred_std.reshape((-1,))

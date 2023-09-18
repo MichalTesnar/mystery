@@ -21,6 +21,9 @@ from keras.layers import Dense
 from keras_uncertainty.models import StochasticRegressor
 from keras_uncertainty.layers import StochasticDropout
 
+from keras_uncertainty.metrics import gaussian_interval_score
+from keras_uncertainty.utils import regressor_calibration_error
+
 import matplotlib.pyplot as plt
 
 ## Constants
@@ -28,7 +31,7 @@ NUM_SAMPLES = 100 # number of samples for the network when it runs estimation
 EPOCHS = 200 # number of epochs to (re)fit the model on the newly observed data
 SAMPLE_RATE = 100 # the rate at which we sample the interval we want to train on
 NEW_DATA_RATE = 10 # how much new data to obtain each round
-ITERATIONS = 100 # iterations to be plotted
+ITERATIONS = 20 # iterations to be plotted
 
 ## Approximated function
 def toy_function(input):
@@ -89,6 +92,13 @@ if __name__ == "__main__":
         start, end = i, i + NEW_DATA_RATE
         current_x_train, current_y_train = x_train[start:end], y_train[start:end]
         y_pred_mean, y_pred_std, current_model = retrain_dropout_model(current_model, current_x_train, current_y_train, domain)
+        
+        
+        score = gaussian_interval_score(domain_y, y_pred_mean, y_pred_std)
+        calib_err = regressor_calibration_error(y_pred_mean, domain_y, y_pred_std)
+        print(f"iteration: {i} score: {score:.2f} calib_err: {calib_err:.2f}")
+
+        
         y_pred_mean = y_pred_mean.reshape((-1,))
         y_pred_std = y_pred_std.reshape((-1,))
         y_pred_up_1 = y_pred_mean + y_pred_std
