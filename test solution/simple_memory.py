@@ -1,15 +1,6 @@
 """
-Example of regression with uncertainty adapted from https://github.com/mvaldenegro/keras-uncertainty/blob/master/examples/comparison-uncertainty-toy-regression.py
-to show catastrophic forgetting of regression in online situation.
-
-If we add new data and retrain the learner only on those (without redefining the model)
-the model loses previously learned information (cat. forgetting) and the (un)certainty
-of the model also changes depending on the area where the new point was obtained.
-
-This script shows this by retraining MLP on regression data, of amount NEW_DATA_RATE,
-each time for EPOCHS epochs; plotting the results of the prediction (with its uncertainty)
-for ITERATIONS iterations. The results are plotted onto one plot with decreasing opacity,
-in order to show the evolution of the model predictions.
+Adaptation of the model to learn from the 10 last seen samples.
+We introduce 1 new sample at the time.
 """
 
 import numpy as np
@@ -30,7 +21,7 @@ import matplotlib.pyplot as plt
 NUM_SAMPLES = 100 # number of samples for the network when it runs estimation
 EPOCHS = 200 # number of epochs to (re)fit the model on the newly observed data
 SAMPLE_RATE = 100 # the rate at which we sample the interval we want to train on
-NEW_DATA_RATE = 10 # how much new data to obtain each round
+NEW_DATA_RATE = 10 # how much data the model sees at the same time
 ITERATIONS = 20 # iterations to be plotted
 
 ## Approximated function
@@ -89,21 +80,18 @@ if __name__ == "__main__":
     # iteratively retrain on new data
     for i in range(ITERATIONS):
         # obtain input and train the model
-        start, end = i, i + NEW_DATA_RATE
+        start, end = i, i + NEW_DATA_RATE # shift input by one
         current_x_train, current_y_train = x_train[start:end], y_train[start:end]
         y_pred_mean, y_pred_std, current_model = retrain_dropout_model(current_model, current_x_train, current_y_train, domain)
-        
-        
+        # compute metrics        
         score = gaussian_interval_score(domain_y, y_pred_mean, y_pred_std)
         calib_err = regressor_calibration_error(y_pred_mean, domain_y, y_pred_std)
         print(f"iteration: {i} score: {score:.2f} calib_err: {calib_err:.2f}")
-
-        
+        # plot data
         y_pred_mean = y_pred_mean.reshape((-1,))
         y_pred_std = y_pred_std.reshape((-1,))
         y_pred_up_1 = y_pred_mean + y_pred_std
         y_pred_down_1 = y_pred_mean - y_pred_std
-        # plot data
         ax.plot(current_x_train, current_y_train, '.', color=(0.9, 0, 0, i*(1/ITERATIONS) + (0.1 if i == 0 else 0)), markersize=15)
         ax.plot(domain, domain_y, '.', color=(0, 0.9, 0, 1), markersize=3)
         ax.fill_between(domain.ravel(), y_pred_down_1, y_pred_up_1,  color=(0, i*(1/ITERATIONS), 0.9, i*(1/ITERATIONS) + (0.1 if i == 0 else 0)))

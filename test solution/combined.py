@@ -1,15 +1,7 @@
 """
-Example of regression with uncertainty adapted from https://github.com/mvaldenegro/keras-uncertainty/blob/master/examples/comparison-uncertainty-toy-regression.py
-to show catastrophic forgetting of regression in online situation.
-
-If we add new data and retrain the learner only on those (without redefining the model)
-the model loses previously learned information (cat. forgetting) and the (un)certainty
-of the model also changes depending on the area where the new point was obtained.
-
-This script shows this by retraining MLP on regression data, of amount NEW_DATA_RATE,
-each time for EPOCHS epochs; plotting the results of the prediction (with its uncertainty)
-for ITERATIONS iterations. The results are plotted onto one plot with decreasing opacity,
-in order to show the evolution of the model predictions.
+Comparison of the active method and the methods that forgets everything,
+the only output is are metrics onto the terminal, plotting is disabled.
+For detailed explanations refer to the respective files.
 """
 
 import numpy as np
@@ -29,7 +21,7 @@ import matplotlib.pyplot as plt
 NUM_SAMPLES = 100 # number of samples for the network when it runs estimation
 EPOCHS = 200 # number of epochs to (re)fit the model on the newly observed data
 SAMPLE_RATE = 100 # the rate at which we sample the interval we want to train on
-NEW_DATA_RATE = 10 # how much new data to obtain each round
+NEW_DATA_RATE = 10 # size of the buffer for both methods
 ITERATIONS = 20 # iterations to be plotted
 PLOT = False
 
@@ -117,9 +109,9 @@ if __name__ == "__main__":
             current_x_train[idx] = current_x
             current_y_train[idx] = current_y
             # give the model extra push
-            push_x = np.tile(current_x, min(NEW_DATA_RATE, max(i, 1)))
-            push_y = np.tile(current_y, min(NEW_DATA_RATE, max(i, 1)))
-            _, _, current_model = retrain_dropout_model(current_model, push_x, push_y, domain)
+            # push_x = np.tile(current_x, min(NEW_DATA_RATE, max(i, 1)))
+            # push_y = np.tile(current_y, min(NEW_DATA_RATE, max(i, 1)))
+            # _, _, current_model = retrain_dropout_model(current_model, push_x, push_y, domain)
         y_pred_mean, y_pred_std, current_model = retrain_dropout_model(current_model, current_x_train, current_y_train, domain)
 
         score = gaussian_interval_score(domain_y, y_pred_mean, y_pred_std)
