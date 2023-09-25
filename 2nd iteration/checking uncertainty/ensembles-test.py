@@ -91,6 +91,7 @@ if __name__ == "__main__":
     # y_pred_mean, y_pred_std, current_model = retrain_dropout_model(current_model, current_x_train, current_y_train, domain)
     model = train_ensemble_model()
     y_pred_mean, y_pred_std = pred_ensembles(model, current_x_train, current_y_train, domain)
+    print(y_pred_std)
     # compute metrics        
     score = gaussian_interval_score(domain_y, y_pred_mean, y_pred_std)
     calib_err = regressor_calibration_error(y_pred_mean, domain_y, y_pred_std)

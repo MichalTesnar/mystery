@@ -13,8 +13,6 @@ x = df.iloc[:, 0]
 y = df.iloc[:, 1]
 z = df.iloc[:, 2]
 
-
-
 # Create a 3D figure
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
@@ -26,8 +24,6 @@ colormap = cmap(normalize(colors))
 
 # Scatter plot the points
 ax.scatter(x, y, z, c=colormap, cmap='viridis', marker='o')
-
-
 
 # Set labels for the axes
 ax.set_xlabel('X')
