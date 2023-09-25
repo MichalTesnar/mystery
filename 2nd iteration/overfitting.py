@@ -16,25 +16,6 @@ from keras_uncertainty.utils import regressor_calibration_error
 
 import matplotlib.pyplot as plt
 
-## Constants
-# NUM_SAMPLES = 10 # number of samples for the network when it runs estimation
-# EPOCHS = 1000 # number of epochs to (re)fit the model on the newly observed data
-# SAMPLE_RATE = 200 # the rate at which we sample the interval we want to train on
-# NEW_DATA_RATE = 10 # size of the buffer for both methods
-# ITERATIONS = 1 # iterations to be plotted
-# RATE = 0.1 # how much data into the training set
-
-# model definition
-# def get_dropout_model(prob=0.2):
-#     model = Sequential()
-#     model.add(Dense(32, activation="relu", input_shape=(1,)))
-#     model.add(StochasticDropout(prob))
-#     model.add(Dense(32, activation="relu"))
-#     model.add(StochasticDropout(prob))
-#     model.add(Dense(1, activation="linear"))
-#     model.compile(loss="mean_squared_error", optimizer="adam")
-#     return model
-
 NUM_SAMPLES = 10 # number of samples for the network when it runs estimation
 EPOCHS = 1000 # number of epochs to (re)fit the model on the newly observed data
 SAMPLE_RATE = 125 # the rate at which we sample the interval we want to train on
