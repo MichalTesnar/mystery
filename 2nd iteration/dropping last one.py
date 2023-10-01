@@ -89,15 +89,15 @@ if __name__ == "__main__":
         # obtain input and train the model
         current_x, current_y = x_train[NEW_DATA_RATE + NEW_PER_ITER*i: NEW_DATA_RATE + NEW_PER_ITER*(i+1)], y_train[NEW_DATA_RATE + NEW_PER_ITER*i:NEW_DATA_RATE + NEW_PER_ITER*(i+1)]
         # buffer update step
-        _, predicted_stds = pred_ensembles(current_model, current_x_train.reshape((-1, 1)))
-        _, predicted_std = pred_ensembles(current_model, current_x.reshape((-1, 1)))
+        # _, predicted_stds = pred_ensembles(current_model, current_x_train.reshape((-1, 1)))
+        # _, predicted_std = pred_ensembles(current_model, current_x.reshape((-1, 1)))
 
-        for j, pre in enumerate(predicted_std):
-            if min(predicted_stds) < pre:
-                idx = np.argmin(predicted_stds)
-                predicted_stds[idx] = pre
-                current_x_train[idx] = current_x[j]
-                current_y_train[idx] = current_y[j]
+        # for j, pre in enumerate(predicted_std):
+        #     if min(predicted_stds) < pre:
+        #         idx = np.argmin(predicted_stds)
+        #         predicted_stds[idx] = pre
+        #     current_x_train[idx] = current_x[j]
+        #     current_y_train[idx] = current_y[j]
             # give the model extra push -- extra training on the new point -- OPTIONAL
             # push_x = np.tile(current_x, min(NEW_DATA_RATE, max(i, 1)))
             # push_y = np.tile(current_y, min(NEW_DATA_RATE, max(i, 1)))
