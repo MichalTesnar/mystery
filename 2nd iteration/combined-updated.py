@@ -4,18 +4,7 @@ the only output is are metrics onto the terminal, plotting is disabled.
 For detailed explanations refer to the respective files.
 """
 
-import numpy as np
-import math
-
-from keras.models import Sequential
-from keras.layers import Dense
-
-from keras_uncertainty.models import StochasticRegressor
-from keras_uncertainty.layers import StochasticDropout
-from keras_uncertainty.metrics import gaussian_interval_score
-from keras_uncertainty.utils import regressor_calibration_error
-
-import matplotlib.pyplot as plt
+from imports import *
 
 ## Constants
 NUM_SAMPLES = 100 # number of samples for the network when it runs estimation

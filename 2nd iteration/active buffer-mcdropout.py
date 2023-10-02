@@ -3,18 +3,7 @@ We use active buffer to discard the most certain sample when introducing the new
 We see
 """
 
-import numpy as np
-import math
-
-from keras.models import Sequential
-from keras.layers import Dense
-
-from keras_uncertainty.models import StochasticRegressor
-from keras_uncertainty.layers import StochasticDropout
-from keras_uncertainty.metrics import gaussian_interval_score
-from keras_uncertainty.utils import regressor_calibration_error
-
-import matplotlib.pyplot as plt
+from imports import *
 
 ## Constants
 NUM_SAMPLES = 100 # number of samples for the network when it runs estimation
@@ -34,7 +23,6 @@ def toy_function(input):
         output.append(10 * out)
     return np.array(output)
 
-## model definition
 ## model definition
 def get_dropout_model(prob=0.2):
     model = Sequential()
