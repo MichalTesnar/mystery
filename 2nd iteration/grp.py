@@ -1,4 +1,3 @@
-# IMPORTING STUFF
 from mpl_toolkits.mplot3d import Axes3D
 import time
 import numpy as np
@@ -13,12 +12,8 @@ tf.enable_v2_behavior()
 plt.rcParams['axes.facecolor'] = 'white'
 plt.rcParams['grid.color'] = '#666666'
 
-# SOME UTILS
-
-
 def sinusoid(x):
     return np.sin(3 * np.pi * x[..., 0])
-
 
 def generate_1d_data(num_training_points, observation_noise_variance):
     """Generate noisy sinusoidal observations at a random set of points."""

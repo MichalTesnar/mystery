@@ -52,6 +52,13 @@ if __name__ == "__main__":
         # grab new points
         current_x, current_y = x_train[NEW_DATA_RATE + NEW_PER_ITER*i: NEW_DATA_RATE + NEW_PER_ITER*(
             i+1)], y_train[NEW_DATA_RATE + NEW_PER_ITER*i:NEW_DATA_RATE + NEW_PER_ITER*(i+1)]
+        
+        # Predict on the new data and check the actual difference -> our metric to maximize
+        new_points = np.sum(np.abs(current_y-current_model.predict(current_x)))/NEW_PER_ITER
+        whole_domain = np.sum(np.abs(domain_y-current_model.predict(domain)))/NEW_PER_ITER
+        y_pred_mean, y_pred_std = pred_model(MODEL, current_model, domain)
+        score = gaussian_interval_score(domain_y, y_pred_mean, y_pred_std)
+        
         # Update training data
         if STRATEGY == "DROP_LAST":
             # replace the oldest of the previous with it
@@ -148,7 +155,7 @@ if __name__ == "__main__":
         score = gaussian_interval_score(domain_y, y_pred_mean, y_pred_std)
         calib_err = regressor_calibration_error(
             y_pred_mean, domain_y, y_pred_std)
-        print(f"iteration: {i} score: {score:.2f} calib_err: {calib_err:.2f}")
+        # print(f"iteration: {i} score: {score:.2f} calib_err: {calib_err:.2f}")
 
         # Aggregate the prediction
         y_pred_mean = y_pred_mean.reshape((-1,))
