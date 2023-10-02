@@ -61,8 +61,8 @@ if __name__ == "__main__":
     x_train = np.linspace(-4.0, 4.0, num=2*SAMPLE_RATE)
     # train_indices = np.arange()
     # train_indices = np.random.choice(2*SAMPLE_RATE, SAMPLE_RATE, replace=False)
-    # train_indices = np.append(np.arange(0, 90), np.arange(190,199))
-    train_indices = np.append(np.arange(0, 50), np.arange(150,199))
+    train_indices = np.append(np.arange(0, 90), np.arange(190,199))
+    # train_indices = np.append(np.arange(0, 50), np.arange(150,199))
     np.random.shuffle(train_indices)
     x_train = x_train[train_indices]
     y_train = toy_function(x_train)
