@@ -11,23 +11,24 @@ disable_eager_execution()
 
 
 # Possible models
-# MODEL = "Ensembles"
-MODEL = "Dropout"
+MODEL = "Ensembles"
+# MODEL = "Dropout"
 
 # Possible strategies
 # STRATEGY = "DROP_LAST"
 # STRATEGY = "DROP_RANDOM"
-STRATEGY = "ACTIVE_BUFFER"
+# STRATEGY = "ACTIVE_BUFFER"
 # STRATEGY = "ACTIVE_BUFFER_BOOSTED"
-# STRATEGY = "HEURISTIC_CLOSEST"
+STRATEGY = "HEURISTIC_CLOSEST"
 
 if __name__ == "__main__":
     # make dir for plot
-    dir_i = 0
-    while os.path.isdir(f"figs/{STRATEGY} on {MODEL} ({dir_i})"):
-        dir_i += 1
-    dir = f"figs/{STRATEGY} on {MODEL} ({dir_i})"
-    os.mkdir(f"figs/{STRATEGY} on {MODEL} ({dir_i})")
+    if PLOT:
+        dir_i = 0
+        while os.path.isdir(f"figs/{STRATEGY} on {MODEL} ({dir_i})"):
+            dir_i += 1
+        dir = f"figs/{STRATEGY} on {MODEL} ({dir_i})"
+        os.mkdir(f"figs/{STRATEGY} on {MODEL} ({dir_i})")
 
     # data
     x_train = np.linspace(-4.0, 4.0, num=SAMPLE_RATE)
@@ -41,23 +42,32 @@ if __name__ == "__main__":
     # define model to be retrained later
     current_model = get_model(MODEL)
     # grab empty at the start
-    current_x_train, current_y_train = x_train[0:
-                                               NEW_DATA_RATE], y_train[0:NEW_DATA_RATE]
+    current_x_train, current_y_train = x_train[0:NEW_DATA_RATE], y_train[0:NEW_DATA_RATE]
     # extra pre-fitting
     current_model = retrain_model(
         MODEL, current_model, current_x_train, current_y_train, extra_epochs=EXTRA_EPOCHS)
     print(f"The files will be saved in {dir}")
+    # collect your metric
+    maes = []
+    errors = [] 
+
     # iteratively retrain on new data
-    for i in range(1, ITERATIONS):
+    for i in tqdm(range(1, ITERATIONS+1)):
+        # print(i)
         # grab new points
         current_x, current_y = x_train[NEW_DATA_RATE + NEW_PER_ITER*i: NEW_DATA_RATE + NEW_PER_ITER*(
             i+1)], y_train[NEW_DATA_RATE + NEW_PER_ITER*i:NEW_DATA_RATE + NEW_PER_ITER*(i+1)]
         
         # Predict on the new data and check the actual difference -> our metric to maximize
-        new_points = np.sum(np.abs(current_y-current_model.predict(current_x)))/NEW_PER_ITER
-        whole_domain = np.sum(np.abs(domain_y-current_model.predict(domain)))/NEW_PER_ITER
+        # new_points = np.sum(np.abs(current_y-current_model.predict(current_x)))/NEW_PER_ITER
+        # print("np", new_points)
+
+        # Collecting metrics
+        mae = np.sum(np.abs(domain_y-current_model.predict(domain)))/SAMPLE_RATE
+        maes.append(mae)
         y_pred_mean, y_pred_std = pred_model(MODEL, current_model, domain)
-        score = gaussian_interval_score(domain_y, y_pred_mean, y_pred_std)
+        calib_err = regressor_calibration_error(y_pred_mean, domain_y, y_pred_std)
+        errors.append(calib_err)
         
         # Update training data
         if STRATEGY == "DROP_LAST":
@@ -155,6 +165,7 @@ if __name__ == "__main__":
         score = gaussian_interval_score(domain_y, y_pred_mean, y_pred_std)
         calib_err = regressor_calibration_error(
             y_pred_mean, domain_y, y_pred_std)
+        
         # print(f"iteration: {i} score: {score:.2f} calib_err: {calib_err:.2f}")
 
         # Aggregate the prediction
@@ -186,3 +197,22 @@ if __name__ == "__main__":
             ax.legend(bbox_to_anchor=(1, 1), loc='upper left')
             # save plot
             plt.savefig(f"{dir}/iteration {i}")
+    if PLOT:
+        # Draw stuff
+        # Create a figure and three subplots arranged vertically
+        x = np.arange(ITERATIONS)
+        fig, (ax1, ax3) = plt.subplots(2, 1, figsize=(16, 12))
+        fig.suptitle('Online Learning Metrics', fontsize=16)
+        # Plot data on the first subplot
+        ax1.plot(x, maes, label='MAE')
+        ax1.set_title('MAE')
+        ax1.legend()
+        ax3.plot(x, errors, label='Calibration Errors')
+        ax3.set_title('Calibration Errors')
+        ax3.legend()
+
+        # Show the plots
+        plt.tight_layout()
+        plt.savefig(f"{dir}/metrics")
+        plt.show()
+        
