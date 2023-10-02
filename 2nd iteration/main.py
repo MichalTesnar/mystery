@@ -24,10 +24,10 @@ STRATEGY = "ACTIVE_BUFFER"
 if __name__ == "__main__":
     # make dir for plot
     dir_i = 0
-    while os.path.isdir(f"figs:{STRATEGY} on {MODEL} ({dir_i})"):
+    while os.path.isdir(f"figs/{STRATEGY} on {MODEL} ({dir_i})"):
         dir_i += 1
-    dir = f"figs:{STRATEGY} on {MODEL} ({dir_i})"
-    os.mkdir(f"figs:{STRATEGY} on {MODEL} ({dir_i})")
+    dir = f"figs/{STRATEGY} on {MODEL} ({dir_i})"
+    os.mkdir(f"figs/{STRATEGY} on {MODEL} ({dir_i})")
 
     # data
     x_train = np.linspace(-4.0, 4.0, num=SAMPLE_RATE)
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     current_model = get_model(MODEL)
     current_x_train, current_y_train = x_train[0:NEW_DATA_RATE], y_train[0:NEW_DATA_RATE] # grab empty at the start
     
-    print(f"The files will be save in {dir}")
+    print(f"The files will be saved in {dir}")
     # iteratively retrain on new data
     for i in range(ITERATIONS):
         # grab new points
@@ -65,8 +65,8 @@ if __name__ == "__main__":
             picked_y = current_y
 
         if STRATEGY == "ACTIVE_BUFFER":
-            picked_x = np.array([])
-            picked_y = np.array([])
+            picked_x = []
+            picked_y = []
             _, predicted_stds = pred_model(MODEL, current_model, current_x_train.reshape((-1, 1)))
             _, predicted_std = pred_model(MODEL, current_model, current_x.reshape((-1, 1)))
 
@@ -75,9 +75,9 @@ if __name__ == "__main__":
                     idx = np.argmin(predicted_stds)
                     predicted_stds[idx] = pre
                     current_x_train[idx] = current_x[j]
-                    np.append(picked_x, current_x[j])
+                    picked_x.append(current_x[j])
                     current_y_train[idx] = current_y[j]
-                    np.append(picked_y, current_y[j])
+                    picked_y.append(current_y[j])
 
         if STRATEGY == "ACTIVE_BUFFER_BOOSTED":
             picked_x = []
@@ -119,8 +119,6 @@ if __name__ == "__main__":
                     picked_x.append(x)
                     picked_y.append(y)
 
-
-
         # Retrain & predict
         current_model = retrain_model(MODEL, current_model, current_x_train, current_y_train)
         y_pred_mean, y_pred_std = pred_model(MODEL, current_model, domain)
@@ -151,6 +149,5 @@ if __name__ == "__main__":
             ax.plot(domain.ravel(), y_pred_mean, '.', color=(1, 1, 1, 0.8), markersize=0.2)
             ax.legend(bbox_to_anchor=(1, 1), loc='upper left')
             # save plot
-            
             plt.savefig(f"{dir}/iteration {i}")
                 
