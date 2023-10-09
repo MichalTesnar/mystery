@@ -59,7 +59,10 @@ def retrain_dropout_model(model, x_train, y_train, domain):
 if __name__ == "__main__":
     # data
     x_train = np.linspace(-4.0, 4.0, num=2*SAMPLE_RATE)
+    # train_indices = np.arange()
+    # train_indices = np.random.choice(2*SAMPLE_RATE, SAMPLE_RATE, replace=False)
     train_indices = np.append(np.arange(0, 9), np.arange(39, 40))
+    # train_indices = np.append(np.arange(0, 50), np.arange(150,199))
     np.random.shuffle(train_indices)
     x_train = x_train[train_indices]
     y_train = toy_function(x_train)
@@ -85,6 +88,7 @@ if __name__ == "__main__":
     # compute metrics        
     score = gaussian_interval_score(domain_y, y_pred_mean, y_pred_std)
     calib_err = regressor_calibration_error(y_pred_mean, domain_y, y_pred_std)
+    # print(f"score: {score:.2f} calib_err: {calib_err:.2f}")
     # plot data
     y_pred_mean = y_pred_mean.reshape((-1,))
     y_pred_std = y_pred_std.reshape((-1,))

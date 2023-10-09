@@ -6,21 +6,26 @@ We introduce 1 new sample at the time.
 import numpy as np
 import math
 
-from keras.models import Sequential
-from keras.layers import Dense
+from keras.models import Sequential, Model
+from keras.layers import Dense, Input
 
-from keras_uncertainty.models import StochasticRegressor
+from keras_uncertainty.models import StochasticRegressor, DeepEnsembleRegressor
 from keras_uncertainty.layers import StochasticDropout
 
 from keras_uncertainty.metrics import gaussian_interval_score
 from keras_uncertainty.utils import regressor_calibration_error
+from keras_uncertainty.losses import regression_gaussian_nll_loss
+
+# fixing ensembles
+from tensorflow.python.framework.ops import disable_eager_execution
+disable_eager_execution()
 
 import matplotlib.pyplot as plt
 
 ## Constants
 NUM_SAMPLES = 100 # number of samples for the network when it runs estimation
-EPOCHS = 400 # number of epochs to (re)fit the model on the newly observed data
-SAMPLE_RATE = 20 # the rate at which we sample the interval we want to train on
+EPOCHS = 200 # number of epochs to (re)fit the model on the newly observed data
+SAMPLE_RATE = 100 # the rate at which we sample the interval we want to train on
 NEW_DATA_RATE = 10 # how much data the model sees at the same time
 
 ## Approximated function
@@ -28,38 +33,44 @@ def toy_function(input):
     output = []
     for inp in input:
         std = max(0.15 / (1.0 + math.exp(-inp)), 0)
-        out = math.sin(inp) #+ np.random.normal(0, std)
+        out = math.sin(inp) # + np.random.normal(0, std)
         output.append(10 * out)
     return np.array(output)
 
+def train_ensemble_model():
+    def model_fn():
+        inp = Input(shape=(1,))
+        x = Dense(128, activation="relu")(inp)
+        x = Dense(128, activation="relu")(x)
+        x = Dense(64, activation="relu")(x)
+        x = Dense(32, activation="relu")(x)
+        mean = Dense(1, activation="linear")(x)
+        var = Dense(1, activation="softplus")(x)
 
-def get_dropout_model(prob=0.2):
-    model = Sequential()
-    model.add(Dense(128, activation="relu", input_shape=(1,)))
-    model.add(StochasticDropout(prob))
-    model.add(Dense(128, activation="relu"))
-    model.add(StochasticDropout(prob))
-    model.add(Dense(128, activation="relu"))
-    model.add(StochasticDropout(prob))
-    model.add(Dense(64, activation="relu"))
-    model.add(StochasticDropout(prob))
-    model.add(Dense(1, activation="linear"))
-    model.compile(loss="mean_squared_error", optimizer="adam")
+        train_model = Model(inp, mean)
+        pred_model = Model(inp, [mean, var])
+
+        train_model.compile(loss=regression_gaussian_nll_loss(var), optimizer="adam")
+
+        return train_model, pred_model
+    
+    model = DeepEnsembleRegressor(model_fn, num_estimators=10)
     return model
 
-## trains the model, or retrains the model on the new data, then samples is to obtain the prediction
-def retrain_dropout_model(model, x_train, y_train, domain):
-    # training the model
+def pred_ensembles(model, x_train, y_train, domain):
     model.fit(x_train, y_train, verbose=True, epochs=EPOCHS)
-    # sampling the model
-    mc_model = StochasticRegressor(model)
-    pred_mean, pred_std = mc_model.predict(domain, num_samples=NUM_SAMPLES)
-    return pred_mean, pred_std, model
+    pred_mean, pred_std = model.predict(domain)
+
+    return pred_mean, pred_std
 
 if __name__ == "__main__":
     # data
     x_train = np.linspace(-4.0, 4.0, num=2*SAMPLE_RATE)
-    train_indices = np.append(np.arange(0, 9), np.arange(39, 40))
+    # train_indices = np.arange()
+    # train_indices = np.random.choice(2*SAMPLE_RATE, SAMPLE_RATE, replace=False)
+    # train_indices = np.append(np.arange(0, 10), 19)
+    # train_indices = np.append(np.arange(0, 50), np.arange(150,199))
+    train_indices = np.append(np.arange(0, 90), np.arange(190,199))
     np.random.shuffle(train_indices)
     x_train = x_train[train_indices]
     y_train = toy_function(x_train)
@@ -68,7 +79,7 @@ if __name__ == "__main__":
     domain_y = toy_function(domain)
     # plotting
     fig, ax = plt.subplots(nrows=1, ncols=len(["Dropout"]), figsize=(20, 3))
-    ax.set_title(f"MC DropOut 9 + 1 Test, {EPOCHS} epochs")
+    ax.set_title(f"Ensembles 9 + 1 Test, {EPOCHS} epochs")
     ax.set_ylim([-20.0, 20.0])
     ax.axvline(x=-4.0, color="black", linestyle="dashed")
     ax.axvline(x= 4.0, color="black", linestyle="dashed")
@@ -76,15 +87,16 @@ if __name__ == "__main__":
     ax.get_yaxis().set_ticks([])    
     ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
     # define model to be retrained later
-    current_model = get_dropout_model()
-    
     # iteratively retrain on new data
     current_x_train, current_y_train = x_train, y_train
-    y_pred_mean, y_pred_std, current_model = retrain_dropout_model(current_model, current_x_train, current_y_train, domain)
-    points = current_model.predict(domain)
+    # y_pred_mean, y_pred_std, current_model = retrain_dropout_model(current_model, current_x_train, current_y_train, domain)
+    model = train_ensemble_model()
+    y_pred_mean, y_pred_std = pred_ensembles(model, current_x_train, current_y_train, domain)
+    print(y_pred_std)
     # compute metrics        
     score = gaussian_interval_score(domain_y, y_pred_mean, y_pred_std)
     calib_err = regressor_calibration_error(y_pred_mean, domain_y, y_pred_std)
+    # print(f"score: {score:.2f} calib_err: {calib_err:.2f}")
     # plot data
     y_pred_mean = y_pred_mean.reshape((-1,))
     y_pred_std = y_pred_std.reshape((-1,))
