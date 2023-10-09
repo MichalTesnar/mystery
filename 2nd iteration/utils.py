@@ -18,6 +18,8 @@ def get_model(name):
         return get_ensembles()
     if name == "Dropout":
         return get_dropout()
+    if name == "GRP":
+        return get_grp()
     raise Exception("UTILS: Invalid model name / model not implemented.")
 
 
@@ -26,6 +28,8 @@ def retrain_model(name, current_model, current_x_train, current_y_train, extra_e
         return retrain_ensembles(current_model, current_x_train, current_y_train, extra_epochs)
     if name == "Dropout":
         return retrain_dropout(current_model, current_x_train, current_y_train, extra_epochs)
+    if name == "GRP":
+        return retrain_grp(current_model, current_x_train, current_y_train)
     raise Exception("UTILS: Invalid model name / model not implemented.")
 
 
@@ -34,6 +38,8 @@ def pred_model(name, current_model, domain):
         return pred_ensembles(current_model, domain)
     if name == "Dropout":
         return pred_dropout(current_model, domain)
+    if name == "GRP":
+        return pred_grp(current_model, domain)
     raise Exception("UTILS: Invalid model name / model not implemented.")
 
 
@@ -84,10 +90,6 @@ def get_dropout(prob=0.2):
     model.add(StochasticDropout(prob))
     model.add(Dense(64, activation="relu"))
     model.add(StochasticDropout(prob))
-    # model.add(Dense(32, activation="relu", input_shape=(1,)))
-    # model.add(StochasticDropout(prob))
-    # model.add(Dense(32, activation="relu"))
-    # model.add(StochasticDropout(prob))
     model.add(Dense(1, activation="linear"))
     model.compile(loss="mean_squared_error", optimizer="adam")
     return model
@@ -104,4 +106,20 @@ def retrain_dropout(model, x_train, y_train, extra_epochs):
 def pred_dropout(model, point):
     mc_model = StochasticRegressor(model)
     pred_mean, pred_std = mc_model.predict(point, num_samples=NUM_SAMPLES)
+    return pred_mean, pred_std
+
+
+################################## Gaussian Process Regression ################################
+def get_grp():
+    kernel = gp.kernels.ConstantKernel(1.0, (1e-1, 1e3)) * gp.kernels.RBF(10.0, (1e-3, 1e3))    
+    model = gp.GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=10, alpha=0.1, normalize_y=True)
+    return model
+
+def retrain_grp(model, x_train, y_train):
+    model.fit(x_train.reshape(-1, 1), y_train)
+    return model
+
+
+def pred_grp(model, point):
+    pred_mean, pred_std = model.predict(point, return_std=True)
     return pred_mean, pred_std

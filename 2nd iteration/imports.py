@@ -13,3 +13,5 @@ from keras_uncertainty.utils import regressor_calibration_error
 from keras_uncertainty.losses import regression_gaussian_nll_loss
 
 import matplotlib.pyplot as plt
+
+import sklearn.gaussian_process as gp

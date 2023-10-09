@@ -11,15 +11,16 @@ disable_eager_execution()
 
 
 # Possible models
-MODEL = "Ensembles"
-# MODEL = "Dropout"
+# MODEL = "Ensembles"
+MODEL = "Dropout"
+# MODEL = "GRP"
 
 # Possible strategies
-# STRATEGY = "DROP_LAST"
-# STRATEGY = "DROP_RANDOM"
-# STRATEGY = "ACTIVE_BUFFER"
 # STRATEGY = "ACTIVE_BUFFER_BOOSTED"
-STRATEGY = "HEURISTIC_CLOSEST"
+# STRATEGY = "ACTIVE_BUFFER"  
+STRATEGY = "DROP_LAST"
+# STRATEGY = "DROP_RANDOM"
+# STRATEGY = "HEURISTIC_CLOSEST"
 
 if __name__ == "__main__":
     # make dir for plot
@@ -27,7 +28,7 @@ if __name__ == "__main__":
         dir_i = 0
         while os.path.isdir(f"figs/{STRATEGY} on {MODEL} ({dir_i})"):
             dir_i += 1
-        dir = f"figs/{STRATEGY} on {MODEL} ({dir_i})"
+        dir_name = f"figs/{STRATEGY} on {MODEL} ({dir_i})"
         os.mkdir(f"figs/{STRATEGY} on {MODEL} ({dir_i})")
 
     # data
@@ -46,7 +47,7 @@ if __name__ == "__main__":
     # extra pre-fitting
     current_model = retrain_model(
         MODEL, current_model, current_x_train, current_y_train, extra_epochs=EXTRA_EPOCHS)
-    print(f"The files will be saved in {dir}")
+    print(f"The files will be saved in {dir_name}")
     # collect your metric
     maes = []
     errors = [] 
@@ -81,8 +82,7 @@ if __name__ == "__main__":
 
         if STRATEGY == "DROP_RANDOM":
             # shuffle indices of the previous data, take the appropriate subset of training and append the new data
-            remaining_indices = np.arange(NEW_DATA_RATE - NEW_PER_ITER)
-            np.random.shuffle(remaining_indices)
+            remaining_indices = np.random.choice(np.arange(NEW_DATA_RATE), NEW_DATA_RATE - NEW_PER_ITER, replace=False) 
             current_x_train = np.concatenate(
                 (current_x_train[remaining_indices], current_x))
             current_y_train = np.concatenate(
@@ -196,7 +196,8 @@ if __name__ == "__main__":
                     color=(1, 1, 1, 0.8), markersize=0.2)
             ax.legend(bbox_to_anchor=(1, 1), loc='upper left')
             # save plot
-            plt.savefig(f"{dir}/iteration {i}")
+            # plt.show()
+            plt.savefig(f"{dir_name}/iteration {i}")
     if PLOT:
         # Draw stuff
         # Create a figure and three subplots arranged vertically
@@ -213,6 +214,6 @@ if __name__ == "__main__":
 
         # Show the plots
         plt.tight_layout()
-        plt.savefig(f"{dir}/metrics")
-        plt.show()
+        plt.savefig(f"{dir_name}/metrics")
+        # plt.show()
         
