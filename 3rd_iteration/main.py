@@ -51,15 +51,16 @@ if __name__ == "__main__":
     # collect your metric
     maes = []
     errors = [] 
-
+    data_index = 1
     # iteratively retrain on new data
     for i in tqdm(range(1, ITERATIONS+1)):
         # grab new points
-        current_x, current_y = x_train[NEW_DATA_RATE + NEW_PER_ITER*i: NEW_DATA_RATE + NEW_PER_ITER*(
-            i+1)], y_train[NEW_DATA_RATE + NEW_PER_ITER*i:NEW_DATA_RATE + NEW_PER_ITER*(i+1)]
+        
         
         # Update training data
         if STRATEGY == "DROP_LAST":
+            current_x, current_y = x_train[NEW_DATA_RATE + NEW_PER_ITER*i: NEW_DATA_RATE + NEW_PER_ITER*(
+            i+1)], y_train[NEW_DATA_RATE + NEW_PER_ITER*i:NEW_DATA_RATE + NEW_PER_ITER*(i+1)]
             # replace the oldest of the previous with it
             current_x_train = np.concatenate(
                 (current_x_train[NEW_PER_ITER:], current_x))
@@ -69,6 +70,8 @@ if __name__ == "__main__":
             picked_y = current_y
 
         if STRATEGY == "DROP_RANDOM":
+            current_x, current_y = x_train[NEW_DATA_RATE + NEW_PER_ITER*i: NEW_DATA_RATE + NEW_PER_ITER*(
+            i+1)], y_train[NEW_DATA_RATE + NEW_PER_ITER*i:NEW_DATA_RATE + NEW_PER_ITER*(i+1)]
             # shuffle indices of the previous data, take the appropriate subset of training and append the new data
             remaining_indices = np.random.choice(np.arange(NEW_DATA_RATE), NEW_DATA_RATE - NEW_PER_ITER, replace=False) 
             current_x_train = np.concatenate(
@@ -81,19 +84,39 @@ if __name__ == "__main__":
         if STRATEGY == "ACTIVE_BUFFER":
             picked_x = []
             picked_y = []
-            _, predicted_stds = pred_model(
-                MODEL, current_model, current_x_train.reshape((-1, 1)))
-            _, predicted_std = pred_model(
-                MODEL, current_model, current_x.reshape((-1, 1)))
+            cnt = 0
+            for _ in range(NEW_PER_ITER):
+                
+                current_x = x_train[NEW_DATA_RATE + data_index: NEW_DATA_RATE + data_index + 1]
+                current_y = y_train[NEW_DATA_RATE + data_index: NEW_DATA_RATE + data_index + 1]
+                _, predicted_stds = pred_model(MODEL, current_model, current_x_train.reshape((-1, 1)))
+                _, predicted_std = pred_model(MODEL, current_model, current_x.reshape((-1, 1)))
+                k = 0
+                
+                while np.min(predicted_stds) > predicted_std or predicted_std[0][0] < THRESHOLD:
+                    k += 1
+                    data_index += 1
+                    if data_index + NEW_DATA_RATE + 1 == SAMPLE_RATE:
+                        print("Run out of data")
+                        exit()
+                    current_x = x_train[NEW_DATA_RATE + data_index: NEW_DATA_RATE + data_index + 1]
+                    current_y = y_train[NEW_DATA_RATE + data_index: NEW_DATA_RATE + data_index + 1]
+                    _, predicted_std = pred_model(MODEL, current_model, current_x.reshape((-1, 1)))
 
-            for j, pre in enumerate(predicted_std):
-                if min(predicted_stds) < pre:
-                    idx = np.argmin(predicted_stds)
-                    predicted_stds[idx] = pre
-                    current_x_train[idx] = current_x[j]
-                    picked_x.append(current_x[j])
-                    current_y_train[idx] = current_y[j]
-                    picked_y.append(current_y[j])
+                data_index += 1
+                if data_index + NEW_DATA_RATE + 1 == SAMPLE_RATE:
+                        print("Run out of data")
+                        exit()
+                cnt += k
+                idx = np.argmin(predicted_stds)
+                predicted_stds[idx] = predicted_std
+                current_x_train[idx] = current_x[0]
+                picked_x.append(current_x[0])
+                current_y_train[idx] = current_y[0]
+                picked_y.append(current_y[0])
+            
+            print("Skipped:", cnt)
+                    
 
         if STRATEGY == "ACTIVE_BUFFER_BOOSTED":
             picked_x = []
@@ -130,9 +153,7 @@ if __name__ == "__main__":
                 # calculate the distances
                 distances = np.array([[abs(x - y) for x in current_x_train]
                                      for y in current_x_train]) + 10**6 * np.eye(current_x_train.shape[0])
-                # print(distances)
                 distances_of_new_x = np.abs(current_x_train - x)
-                # print(distances_of_new_x)
                 # if our new point is more far away then the other points are far away from each other
                 if np.min(distances_of_new_x) > np.min(distances):
                     # point that is closest to the all other points, we want to remove it
@@ -147,19 +168,11 @@ if __name__ == "__main__":
 
         # Retrain & predict
         current_model = retrain_model(MODEL, current_model, current_x_train, current_y_train, batch_size=2)
-
-        #
-
         # Collecting metrics
         pred_mean, pred_std = pred_model(MODEL, current_model, domain)
         difs = domain_y.reshape(-1,1)-pred_mean
-        # print(domain_y.reshape(-1,1).shape)
-        # print(pred_mean.shape)
-        # print(difs.shape)
         mae = np.sum(abs(difs))/SAMPLE_RATE
         maes.append(mae)
-        
-
         #  Aggregate the prediction
         y_pred_mean = pred_mean
         y_pred_std = pred_std
@@ -185,8 +198,8 @@ if __name__ == "__main__":
             # ax.bar(domain, difs)
             ax.plot(current_x_train, current_y_train, '.', color=(
                 0.9, 0, 0, 0.5), markersize=15, label="training set")
-            ax.plot(picked_x, picked_y, '.', color=(1, 1, 0.1, 0.5),
-                    markersize=15, label="new points")
+            ax.plot(picked_x, picked_y, '.', color=(1, 1, 0.1, 1),
+                    markersize=25, label="new points")
             ax.plot(domain, domain_y, '.', color=(0, 0.9, 0, 1),
                     markersize=3, label="ground truth")
             ax.fill_between(domain.ravel(), y_pred_down_1,

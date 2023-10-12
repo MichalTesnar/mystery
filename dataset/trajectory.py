@@ -1,3 +1,8 @@
+"""
+Just a quick note, these are actually not trajectories, these are velocities, and accelerations are pictured as velocity.
+Happens. LOL.
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np

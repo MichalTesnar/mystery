@@ -101,7 +101,7 @@ if __name__ == "__main__":
 
         model = get_dropout_model()
         # reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.3, patience=15, verbose=1)
-        history = model.fit(x_train, y_train, epochs=EPOCHS, batch_size=2, validation_data=(x_val, y_val), verbose=False)#, callbacks=[reduce_lr])
+        history = model.fit(x_train, y_train, epochs=EPOCHS, batch_size=32, validation_data=(x_val, y_val), verbose=False)#, callbacks=[reduce_lr])
         if len(history_val) != 0:
             history_val += np.array(history.history['val_loss'])
             history_train += np.array(history.history['loss'])
