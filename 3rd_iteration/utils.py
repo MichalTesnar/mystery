@@ -107,8 +107,9 @@ def pred_dropout(model, point):
 
 ################################## Gaussian Process Regression ################################
 def get_grp():
-    kernel = gp.kernels.ConstantKernel(1.0, (1e-1, 1e3)) * gp.kernels.RBF(10.0, (1e-3, 1e3))    
-    model = gp.GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=10, alpha=0.1, normalize_y=True)
+    kernel = gp.kernels.ConstantKernel(5, (1e-3, 1e3)) * gp.kernels.RBF(5, (1e-3, 1e3))
+    # kernel = gp.kernels.RBF(length_scale=10, length_scale_bounds=(1e-3, 1e3))
+    model = gp.GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=100)#, alpha=0.1)
     return model
 
 def retrain_grp(model, x_train, y_train):

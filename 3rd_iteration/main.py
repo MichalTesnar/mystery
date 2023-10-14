@@ -9,19 +9,6 @@ from constants import *
 from tensorflow.python.framework.ops import disable_eager_execution
 disable_eager_execution()
 
-
-# Possible models
-MODEL = "Ensembles"
-# MODEL = "Dropout"
-# MODEL = "GRP"
-
-# Possible strategies
-# STRATEGY = "ACTIVE_BUFFER_BOOSTED"
-STRATEGY = "ACTIVE_BUFFER"  
-# STRATEGY = "DROP_LAST"
-# STRATEGY = "DROP_RANDOM"
-# STRATEGY = "HEURISTIC_CLOSEST"
-
 if __name__ == "__main__":
     # make dir for plot
     if PLOT:
@@ -169,6 +156,8 @@ if __name__ == "__main__":
         # Retrain & predict
         current_model = retrain_model(MODEL, current_model, current_x_train, current_y_train, batch_size=2)
         # Collecting metrics
+        pred_mean, pred_std = pred_model(MODEL, current_model, current_x_train.reshape(-1,1))
+        print(pred_std)
         pred_mean, pred_std = pred_model(MODEL, current_model, domain)
         difs = domain_y.reshape(-1,1)-pred_mean
         mae = np.sum(abs(difs))/SAMPLE_RATE
@@ -193,9 +182,6 @@ if __name__ == "__main__":
             ax.axvline(x=4.0, color="black", linestyle="dashed")
             ax.get_xaxis().set_ticks([])
             ax.get_yaxis().set_ticks([])
-            # print(difs)
-            # print(difs.shape)
-            # ax.bar(domain, difs)
             ax.plot(current_x_train, current_y_train, '.', color=(
                 0.9, 0, 0, 0.5), markersize=15, label="training set")
             ax.plot(picked_x, picked_y, '.', color=(1, 1, 0.1, 1),
