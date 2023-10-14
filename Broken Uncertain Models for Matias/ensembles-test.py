@@ -9,7 +9,7 @@ import math
 from keras.models import Sequential, Model
 from keras.layers import Dense, Input
 
-from keras_uncertainty.models import StochasticRegressor, DeepEnsembleRegressor
+from keras_uncertainty.models import StochasticRegressor, DeepEnsembleRegressor, SimpleEnsemble
 from keras_uncertainty.layers import StochasticDropout
 
 from keras_uncertainty.metrics import gaussian_interval_score
@@ -52,9 +52,9 @@ def train_ensemble_model():
 
         train_model.compile(loss=regression_gaussian_nll_loss(var), optimizer="adam")
 
-        return train_model, pred_model
+        return train_model#, pred_model
     
-    model = DeepEnsembleRegressor(model_fn, num_estimators=10)
+    model = SimpleEnsemble(model_fn, num_estimators=10)
     return model
 
 def pred_ensembles(model, x_train, y_train, domain):

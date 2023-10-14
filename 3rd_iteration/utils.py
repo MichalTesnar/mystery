@@ -12,6 +12,17 @@ def toy_function(input):
         output.append(10 * out)
     return np.array(output)
 
+def get_data():
+    x_train = np.linspace(-4.0, 4.0, num=SAMPLE_RATE)
+    train_indices = np.arange(SAMPLE_RATE)
+    np.random.shuffle(train_indices)
+    x_train = x_train[train_indices]
+    y_train = toy_function(x_train)
+    domain = np.linspace(-4.0, 4.0, num=100)
+    domain = domain.reshape((-1, 1))
+    domain_y = toy_function(domain)
+    return x_train, y_train, domain, domain_y
+
 
 def get_model(name):
     if name == "Ensembles":
@@ -46,6 +57,7 @@ def pred_model(name, current_model, domain):
 ################################## ENSEMBLES ##############################################
 # model definition
 def get_ensembles():
+    SIMPLE = False
     def model_fn():
         inp = Input(shape=(1,))
         x = Dense(128, activation="relu")(inp)
@@ -58,12 +70,15 @@ def get_ensembles():
         train_model = Model(inp, mean)
         pred_model = Model(inp, [mean, var])
 
-        train_model.compile(
-            loss=regression_gaussian_nll_loss(var), optimizer="adam")
+        train_model.compile(loss=regression_gaussian_nll_loss(var), optimizer="adam")
+        if SIMPLE:
+            return train_model
+        return train_model , pred_model
 
-        return train_model, pred_model
-
-    model = DeepEnsembleRegressor(model_fn, num_estimators=10)
+    if SIMPLE:
+        model = SimpleEnsemble(model_fn, num_estimators=10)
+    else:
+        model = DeepEnsembleRegressor(model_fn, num_estimators=10)
     return model
 
 
@@ -78,8 +93,6 @@ def retrain_ensembles(model, x_train, y_train, extra_epochs, batch_size=32):
 
 ################################## DROPOUT ##############################################
 # model definition
-
-
 def get_dropout(prob=0.2):
     model = Sequential()
     model.add(Dense(128, activation="relu", input_shape=(1,)))
@@ -108,7 +121,6 @@ def pred_dropout(model, point):
 ################################## Gaussian Process Regression ################################
 def get_grp():
     kernel = gp.kernels.ConstantKernel(5, (1e-3, 1e3)) * gp.kernels.RBF(5, (1e-3, 1e3))
-    # kernel = gp.kernels.RBF(length_scale=10, length_scale_bounds=(1e-3, 1e3))
     model = gp.GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=100)#, alpha=0.1)
     return model
 

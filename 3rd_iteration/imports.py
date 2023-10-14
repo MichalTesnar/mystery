@@ -6,7 +6,7 @@ from tqdm import tqdm
 from keras.models import Sequential, Model
 from keras.layers import Dense, Input
 
-from keras_uncertainty.models import StochasticRegressor, DeepEnsembleRegressor
+from keras_uncertainty.models import StochasticRegressor, DeepEnsembleRegressor, SimpleEnsemble
 from keras_uncertainty.layers import StochasticDropout
 from keras_uncertainty.metrics import gaussian_interval_score
 from keras_uncertainty.utils import regressor_calibration_error
