@@ -1,9 +1,11 @@
+from utils import *
 from constants import *
 from imports import *
 from utils import *
+from plotting import *
 
 # Update training data
-def apply_strategy(iteration, x_train, y_train, current_x_train, current_y_train, current_model, data_index):
+def apply_strategy(iteration, x_train, y_train, current_x_train, current_y_train, current_model, data_index, dir_name="", maes=[], errors=[]):
         if STRATEGY == "DROP_LAST":
             current_x, current_y = x_train[NEW_DATA_RATE + NEW_PER_ITER*iteration: NEW_DATA_RATE + NEW_PER_ITER*(
             iteration+1)], y_train[NEW_DATA_RATE + NEW_PER_ITER*iteration:NEW_DATA_RATE + NEW_PER_ITER*(iteration+1)]
@@ -38,12 +40,27 @@ def apply_strategy(iteration, x_train, y_train, current_x_train, current_y_train
                 _, predicted_stds = pred_model(MODEL, current_model, current_x_train.reshape((-1, 1)))
                 _, predicted_std = pred_model(MODEL, current_model, current_x.reshape((-1, 1)))
                 k = 0
-                
-                while np.min(predicted_stds) > predicted_std or predicted_std[0][0] < THRESHOLD:
+                # if MODEL == "GRP":
+                #     predicted_std = [predicted_std]
+                # print(predicted_std)
+                while np.min(predicted_stds) > predicted_std[0][0] or predicted_std[0][0] < THRESHOLD:
                     k += 1
                     data_index += 1
                     if data_index + NEW_DATA_RATE + 1 == SAMPLE_RATE:
                         print("Run out of data")
+                        if len(maes) == 0:
+                             x_train, y_train, domain, domain_y = get_data()
+                             y_pred_mean, y_pred_std = pred_model(MODEL, current_model, domain)
+                             plot_iteration(dir_name, iteration, y_pred_mean, y_pred_std, current_x_train, current_y_train, picked_x, picked_y, domain, domain_y)
+                             exit()
+                        last_mae = maes[-1]
+                        last_error = errors[-1]
+                        lenght_to_pad = ITERATIONS - len(maes)
+                        maes = np.pad(maes, (0, lenght_to_pad), constant_values=last_mae)
+                        errors = np.pad(errors, (0, lenght_to_pad), constant_values=last_error)
+                        
+                        if PLOT_METRICS:
+                            plot_metrics(dir_name, maes, errors)
                         exit()
                     current_x = x_train[NEW_DATA_RATE + data_index: NEW_DATA_RATE + data_index + 1]
                     current_y = y_train[NEW_DATA_RATE + data_index: NEW_DATA_RATE + data_index + 1]
@@ -52,6 +69,13 @@ def apply_strategy(iteration, x_train, y_train, current_x_train, current_y_train
                 data_index += 1
                 if data_index + NEW_DATA_RATE + 1 == SAMPLE_RATE:
                         print("Run out of data")
+                        last_mae = maes[-1]
+                        last_error = errors[-1]
+                        lenght_to_pad = ITERATIONS - len(maes)
+                        maes = np.pad(maes, (0, lenght_to_pad), constant_values=last_mae)
+                        errors = np.pad(errors, (0, lenght_to_pad), constant_values=last_error)
+                        if PLOT_METRICS:
+                            plot_metrics(dir_name, maes, errors)
                         exit()
                 cnt += k
                 idx = np.argmin(predicted_stds)
