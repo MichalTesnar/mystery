@@ -3,6 +3,11 @@ from constants import *
 
 # Approximated function
 
+def unpack_int(b):
+    while not isinstance(b, int) and not isinstance(b, np.float64) and not isinstance(b, np.float32):
+        b = b[0] 
+    return b
+
 
 def toy_function(input):
     output = []
@@ -15,7 +20,7 @@ def toy_function(input):
 def get_data():
     x_train = np.linspace(-4.0, 4.0, num=SAMPLE_RATE)
     train_indices = np.arange(SAMPLE_RATE)
-    np.random.shuffle(train_indices)
+    # np.random.shuffle(train_indices)
     x_train = x_train[train_indices]
     y_train = toy_function(x_train)
     domain = np.linspace(-4.0, 4.0, num=100)

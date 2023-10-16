@@ -17,7 +17,8 @@ def plot_iteration(dir_name, iteration, y_pred_mean, y_pred_std, current_x_train
     ax.get_yaxis().set_ticks([])
     ax.plot(current_x_train, current_y_train, '.', color=(
         0.9, 0, 0, 0.5), markersize=15, label="training set")
-    ax.plot(picked_x, picked_y, '.', color=(1, 1, 0.1, 1),
+    if len(picked_y) != 0:
+        ax.plot(picked_x, picked_y, '.', color=(1, 1, 0.1, 1),
             markersize=25, label="new points")
     ax.plot(domain, domain_y, '.', color=(0, 0.9, 0, 1),
             markersize=3, label="ground truth")

@@ -40,10 +40,10 @@ def apply_strategy(iteration, x_train, y_train, current_x_train, current_y_train
                 _, predicted_stds = pred_model(MODEL, current_model, current_x_train.reshape((-1, 1)))
                 _, predicted_std = pred_model(MODEL, current_model, current_x.reshape((-1, 1)))
                 k = 0
-                # if MODEL == "GRP":
-                #     predicted_std = [predicted_std]
-                # print(predicted_std)
-                while np.min(predicted_stds) > predicted_std[0][0] or predicted_std[0][0] < THRESHOLD:
+
+                predicted_std = unpack_int(predicted_std)
+
+                while np.min(predicted_stds) > predicted_std or predicted_std < THRESHOLD:
                     k += 1
                     data_index += 1
                     if data_index + NEW_DATA_RATE + 1 == SAMPLE_RATE:
