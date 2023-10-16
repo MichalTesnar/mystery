@@ -13,6 +13,11 @@ class BigGRP():
     def predict(self, points):
         pred_mean, pred_std = self._model.predict(points, return_std=True)
         return pred_mean, pred_std
+    
+    def loss(self, x_test, y_test): # pure MSE without looking at variance
+        pred_mean, _ = self.predict(x_test)
+        return np.sum(np.sum((pred_mean-y_test)**2))
+
 
 def test():
     input_dim = 6

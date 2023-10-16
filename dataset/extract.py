@@ -9,7 +9,7 @@ import numpy as np
 class Dataset():
     def __init__(self, mode="random", size=1):
         assert size > 0 and size <= 1, "Choose valid set size."
-        assert mode in ["random", "sequential", "subsumpled_sequential"], "Mode not implemented."
+        assert mode in ["random", "sequential", "subsampled_sequential"], "Mode not implemented."
 
         self._csv_file_path = "dagon_dataset.csv"
         SIZE = 11566
@@ -32,7 +32,7 @@ class Dataset():
             self._X_train, self._y_train = self._X[:self._TRAIN_SET_ITEMS], self._y[:self._TRAIN_SET_ITEMS]
             self._X_val, self._y_val = self._X[self._TRAIN_SET_ITEMS:self._TRAIN_SET_ITEMS + self._VAL_SET_ITEMS], self._y[self._TRAIN_SET_ITEMS:self._TRAIN_SET_ITEMS + self._VAL_SET_ITEMS]
             self._X_test, self._y_test = self._X[self._TRAIN_SET_ITEMS + self._VAL_SET_ITEMS:], self._y[self._TRAIN_SET_ITEMS + self._VAL_SET_ITEMS:]
-        elif mode == "subsumpled_sequential":
+        elif mode == "subsampled_sequential":
             freq_test = int(self._X.shape[0]/self._TEST_SET_ITEMS)
             indices_test = np.arange(1,self._X.shape[0], freq_test)
             self._X_test, self._y_test = self._X.iloc[indices_test].reset_index(drop=True), self._y.iloc[indices_test].reset_index(drop=True)
