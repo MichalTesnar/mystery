@@ -18,12 +18,12 @@ def toy_function(input):
     return np.array(output)
 
 def get_data():
-    x_train = np.linspace(-4.0, 4.0, num=SAMPLE_RATE)
+    x_train = np.linspace(START, END, num=SAMPLE_RATE)
     train_indices = np.arange(SAMPLE_RATE)
     # np.random.shuffle(train_indices)
     x_train = x_train[train_indices]
     y_train = toy_function(x_train)
-    domain = np.linspace(-4.0, 4.0, num=100)
+    domain = np.linspace(START, END, num=100)
     domain = domain.reshape((-1, 1))
     domain_y = toy_function(domain)
     return x_train, y_train, domain, domain_y

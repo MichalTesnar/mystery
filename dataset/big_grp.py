@@ -14,9 +14,9 @@ class BigGRP():
         pred_mean, pred_std = self._model.predict(points, return_std=True)
         return pred_mean, pred_std
     
-    def loss(self, x_test, y_test): # pure MSE without looking at variance
+    def loss(self, x_test, y_test): # pure MAE without looking at variance
         pred_mean, _ = self.predict(x_test)
-        return np.sum(np.sum((pred_mean-y_test)**2))
+        return np.sum(np.sum(np.abs(pred_mean-y_test)))
 
 
 def test():

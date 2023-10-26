@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
     # collect your metric
     maes = []
-    errors = [] 
+    r2s = [] 
     data_index = 1
     picked_x = picked_y = []
     
@@ -42,17 +42,17 @@ if __name__ == "__main__":
         current_model = retrain_model(MODEL, current_model, current_x_train, current_y_train, batch_size=2)
         # Predict & Collect Metrics
         pred_mean, pred_std = pred_model(MODEL, current_model, domain)
-        difs = domain_y.reshape(-1,1)-pred_mean
-        mae = np.sum(abs(difs))/SAMPLE_RATE
+        mae = np.sum(abs(domain_y.reshape(-1,1)-pred_mean))/SAMPLE_RATE
         maes.append(mae)
-        calib_err = regressor_calibration_error(pred_mean.reshape(-1,), domain_y, pred_std.reshape(-1,))
-        errors.append(calib_err)
+        # calib_err = regressor_calibration_error(pred_mean.reshape(-1,), domain_y, pred_std.reshape(-1,))
+        coefficient_of_dermination = r2_score(domain, pred_mean)
+        r2s.append(coefficient_of_dermination)
         if PLOT_EACH_ITERATION:
             plot_iteration(dir_name, i, pred_mean, pred_std, current_x_train, current_y_train, picked_x, picked_y, domain, domain_y)
          # obtain training data based on strategy
-        current_model, current_x_train, current_y_train, picked_x, picked_y, data_index = apply_strategy(i, x_train, y_train, current_x_train, current_y_train, current_model, data_index, dir_name, maes, errors)
+        current_model, current_x_train, current_y_train, picked_x, picked_y, data_index = apply_strategy(i, x_train, y_train, current_x_train, current_y_train, current_model, data_index, dir_name, maes, r2s)
         
 
     if PLOT_METRICS:
-        plot_metrics(dir_name, maes, errors)
+        plot_metrics(dir_name, maes, r2s)
         

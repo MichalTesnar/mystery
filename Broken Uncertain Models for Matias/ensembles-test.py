@@ -24,7 +24,7 @@ import matplotlib.pyplot as plt
 
 ## Constants
 NUM_SAMPLES = 100 # number of samples for the network when it runs estimation
-EPOCHS = 200 # number of epochs to (re)fit the model on the newly observed data
+EPOCHS = 100 # number of epochs to (re)fit the model on the newly observed data
 SAMPLE_RATE = 100 # the rate at which we sample the interval we want to train on
 NEW_DATA_RATE = 10 # how much data the model sees at the same time
 
@@ -50,7 +50,8 @@ def train_ensemble_model():
         train_model = Model(inp, mean)
         pred_model = Model(inp, [mean, var])
 
-        train_model.compile(loss=regression_gaussian_nll_loss(var), optimizer="adam")
+        #train_model.compile(loss=regression_gaussian_nll_loss(var), optimizer="adam")
+        train_model.compile(loss="mse", optimizer="adam")
 
         return train_model#, pred_model
     
@@ -66,7 +67,7 @@ def pred_ensembles(model, x_train, y_train, domain):
 if __name__ == "__main__":
     # data
     x_train = np.linspace(-4.0, 4.0, num=2*SAMPLE_RATE)
-    train_indices = np.append(np.arange(0, 90), np.arange(190,199))
+    train_indices = np.append(np.arange(0, 90), np.arange(170,199))
     np.random.shuffle(train_indices)
     x_train = x_train[train_indices]
     y_train = toy_function(x_train)
