@@ -44,7 +44,6 @@ if __name__ == "__main__":
         pred_mean, pred_std = pred_model(MODEL, current_model, domain)
         mae = np.sum(abs(domain_y.reshape(-1,1)-pred_mean))/SAMPLE_RATE
         maes.append(mae)
-        # calib_err = regressor_calibration_error(pred_mean.reshape(-1,), domain_y, pred_std.reshape(-1,))
         coefficient_of_dermination = r2_score(domain, pred_mean)
         r2s.append(coefficient_of_dermination)
         if PLOT_EACH_ITERATION:

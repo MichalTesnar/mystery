@@ -5,6 +5,7 @@ from tqdm import tqdm
 
 from keras.models import Sequential, Model
 from keras.layers import Dense, Input
+from keras.callbacks import EarlyStopping
 
 from keras_uncertainty.models import StochasticRegressor, DeepEnsembleRegressor, SimpleEnsemble
 from keras_uncertainty.layers import StochasticDropout

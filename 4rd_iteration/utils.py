@@ -13,8 +13,8 @@ def toy_function(input):
     output = []
     for inp in input:
         std = max(0.15 / (1.0 + math.exp(-inp)), 0)
-        out = math.sin(inp)  # + np.random.normal(0, std)
-        output.append(10 * out)
+        out = math.sin(inp) # + np.random.normal(0, std)
+        output.append(5 * out)
     return np.array(output)
 
 def get_data():
@@ -94,7 +94,8 @@ def pred_ensembles(model, domain):
 
 
 def retrain_ensembles(model, x_train, y_train, extra_epochs, batch_size=32):
-    model.fit(x_train, y_train, verbose=False, epochs=EPOCHS + extra_epochs, batch_size=batch_size)
+    callback = EarlyStopping(monitor='loss', patience=PATIENCE)
+    model.fit(x_train, y_train, verbose=False, epochs=EPOCHS + extra_epochs, batch_size=batch_size, callbacks=[callback])
     return model
 
 ################################## DROPOUT ##############################################
