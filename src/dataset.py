@@ -26,10 +26,9 @@ class Dataset():
         """
         Load the data from the storage.
         """
-        self._csv_file_path = "dagon_dataset.csv"
-        SIZE = 11566
-        to_read = int(size*SIZE)
-        self._df = pd.read_csv(self._csv_file_path, skiprows=1, nrows=to_read)
+        file_path = "dagon_dataset.csv"
+        to_read = int(size*11566)
+        self._df = pd.read_csv(file_path, skiprows=1, nrows=to_read)
 
     def _get_sets(self, mode):
         """
@@ -107,4 +106,18 @@ class Dataset():
         self._y_point_queue = self._y_point_queue.iloc[1:]
         return first_X, first_y
 
+    def give_initial_training_set(self, number_of_points):
+        """
+        Pop more points from the queue at the start to give model some training set.
+        @return X, y which are pairs training set
+        """
+        if not self.data_available():
+            return None
+        X_train = self._X_point_queue.head(number_of_points)
+        y_train = self._y_point_queue.head(number_of_points)
+
+        # Remove the first N rows from the original DataFrame
+        self._X_point_queue = self._X_point_queue.drop(self._X_point_queue.index[:number_of_points])
+        self._y_point_queue = self._y_point_queue.drop(self._y_point_queue.index[:number_of_points])
+        return X_train, y_train
     
