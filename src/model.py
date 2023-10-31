@@ -1,5 +1,5 @@
 
-class AOIModel():
+class AIOModel():
     def __init__(self) -> None:
         
         # keep own training set

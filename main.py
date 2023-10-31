@@ -1,14 +1,13 @@
 from src.dataset import Dataset
-from src.model import AOIModel
+from src.model import AIOModel
 from src.metrics import Metrics
 
 dataset = Dataset()
-model = AOIModel()
+model = AIOModel()
 metrics = Metrics()
 
 while dataset.data_available():
-    new_point = dataset.get_new_point()
-    flag = model.update_own_training_set(new_point)
+    flag = False
     while not flag:
         new_point = dataset.get_new_point()
         flag = model.update_own_training_set(new_point)
