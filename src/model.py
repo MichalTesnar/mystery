@@ -3,7 +3,7 @@ import pandas as pd
 
 class AIOModel():
     def __init__(self, training_set, mode="FIFO", p=0.5) -> None:
-        assert mode in ["FIFO", "FIRO", "RIRO", "SPACE_HEURISTIC", "TIME_HEURISTIC"]
+        assert mode in ["FIFO", "FIRO", "RIRO", "SPACE_HEURISTIC", "TIME_HEURISTIC"], "Model mode not implemented."
         self.mode = mode
         self.X_train, self.y_train = training_set
         self.p=p
@@ -62,18 +62,36 @@ class AIOModel():
             self.X_train = pd.concat([self.X_train, new_X], ignore_index=True)
             self.y_train = pd.concat([self.y_train, new_y], ignore_index=True)
             return True
+        
         ################## UQ METHODS ##################
-
+        if self.mode == "GREEDY":
+            # @TODO
+            self.X_train = self.X_train.iloc[1:]
+            self.y_train = self.y_train.iloc[1:]
+            self.X_train = pd.concat([self.X_train, new_X], ignore_index=True)
+            self.y_train = pd.concat([self.y_train, new_y], ignore_index=True)
+            return True
+        
+        if self.mode == "GREEDY":
+            # @TODO
+            self.X_train = self.X_train.iloc[1:]
+            self.y_train = self.y_train.iloc[1:]
+            self.X_train = pd.concat([self.X_train, new_X], ignore_index=True)
+            self.y_train = pd.concat([self.y_train, new_y], ignore_index=True)
+            return True
 
 
     def retrain(self):
         """
         Retrain yourself give the own dataset you have.
         """
+        # history = self.fit(self.X_train, self.y_train)
+        # return history
         pass
 
     def predict(self, points):
         """
         Predict on the given set of points, also output uncertainty.
         """
+        # if possible inherit from superclass
         pass
