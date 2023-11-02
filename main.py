@@ -7,8 +7,8 @@ MODEL_MODE = "FIFO"
 DATASET_MODE = "subsampled_sequential"
 
 dataset = Dataset(mode=DATASET_MODE, size=0.2)
-model = AIOModel(dataset.give_initial_training_set(BUFFER_SIZE), mode=MODEL_MODE)
-metrics = Metrics(dataset.get_test_set)
+model = AIOModel(dataset.give_initial_training_set(BUFFER_SIZE), mode=MODEL_MODE, p=0.5)
+metrics = Metrics("testing", dataset.get_test_set)
 
 while dataset.data_available():
     flag = False
