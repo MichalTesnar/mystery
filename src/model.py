@@ -1,16 +1,31 @@
 import numpy as np
-import pandas as pd
+import pandas as pd 
+
+from keras.models import Model
+from keras.layers import Input, Dense
+from keras.callbacks import EarlyStopping
+from keras_uncertainty.models import SimpleEnsemble
 
 class AIOModel():
-    def __init__(self, training_set, mode="FIFO", p=0.5) -> None:
-        assert mode in ["FIFO", "FIRO", "RIRO", "SPACE_HEURISTIC", "TIME_HEURISTIC"], "Model mode not implemented."
-        self.mode = mode
+    def __init__(self, training_set, experiment_specification, p=0.5) -> None:
+        assert experiment_specification["MODEL_MODE"] in ["FIFO", "FIRO", "RIRO", "SPACE_HEURISTIC", "TIME_HEURISTIC", "GREEDY", "THRESHOLD", "THRESHOLD_GREEDY"], "Mode does not exist."
+        self.experiment_specification = experiment_specification
         self.X_train, self.y_train = training_set
-        self.p=p
+        self.construct_ensembles()
 
-    @property
-    def get_mode(self):
-        return self.mode
+    def construct_ensembles(self):
+        def model_fn():
+            inp = Input(shape=(6,))
+            x = Dense(128, activation="relu")(inp)
+            x = Dense(128, activation="relu")(x)
+            x = Dense(64, activation="relu")(x)
+            x = Dense(32, activation="relu")(x)
+            mean = Dense(3, activation="linear")(x)
+            train_model = Model(inp, mean)
+            train_model.compile(loss="mse", optimizer="adam")
+            return train_model
+
+        self.model = SimpleEnsemble(model_fn, num_estimators=10)
 
     def update_own_training_set(self, new_point):
         """"
@@ -18,80 +33,68 @@ class AIOModel():
         """
 
         new_X, new_y = new_point
+        
         ################## BASELINES ##################
-        if self.mode == "FIFO":
-            self.X_train = self.X_train.iloc[1:]
-            self.y_train = self.y_train.iloc[1:]
-            self.X_train = pd.concat([self.X_train, new_X], ignore_index=True)
-            self.y_train = pd.concat([self.y_train, new_y], ignore_index=True)
+        if self.experiment_specification["MODEL_MODE"] == "FIFO":
+            self.X_train = self.X_train[1:]
+            self.y_train = self.y_train[1:]
+            self.X_train = np.concatenate([self.X_train, new_X.reshape(-1, 1).T])
+            self.y_train = np.concatenate([self.y_train, new_y.reshape(-1, 1).T])
             return True
         
-        if self.mode == "FIRO": ## First in, random out
-            random_row_index = self.X_train.sample().index
-            self.X_train = self.X_train.drop(random_row_index)
-            self.y_train = self.y_train.drop(random_row_index)
-            self.X_train = pd.concat([self.X_train, new_X], ignore_index=True)
-            self.y_train = pd.concat([self.y_train, new_y], ignore_index=True)
-            df = df.sample(frac=1) # shuffle
+        elif self.experiment_specification["MODEL_MODE"] == "FIRO": ## First in, random out
+            random_index = np.random.choice(self.X_train.shape[0])
+            self.X_train[random_index] = new_X
+            self.y_train[random_index] = new_y
+            np.random.shuffle(self.X_train)
+            np.random.shuffle(self.X_train)
             return True
         
-        if self.mode == "RIRO": ## Random in, random out
-            if np.random.rand() > self.p: # Only accept with probability P
+        elif self.experiment_specification["MODEL_MODE"] == "RIRO": ## Random in, random out
+            if np.random.rand() > self.experiment_specification["ACCEPT_PROBABILITY"]: # Only accept with probability 'p'
                 return False
-            random_row_index = self.X_train.sample().index
-            self.X_train = self.X_train.drop(random_row_index)
-            self.y_train = self.y_train.drop(random_row_index)
-            self.X_train = pd.concat([self.X_train, new_X], ignore_index=True)
-            self.y_train = pd.concat([self.y_train, new_y], ignore_index=True)
-            df = df.sample(frac=1) # shuffle
+            random_index = np.random.choice(self.X_train.shape[0])
+            self.X_train[random_index] = new_X
+            self.y_train[random_index] = new_y
+            np.random.shuffle(self.X_train)
+            np.random.shuffle(self.X_train)
             return True
         
         ################## HEURISTICS ##################
-        if self.mode == "SPACE_HEURISTIC":
+        elif self.experiment_specification["MODEL_MODE"] == "SPACE_HEURISTIC":
             # @TODO
-            self.X_train = self.X_train.iloc[1:]
-            self.y_train = self.y_train.iloc[1:]
-            self.X_train = pd.concat([self.X_train, new_X], ignore_index=True)
-            self.y_train = pd.concat([self.y_train, new_y], ignore_index=True)
+            raise NotImplemented("This method is not implemented.")
             return True
         
-        if self.mode == "TIME_HEURISTIC":
+        elif self.experiment_specification["MODEL_MODE"] == "TIME_HEURISTIC":
             # @TODO
-            self.X_train = self.X_train.iloc[1:]
-            self.y_train = self.y_train.iloc[1:]
-            self.X_train = pd.concat([self.X_train, new_X], ignore_index=True)
-            self.y_train = pd.concat([self.y_train, new_y], ignore_index=True)
-            return True
+            raise NotImplemented("This method is not implemented.")
         
         ################## UQ METHODS ##################
-        if self.mode == "GREEDY":
+        elif self.experiment_specification["MODEL_MODE"] == "GREEDY":
             # @TODO
-            self.X_train = self.X_train.iloc[1:]
-            self.y_train = self.y_train.iloc[1:]
-            self.X_train = pd.concat([self.X_train, new_X], ignore_index=True)
-            self.y_train = pd.concat([self.y_train, new_y], ignore_index=True)
-            return True
+            raise NotImplemented("This method is not implemented.")
         
-        if self.mode == "GREEDY":
+        elif self.experiment_specification["MODEL_MODE"] == "THRESHOLD":
             # @TODO
-            self.X_train = self.X_train.iloc[1:]
-            self.y_train = self.y_train.iloc[1:]
-            self.X_train = pd.concat([self.X_train, new_X], ignore_index=True)
-            self.y_train = pd.concat([self.y_train, new_y], ignore_index=True)
-            return True
+            raise NotImplemented("This method is not implemented.")
+        
+        elif self.experiment_specification["MODEL_MODE"] == "THRESHOLD_GREEDY":
+            # @TODO
+            raise NotImplemented("This method is not implemented.")
 
 
     def retrain(self):
         """
         Retrain yourself give the own dataset you have.
         """
-        # history = self.fit(self.X_train, self.y_train)
-        # return history
-        pass
+        early_stop = EarlyStopping(monitor='loss', patience=self.experiment_specification["PATIENCE"])
+        history = self.model.fit(self.X_train, self.y_train, verbose=False, epochs=self.experiment_specification["EPOCHS"], callbacks=[early_stop], batch_size=self.experiment_specification["BATCH_SIZE"])
+        return history
 
     def predict(self, points):
         """
         Predict on the given set of points, also output uncertainty.
         """
-        # if possible inherit from superclass
-        pass
+        pred_mean, pred_std = self.model.predict(points)
+        return pred_mean, pred_std

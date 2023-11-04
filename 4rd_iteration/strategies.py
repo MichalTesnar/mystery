@@ -42,9 +42,9 @@ def apply_strategy(iteration, x_train, y_train, current_x_train, current_y_train
                 k = 0
 
                 predicted_std = unpack_int(predicted_std)
-                if np.min(predicted_stds) > THRESHOLD:
-                     print("Repeated training")
-                     return current_model, current_x_train, current_y_train, picked_x, picked_y, data_index
+                # if np.min(predicted_stds) > THRESHOLD:
+                #      print("Repeated training")
+                #      return current_model, current_x_train, current_y_train, picked_x, picked_y, data_index
 
                 while np.min(predicted_stds) > predicted_std or predicted_std < THRESHOLD:
                     k += 1

@@ -1,13 +1,13 @@
 # Constants
 NUM_SAMPLES = 20  # number of samples for the network when it runs estimation
 # number of epochs to (re)fit the model on the newly observed data
-EPOCHS = 1000000
+EPOCHS = 100000
 SAMPLE_RATE = 400  # the rate at which we sample the interval we want to train on
-NEW_DATA_RATE = 100 # size of the buffer for the methods
+NEW_DATA_RATE = 60 # size of the buffer for the methods
 NEW_PER_ITER = 1 # how much data we add each time
 ITERATIONS = int((SAMPLE_RATE - NEW_DATA_RATE)/NEW_PER_ITER)  # iterations to be plotted
 EXTRA_EPOCHS = 0
-THRESHOLD = 0.35
+THRESHOLD = 0.3
 PATIENCE = 10
 
 #### PLOTTING

@@ -21,6 +21,7 @@ class Dataset():
         self._get_sets(mode)
         self._X_point_queue = self._X_train.copy()
         self._y_point_queue = self._y_train.copy()
+        self.initial_number_of_points = self._X_point_queue.shape[0]
 
     def _load_data(self, size):
         """
@@ -85,12 +86,21 @@ class Dataset():
     
     @property
     def get_test_set(self):
-        return self._X_test, self._y_test
+        return self._X_test.values, self._y_test.values
 
-    def data_available(self):
+    @property
+    def get_remaining_data(self) -> int:
         """
         Checks if there is data available in the queue that we can train on.
         """
+        return len(self._X_point_queue)
+
+    def data_available(self, verbose=False) -> bool:
+        """
+        Checks if there is data available in the queue that we can train on.
+        """
+        if verbose:
+            print(f"Used {(self.initial_number_of_points - self.get_remaining_data)/self.initial_number_of_points*100:.2f}% of the points.")
         return len(self._X_point_queue) != 0
 
     def get_new_point(self):
@@ -104,7 +114,7 @@ class Dataset():
         first_y = self._y_point_queue.iloc[0].copy()
         self._X_point_queue = self._X_point_queue.iloc[1:]
         self._y_point_queue = self._y_point_queue.iloc[1:]
-        return first_X, first_y
+        return first_X.values, first_y.values
 
     def give_initial_training_set(self, number_of_points):
         """
@@ -116,8 +126,7 @@ class Dataset():
         X_train = self._X_point_queue.head(number_of_points)
         y_train = self._y_point_queue.head(number_of_points)
 
-        # Remove the first N rows from the original DataFrame
         self._X_point_queue = self._X_point_queue.drop(self._X_point_queue.index[:number_of_points])
         self._y_point_queue = self._y_point_queue.drop(self._y_point_queue.index[:number_of_points])
-        return X_train, y_train
+        return X_train.values, y_train.values
     

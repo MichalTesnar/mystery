@@ -62,7 +62,7 @@ def pred_model(name, current_model, domain):
 ################################## ENSEMBLES ##############################################
 # model definition
 def get_ensembles():
-    SIMPLE = False
+    SIMPLE = True
     def model_fn():
         inp = Input(shape=(1,))
         x = Dense(128, activation="relu")(inp)

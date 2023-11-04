@@ -42,7 +42,10 @@ if __name__ == "__main__":
         current_model = retrain_model(MODEL, current_model, current_x_train, current_y_train, batch_size=2)
         # Predict & Collect Metrics
         pred_mean, pred_std = pred_model(MODEL, current_model, domain)
-        mae = np.sum(abs(domain_y.reshape(-1,1)-pred_mean))/SAMPLE_RATE
+        if MODEL == "GRP":
+            mae = np.sum(abs(domain_y-pred_mean))/SAMPLE_RATE
+        else:
+            mae = np.sum(abs(domain_y.reshape(-1,1)-pred_mean))/SAMPLE_RATE
         maes.append(mae)
         coefficient_of_dermination = r2_score(domain, pred_mean)
         r2s.append(coefficient_of_dermination)

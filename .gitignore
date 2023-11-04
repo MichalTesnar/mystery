@@ -1,4 +1,6 @@
 *.jpg
 *.png
+*.pkl
+*.json
 !ensembles.png
 !mcdropout.png
