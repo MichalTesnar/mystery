@@ -11,24 +11,26 @@ Saves the values as a pickle, also the graph and the specification of the model.
 """
 
 class Metrics():
-    def __init__(self, identifier, experiment_specification={}, test_set=[], load=False) -> None:
+    def __init__(self, iterations, experiment_specification={}, test_set=[], load=False) -> None:
+        self.identifier = experiment_specification["EXPERIMENT_IDENTIFIER"]
         if load:
-            self.dir_name = f"results/{identifier}"
+            self.dir_name = f"results/{self.identifier}"
             print(f"Loading the results saved in {self.dir_name}")
             self.load()
         
         else:
             dir_i = 0
-            while os.path.isdir(f"results/{identifier} ({dir_i})"):
+            while os.path.isdir(f"results/{self.identifier} ({dir_i})"):
                 dir_i += 1
-            self.dir_name = f"results/{identifier} ({dir_i})"
+            self.dir_name = f"results/{self.identifier} ({dir_i})"
             os.mkdir(self.dir_name)
             print(f"The results will be saved in {self.dir_name}")
 
-            self.metrics_results = {"MSE": [],
-                                    "R2": []}
+            self.metrics_results = {"MSE": np.zeros(iterations),
+                                    "R2": np.zeros(iterations)}
+        self.current_data_index = 0
         self.model_specification = experiment_specification
-        self.identifier = identifier
+        
         self._test_X, self._test_y = test_set
         self.test_set_size = len(self._test_X)
 
@@ -38,7 +40,16 @@ class Metrics():
         """
         pred_mean, pred_std = model.predict(self._test_X)
         for metric in self.metrics_results.keys():
-            self.metrics_results[metric].append(self.calculate_metric(metric, pred_mean))
+            self.metrics_results[metric][self.current_data_index] = self.calculate_metric(metric, pred_mean)
+        self.current_data_index += 1
+
+    def pad_metrics(self):
+        """
+        Repeat last values in the array if you have skipped an iteration.
+        """
+        for metric in self.metrics_results.keys():
+            self.metrics_results[metric][self.current_data_index] = self.metrics_results[metric][self.current_data_index - 1]
+        self.current_data_index += 1
             
     def calculate_metric(self, key, pred_mean):
         if key == "MSE":

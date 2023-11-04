@@ -1,16 +1,16 @@
 import pandas as pd
 import numpy as np
-
+from math import sin, exp
 
 class Dataset():
-    def __init__(self, mode="random", size=1):
-        assert size > 0 and size <= 1, "Choose valid (sub)set size."
-        assert mode in ["random", "sequential",
-                        "subsampled_sequential"], "Mode not implemented."
-        self._load_data(size)
+    def __init__(self, experiment_specification):
+        assert experiment_specification["DATASET_SIZE"] > 0 and experiment_specification["DATASET_SIZE"] <= 1, "Choose valid (sub)set size."
+        assert experiment_specification["DATASET_MODE"] in ["random", "sequential",
+                        "subsampled_sequential"], "Dataset mode not implemented."
+        self._load_data(experiment_specification["DATASET_SIZE"])
         
-        self._X = self._df.iloc[:, 0:6]
-        self._y = self._df.iloc[:, 6:]
+        self._X = self._df.iloc[:, 0:experiment_specification["INPUT_LAYER_SIZE"]]
+        self._y = self._df.iloc[:, experiment_specification["INPUT_LAYER_SIZE"]:]
         self._TRAIN_SET_SIZE = 0.6
         self._VAL_SET_SIZE = 0.2
         self._TEST_SET_SIZE = 1 - self._TRAIN_SET_SIZE - self._VAL_SET_SIZE
@@ -18,18 +18,10 @@ class Dataset():
         self._VAL_SET_ITEMS = int(self._VAL_SET_SIZE*self._X.shape[0])
         self._TEST_SET_ITEMS = int(self._TEST_SET_SIZE*self._X.shape[0])
         # assign the sets
-        self._get_sets(mode)
+        self._get_sets(experiment_specification["DATASET_MODE"])
         self._X_point_queue = self._X_train.copy()
         self._y_point_queue = self._y_train.copy()
         self.initial_number_of_points = self._X_point_queue.shape[0]
-
-    def _load_data(self, size):
-        """
-        Load the data from the storage.
-        """
-        file_path = "dagon_dataset.csv"
-        to_read = int(size*11566)
-        self._df = pd.read_csv(file_path, skiprows=1, nrows=to_read)
 
     def _get_sets(self, mode):
         """
@@ -69,16 +61,20 @@ class Dataset():
             self._X_test, self._y_test = self._X[self._TRAIN_SET_ITEMS +
                                                  self._VAL_SET_ITEMS:], self._y[self._TRAIN_SET_ITEMS + self._VAL_SET_ITEMS:]
 
-        self._X_train.columns = ['u', 'v', 'r', 'th1', 'th2', 'th3']
-        self._X_val.columns = ['u', 'v', 'r', 'th1', 'th2', 'th3']
-        self._X_test.columns = ['u', 'v', 'r', 'th1', 'th2', 'th3']
-        self._y_train.columns = ['du', 'dv', 'dr']
-        self._y_val.columns = ['du', 'dv', 'dr']
-        self._y_test.columns = ['du', 'dv', 'dr']
+        # self._X_train.columns = ['u', 'v', 'r', 'th1', 'th2', 'th3']
+        # self._X_val.columns = ['u', 'v', 'r', 'th1', 'th2', 'th3']
+        # self._X_test.columns = ['u', 'v', 'r', 'th1', 'th2', 'th3']
+        # self._y_train.columns = ['du', 'dv', 'dr']
+        # self._y_val.columns = ['du', 'dv', 'dr']
+        # self._y_test.columns = ['du', 'dv', 'dr']
 
     @property
     def get_training_set(self):
         return self._X_train, self._y_train
+    
+    @property
+    def get_training_set_size(self):
+        return self._X_train.shape[0]
     
     @property
     def get_validation_set(self):
@@ -130,3 +126,32 @@ class Dataset():
         self._y_point_queue = self._y_point_queue.drop(self._y_point_queue.index[:number_of_points])
         return X_train.values, y_train.values
     
+
+class DagonAUVDataset(Dataset):
+    def _load_data(self, size):
+        """
+        Load the data from the storage.
+        """
+        file_path = "dagon_dataset.csv"
+        to_read = int(size*11566)
+        self._df = pd.read_csv(file_path, skiprows=1, nrows=to_read)
+
+
+class SinusiodToyExample(Dataset):
+    def _load_data(self, size):
+        """
+        Load the data from the storage.
+        """
+        sample_rate = int(10000*size)
+        domain = np.linspace(-6, 6, num=sample_rate)
+        domain_y = self.toy_function(domain)
+        self._df = pd.DataFrame({'x': domain, 'y': domain_y})
+        
+
+    def toy_function(self, input):
+        output = []
+        for inp in input:
+            std = max(0.15 / (1.0 + exp(-inp)), 0)
+            out = sin(inp) + np.random.normal(0, std)
+            output.append(5 * out)
+        return np.array(output)
