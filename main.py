@@ -16,19 +16,6 @@ experiment_specification={
     "OUTPUT_LAYER_SIZE": 1
 }
 
-"""
-@BUG
-- learn to use debuggers
-- retracing
-- debug simple dataset, inspect if it works correctly
-@TODO
-1. active buffer method
-    1.1 greedy
-    1.2 threshold
-    1.3 greedy threshold
-2. dynamic regres (AUC metric)
-"""
-
 # dataset = DagonAUVDataset(experiment_specification)
 dataset = SinusiodToyExample(experiment_specification)
 model = AIOModel(dataset.give_initial_training_set(experiment_specification["BUFFER_SIZE"]), experiment_specification)
