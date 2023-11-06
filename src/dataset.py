@@ -73,8 +73,8 @@ class Dataset():
         return self._X_train, self._y_train
     
     @property
-    def get_training_set_size(self):
-        return self._X_train.shape[0]
+    def get_current_training_set_size(self):
+        return self._X_point_queue.shape[0]
     
     @property
     def get_validation_set(self):
@@ -143,15 +143,18 @@ class SinusiodToyExample(Dataset):
         Load the data from the storage.
         """
         sample_rate = int(10000*size)
-        domain = np.linspace(-6, 6, num=sample_rate)
+        domain = np.linspace(-3, 3, num=sample_rate)
         domain_y = self.toy_function(domain)
         self._df = pd.DataFrame({'x': domain, 'y': domain_y})
         
 
     def toy_function(self, input):
+        """
+        Generating sinusiod training data with added noise.
+        """
         output = []
         for inp in input:
             std = max(0.15 / (1.0 + exp(-inp)), 0)
-            out = sin(inp) + np.random.normal(0, std)
+            out = sin(inp) #+ np.random.normal(0, std)
             output.append(5 * out)
         return np.array(output)

@@ -19,15 +19,10 @@ class Metrics():
             self.load()
         
         else:
-            dir_i = 0
-            while os.path.isdir(f"results/{self.identifier} ({dir_i})"):
-                dir_i += 1
-            self.dir_name = f"results/{self.identifier} ({dir_i})"
-            os.mkdir(self.dir_name)
-            print(f"The results will be saved in {self.dir_name}")
-
             self.metrics_results = {"MSE": np.zeros(iterations),
-                                    "R2": np.zeros(iterations)}
+                                    "R2": np.zeros(iterations),
+                                    "Dynamic Regret MSE": np.zeros(iterations)}
+        
         self.current_data_index = 0
         self.model_specification = experiment_specification
         
@@ -40,7 +35,7 @@ class Metrics():
         """
         pred_mean, pred_std = model.predict(self._test_X)
         for metric in self.metrics_results.keys():
-            self.metrics_results[metric][self.current_data_index] = self.calculate_metric(metric, pred_mean)
+            self.metrics_results[metric][self.current_data_index] = self.calculate_metric(metric, pred_mean, self.metrics_results[metric][self.current_data_index-1])
         self.current_data_index += 1
 
     def pad_metrics(self):
@@ -51,11 +46,13 @@ class Metrics():
             self.metrics_results[metric][self.current_data_index] = self.metrics_results[metric][self.current_data_index - 1]
         self.current_data_index += 1
             
-    def calculate_metric(self, key, pred_mean):
+    def calculate_metric(self, key, pred_mean, last_value):
         if key == "MSE":
             return np.sum(np.square(self._test_y - pred_mean))/self.test_set_size
         if key == "R2":
             return r2_score(pred_mean, self._test_y)
+        if key == "Dynamic Regret MSE":
+            return last_value + np.sum(np.square(self._test_y - pred_mean))/self.test_set_size
 
     def plot(self):
         """
@@ -75,11 +72,42 @@ class Metrics():
         # plt.show()
         plt.close()
 
+    def extra_plots(self, model):
+        """
+        Convenience plotting to show incremental learning in the toy example.
+        """
+        y_pred_mean, y_pred_std = model.predict(self._test_X)
+        y_pred_mean = np.array(y_pred_mean)
+        y_pred_mean = y_pred_mean.reshape((-1,))
+        y_pred_std = np.array(y_pred_std)
+        y_pred_std = y_pred_std.reshape((-1,))
+        y_pred_up_1 = y_pred_mean + y_pred_std
+        y_pred_down_1 = y_pred_mean - y_pred_std
+        fig, ax = plt.subplots()
+        ax.set_title(f"Debugging")
+        ax.set_ylim([-20.0, 20.0])
+        ax.plot(model.X_train, model.y_train, '.', color=(
+            0.9, 0, 0, 0.5), markersize=15, label="training set")
+        ax.plot(self._test_X, self._test_y, '.', color=(0, 0.9, 0, 1),
+                markersize=3, label="ground truth")
+        ax.fill_between(self._test_X.ravel(), y_pred_down_1,
+                        y_pred_up_1,  color=(0, 0.5, 0.9, 0.5))
+        ax.plot(self._test_X.ravel(), y_pred_mean, '.',
+                color=(1, 1, 1, 0.8), markersize=0.2)
+        ax.legend(bbox_to_anchor=(1, 1))
+        plt.savefig(f"{self.dir_name}/iteration {self.current_data_index}")
+        plt.close()
+
     def save(self):
         """
         Save the data collected in the dictionary.
         """
-        print(f"The results are saved in {self.dir_name}")
+        dir_i = 0
+        while os.path.isdir(f"results/{self.identifier} ({dir_i})"):
+            dir_i += 1
+        self.dir_name = f"results/{self.identifier} ({dir_i})"
+        os.mkdir(self.dir_name)
+        print(f"The results will be saved in {self.dir_name}")
         with open(f"{self.dir_name}/metrics_results.pkl", 'wb') as file:
             pickle.dump(self.metrics_results, file)
         with open(f"{self.dir_name}/model_specification.json", "w") as file: 

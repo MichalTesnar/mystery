@@ -103,5 +103,5 @@ class AIOModel():
         """
         Predict on the given set of points, also output uncertainty.
         """
-        pred_mean, pred_std = self.model.predict(points)
+        pred_mean, pred_std = self.model(points)
         return pred_mean, pred_std

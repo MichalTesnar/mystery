@@ -48,23 +48,3 @@ def plot_metrics(dir_name, maes, r2s):
     plt.savefig(f"{dir_name}/metrics")
     # plt.show()
     plt.close()
-
-def plot_learning(dir_name, history):
-    # Draw stuff
-    # Create a figure and three subplots arranged vertically
-    x = np.arange(len(maes))
-    fig, (ax1, ax3) = plt.subplots(2, 1, figsize=(16, 12))
-    fig.suptitle('Online Learning Metrics', fontsize=16)
-    # Plot data on the first subplot
-    ax1.plot(x, maes, label='MAE')
-    ax1.set_title('MAE')
-    ax1.legend()
-    ax3.plot(x, errors, label='Calibration Errors')
-    ax3.set_title('Calibration Errors')
-    ax3.legend()
-
-    # Show the plots
-    plt.tight_layout()
-    plt.savefig(f"{dir_name}/metrics")
-    # plt.show()
-    plt.close()
