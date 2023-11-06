@@ -143,7 +143,7 @@ class SinusiodToyExample(Dataset):
         Load the data from the storage.
         """
         sample_rate = int(10000*size)
-        domain = np.linspace(-3, 3, num=sample_rate)
+        domain = np.linspace(-6, 6, num=sample_rate)
         domain_y = self.toy_function(domain)
         self._df = pd.DataFrame({'x': domain, 'y': domain_y})
         

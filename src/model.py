@@ -47,11 +47,15 @@ class AIOModel():
 
         # First in, random out
         elif self.experiment_specification["MODEL_MODE"] == "FIRO":
+            # Replace random point in the dataset
             random_index = np.random.choice(self.X_train.shape[0])
             self.X_train[random_index] = new_X
             self.y_train[random_index] = new_y
-            np.random.shuffle(self.X_train)
-            np.random.shuffle(self.X_train)
+            # Shuffle the rest of the set
+            shuffling_indices = np.arange(self.X_train.shape[0])
+            np.random.shuffle(shuffling_indices)
+            self.X_train = self.X_train[shuffling_indices]
+            self.y_train = self.y_train[shuffling_indices]
             return True
 
         # Random in, random out
@@ -59,11 +63,15 @@ class AIOModel():
             # Only accept with probability 'p'
             if np.random.rand() > self.experiment_specification["ACCEPT_PROBABILITY"]:
                 return False
+            # Replace random point
             random_index = np.random.choice(self.X_train.shape[0])
             self.X_train[random_index] = new_X
             self.y_train[random_index] = new_y
-            np.random.shuffle(self.X_train)
-            np.random.shuffle(self.X_train)
+            # Shuffle the rest of the set
+            shuffling_indices = np.arange(self.X_train.shape[0])
+            np.random.shuffle(shuffling_indices)
+            self.X_train = self.X_train[shuffling_indices]
+            self.y_train = self.y_train[shuffling_indices]
             return True
 
         ################## HEURISTICS ##################
@@ -78,16 +86,55 @@ class AIOModel():
 
         ################## UQ METHODS ##################
         elif self.experiment_specification["MODEL_MODE"] == "GREEDY":
-            # @TODO
-            raise NotImplemented("This method is not implemented.")
+            # obtain uncertainties on the training set and on the new point
+            _, train_set_stds = self.predict(self.X_train)
+            _, new_point_std = self.predict(new_X.reshape(1, -1))
+            # reject if the uncertainty of the incoming point is lower than the minimum uncertainty in your training set 
+            train_set_stds_means = np.mean(train_set_stds, axis=1)
+            if np.min(train_set_stds_means) > np.mean(new_point_std):
+                return False
+            # otherwise replace the most certain point with the new point
+            idx = np.argmin(train_set_stds_means)
+            self.X_train[idx] = new_X
+            self.y_train[idx] = new_y
+            return True
 
         elif self.experiment_specification["MODEL_MODE"] == "THRESHOLD":
-            # @TODO
-            raise NotImplemented("This method is not implemented.")
+            # obtain uncertainty on the new point
+            _, new_point_std = self.predict(new_X.reshape(1, -1))
+            # if the uncertainty is too low, just directly reject the point
+            if np.mean(new_point_std) < self.experiment_specification["UNCERTAINTY_THRESHOLD"]:
+                return False
+            # otherwise replace a random old point with it
+            random_index = np.random.choice(self.X_train.shape[0])
+            self.X_train[random_index] = new_X
+            self.y_train[random_index] = new_y
+            # Shuffle the rest of the set
+            shuffling_indices = np.arange(self.X_train.shape[0])
+            np.random.shuffle(shuffling_indices)
+            self.X_train = self.X_train[shuffling_indices]
+            self.y_train = self.y_train[shuffling_indices]
+            return True
 
         elif self.experiment_specification["MODEL_MODE"] == "THRESHOLD_GREEDY":
-            # @TODO
-            raise NotImplemented("This method is not implemented.")
+            # obtain uncertainty on the new point
+            _, new_point_std = self.predict(new_X.reshape(1, -1))
+            # if the uncertainty is too low, just directly reject the point
+            if np.mean(new_point_std) < self.experiment_specification["UNCERTAINTY_THRESHOLD"]:
+                return False
+            # obtain uncertainties on the training set
+            _, train_set_stds = self.predict(self.X_train)
+            # reject if the uncertainty of the incoming point is lower than the minimum uncertainty in your training set 
+            train_set_stds_means = np.mean(train_set_stds, axis=1)
+            if np.min(train_set_stds_means) > np.mean(new_point_std):
+                return False
+            # otherwise replace the most certain point with the new point
+            idx = np.argmin(train_set_stds_means)
+            self.X_train[idx] = new_X
+            self.y_train[idx] = new_y
+            return True
+        
+        raise NotImplemented("This method is not implemented.")
 
     def retrain(self):
         """

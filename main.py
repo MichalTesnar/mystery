@@ -9,19 +9,20 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 experiment_specification = {
     "EXPERIMENT_IDENTIFIER": "testing",
     "BUFFER_SIZE": 100,
-    "MODEL_MODE": "FIFO",
+    "MODEL_MODE": "THRESHOLD",
     "DATASET_MODE": "subsampled_sequential",
-    "DATASET_SIZE": 0.1,
+    "DATASET_SIZE": 0.03,
     "BATCH_SIZE": 2,
     "PATIENCE": 10,
     "MAX_EPOCHS": 1000,
     "ACCEPT_PROBABILITY": 0.5,
-    "INPUT_LAYER_SIZE": 6,
-    "OUTPUT_LAYER_SIZE": 3
+    "INPUT_LAYER_SIZE": 1,
+    "OUTPUT_LAYER_SIZE": 1,
+    "UNCERTAINTY_THRESHOLD": 0.1
 }
 
-dataset = DagonAUVDataset(experiment_specification)
-# dataset = SinusiodToyExample(experiment_specification)
+# dataset = DagonAUVDataset(experiment_specification)
+dataset = SinusiodToyExample(experiment_specification)
 model = AIOModel(dataset.give_initial_training_set(
     experiment_specification["BUFFER_SIZE"]), experiment_specification)
 metrics = Metrics(dataset.get_current_training_set_size,
@@ -37,6 +38,7 @@ while dataset.data_available():
     if flag:
         model.retrain()
         metrics.collect_metrics(model)
+        metrics.extra_plots(model)
 
-metrics.save()
 metrics.plot()
+metrics.save()
