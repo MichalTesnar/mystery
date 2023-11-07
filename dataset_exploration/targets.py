@@ -15,9 +15,9 @@ fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(8, 6.4), sharex=True)
 fig.suptitle('Targets of AUV Dagon Dataset', fontsize=20)
 
 # Plot data
-ax1.plot(x, u_dot, label=r'$\dot{u}$ $(m/s^2)$')
-ax2.plot(x, v_dot, label=r'$\dot{v}$ $(m/s^2)$')
-ax3.plot(x, r_dot, label=r'$\dot{r}$ $(rd/s^2)$')
+ax1.plot(x, u_dot, '.', markersize=1, label=r'$\dot{u}$ $(m/s^2)$')
+ax2.plot(x, v_dot, '.', markersize=1, label=r'$\dot{v}$ $(m/s^2)$')
+ax3.plot(x, r_dot, '.', markersize=1, label=r'$\dot{r}$ $(rd/s^2)$')
 ax1.legend(loc='upper left', fontsize="20")
 ax2.legend(loc='upper left', fontsize="20")
 ax3.legend(loc='upper left', fontsize="20")

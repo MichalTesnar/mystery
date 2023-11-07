@@ -7,11 +7,11 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": "testing",
+    "EXPERIMENT_IDENTIFIER": "Greedy test",
     "BUFFER_SIZE": 100,
-    "MODEL_MODE": "THRESHOLD",
+    "MODEL_MODE": "GREEDY",
     "DATASET_MODE": "subsampled_sequential",
-    "DATASET_SIZE": 0.03,
+    "DATASET_SIZE": 0.1,
     "BATCH_SIZE": 2,
     "PATIENCE": 10,
     "MAX_EPOCHS": 1000,
@@ -27,6 +27,8 @@ model = AIOModel(dataset.give_initial_training_set(
     experiment_specification["BUFFER_SIZE"]), experiment_specification)
 metrics = Metrics(dataset.get_current_training_set_size,
                   experiment_specification, dataset.get_test_set)
+
+model.retrain()
 
 while dataset.data_available():
     flag = False

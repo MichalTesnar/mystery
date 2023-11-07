@@ -18,12 +18,12 @@ fig, (ax1, ax2, ax3, ax4, ax5, ax6) = plt.subplots(6, 1, figsize=(8, 12), sharex
 fig.suptitle('Input Features of AUV Dagon Dataset', fontsize=20)
 
 # Plot data
-ax1.plot(x, u, label=r'$u$ $(m/s)$')
-ax2.plot(x, v, label=r'$v$ $(m/s)$')
-ax3.plot(x, r, label=r'$r$ $(rd/s)$')
-ax4.plot(x, th1, label=r'$n_1$ $(rps)$')
-ax5.plot(x, th2, label=r'$n_2$ $(rps)$')
-ax6.plot(x, th3, label=r'$n_3$ $(rps)$')
+ax1.plot(x, u, '.', markersize=1, label=r'$u$ $(m/s)$')
+ax2.plot(x, v, '.', markersize=1, label=r'$v$ $(m/s)$')
+ax3.plot(x, r, '.', markersize=1, label=r'$r$ $(rd/s)$')
+ax4.plot(x, th1, '.', markersize=1, label=r'$n_1$ $(rps)$')
+ax5.plot(x, th2, '.', markersize=1, label=r'$n_2$ $(rps)$')
+ax6.plot(x, th3, '.', markersize=1, label=r'$n_3$ $(rps)$')
 ax1.legend(loc='upper left', fontsize="20")
 ax2.legend(loc='upper left', fontsize="20")
 ax3.legend(loc='upper left', fontsize="20")
