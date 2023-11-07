@@ -27,8 +27,8 @@ class Metrics():
             os.mkdir(self.dir_name)
             print(f"The results will be saved in {self.dir_name}")
             self.metrics_results = {"MSE": np.zeros(iterations),
-                                        "R2": np.zeros(iterations),
-                                        "Dynamic Regret MSE": np.zeros(iterations)}
+                                    "R2": np.zeros(iterations),
+                                    "Cummulative MSE": np.zeros(iterations)}
 
         self.current_data_index = 0
         self.model_specification = experiment_specification
@@ -114,7 +114,7 @@ class Metrics():
         """
         Save the data collected in the dictionary.
         """
-        
+
         with open(f"{self.dir_name}/metrics_results.pkl", 'wb') as file:
             pickle.dump(self.metrics_results, file)
         with open(f"{self.dir_name}/model_specification.json", "w") as file:
