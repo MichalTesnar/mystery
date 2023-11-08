@@ -1,5 +1,4 @@
 # Bugs
-- plotting cumullative MSE
 
 # Planned Features
 - hyperparameter search (take subset of the dataset with size of the buffer, then do magic)

@@ -12,7 +12,7 @@ Saves the values as a pickle, also the graph and the specification of the model.
 
 
 class Metrics():
-    def __init__(self, iterations, experiment_specification={}, test_set=[], load=False) -> None:
+    def __init__(self, iterations=0, experiment_specification={}, test_set=([],[]), load=False) -> None:
         self.identifier = experiment_specification["EXPERIMENT_IDENTIFIER"]
         if load:
             self.dir_name = f"results/{self.identifier}"
@@ -53,6 +53,13 @@ class Metrics():
         for metric in self.metrics_results.keys():
             self.metrics_results[metric][self.current_data_index] = self.metrics_results[metric][self.current_data_index - 1]
         self.current_data_index += 1
+    
+    def restore_cummulativeMSE(self):
+        last_value = 0
+        for i in range(len(self.metrics_results["MSE"])):
+            self.metrics_results["Cummulative MSE"][i] = self.metrics_results["MSE"][i] + last_value
+            last_value = self.metrics_results["Cummulative MSE"][i]
+
 
     def calculate_metric(self, key, pred_mean, last_value):
         """
@@ -62,7 +69,7 @@ class Metrics():
             return np.sum(np.square(self._test_y - pred_mean))/self.test_set_size
         if key == "R2":
             return r2_score(pred_mean, self._test_y)
-        if key == "Dynamic Regret MSE":
+        if key == "Cummulative MSE":
             return last_value + np.sum(np.square(self._test_y - pred_mean))/self.test_set_size
 
     def plot(self):
@@ -71,13 +78,13 @@ class Metrics():
         """
         fig, axs = plt.subplots(
             len(self.metrics_results.keys()), 1, figsize=(16, 12))
-        fig.suptitle('Online Learning Metrics', fontsize=16)
+        fig.suptitle(f"Online Learning Metrics for {self.identifier}", fontsize=20)
         for i, metric in enumerate(self.metrics_results.keys()):
             y = self.metrics_results[metric]
             x = np.arange(0, len(y))
             axs[i].plot(x, y, label=metric)
             axs[i].set_title(metric)
-            axs[i].legend()
+            axs[i].legend(loc='upper left', fontsize=20)
 
         plt.tight_layout()
         plt.savefig(f"{self.dir_name}/plotted_metrics")
@@ -96,7 +103,7 @@ class Metrics():
         y_pred_up_1 = y_pred_mean + y_pred_std
         y_pred_down_1 = y_pred_mean - y_pred_std
         fig, ax = plt.subplots()
-        ax.set_title(f"Debugging")
+        ax.set_title(f"Plotting Iterations of {self.identifier}")
         ax.set_ylim([-20.0, 20.0])
         ax.plot(model.X_train, model.y_train, '.', color=(
             0.9, 0, 0, 0.5), markersize=15, label="training set")
