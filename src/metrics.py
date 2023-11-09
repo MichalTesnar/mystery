@@ -28,7 +28,8 @@ class Metrics():
             print(f"The results will be saved in {self.dir_name}")
             self.metrics_results = {"MSE": np.zeros(iterations),
                                     "R2": np.zeros(iterations),
-                                    "Cummulative MSE": np.zeros(iterations)}
+                                    "Cummulative MSE": np.zeros(iterations),
+                                    "Skips": np.zeros(iterations)}
 
         self.current_data_index = 0
         self.model_specification = experiment_specification
@@ -51,7 +52,10 @@ class Metrics():
         Repeat last values in the array if you have skipped an iteration.
         """
         for metric in self.metrics_results.keys():
-            self.metrics_results[metric][self.current_data_index] = self.metrics_results[metric][self.current_data_index - 1]
+            if metric == "Skips":
+                self.metrics_results[metric][self.current_data_index] = self.metrics_results[metric][self.current_data_index - 1] + 1
+            else:
+                self.metrics_results[metric][self.current_data_index] = self.metrics_results[metric][self.current_data_index - 1]
         self.current_data_index += 1
     
     def restore_cummulativeMSE(self):
@@ -71,6 +75,8 @@ class Metrics():
             return r2_score(pred_mean, self._test_y)
         if key == "Cummulative MSE":
             return last_value + np.sum(np.square(self._test_y - pred_mean))/self.test_set_size
+        if key == "Skips":
+            return last_value
 
     def plot(self):
         """

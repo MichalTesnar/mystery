@@ -10,15 +10,15 @@ tf.get_logger().setLevel('INFO')
 np.random.seed(107)
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": "FIRO genuine test",
-    "BUFFER_SIZE": 100,
-    "MODEL_MODE": "FIRO",
+    "EXPERIMENT_IDENTIFIER": "RIRO 0.1 test",
+    "BUFFER_SIZE": 10,
+    "MODEL_MODE": "RIRO",
     "DATASET_MODE": "subsampled_sequential",
-    "DATASET_SIZE": 0.1,
+    "DATASET_SIZE": 0.01,
     "BATCH_SIZE": 2,
     "PATIENCE": 10,
     "MAX_EPOCHS": 1000,
-    "ACCEPT_PROBABILITY": 0.3,
+    "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6,
     "OUTPUT_LAYER_SIZE": 3,
     "UNCERTAINTY_THRESHOLD": 0.1
