@@ -112,9 +112,9 @@ class Metrics():
         ax.set_title(f"Plotting Iterations of {self.identifier}")
         ax.set_ylim([-20.0, 20.0])
         ax.plot(model.X_train, model.y_train, '.', color=(
-            0.9, 0, 0, 0.5), markersize=15, label="training set")
+            0.9, 0, 0, 0.5), markersize=15, label="current training set")
         ax.plot(self._test_X, self._test_y, '.', color=(0, 0.9, 0, 1),
-                markersize=3, label="ground truth")
+                markersize=3, label="testing set")
         ax.fill_between(self._test_X.ravel(), y_pred_down_1,
                         y_pred_up_1,  color=(0, 0.5, 0.9, 0.5))
         ax.plot(self._test_X.ravel(), y_pred_mean, '.',

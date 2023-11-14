@@ -2,6 +2,7 @@ import numpy as np
 
 from keras.models import Model
 from keras.layers import Input, Dense
+from keras.optimizers import Adam
 from keras.callbacks import EarlyStopping
 from keras_uncertainty.models import SimpleEnsemble
 
@@ -17,13 +18,13 @@ class AIOModel():
     def construct_ensembles(self):
         def model_fn():
             inp = Input(shape=(self.experiment_specification["INPUT_LAYER_SIZE"],))
-            x = Dense(128, activation="relu")(inp)
-            x = Dense(128, activation="relu")(x)
-            x = Dense(64, activation="relu")(x)
-            x = Dense(32, activation="relu")(x)
+            x = Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu")(inp)
+            for _ in range(self.experiment_specification["NUMBER_OF_LAYERS"] - 1):
+                x = Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu")(x)
             mean = Dense(self.experiment_specification["OUTPUT_LAYER_SIZE"], activation="linear")(x)
             train_model = Model(inp, mean)
-            train_model.compile(loss="mse", optimizer="adam")
+            # print(train_model.summary())
+            train_model.compile(loss="mse", optimizer=Adam(learning_rate=self.experiment_specification["LEARNING_RATE"]))
             return train_model
 
         self.model = SimpleEnsemble(model_fn, num_estimators=10)

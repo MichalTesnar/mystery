@@ -1,6 +1,7 @@
+
 import tensorflow as tf
 from tensorflow import keras
-from keras_tuner import BayesianOptimization
+from keras_tuner import Hyperband
 from keras.layers import Input, Dense
 from keras.optimizers import Adam
 from keras.losses import MeanSquaredError
@@ -8,14 +9,14 @@ from src.dataset import SinusiodToyExample, DagonAUVDataset
 from keras.callbacks import EarlyStopping
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": "sinus example",
+    "EXPERIMENT_IDENTIFIER": "hp sinus with constrained size",
     "BUFFER_SIZE": 100,
     "MODEL_MODE": "FIRO",
     "DATASET_MODE": "subsampled_sequential",
     "DATASET_SIZE": 0.1,
     "BATCH_SIZE": 2,
     "PATIENCE": 10,
-    "MAX_EPOCHS": 200,
+    "MAX_EPOCHS": 1000,
     "ACCEPT_PROBABILITY": 0.3,
     "INPUT_LAYER_SIZE": 1,
     "OUTPUT_LAYER_SIZE": 1,
@@ -35,7 +36,7 @@ def model_builder(hp):
     num_layers = hp.Int('num_layers', min_value=1, max_value=4, step=1)
 
     for _ in range(num_layers):
-        hp_units = hp.Int('units', min_value=2, max_value=64, step=1)
+        hp_units = hp.Int('units', min_value=2, max_value=16, step=1)
         model.add(Dense(units=hp_units, activation='relu'))
 
     model.add(
@@ -50,13 +51,13 @@ def model_builder(hp):
 # https://kegui.medium.com/how-to-tune-the-number-of-epochs-and-batch-size-in-keras-tuner-c2ab2d40878d
 
 
-class MyTuner(BayesianOptimization):
+class MyTuner(Hyperband):
     def run_trial(self, trial, *args, **kwargs):
-        kwargs['batch_size'] = trial.hyperparameters.Choice(
-            'batch_size', values=[1, 2, 4, 8, 16])
+        kwargs['batch_size'] = trial.hyperparameters.Int(
+            'batch_size', 1, 16, step=1)
         early_stopping = EarlyStopping(monitor='val_loss',
                                        patience=trial.hyperparameters.Int(
-                                           'patience', min_value=2, max_value=10),
+                                           'patience', min_value=5, max_value=20, step=1),
                                        restore_best_weights=True
                                        )
         if 'callbacks' in kwargs:
@@ -73,7 +74,7 @@ tuner = MyTuner(model_builder,
 
 # stop_early = EarlyStopping(monitor='val_loss', patience=5)
 # , callbacks=[stop_early])
-tuner.search(X_train, y_train, epochs=experiment_specification["MAX_EPOCHS"], validation_split=0.3)
+tuner.search(X_train, y_train, epochs=500, validation_split=0.3)
 
 # Get the optimal hyperparameters
 best_hps = tuner.get_best_hyperparameters(num_trials=1)[0] #just takes the best one of list of one
@@ -85,7 +86,6 @@ learning rate {best_hps.get('learning_rate')}.
 batch size {best_hps.get('batch_size')}.
 patience {best_hps.get('patience')}.
 """)
-
 # Build the model with the optimal hyperparameters and train it on the data for 50 epochs
 model = tuner.hypermodel.build(best_hps)
 early_stopping = EarlyStopping(monitor='val_loss', patience=best_hps.get('patience'),
@@ -94,3 +94,4 @@ history = model.fit(X_train, y_train, epochs=500, validation_split=0.3, callback
 
 val_acc_per_epoch = history.history['val_loss']
 print(val_acc_per_epoch)
+

@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from math import sin, exp
+import time
 
 class Dataset():
     def __init__(self, experiment_specification):
@@ -91,12 +92,12 @@ class Dataset():
         """
         return len(self._X_point_queue)
 
-    def data_available(self, verbose=False) -> bool:
+    def data_available(self, verbose=False, start_time=0) -> bool:
         """
         Checks if there is data available in the queue that we can train on.
-        """
+        """        
         if verbose:
-            print(f"Used {(self.initial_number_of_points - self.get_remaining_data)/self.initial_number_of_points*100:.2f}% of the points.")
+            print(f"Time {time.time()-start_time:.2f}: used {(self.initial_number_of_points - self.get_remaining_data)/self.initial_number_of_points*100:.2f}% of the points.")
         return len(self._X_point_queue) != 0
 
     def get_new_point(self):
