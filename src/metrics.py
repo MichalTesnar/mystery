@@ -54,7 +54,10 @@ class Metrics():
         for metric in self.metrics_results.keys():
             if metric == "Skips":
                 self.metrics_results[metric][self.current_data_index] = self.metrics_results[metric][self.current_data_index - 1] + 1
-            else:
+            elif metric == "Cummulative MSE": # copy the last value and add the current value of MSE
+                self.metrics_results["Cummulative MSE"][self.current_data_index] = self.metrics_results["Cummulative MSE"][self.current_data_index - 1]
+                self.metrics_results["Cummulative MSE"][self.current_data_index] += self.metrics_results["MSE"][self.current_data_index]
+            else: # copy the last value
                 self.metrics_results[metric][self.current_data_index] = self.metrics_results[metric][self.current_data_index - 1]
         self.current_data_index += 1
     

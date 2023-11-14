@@ -62,13 +62,6 @@ class Dataset():
             self._X_test, self._y_test = self._X[self._TRAIN_SET_ITEMS +
                                                  self._VAL_SET_ITEMS:], self._y[self._TRAIN_SET_ITEMS + self._VAL_SET_ITEMS:]
 
-        # self._X_train.columns = ['u', 'v', 'r', 'th1', 'th2', 'th3']
-        # self._X_val.columns = ['u', 'v', 'r', 'th1', 'th2', 'th3']
-        # self._X_test.columns = ['u', 'v', 'r', 'th1', 'th2', 'th3']
-        # self._y_train.columns = ['du', 'dv', 'dr']
-        # self._y_val.columns = ['du', 'dv', 'dr']
-        # self._y_test.columns = ['du', 'dv', 'dr']
-
     @property
     def get_training_set(self):
         return self._X_train, self._y_train
