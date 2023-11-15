@@ -27,9 +27,9 @@ patience 3.
 """
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": "dagon hyperparams THRESHOLD_GREEDY 0.3",
+    "EXPERIMENT_IDENTIFIER": "dagon hyperparams THRESHOLD 0.01",
     "BUFFER_SIZE": 100,
-    "MODEL_MODE": "THRESHOLD_GREEDY",
+    "MODEL_MODE": "THRESHOLD",
     "DATASET_MODE": "subsampled_sequential",
     "NUMBER_OF_LAYERS": 2,
     "UNITS_PER_LAYER": 15,
@@ -38,10 +38,10 @@ experiment_specification = {
     "BATCH_SIZE": 2,
     "PATIENCE": 3,
     "MAX_EPOCHS": 200,
-    "ACCEPT_PROBABILITY": 0.3,
+    "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6,
     "OUTPUT_LAYER_SIZE": 3,
-    "UNCERTAINTY_THRESHOLD": 0.3
+    "UNCERTAINTY_THRESHOLD": 0.01
 }
 
 dataset = DagonAUVDataset(experiment_specification)
