@@ -27,25 +27,26 @@ patience 3.
 """
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": "dagon hyperparams THRESHOLD 0.01",
+    "EXPERIMENT_IDENTIFIER": "testing new func",
     "BUFFER_SIZE": 100,
     "MODEL_MODE": "THRESHOLD",
     "DATASET_MODE": "subsampled_sequential",
-    "NUMBER_OF_LAYERS": 2,
-    "UNITS_PER_LAYER": 15,
+    "NUMBER_OF_LAYERS": 4,
+    "UNITS_PER_LAYER": 32,
     "DATASET_SIZE": 0.1,
-    "LEARNING_RATE": 0.001,
+    "LEARNING_RATE": 0.01,
     "BATCH_SIZE": 2,
-    "PATIENCE": 3,
-    "MAX_EPOCHS": 200,
+    "PATIENCE": 100,
+    "MAX_EPOCHS": 1000,
     "ACCEPT_PROBABILITY": 0.7,
-    "INPUT_LAYER_SIZE": 6,
-    "OUTPUT_LAYER_SIZE": 3,
-    "UNCERTAINTY_THRESHOLD": 0.01
+    "INPUT_LAYER_SIZE": 1,
+    "OUTPUT_LAYER_SIZE": 1,
+    "UNCERTAINTY_THRESHOLD": 0.01,
+    "RUNNING_MEAN_WINDOW": 10
 }
 
-dataset = DagonAUVDataset(experiment_specification)
-# dataset = SinusiodToyExample(experiment_specification)
+# dataset = DagonAUVDataset(experiment_specification)
+dataset = SinusiodToyExample(experiment_specification)
 model = AIOModel(dataset.give_initial_training_set(
     experiment_specification["BUFFER_SIZE"]), experiment_specification)
 metrics = Metrics(dataset.get_current_training_set_size, # account for extra iteration at the end
@@ -56,7 +57,7 @@ while dataset.data_available():
     if training_flag:
         model.retrain()
         metrics.collect_metrics(model)
-        # metrics.extra_plots(model)
+        metrics.extra_plots(model)
     training_flag = False
     while not training_flag and dataset.data_available(verbose=True, start_time=start_time):
         new_point = dataset.get_new_point()

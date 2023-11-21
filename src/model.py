@@ -24,7 +24,7 @@ class AIOModel():
             mean = Dense(self.experiment_specification["OUTPUT_LAYER_SIZE"], activation="linear")(x)
             train_model = Model(inp, mean)
             # print(train_model.summary())
-            train_model.compile(loss="mse", optimizer=Adam(learning_rate=self.experiment_specification["LEARNING_RATE"]))
+            train_model.compile(loss="mse")#, optimizer=Adam(learning_rate=self.experiment_specification["LEARNING_RATE"]))
             return train_model
 
         self.model = SimpleEnsemble(model_fn, num_estimators=10)

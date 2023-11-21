@@ -28,6 +28,7 @@ class Metrics():
             print(f"The results will be saved in {self.dir_name}")
             self.metrics_results = {"MSE": np.zeros(iterations),
                                     "R2": np.zeros(iterations),
+                                    "Running Mean R2": np.zeros(iterations),
                                     "Cummulative MSE": np.zeros(iterations),
                                     "Skips": np.zeros(iterations)}
 
@@ -74,11 +75,14 @@ class Metrics():
         """
         if key == "MSE":
             return np.sum(np.square(self._test_y - pred_mean))/self.test_set_size
-        if key == "R2":
+        elif key == "R2":
             return r2_score(pred_mean, self._test_y)
-        if key == "Cummulative MSE":
+        elif key == "Running Mean R2":
+            if self.current_data_index > self.model_specification["RUNNING_MEAN_WINDOW"]:
+                return np.mean(self.metrics_results["R2"][self.current_data_index-self.model_specification["RUNNING_MEAN_WINDOW"]:self.current_data_index])
+        elif key == "Cummulative MSE":
             return last_value + np.sum(np.square(self._test_y - pred_mean))/self.test_set_size
-        if key == "Skips":
+        elif key == "Skips":
             return last_value
 
     def plot(self):
