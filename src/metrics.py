@@ -30,6 +30,7 @@ class Metrics():
                                     "R2": np.zeros(iterations),
                                     "Running Mean R2": np.zeros(iterations),
                                     "Cummulative MSE": np.zeros(iterations),
+                                    "Prediction Uncertainty": np.zeros(iterations),
                                     "Skips": np.zeros(iterations)}
 
         self.current_data_index = 0
@@ -44,9 +45,15 @@ class Metrics():
         """
         pred_mean, pred_std = model.predict(self._test_X)
         for metric in self.metrics_results.keys():
-            self.metrics_results[metric][self.current_data_index] = self.calculate_metric(
-                metric, pred_mean, self.metrics_results[metric][self.current_data_index-1])
+            if metric != "Prediction Uncertainty":
+                self.metrics_results[metric][self.current_data_index] = self.calculate_metric(
+                    metric, pred_mean, self.metrics_results[metric][max(0, self.current_data_index-1)])
         self.current_data_index += 1
+
+    def collect_uncertainty(self, model, new_point):
+        X, _ = new_point
+        _, pred_std = model.predict(X.reshape(1, -1))
+        self.metrics_results["Prediction Uncertainty"][self.current_data_index - 1] = float(np.mean(pred_std))
 
     def pad_metrics(self):
         """
@@ -58,6 +65,9 @@ class Metrics():
             elif metric == "Cummulative MSE": # copy the last value and add the current value of MSE
                 self.metrics_results["Cummulative MSE"][self.current_data_index] = self.metrics_results["Cummulative MSE"][self.current_data_index - 1]
                 self.metrics_results["Cummulative MSE"][self.current_data_index] += self.metrics_results["MSE"][self.current_data_index]
+            elif metric == "Prediction Uncertainty":
+                # do not do anything in this case, it happens on its own
+                continue
             else: # copy the last value
                 self.metrics_results[metric][self.current_data_index] = self.metrics_results[metric][self.current_data_index - 1]
         self.current_data_index += 1
