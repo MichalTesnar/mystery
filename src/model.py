@@ -138,13 +138,13 @@ class AIOModel():
         
         raise NotImplemented("This method is not implemented.")
 
-    def retrain(self):
+    def retrain(self, verbose=False):
         """
         Retrain yourself give the own dataset you have.
         """
         early_stop = EarlyStopping(
             monitor='loss', patience=self.experiment_specification["PATIENCE"])
-        history = self.model.fit(self.X_train, self.y_train, verbose=False, epochs=self.experiment_specification["MAX_EPOCHS"], callbacks=[
+        history = self.model.fit(self.X_train, self.y_train, verbose=verbose, epochs=self.experiment_specification["MAX_EPOCHS"], callbacks=[
                                  early_stop], batch_size=self.experiment_specification["BATCH_SIZE"])
         return history
 
@@ -154,3 +154,11 @@ class AIOModel():
         """
         pred_mean, pred_std = self.model(points)
         return pred_mean, pred_std
+
+class AIOModelTuning(AIOModel):
+    def __init__(self, training_set, experiment_specification, model) -> None:
+        assert experiment_specification["MODEL_MODE"] in ["FIFO", "FIRO", "RIRO", "SPACE_HEURISTIC",
+                                                          "TIME_HEURISTIC", "GREEDY", "THRESHOLD", "THRESHOLD_GREEDY"], "Mode does not exist."
+        self.experiment_specification = experiment_specification
+        self.X_train, self.y_train = training_set
+        self.model = model

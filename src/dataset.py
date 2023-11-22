@@ -64,7 +64,7 @@ class Dataset():
 
     @property
     def get_training_set(self):
-        return self._X_train, self._y_train
+        return self._X_train.values, self._y_train.values
     
     @property
     def get_current_training_set_size(self):
@@ -72,7 +72,7 @@ class Dataset():
     
     @property
     def get_validation_set(self):
-        return self._X_val, self._y_val
+        return self._X_val.values, self._y_val.values
     
     @property
     def get_test_set(self):

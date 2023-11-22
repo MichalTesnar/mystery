@@ -158,3 +158,20 @@ class Metrics():
             self.metrics_results = pickle.load(file)
         with open(f"{self.dir_name}/model_specification.json", 'r') as file:
             self.model_specification = json.load(file)
+
+
+class MetricsTuning(Metrics):
+    def __init__(self, iterations=0, experiment_specification={}, test_set=([],[]), load=False) -> None:
+        self.identifier = experiment_specification["EXPERIMENT_IDENTIFIER"]
+        self.metrics_results = {"MSE": np.zeros(iterations),
+                                "R2": np.zeros(iterations),
+                                "Running Mean R2": np.zeros(iterations),
+                                "Cummulative MSE": np.zeros(iterations),
+                                "Prediction Uncertainty": np.zeros(iterations),
+                                "Skips": np.zeros(iterations)}
+
+        self.current_data_index = 0
+        self.model_specification = experiment_specification
+
+        self._test_X, self._test_y = test_set
+        self.test_set_size = len(self._test_X)
