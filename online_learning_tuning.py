@@ -59,6 +59,7 @@ class MyHyperModel(HyperModel):
             hp_learning_rate = hp.Choice('learning_rate', values=[1e-1, 1e-2, 1e-3, 1e-4, 1e-5])
             train_model.compile(loss="mse", optimizer=Adam(learning_rate=hp_learning_rate))
             return train_model
+        # lol
 
         return SimpleEnsemble(model_fn, num_estimators=es["NUMBER_OF_ESTIMATORS"])
         # HAD TO ALTER KERAS BACKEND TO BE ABLE TO DO THIS, not a valid Keras Model
