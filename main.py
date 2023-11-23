@@ -34,27 +34,30 @@ EXP_TYPE = "Online"
 experiment_specification = {
     "EXPERIMENT_IDENTIFIER": "testing visual",
     "EXPERIMENT_TYPE": DATASET_TYPE,
-    "BUFFER_SIZE": 100,
+    "BUFFER_SIZE": 50,
     "MODEL_MODE": "THRESHOLD",
     "DATASET_MODE": "subsampled_sequential",
     "NUMBER_OF_LAYERS": 4,
-    "UNITS_PER_LAYER": 16,
-    "DATASET_SIZE": 0.04,
-    "LEARNING_RATE": 0.01,
-    "BATCH_SIZE": 2,
-    "PATIENCE": 5,
-    "MAX_EPOCHS": 50,
+    "UNITS_PER_LAYER": 32,
+    "DATASET_SIZE": 0.05,
+    "LEARNING_RATE": 0.001,
+    "BATCH_SIZE": 1,
+    "PATIENCE": 10,
+    "MAX_EPOCHS": 200,
     "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
     "UNCERTAINTY_THRESHOLD": 0.1,
-    "RUNNING_MEAN_WINDOW": 10
+    "RUNNING_MEAN_WINDOW": 10,
+    "NUMBER_OF_ESTIMATORS": 10
 }
 
 if experiment_specification["EXPERIMENT_TYPE"] == "Dagon":
     dataset = DagonAUVDataset(experiment_specification)
 elif experiment_specification["EXPERIMENT_TYPE"] == "Toy":
     dataset = SinusiodToyExample(experiment_specification)
+
+print(dataset.get_current_training_set_size)
 
 if EXP_TYPE == "Online":
     model = AIOModel(dataset.give_initial_training_set(

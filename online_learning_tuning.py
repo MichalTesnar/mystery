@@ -14,20 +14,28 @@ from src.model import AIOModelTuning
 # Utils
 import copy
 
+DATASET_TYPE = "Toy"
+EXP_TYPE = "Online"
+
 es = {
-    "EXPERIMENT_IDENTIFIER": "CLEAN UP",
-    "BUFFER_SIZE": 100,
+    "EXPERIMENT_IDENTIFIER": "sinus: first real try",
+    "EXPERIMENT_TYPE": DATASET_TYPE,
+    "BUFFER_SIZE": 50,
     "MODEL_MODE": "THRESHOLD",
     "DATASET_MODE": "subsampled_sequential",
-    "NUMBER_OF_LAYERS": 2,
-    "UNITS_PER_LAYER": 2,
-    "DATASET_SIZE": 0.04,
-    "MAX_EPOCHS": 50,
-    "ACCEPT_PROBABILITY": 0.5,
-    "INPUT_LAYER_SIZE": 1,
-    "OUTPUT_LAYER_SIZE": 1,
+    "NUMBER_OF_LAYERS": 4,
+    "UNITS_PER_LAYER": 32,
+    "DATASET_SIZE": 0.05,
+    "LEARNING_RATE": 0.001,
+    "BATCH_SIZE": 1,
+    "PATIENCE": 10,
+    "MAX_EPOCHS": 200,
+    "ACCEPT_PROBABILITY": 0.7,
+    "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
+    "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
     "UNCERTAINTY_THRESHOLD": 0.1,
-    "RUNNING_MEAN_WINDOW": 10
+    "RUNNING_MEAN_WINDOW": 10,
+    "NUMBER_OF_ESTIMATORS": 10
 }
 
 dataset = SinusiodToyExample(experiment_specification=es)
@@ -39,7 +47,7 @@ class MyHyperModel(HyperModel):
         # model building function
         def model_fn():
             inp = Input(es["INPUT_LAYER_SIZE"])
-            hp_units = hp.Int('units', min_value=2, max_value=16, step=4)
+            hp_units = hp.Choice('units', values=[4, 8, 16, 32, 64])
             x = Dense(hp_units, activation="relu")(inp)
             # Hyperparam tune number of layers
             num_layers = hp.Int('num_layers', min_value=1, max_value=4, step=1)
@@ -52,12 +60,12 @@ class MyHyperModel(HyperModel):
             train_model.compile(loss="mse", optimizer=Adam(learning_rate=hp_learning_rate))
             return train_model
 
-        return SimpleEnsemble(model_fn, num_estimators=5)
+        return SimpleEnsemble(model_fn, num_estimators=es["NUMBER_OF_ESTIMATORS"])
         # HAD TO ALTER KERAS BACKEND TO BE ABLE TO DO THIS, not a valid Keras Model
 
     def fit(self, hp, model, x, y, validation_data, callbacks=None, **kwargs):
         # hyperparams
-        batch_size = hp.Int("batch_size", 1, 16, step=2, default=4)
+        batch_size = hp.Choice('batch_size', values=[1, 2, 4, 8, 16])
         es["BATCH_SIZE"] = batch_size
         patience = hp.Int('patience', min_value=2, max_value=10)
         es["PATIENCE"] = patience
@@ -87,7 +95,8 @@ class MyHyperModel(HyperModel):
 tuner = BayesianOptimization(hypermodel=MyHyperModel(),
                              objective='val_loss',
                              directory='hyperparams',
-                             project_name=es["EXPERIMENT_IDENTIFIER"])
+                             project_name=es["EXPERIMENT_IDENTIFIER"],
+                             max_trials=20)
 
 tuner.search(None, None, epochs=es["MAX_EPOCHS"], validation_data=(None, None))
 

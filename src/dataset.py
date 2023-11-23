@@ -138,6 +138,7 @@ class SinusiodToyExample(Dataset):
         """
         sample_rate = int(10000*size)
         domain = np.linspace(-6, 10, num=sample_rate)
+        # np.random.shuffle(domain)
         domain_y = self.toy_function(domain)
         self._df = pd.DataFrame({'x': domain, 'y': domain_y})
         
