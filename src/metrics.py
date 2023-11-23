@@ -164,12 +164,7 @@ class MetricsTuning(Metrics):
     def __init__(self, iterations=0, experiment_specification={}, test_set=([],[]), load=False) -> None:
         self.identifier = experiment_specification["EXPERIMENT_IDENTIFIER"]
         self.metrics_results = {"MSE": np.zeros(iterations),
-                                "R2": np.zeros(iterations),
-                                "Running Mean R2": np.zeros(iterations),
-                                "Cummulative MSE": np.zeros(iterations),
-                                "Prediction Uncertainty": np.zeros(iterations),
-                                "Skips": np.zeros(iterations)}
-
+                                "Cummulative MSE": np.zeros(iterations)}
         self.current_data_index = 0
         self.model_specification = experiment_specification
 

@@ -32,18 +32,18 @@ DATASET_TYPE = "Toy"
 EXP_TYPE = "Online"
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": "testing sparse network",
+    "EXPERIMENT_IDENTIFIER": "testing visual",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 100,
     "MODEL_MODE": "THRESHOLD",
     "DATASET_MODE": "subsampled_sequential",
     "NUMBER_OF_LAYERS": 4,
     "UNITS_PER_LAYER": 16,
-    "DATASET_SIZE": 0.2,
+    "DATASET_SIZE": 0.04,
     "LEARNING_RATE": 0.01,
     "BATCH_SIZE": 2,
-    "PATIENCE": 50,
-    "MAX_EPOCHS": 1000,
+    "PATIENCE": 5,
+    "MAX_EPOCHS": 50,
     "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,

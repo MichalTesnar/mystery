@@ -27,7 +27,7 @@ class AIOModel():
             train_model.compile(loss="mse", optimizer=Adam(learning_rate=self.experiment_specification["LEARNING_RATE"]))
             return train_model
 
-        self.model = SimpleEnsemble(model_fn, num_estimators=10)
+        self.model = SimpleEnsemble(model_fn, num_estimators=5)
 
     def update_own_training_set(self, new_point):
         """"
