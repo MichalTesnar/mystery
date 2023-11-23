@@ -5,3 +5,6 @@ keras
 matplotlib
 keras
 keras_uncertainty 
+tensorflow
+keras_tuner
+PyYAML

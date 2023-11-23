@@ -76,11 +76,11 @@ class MyHyperModel(HyperModel):
 
         current_dataset = copy.deepcopy(dataset)
         print("Copied trainig set")
-	AIOmodel = AIOModelTuning(current_dataset.give_initial_training_set(es["BUFFER_SIZE"]), es, model)
-	print("Compiled model")
-	metrics = MetricsTuning(current_dataset.get_current_training_set_size, es, dataset.get_validation_set)
-	print("Compiled metrics")
-	whole = current_dataset.get_current_training_set_size
+        AIOmodel = AIOModelTuning(current_dataset.give_initial_training_set(es["BUFFER_SIZE"]), es, model)
+        print("Compiled model")
+        metrics = MetricsTuning(current_dataset.get_current_training_set_size, es, dataset.get_validation_set)
+        print("Compiled metrics")
+        whole = current_dataset.get_current_training_set_size
         i = 0
         training_flag = True
         while current_dataset.data_available():
