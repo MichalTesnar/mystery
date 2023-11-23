@@ -38,7 +38,9 @@ es = {
     "NUMBER_OF_ESTIMATORS": 10
 }
 
+print("loading dataset")
 dataset = SinusiodToyExample(experiment_specification=es)
+print("getting actual data")
 X_train, y_train = dataset.give_initial_training_set(es["BUFFER_SIZE"])
 X_val, y_val = dataset.get_validation_set
 
@@ -65,16 +67,20 @@ class MyHyperModel(HyperModel):
         # HAD TO ALTER KERAS BACKEND TO BE ABLE TO DO THIS, not a valid Keras Model
 
     def fit(self, hp, model, x, y, validation_data, callbacks=None, **kwargs):
-        # hyperparams
+        print("Entering fitting")
+	# hyperparams
         batch_size = hp.Choice('batch_size', values=[1, 2, 4, 8, 16])
         es["BATCH_SIZE"] = batch_size
         patience = hp.Int('patience', min_value=2, max_value=10)
         es["PATIENCE"] = patience
 
         current_dataset = copy.deepcopy(dataset)
-        AIOmodel = AIOModelTuning(current_dataset.give_initial_training_set(es["BUFFER_SIZE"]), es, model)
-        metrics = MetricsTuning(current_dataset.get_current_training_set_size, es, dataset.get_validation_set)
-        whole = current_dataset.get_current_training_set_size
+        print("Copied trainig set")
+	AIOmodel = AIOModelTuning(current_dataset.give_initial_training_set(es["BUFFER_SIZE"]), es, model)
+	print("Compiled model")
+	metrics = MetricsTuning(current_dataset.get_current_training_set_size, es, dataset.get_validation_set)
+	print("Compiled metrics")
+	whole = current_dataset.get_current_training_set_size
         i = 0
         training_flag = True
         while current_dataset.data_available():
@@ -98,7 +104,7 @@ tuner = BayesianOptimization(hypermodel=MyHyperModel(),
                              directory='hyperparams',
                              project_name=es["EXPERIMENT_IDENTIFIER"],
                              max_trials=20)
-
+print("Starting the search")
 tuner.search(None, None, epochs=es["MAX_EPOCHS"], validation_data=(None, None))
 
 # Get the optimal hyperparameters
