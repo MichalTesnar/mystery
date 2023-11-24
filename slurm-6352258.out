@@ -243,3 +243,45 @@ The following have been reloaded with a version change:
 
 [main 203b6bd] Pushing online_learning_tuning.py results
  4 files changed, 106 insertions(+)
+To github.com:MichalTesnar/mystery
+   6a150aa..203b6bd  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6352258 for user s4740556
+Finished at: Fri Nov 24 17:02:07 CET 2023
+
+Job details:
+============
+
+Job ID              : 6352258
+Name                : FIRO
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node96
+Number of Nodes     : 1
+Cores               : 1
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-11-24T17:01:42
+Start               : 2023-11-24T17:01:44
+End                 : 2023-11-24T17:02:07
+Reserved walltime   : 12:00:00
+Used walltime       : 00:00:23
+Used CPU time       : 00:00:13 (efficiency: 60.13%)
+% User (Computation): 94.04%
+% System (I/O)      :  0.00%
+Mem reserved        : 2000M
+Max Mem (Node/step) : 0.00  (Node unknown, N/A)
+Full Max Mem usage  : 0.00 
+Total Disk Read     : 2.28K
+Total Disk Write    : 2.00 
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
