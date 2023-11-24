@@ -167,3 +167,17 @@ Total params: 13 (52.00 Byte)
 Trainable params: 13 (52.00 Byte)
 Non-trainable params: 0 (0.00 Byte)
 _________________________________________________________________
+Keras Uncertainty will use standalone Keras backendNone
+The results will be saved in results/sinus: first real try FIFO tuned (0)
+Traceback (most recent call last):
+  File "/home1/s4740556/mystery/main-auto.py", line 74, in <module>
+    print(history[-1])
+TypeError: 'NoneType' object is not subscriptable
+
+The following have been reloaded with a version change:
+  1) GCCcore/11.2.0 => GCCcore/12.2.0
+  2) XZ/5.2.5-GCCcore-11.2.0 => XZ/5.2.7-GCCcore-12.2.0
+  3) libreadline/8.1-GCCcore-11.2.0 => libreadline/8.2-GCCcore-12.2.0
+  4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
+  5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
+

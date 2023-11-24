@@ -187,3 +187,9 @@ Total params: 1153 (4.50 KB)
 Trainable params: 1153 (4.50 KB)
 Non-trainable params: 0 (0.00 Byte)
 _________________________________________________________________
+Keras Uncertainty will use standalone Keras backendNone
+The results will be saved in results/sinus: first real try THRESHOLD_GREEDY tuned (0)
+Traceback (most recent call last):
+  File "/home1/s4740556/mystery/main-auto.py", line 74, in <module>
+    print(history[-1])
+TypeError: 'NoneType' object is not subscriptable
