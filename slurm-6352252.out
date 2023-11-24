@@ -1,0 +1,49 @@
+2023-11-24 16:59:29.564718: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-11-24 16:59:29.602597: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2023-11-24 16:59:29.602663: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2023-11-24 16:59:29.604082: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2023-11-24 16:59:29.611001: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-11-24 16:59:29.611273: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-11-24 16:59:31.623277: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+slurmstepd: error: *** JOB 6352252 ON node96 CANCELLED AT 2023-11-24T17:01:19 ***
+
+###############################################################################
+Hábrók Cluster
+Job 6352252 for user s4740556
+Finished at: Fri Nov 24 17:01:20 CET 2023
+
+Job details:
+============
+
+Job ID              : 6352252
+Name                : hp sinus THRESHOLD_GREEDY
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node96
+Number of Nodes     : 1
+Cores               : 1
+Number of Tasks     : 1
+State               : CANCELLED,CANCELLED by 34740556
+Submit              : 2023-11-24T16:59:25
+Start               : 2023-11-24T16:59:26
+End                 : 2023-11-24T17:01:20
+Reserved walltime   : 12:00:00
+Used walltime       : 00:01:54
+Used CPU time       : 00:01:43 (efficiency: 90.75%)
+% User (Computation): 97.06%
+% System (I/O)      :  2.94%
+Mem reserved        : 2000M
+Max Mem (Node/step) : 315.52M (node96, per node)
+Full Max Mem usage  : 315.52M
+Total Disk Read     : 2.62M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
