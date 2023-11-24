@@ -1,0 +1,70 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) 2023.01   2) StdEnv
+
+The following have been reloaded with a version change:
+  1) GCCcore/11.2.0 => GCCcore/12.2.0
+  2) XZ/5.2.5-GCCcore-11.2.0 => XZ/5.2.7-GCCcore-12.2.0
+  3) libreadline/8.1-GCCcore-11.2.0 => libreadline/8.2-GCCcore-12.2.0
+  4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
+  5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
+
+2023-11-24 15:56:29.312576: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-11-24 15:56:29.771583: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2023-11-24 15:56:29.771731: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2023-11-24 15:56:29.869824: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2023-11-24 15:56:30.076891: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-11-24 15:56:30.079138: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-11-24 15:56:32.702566: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Keras Uncertainty will use standalone Keras backendTraceback (most recent call last):
+  File "/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/keras_tuner/src/engine/base_tuner.py", line 273, in _try_run_and_update_trial
+    self._run_and_update_trial(trial, *fit_args, **fit_kwargs)
+  File "/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/keras_tuner/src/engine/base_tuner.py", line 238, in _run_and_update_trial
+    results = self.run_trial(trial, *fit_args, **fit_kwargs)
+  File "/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/keras_tuner/src/engine/tuner.py", line 314, in run_trial
+    obj_value = self._build_and_fit_model(trial, *args, **copied_kwargs)
+  File "/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/keras_tuner/src/engine/tuner.py", line 233, in _build_and_fit_model
+    results = self.hypermodel.fit(hp, model, *args, **kwargs)
+  File "/home1/s4740556/mystery/online_learning_tuning.py", line 82, in fit
+    AIOmodel = AIOModelTuning(current_dataset.give_initial_training_set(es["BUFFER_SIZE"]), es, model)
+  File "/home1/s4740556/mystery/src/model.py", line 160, in __init__
+    assert experiment_specification["MODEL_MODE"] in ["FIFO", "FIRO", "RIRO", "SPACE_HEURISTIC",
+AssertionError: Mode does not exist.
+Model mode is arg
+loading dataset
+getting actual data
+Reloading Tuner from hyperparams/sinus: first real try/tuner0.json
+Starting the search
+
+Search: Running Trial #20
+
+Value             |Best Value So Far |Hyperparameter
+8                 |64                |units
+1                 |1                 |num_layers
+0.0001            |0.001             |learning_rate
+4                 |4                 |batch_size
+10                |5                 |patience
+
+Entering fitting
+Copied trainig set
+
+Trial 20 Complete [00h 00m 01s]
+
+Best val_loss So Far: 2.623323669433594
+Total elapsed time: 20h 45m 10s
+fatal: Unable to create '/home1/s4740556/mystery/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+fatal: Unable to create '/home1/s4740556/mystery/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
