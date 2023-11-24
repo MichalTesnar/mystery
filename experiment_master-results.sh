@@ -4,6 +4,6 @@ module purge
 
 for arg in "${arguments[@]}"
 do
-    sbatch --job-name="hp sinus $arg" jobscript.sh "$arg" 
+    sbatch --job-name="$arg" jobscript-results.sh "$arg"
 done
 
