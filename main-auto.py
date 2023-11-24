@@ -16,7 +16,7 @@ MODEL_MODE = sys.argv[1]
 
 tuner = BayesianOptimization(lambda x : None,
                 objective='val_loss',
-                directory='hyperparams',
+                directory='hyperpar ams',
                 project_name=f"sinus: first real try {MODEL_MODE}")
 
 # Get the optimal hyperparameters
@@ -71,7 +71,7 @@ if EXP_TYPE == "Online":
     while dataset.data_available():
         if training_flag:
             history = model.retrain()
-            print(history[-1])
+            # print(history[-1])
             metrics.collect_metrics(model)
             if DATASET_TYPE == "Toy":
                 metrics.extra_plots(model)

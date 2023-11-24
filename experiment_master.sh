@@ -1,4 +1,4 @@
-arguments=("FIFO" "FIRO" "FIRO" "THRESHOLD" "GREEDY" "THRESHOLD_GREEDY" "RIRO")
+arguments=("FIFO" "FIRO" "RIRO" "THRESHOLD" "GREEDY" "THRESHOLD_GREEDY")
 
 module purge
 
