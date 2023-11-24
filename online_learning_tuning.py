@@ -13,15 +13,18 @@ from src.metrics import MetricsTuning
 from src.model import AIOModelTuning
 # Utils
 import copy
+import sys
 
 DATASET_TYPE = "Toy"
 EXP_TYPE = "Online"
+MODEL_MODE = sys.argv[1]
+print("Model mode is", MODEL_MODE)
 
 es = {
     "EXPERIMENT_IDENTIFIER": "sinus: first real try",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 50,
-    "MODEL_MODE": "THRESHOLD",
+    "MODEL_MODE": MODEL_MODE,
     "DATASET_MODE": "subsampled_sequential",
     "NUMBER_OF_LAYERS": 4,
     "UNITS_PER_LAYER": 32,

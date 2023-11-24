@@ -11,7 +11,7 @@ git config --global user.name "MichalTesnar"
 
 source $HOME/venvs/mystery/bin/activate
 
-python3 online_learning_tuning.py
+python3 online_learning_tuning.py $1 # run the script with different arguments
 
 git add --a
 git commit -m "Pushing online_learning_tuning.py results"
