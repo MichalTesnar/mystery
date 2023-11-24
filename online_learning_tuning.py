@@ -21,7 +21,7 @@ MODEL_MODE = sys.argv[1]
 print("Model mode is", MODEL_MODE)
 
 es = {
-    "EXPERIMENT_IDENTIFIER": "sinus: first real try",
+    "EXPERIMENT_IDENTIFIER": f"sinus: first real try {MODEL_MODE}",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 50,
     "MODEL_MODE": MODEL_MODE,
