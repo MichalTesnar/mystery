@@ -489,3 +489,47 @@ The following have been reloaded with a version change:
   4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
   5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
 
+[main f49226f] Pushing online_learning_tuning.py results
+ 2 files changed, 305 insertions(+)
+To github.com:MichalTesnar/mystery
+   3745b91..f49226f  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6354874 for user s4740556
+Finished at: Sat Nov 25 06:49:12 CET 2023
+
+Job details:
+============
+
+Job ID              : 6354874
+Name                : GREEDY
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node97
+Number of Nodes     : 1
+Cores               : 1
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-11-25T06:41:54
+Start               : 2023-11-25T06:41:56
+End                 : 2023-11-25T06:49:12
+Reserved walltime   : 12:00:00
+Used walltime       : 00:07:16
+Used CPU time       : 00:07:05 (efficiency: 97.58%)
+% User (Computation): 97.10%
+% System (I/O)      :  2.90%
+Mem reserved        : 2000M
+Max Mem (Node/step) : 414.66M (node97, per node)
+Full Max Mem usage  : 414.66M
+Total Disk Read     : 2.62M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
