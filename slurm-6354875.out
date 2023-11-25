@@ -449,3 +449,66 @@ The following have been reloaded with a version change:
   4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
   5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
 
+[main fb2e896] Pushing online_learning_tuning.py results
+ 20 files changed, 1403 insertions(+), 23067 deletions(-)
+ delete mode 100644 slurm-6352189.out
+ delete mode 100644 slurm-6352190.out
+ delete mode 100644 slurm-6352191.out
+ delete mode 100644 slurm-6352192.out
+ delete mode 100644 slurm-6352193.out
+ delete mode 100644 slurm-6352194.out
+ delete mode 100644 slurm-6352241.out
+ delete mode 100644 slurm-6354861.out
+ delete mode 100644 slurm-6354862.out
+ delete mode 100644 slurm-6354863.out
+ delete mode 100644 slurm-6354864.out
+ delete mode 100644 slurm-6354865.out
+ delete mode 100644 slurm-6354866.out
+ create mode 100644 slurm-6354870.out
+ create mode 100644 slurm-6354871.out
+ create mode 100644 slurm-6354872.out
+ create mode 100644 slurm-6354873.out
+ create mode 100644 slurm-6354874.out
+ create mode 100644 slurm-6354875.out
+To github.com:MichalTesnar/mystery
+   4aefabb..fb2e896  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6354875 for user s4740556
+Finished at: Sat Nov 25 06:46:36 CET 2023
+
+Job details:
+============
+
+Job ID              : 6354875
+Name                : THRESHOLD_GREEDY
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node97
+Number of Nodes     : 1
+Cores               : 1
+Number of Tasks     : 1
+State               : RUNNING
+Submit              : 2023-11-25T06:41:54
+Start               : 2023-11-25T06:41:56
+End                 : --
+Reserved walltime   : 12:00:00
+Used walltime       : 00:04:41
+Used CPU time       : 00:04:30 (efficiency: 96.16%)
+% User (Computation): 96.48%
+% System (I/O)      :  3.52%
+Mem reserved        : 2000M
+Max Mem (Node/step) : 365.75M (node97, per node)
+Full Max Mem usage  : 365.75M (Until last completed step)
+Total Disk Read     : 2.62M (Until last completed step)
+Total Disk Write    : 40.64K (Until last completed step)
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
