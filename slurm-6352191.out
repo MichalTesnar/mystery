@@ -6,3 +6,44 @@
 2023-11-24 16:36:52.200186: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 2023-11-24 16:36:54.790726: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+slurmstepd: error: *** JOB 6352191 ON node96 CANCELLED AT 2023-11-25T04:36:54 DUE TO TIME LIMIT ***
+
+###############################################################################
+Hábrók Cluster
+Job 6352191 for user s4740556
+Finished at: Sat Nov 25 04:36:56 CET 2023
+
+Job details:
+============
+
+Job ID              : 6352191
+Name                : hp sinus FIRO
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node96
+Number of Nodes     : 1
+Cores               : 1
+Number of Tasks     : 1
+State               : CANCELLED,TIMEOUT
+Submit              : 2023-11-24T16:35:46
+Start               : 2023-11-24T16:36:47
+End                 : 2023-11-25T04:36:55
+Reserved walltime   : 12:00:00
+Used walltime       : 12:00:08
+Used CPU time       : 11:54:40 (efficiency: 99.24%)
+% User (Computation): 97.23%
+% System (I/O)      :  2.77%
+Mem reserved        : 2000M
+Max Mem (Node/step) : 1.23G (node96, per node)
+Full Max Mem usage  : 1.23G
+Total Disk Read     : 2.62M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
