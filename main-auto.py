@@ -34,7 +34,7 @@ DATASET_TYPE = "Dagon"
 EXP_TYPE = "Online"
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": f"sinus: first real try {MODEL_MODE} tuned",
+    "EXPERIMENT_IDENTIFIER": f"Dagon try {MODEL_MODE} tuned",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 100,
     "MODEL_MODE": "THRESHOLD",
