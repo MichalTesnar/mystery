@@ -21,7 +21,7 @@ dir_names = [
 identifier = "Just test"
 
 # PLOT CONFIG
-fig, axs = plt.subplots(5, 1, figsize=(16, 12))
+fig, axs = plt.subplots(6, 1, figsize=(16, 12))
 fig.suptitle(f"{prefix} {identifier}", fontsize=20)
 line_styles = ['-', '--', '-.', ':',(0, (3, 1, 1, 1)), (0, (5, 2)), (0, (1, 2))]
 
@@ -33,7 +33,7 @@ for j, dir_name in enumerate(dir_names):
         metrics_results = pickle.load(file)
 
     # Remove the metrics that you do not want to include
-    excluded = ["R2"]
+    excluded = []#["R2"]
     for out in excluded:
         metrics_results.pop(out)
 

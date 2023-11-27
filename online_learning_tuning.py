@@ -15,13 +15,13 @@ from src.model import AIOModelTuning
 import copy
 import sys
 
-DATASET_TYPE = "Toy"
+DATASET_TYPE = "Dagon"
 EXP_TYPE = "Online"
 MODEL_MODE = sys.argv[1]
 print("Model mode is", MODEL_MODE)
 
 es = {
-    "EXPERIMENT_IDENTIFIER": f"sinus: first real try {MODEL_MODE}",
+    "EXPERIMENT_IDENTIFIER": f"Dagon try {MODEL_MODE}",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 50,
     "MODEL_MODE": MODEL_MODE,
@@ -29,9 +29,6 @@ es = {
     "NUMBER_OF_LAYERS": 4,
     "UNITS_PER_LAYER": 32,
     "DATASET_SIZE": 0.05,
-    "LEARNING_RATE": 0.001,
-    "BATCH_SIZE": 1,
-    "PATIENCE": 10,
     "MAX_EPOCHS": 200,
     "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
@@ -42,7 +39,10 @@ es = {
 }
 
 print("loading dataset")
-dataset = SinusiodToyExample(experiment_specification=es)
+if DATASET_TYPE == "Sinus":
+    dataset = SinusiodToyExample(experiment_specification=es)
+else:
+    dataset = DagonAUVDataset(experiment_specification=es)
 print("getting actual data")
 X_train, y_train = dataset.give_initial_training_set(es["BUFFER_SIZE"])
 X_val, y_val = dataset.get_validation_set

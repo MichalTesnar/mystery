@@ -17,8 +17,8 @@ MODEL_MODE = sys.argv[1]
 tuner = BayesianOptimization(lambda x : None,
                 objective='val_loss',
                 directory='hyperparams',
-                project_name=f"sinus: first real try {MODEL_MODE}")
-print(f"sinus: first real try {MODEL_MODE}")
+                project_name=f"Dagon try {MODEL_MODE}")
+print(f"Dagon try {MODEL_MODE}")
 # Get the optimal hyperparameters
 best_hps = tuner.get_best_hyperparameters(num_trials=1)[0] #just takes the best one of list of one
 
@@ -28,8 +28,8 @@ learning_rate = best_hps.get('learning_rate')
 batch_size = best_hps.get('batch_size')
 patience = best_hps.get('patience')
 
-# DATASET_TYPE = "Dagon" 
-DATASET_TYPE = "Toy"
+DATASET_TYPE = "Dagon" 
+# DATASET_TYPE = "Toy"
 # EXP_TYPE = "Offline"
 EXP_TYPE = "Online"
 
