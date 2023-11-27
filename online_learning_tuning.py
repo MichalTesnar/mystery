@@ -97,6 +97,7 @@ class MyHyperModel(HyperModel):
                 new_point = current_dataset.get_new_point()
                 training_flag = AIOmodel.update_own_training_set(new_point)
                 if not training_flag and current_dataset.data_available():
+                    print("LOL OMG JUST SKIPEEd")
                     metrics.pad_metrics()
         # fit on cummulative MSE loss
         return metrics.metrics_results["MSE"][-1]
