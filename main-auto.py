@@ -36,7 +36,7 @@ EXP_TYPE = "Online"
 experiment_specification = {
     "EXPERIMENT_IDENTIFIER": f"sinus: first real try {MODEL_MODE} tuned",
     "EXPERIMENT_TYPE": DATASET_TYPE,
-    "BUFFER_SIZE": 50,
+    "BUFFER_SIZE": 100,
     "MODEL_MODE": "THRESHOLD",
     "DATASET_MODE": "subsampled_sequential",
     "NUMBER_OF_LAYERS": layers,

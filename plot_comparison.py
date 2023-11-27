@@ -7,10 +7,15 @@ import sys
 sys.path.append('..')
 
 # EXPERIMENT PREFIX
-prefix = "testing new func"
+prefix = "sinus: first real try "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 dir_names = [
-    " (1)"
+    "FIFO tuned (0)",
+    "FIRO tuned (0)",
+    "RIRO tuned (0)",
+    "THRESHOLD tuned (0)",
+    "GREEDY tuned (0)",
+    "THRESHOLD_GREEDY tuned (0)"
 ]
 # IDENTIFIER TO PUT ON THE PLOT
 identifier = "Just test"
