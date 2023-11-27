@@ -62,7 +62,9 @@ class AIOModel():
         # Random in, random out
         elif self.experiment_specification["MODEL_MODE"] == "RIRO":
             # Only accept with probability 'p'
-            if np.random.rand() > self.experiment_specification["ACCEPT_PROBABILITY"]:
+            a = np.random.rand()
+            print(a)
+            if a > self.experiment_specification["ACCEPT_PROBABILITY"]:
                 return False
             # Replace random point
             random_index = np.random.choice(self.X_train.shape[0])
