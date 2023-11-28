@@ -10,15 +10,15 @@ sys.path.append('..')
 prefix = "sinus: first real try "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 dir_names = [
-    "FIFO tuned (0)",
-    "FIRO tuned (0)",
-    "RIRO tuned (0)",
-    "THRESHOLD tuned (0)",
-    "GREEDY tuned (0)",
-    "THRESHOLD_GREEDY tuned (0)"
+    # "FIFO tuned (1)",
+    "FIRO tuned (2)",
+    "RIRO tuned (2)",
+    "THRESHOLD tuned (2)",
+    # "GREEDY tuned (2)",
+    "THRESHOLD_GREEDY tuned (2)"
 ]
 # IDENTIFIER TO PUT ON THE PLOT
-identifier = "Just test"
+identifier = "fixed data"
 
 # PLOT CONFIG
 fig, axs = plt.subplots(6, 1, figsize=(16, 12))
