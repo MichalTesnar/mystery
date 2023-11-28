@@ -21,7 +21,7 @@ MODEL_MODE = sys.argv[1]
 print("Model mode is", MODEL_MODE)
 
 es = {
-    "EXPERIMENT_IDENTIFIER": f"Dagon try {MODEL_MODE}",
+    "EXPERIMENT_IDENTIFIER": f"Dagon try2 {MODEL_MODE}",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 50,
     "MODEL_MODE": MODEL_MODE,
@@ -33,7 +33,7 @@ es = {
     "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
-    "UNCERTAINTY_THRESHOLD": 0.1,
+    "UNCERTAINTY_THRESHOLD": 0.02,
     "RUNNING_MEAN_WINDOW": 10,
     "NUMBER_OF_ESTIMATORS": 10
 }

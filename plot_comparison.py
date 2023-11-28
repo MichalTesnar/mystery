@@ -7,15 +7,15 @@ import sys
 sys.path.append('..')
 
 # EXPERIMENT PREFIX
-prefix = "sinus: first real try "
+prefix = "Dagon try "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 dir_names = [
-    # "FIFO tuned (1)",
-    "FIRO tuned (2)",
-    "RIRO tuned (2)",
-    "THRESHOLD tuned (2)",
-    # "GREEDY tuned (2)",
-    "THRESHOLD_GREEDY tuned (2)"
+    "FIFO tuned (0)",
+    "FIRO tuned (0)",
+    "RIRO tuned (0)",
+    "THRESHOLD tuned (0)",
+    "GREEDY tuned (0)",
+    "THRESHOLD_GREEDY tuned (0)"
 ]
 # IDENTIFIER TO PUT ON THE PLOT
 identifier = "fixed data"

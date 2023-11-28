@@ -41,7 +41,7 @@ experiment_specification = {
     "DATASET_MODE": "subsampled_sequential",
     "NUMBER_OF_LAYERS": layers,
     "UNITS_PER_LAYER": units,
-    "DATASET_SIZE": 0.05,
+    "DATASET_SIZE": 0.2,
     "LEARNING_RATE": learning_rate,
     "BATCH_SIZE": batch_size,
     "PATIENCE": patience,
