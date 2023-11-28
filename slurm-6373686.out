@@ -1,0 +1,190 @@
+2023-11-28 10:28:16.731303: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-11-28 10:28:16.764377: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2023-11-28 10:28:16.764420: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2023-11-28 10:28:16.765609: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2023-11-28 10:28:16.771619: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-11-28 10:28:16.771850: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-11-28 10:28:19.089381: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Reloading Tuner from hyperparams/Dagon try FIRO/tuner0.json
+Dagon try FIRO
+1387
+Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense (Dense)               (None, 16)                112       
+                                                                 
+ dense_1 (Dense)             (None, 16)                272       
+                                                                 
+ dense_2 (Dense)             (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 435 (1.70 KB)
+Trainable params: 435 (1.70 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_2 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_3 (Dense)             (None, 16)                112       
+                                                                 
+ dense_4 (Dense)             (None, 16)                272       
+                                                                 
+ dense_5 (Dense)             (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 435 (1.70 KB)
+Trainable params: 435 (1.70 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_2"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_3 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_6 (Dense)             (None, 16)                112       
+                                                                 
+ dense_7 (Dense)             (None, 16)                272       
+                                                                 
+ dense_8 (Dense)             (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 435 (1.70 KB)
+Trainable params: 435 (1.70 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_3"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_4 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_9 (Dense)             (None, 16)                112       
+                                                                 
+ dense_10 (Dense)            (None, 16)                272       
+                                                                 
+ dense_11 (Dense)            (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 435 (1.70 KB)
+Trainable params: 435 (1.70 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_4"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_5 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_12 (Dense)            (None, 16)                112       
+                                                                 
+ dense_13 (Dense)            (None, 16)                272       
+                                                                 
+ dense_14 (Dense)            (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 435 (1.70 KB)
+Trainable params: 435 (1.70 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_5"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_6 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_15 (Dense)            (None, 16)                112       
+                                                                 
+ dense_16 (Dense)            (None, 16)                272       
+                                                                 
+ dense_17 (Dense)            (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 435 (1.70 KB)
+Trainable params: 435 (1.70 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_6"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_7 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_18 (Dense)            (None, 16)                112       
+                                                                 
+ dense_19 (Dense)            (None, 16)                272       
+                                                                 
+ dense_20 (Dense)            (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 435 (1.70 KB)
+Trainable params: 435 (1.70 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_7"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_8 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_21 (Dense)            (None, 16)                112       
+                                                                 
+ dense_22 (Dense)            (None, 16)                272       
+                                                                 
+ dense_23 (Dense)            (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 435 (1.70 KB)
+Trainable params: 435 (1.70 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_8"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_9 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_24 (Dense)            (None, 16)                112       
+                                                                 
+ dense_25 (Dense)            (None, 16)                272       
+                                                                 
+ dense_26 (Dense)            (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 435 (1.70 KB)
+Trainable params: 435 (1.70 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_9"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_10 (InputLayer)       [(None, 6)]               0         
+                                                                 
+ dense_27 (Dense)            (None, 16)                112       
+                                                                 
+ dense_28 (Dense)            (None, 16)                272       
+                                                                 
+ dense_29 (Dense)            (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 435 (1.70 KB)
+Trainable params: 435 (1.70 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
