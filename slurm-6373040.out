@@ -426,3 +426,53 @@ The following have been reloaded with a version change:
   4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
   5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
 
+[main ded72e5] Pushing online_learning_tuning.py results
+ 7 files changed, 1342 insertions(+)
+ create mode 100644 slurm-6373035.out
+ create mode 100644 slurm-6373036.out
+ create mode 100644 slurm-6373037.out
+ create mode 100644 slurm-6373038.out
+ create mode 100644 slurm-6373039.out
+ create mode 100644 slurm-6373040.out
+To github.com:MichalTesnar/mystery
+   3fd394e..ded72e5  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6373040 for user s4740556
+Finished at: Tue Nov 28 08:41:36 CET 2023
+
+Job details:
+============
+
+Job ID              : 6373040
+Name                : THRESHOLD_GREEDY
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node65
+Number of Nodes     : 1
+Cores               : 10
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-11-28T08:36:55
+Start               : 2023-11-28T08:36:55
+End                 : 2023-11-28T08:41:36
+Reserved walltime   : 12:00:00
+Used walltime       : 00:04:41
+Used CPU time       : 00:05:34 (efficiency: 11.91%)
+% User (Computation): 96.31%
+% System (I/O)      :  3.69%
+Mem reserved        : 20000M
+Max Mem (Node/step) : 325.09M (node65, per node)
+Full Max Mem usage  : 325.09M
+Total Disk Read     : 2.62M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
