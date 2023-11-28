@@ -1,0 +1,485 @@
+2023-11-27 21:02:47.489648: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-11-27 21:02:47.994022: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2023-11-27 21:02:47.994159: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2023-11-27 21:02:48.085605: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2023-11-27 21:02:48.282886: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-11-27 21:02:48.285080: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-11-27 21:02:52.655867: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Reloading Tuner from hyperparams/sinus: first real try GREEDY/tuner0.json
+Dagon try GREEDY
+300
+Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 1)]               0         
+                                                                 
+ dense (Dense)               (None, 64)                128       
+                                                                 
+ dense_1 (Dense)             (None, 64)                4160      
+                                                                 
+ dense_2 (Dense)             (None, 64)                4160      
+                                                                 
+ dense_3 (Dense)             (None, 64)                4160      
+                                                                 
+ dense_4 (Dense)             (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 12673 (49.50 KB)
+Trainable params: 12673 (49.50 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_2 (InputLayer)        [(None, 1)]               0         
+                                                                 
+ dense_5 (Dense)             (None, 64)                128       
+                                                                 
+ dense_6 (Dense)             (None, 64)                4160      
+                                                                 
+ dense_7 (Dense)             (None, 64)                4160      
+                                                                 
+ dense_8 (Dense)             (None, 64)                4160      
+                                                                 
+ dense_9 (Dense)             (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 12673 (49.50 KB)
+Trainable params: 12673 (49.50 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_2"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_3 (InputLayer)        [(None, 1)]               0         
+                                                                 
+ dense_10 (Dense)            (None, 64)                128       
+                                                                 
+ dense_11 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_12 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_13 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_14 (Dense)            (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 12673 (49.50 KB)
+Trainable params: 12673 (49.50 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_3"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_4 (InputLayer)        [(None, 1)]               0         
+                                                                 
+ dense_15 (Dense)            (None, 64)                128       
+                                                                 
+ dense_16 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_17 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_18 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_19 (Dense)            (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 12673 (49.50 KB)
+Trainable params: 12673 (49.50 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_4"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_5 (InputLayer)        [(None, 1)]               0         
+                                                                 
+ dense_20 (Dense)            (None, 64)                128       
+                                                                 
+ dense_21 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_22 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_23 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_24 (Dense)            (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 12673 (49.50 KB)
+Trainable params: 12673 (49.50 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_5"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_6 (InputLayer)        [(None, 1)]               0         
+                                                                 
+ dense_25 (Dense)            (None, 64)                128       
+                                                                 
+ dense_26 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_27 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_28 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_29 (Dense)            (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 12673 (49.50 KB)
+Trainable params: 12673 (49.50 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_6"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_7 (InputLayer)        [(None, 1)]               0         
+                                                                 
+ dense_30 (Dense)            (None, 64)                128       
+                                                                 
+ dense_31 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_32 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_33 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_34 (Dense)            (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 12673 (49.50 KB)
+Trainable params: 12673 (49.50 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_7"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_8 (InputLayer)        [(None, 1)]               0         
+                                                                 
+ dense_35 (Dense)            (None, 64)                128       
+                                                                 
+ dense_36 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_37 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_38 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_39 (Dense)            (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 12673 (49.50 KB)
+Trainable params: 12673 (49.50 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_8"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_9 (InputLayer)        [(None, 1)]               0         
+                                                                 
+ dense_40 (Dense)            (None, 64)                128       
+                                                                 
+ dense_41 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_42 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_43 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_44 (Dense)            (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 12673 (49.50 KB)
+Trainable params: 12673 (49.50 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_9"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_10 (InputLayer)       [(None, 1)]               0         
+                                                                 
+ dense_45 (Dense)            (None, 64)                128       
+                                                                 
+ dense_46 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_47 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_48 (Dense)            (None, 64)                4160      
+                                                                 
+ dense_49 (Dense)            (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 12673 (49.50 KB)
+Trainable params: 12673 (49.50 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+Keras Uncertainty will use standalone Keras backendNone
+The results will be saved in results/sinus: first real try GREEDY tuned (1)
+Time 60.32: used 33.33% of the points.
+Time 60.52: used 33.67% of the points.
+Time 60.70: used 34.00% of the points.
+Time 74.08: used 34.33% of the points.
+Time 83.57: used 34.67% of the points.
+Time 92.33: used 35.00% of the points.
+Time 101.34: used 35.33% of the points.
+Time 108.85: used 35.67% of the points.
+Time 115.86: used 36.00% of the points.
+Time 123.56: used 36.33% of the points.
+Time 130.94: used 36.67% of the points.
+Time 137.86: used 37.00% of the points.
+Time 146.24: used 37.33% of the points.
+Time 157.29: used 37.67% of the points.
+Time 157.48: used 38.00% of the points.
+Time 165.83: used 38.33% of the points.
+Time 176.52: used 38.67% of the points.
+Time 186.90: used 39.00% of the points.
+Time 196.52: used 39.33% of the points.
+Time 205.25: used 39.67% of the points.
+Time 213.18: used 40.00% of the points.
+Time 213.33: used 40.33% of the points.
+Time 222.72: used 40.67% of the points.
+Time 232.27: used 41.00% of the points.
+Time 241.40: used 41.33% of the points.
+Time 249.80: used 41.67% of the points.
+Time 256.95: used 42.00% of the points.
+Time 262.83: used 42.33% of the points.
+Time 270.42: used 42.67% of the points.
+Time 279.87: used 43.00% of the points.
+Time 287.33: used 43.33% of the points.
+Time 297.49: used 43.67% of the points.
+Time 307.70: used 44.00% of the points.
+Time 315.28: used 44.33% of the points.
+Time 321.39: used 44.67% of the points.
+Time 328.27: used 45.00% of the points.
+Time 336.42: used 45.33% of the points.
+Time 343.77: used 45.67% of the points.
+Time 351.77: used 46.00% of the points.
+Time 360.41: used 46.33% of the points.
+Time 368.08: used 46.67% of the points.
+Time 376.29: used 47.00% of the points.
+Time 382.55: used 47.33% of the points.
+Time 390.91: used 47.67% of the points.
+Time 399.91: used 48.00% of the points.
+Time 406.77: used 48.33% of the points.
+Time 415.26: used 48.67% of the points.
+Time 422.19: used 49.00% of the points.
+Time 431.70: used 49.33% of the points.
+Time 439.61: used 49.67% of the points.
+Time 448.83: used 50.00% of the points.
+Time 455.22: used 50.33% of the points.
+Time 461.48: used 50.67% of the points.
+Time 469.21: used 51.00% of the points.
+Time 477.16: used 51.33% of the points.
+Time 485.94: used 51.67% of the points.
+Time 494.56: used 52.00% of the points.
+Time 503.02: used 52.33% of the points.
+Time 512.26: used 52.67% of the points.
+Time 522.24: used 53.00% of the points.
+Time 531.57: used 53.33% of the points.
+Time 541.16: used 53.67% of the points.
+Time 549.19: used 54.00% of the points.
+Time 557.05: used 54.33% of the points.
+Time 565.54: used 54.67% of the points.
+Time 573.95: used 55.00% of the points.
+Time 581.95: used 55.33% of the points.
+Time 589.28: used 55.67% of the points.
+Time 597.30: used 56.00% of the points.
+Time 607.03: used 56.33% of the points.
+Time 615.46: used 56.67% of the points.
+Time 622.16: used 57.00% of the points.
+Time 630.58: used 57.33% of the points.
+Time 639.66: used 57.67% of the points.
+Time 646.54: used 58.00% of the points.
+Time 654.97: used 58.33% of the points.
+Time 663.91: used 58.67% of the points.
+Time 671.22: used 59.00% of the points.
+Time 679.04: used 59.33% of the points.
+Time 686.10: used 59.67% of the points.
+Time 693.84: used 60.00% of the points.
+Time 702.27: used 60.33% of the points.
+Time 711.45: used 60.67% of the points.
+Time 720.20: used 61.00% of the points.
+Time 729.22: used 61.33% of the points.
+Time 737.46: used 61.67% of the points.
+Time 746.11: used 62.00% of the points.
+Time 755.64: used 62.33% of the points.
+Time 763.63: used 62.67% of the points.
+Time 771.59: used 63.00% of the points.
+Time 779.43: used 63.33% of the points.
+Time 787.40: used 63.67% of the points.
+Time 794.69: used 64.00% of the points.
+Time 802.30: used 64.33% of the points.
+Time 808.75: used 64.67% of the points.
+Time 817.78: used 65.00% of the points.
+Time 826.40: used 65.33% of the points.
+Time 833.51: used 65.67% of the points.
+Time 841.22: used 66.00% of the points.
+Time 849.23: used 66.33% of the points.
+Time 856.93: used 66.67% of the points.
+Time 864.68: used 67.00% of the points.
+Time 872.68: used 67.33% of the points.
+Time 880.66: used 67.67% of the points.
+Time 888.10: used 68.00% of the points.
+Time 895.11: used 68.33% of the points.
+Time 902.47: used 68.67% of the points.
+Time 911.44: used 69.00% of the points.
+Time 918.27: used 69.33% of the points.
+Time 924.64: used 69.67% of the points.
+Time 931.73: used 70.00% of the points.
+Time 939.95: used 70.33% of the points.
+Time 948.63: used 70.67% of the points.
+Time 955.53: used 71.00% of the points.
+Time 963.67: used 71.33% of the points.
+Time 971.59: used 71.67% of the points.
+Time 980.26: used 72.00% of the points.
+Time 989.30: used 72.33% of the points.
+Time 999.56: used 72.67% of the points.
+Time 1009.16: used 73.00% of the points.
+Time 1017.98: used 73.33% of the points.
+Time 1024.17: used 73.67% of the points.
+Time 1032.26: used 74.00% of the points.
+Time 1039.81: used 74.33% of the points.
+Time 1048.29: used 74.67% of the points.
+Time 1054.69: used 75.00% of the points.
+Time 1061.83: used 75.33% of the points.
+Time 1069.97: used 75.67% of the points.
+Time 1079.10: used 76.00% of the points.
+Time 1088.42: used 76.33% of the points.
+Time 1097.44: used 76.67% of the points.
+Time 1108.97: used 77.00% of the points.
+Time 1115.97: used 77.33% of the points.
+Time 1124.01: used 77.67% of the points.
+Time 1135.25: used 78.00% of the points.
+Time 1144.19: used 78.33% of the points.
+Time 1156.76: used 78.67% of the points.
+Time 1164.22: used 79.00% of the points.
+Time 1173.17: used 79.33% of the points.
+Time 1182.25: used 79.67% of the points.
+Time 1190.12: used 80.00% of the points.
+Time 1198.04: used 80.33% of the points.
+Time 1206.89: used 80.67% of the points.
+Time 1214.55: used 81.00% of the points.
+Time 1222.24: used 81.33% of the points.
+Time 1230.53: used 81.67% of the points.
+Time 1237.54: used 82.00% of the points.
+Time 1245.26: used 82.33% of the points.
+Time 1254.48: used 82.67% of the points.
+Time 1261.43: used 83.00% of the points.
+Time 1270.47: used 83.33% of the points.
+Time 1278.75: used 83.67% of the points.
+Time 1285.91: used 84.00% of the points.
+Time 1295.41: used 84.33% of the points.
+Time 1303.76: used 84.67% of the points.
+Time 1311.41: used 85.00% of the points.
+Time 1320.47: used 85.33% of the points.
+Time 1328.19: used 85.67% of the points.
+Time 1335.07: used 86.00% of the points.
+Time 1344.10: used 86.33% of the points.
+Time 1352.42: used 86.67% of the points.
+Time 1360.16: used 87.00% of the points.
+Time 1368.76: used 87.33% of the points.
+Time 1376.86: used 87.67% of the points.
+Time 1384.58: used 88.00% of the points.
+Time 1393.40: used 88.33% of the points.
+Time 1400.61: used 88.67% of the points.
+Time 1409.70: used 89.00% of the points.
+Time 1418.05: used 89.33% of the points.
+Time 1424.89: used 89.67% of the points.
+Time 1432.07: used 90.00% of the points.
+Time 1440.50: used 90.33% of the points.
+Time 1448.62: used 90.67% of the points.
+Time 1456.47: used 91.00% of the points.
+Time 1465.86: used 91.33% of the points.
+Time 1474.82: used 91.67% of the points.
+Time 1482.47: used 92.00% of the points.
+Time 1491.70: used 92.33% of the points.
+Time 1504.21: used 92.67% of the points.
+Time 1515.87: used 93.00% of the points.
+Time 1528.03: used 93.33% of the points.
+Time 1542.28: used 93.67% of the points.
+Time 1557.71: used 94.00% of the points.
+Time 1570.34: used 94.33% of the points.
+Time 1583.43: used 94.67% of the points.
+Time 1591.84: used 95.00% of the points.
+Time 1601.89: used 95.33% of the points.
+Time 1609.58: used 95.67% of the points.
+Time 1619.00: used 96.00% of the points.
+Time 1626.74: used 96.33% of the points.
+Time 1636.27: used 96.67% of the points.
+Time 1644.23: used 97.00% of the points.
+Time 1653.67: used 97.33% of the points.
+Time 1663.88: used 97.67% of the points.
+Time 1672.21: used 98.00% of the points.
+Time 1683.93: used 98.33% of the points.
+Time 1692.67: used 98.67% of the points.
+Time 1701.93: used 99.00% of the points.
+Time 1710.39: used 99.33% of the points.
+Time 1719.32: used 99.67% of the points.
+Time 1701117101.50: used 100.00% of the points.
+
+The following have been reloaded with a version change:
+  1) GCCcore/11.2.0 => GCCcore/12.2.0
+  2) XZ/5.2.5-GCCcore-11.2.0 => XZ/5.2.7-GCCcore-12.2.0
+  3) libreadline/8.1-GCCcore-11.2.0 => libreadline/8.2-GCCcore-12.2.0
+  4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
+  5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
+
+[main 256c6a4] Pushing online_learning_tuning.py results
+ 2 files changed, 255 insertions(+)
+To github.com:MichalTesnar/mystery
+   388838a..256c6a4  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6372068 for user s4740556
+Finished at: Mon Nov 27 21:31:50 CET 2023
+
+Job details:
+============
+
+Job ID              : 6372068
+Name                : GREEDY
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node78
+Number of Nodes     : 1
+Cores               : 10
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-11-27T21:02:38
+Start               : 2023-11-27T21:02:38
+End                 : 2023-11-27T21:31:50
+Reserved walltime   : 12:00:00
+Used walltime       : 00:29:12
+Used CPU time       : 00:42:59 (efficiency: 14.72%)
+% User (Computation): 92.78%
+% System (I/O)      :  7.22%
+Mem reserved        : 20000M
+Max Mem (Node/step) : 428.80M (node78, per node)
+Full Max Mem usage  : 428.80M
+Total Disk Read     : 2.62M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
