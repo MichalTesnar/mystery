@@ -5342,3 +5342,47 @@ The following have been reloaded with a version change:
   4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
   5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
 
+[main ceb19e4] Pushing online_learning_tuning.py results
+ 2 files changed, 5380 insertions(+)
+To github.com:MichalTesnar/mystery
+   c844e96..ceb19e4  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6372021 for user s4740556
+Finished at: Tue Nov 28 01:25:00 CET 2023
+
+Job details:
+============
+
+Job ID              : 6372021
+Name                : hp sinus FIFO
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node65
+Number of Nodes     : 1
+Cores               : 10
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-11-27T20:05:48
+Start               : 2023-11-27T20:05:49
+End                 : 2023-11-28T01:25:00
+Reserved walltime   : 12:00:00
+Used walltime       : 05:19:11
+Used CPU time       : 06:51:29 (efficiency: 12.89%)
+% User (Computation): 97.05%
+% System (I/O)      :  2.95%
+Mem reserved        : 20000M
+Max Mem (Node/step) : 1.39G (node65, per node)
+Full Max Mem usage  : 1.39G
+Total Disk Read     : 2.62M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
