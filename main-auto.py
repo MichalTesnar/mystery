@@ -49,7 +49,7 @@ experiment_specification = {
     "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
-    "UNCERTAINTY_THRESHOLD": 0.1,
+    "UNCERTAINTY_THRESHOLD": 0.02,
     "RUNNING_MEAN_WINDOW": 10,
     "NUMBER_OF_ESTIMATORS": 10
 }
