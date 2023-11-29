@@ -33,3 +33,50 @@ an editor opened by 'git commit'. Please make sure all processes
 are terminated then try again. If it still fails, a git process
 may have crashed in this repository earlier:
 remove the file manually to continue.
+To github.com:MichalTesnar/mystery
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:MichalTesnar/mystery'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+###############################################################################
+Hábrók Cluster
+Job 6410568 for user s4740556
+Finished at: Wed Nov 29 10:32:48 CET 2023
+
+Job details:
+============
+
+Job ID              : 6410568
+Name                : run THRESHOLD
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node79
+Number of Nodes     : 1
+Cores               : 16
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-11-29T10:31:54
+Start               : 2023-11-29T10:31:54
+End                 : 2023-11-29T10:32:48
+Reserved walltime   : 16:00:00
+Used walltime       : 00:00:54
+Used CPU time       : 00:00:07 (efficiency:  0.92%)
+% User (Computation): 48.36%
+% System (I/O)      : 51.63%
+Mem reserved        : 32000M
+Max Mem (Node/step) : 165.71M (node79, per node)
+Full Max Mem usage  : 165.71M
+Total Disk Read     : 2.68M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

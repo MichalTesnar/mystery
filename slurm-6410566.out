@@ -20,3 +20,47 @@ The following have been reloaded with a version change:
   5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
 
 error: could not lock config file /home1/s4740556/.gitconfig: File exists
+[main a6e214a] Pushing online_learning_tuning.py results
+ 6 files changed, 182 insertions(+)
+To github.com:MichalTesnar/mystery
+   9c26658..a6e214a  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6410566 for user s4740556
+Finished at: Wed Nov 29 10:32:48 CET 2023
+
+Job details:
+============
+
+Job ID              : 6410566
+Name                : run FIRO
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node79
+Number of Nodes     : 1
+Cores               : 16
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-11-29T10:31:54
+Start               : 2023-11-29T10:31:54
+End                 : 2023-11-29T10:32:48
+Reserved walltime   : 16:00:00
+Used walltime       : 00:00:54
+Used CPU time       : 00:00:07 (efficiency:  0.88%)
+% User (Computation): 53.97%
+% System (I/O)      : 46.03%
+Mem reserved        : 32000M
+Max Mem (Node/step) : 172.02M (node79, per node)
+Full Max Mem usage  : 172.02M
+Total Disk Read     : 2.68M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

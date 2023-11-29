@@ -35,3 +35,44 @@ an editor opened by 'git commit'. Please make sure all processes
 are terminated then try again. If it still fails, a git process
 may have crashed in this repository earlier:
 remove the file manually to continue.
+Everything up-to-date
+
+###############################################################################
+Hábrók Cluster
+Job 6410569 for user s4740556
+Finished at: Wed Nov 29 10:32:47 CET 2023
+
+Job details:
+============
+
+Job ID              : 6410569
+Name                : run GREEDY
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node79
+Number of Nodes     : 1
+Cores               : 16
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-11-29T10:31:54
+Start               : 2023-11-29T10:31:54
+End                 : 2023-11-29T10:32:47
+Reserved walltime   : 16:00:00
+Used walltime       : 00:00:53
+Used CPU time       : 00:00:07 (efficiency:  0.86%)
+% User (Computation): 51.87%
+% System (I/O)      : 48.13%
+Mem reserved        : 32000M
+Max Mem (Node/step) : 173.57M (node79, per node)
+Full Max Mem usage  : 173.57M
+Total Disk Read     : 2.68M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
