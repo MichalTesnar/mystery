@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --time=12:00:00
+#SBATCH --time=16:00:00
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=10
+#SBATCH --cpus-per-task=16
 #SBATCH --partition=regular
 
 module load Python/3.9.6-GCCcore-11.2.0
