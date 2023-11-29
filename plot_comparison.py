@@ -13,18 +13,50 @@ dir_names = [
     "FIFO tuned (0)",
     "FIRO tuned (0)",
     "RIRO tuned (0)",
-    "THRESHOLD tuned (0)",
+    "THRESHOLD tuned (2)",
     "GREEDY tuned (0)",
-    "THRESHOLD_GREEDY tuned (0)"
+    "THRESHOLD_GREEDY tuned (2)"
 ]
 # IDENTIFIER TO PUT ON THE PLOT
 identifier = "fixed data"
-
+excluded = ["Running Mean R2", "Cummulative MSE"]
+HOW_MANY = 6 - len(excluded)
 # PLOT CONFIG
-fig, axs = plt.subplots(6, 1, figsize=(16, 12))
-fig.suptitle(f"{prefix} {identifier}", fontsize=20)
-line_styles = ['-', '--', '-.', ':',(0, (3, 1, 1, 1)), (0, (5, 2)), (0, (1, 2))]
+plot_name = "Sinus Tuned ALL No FIFO"
+fig, axs = plt.subplots(HOW_MANY, 1, figsize=(16, 13), sharex=True)
+fig.suptitle(f"{plot_name}", fontsize=15)
+def line_style(st):
+    if "FIFO" in st:
+        return '-'
+    elif "FIRO" in st:
+        return '--'
+    elif "RIRO" in st:
+        return '-.'
+    elif "THRESHOLD_GREEDY" in st:
+        return ':'
+    elif "THRESHOLD" in st:
+        return (0, (3, 1, 1, 1))
+    elif "GREEDY" in st:
+        return (0, (5, 2))
+    else:
+        return(0, (1, 2))
 
+
+def line_color(st):
+    if "FIFO" in st:
+        return 'green'
+    elif "FIRO" in st:
+        return 'blue'
+    elif "RIRO" in st:
+        return 'red'
+    elif "THRESHOLD_GREEDY" in st:
+        return 'brown'
+    elif "THRESHOLD" in st:
+        return 'black'
+    elif "GREEDY" in st:
+        return 'orange'
+    else:
+        return 'pink'
 
 for j, dir_name in enumerate(dir_names):
     # LOAD RESULTS
@@ -33,24 +65,24 @@ for j, dir_name in enumerate(dir_names):
         metrics_results = pickle.load(file)
 
     # Remove the metrics that you do not want to include
-    excluded = []#["R2"]
+    
+    # excluded = []
     for out in excluded:
         metrics_results.pop(out)
 
     for i, metric in enumerate(metrics_results.keys()):
             
-        y = metrics_results[metric]
-        if metric == "Prediction Uncertainty":
-            print(y)
+        y = metrics_results[metric] 
         x = np.arange(0, len(y))
         axs[i].plot(x, y, label=dir_name, alpha=0.5,
-                    linestyle=line_styles[j], linewidth=2)
-        axs[i].set_title(metric)
+                    linestyle=line_style(dir_name), linewidth=2, color=line_color(dir_name))
+        # axs[i].set_title(metric)
         # PLOT LEGEND ONLY FOR ONE OF THEM
-        if i == 2:
-            axs[i].legend(loc='upper left', fontsize=15)
+        axs[i].set_ylabel(metric)
+    axs[1].legend(loc='center left', fontsize=12)
+    axs[HOW_MANY-1].set_xlabel('upper left')
 
 plt.tight_layout()
-plt.savefig(f"{prefix} {identifier}")
+plt.savefig(f"{plot_name}")
 plt.show()
 plt.close()
