@@ -17,7 +17,7 @@ MODEL_MODE = sys.argv[1]
 tuner = BayesianOptimization(lambda x : None,
                 objective='val_loss',
                 directory='hyperparams',
-                project_name=f"Dagon try2 {MODEL_MODE}")
+                project_name=f"Dagon try {MODEL_MODE}")
 print(f"Dagon try {MODEL_MODE}")
 # Get the optimal hyperparameters
 best_hps = tuner.get_best_hyperparameters(num_trials=1)[0] #just takes the best one of list of one

@@ -7,22 +7,28 @@ import sys
 sys.path.append('..')
 
 # EXPERIMENT PREFIX
-prefix = "Dagon try "
+prefix = "sinus: first real try "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 dir_names = [
-    "FIFO tuned (0)",
-    "FIRO tuned (0)",
+    # "FIFO tuned (0)",
+    # "FIRO tuned (0)",
     "RIRO tuned (0)",
-    "THRESHOLD tuned (2)",
+    "THRESHOLD tuned (0)",
     "GREEDY tuned (0)",
-    "THRESHOLD_GREEDY tuned (2)"
+    "THRESHOLD_GREEDY tuned (0)"
 ]
 # IDENTIFIER TO PUT ON THE PLOT
 identifier = "fixed data"
-excluded = ["Running Mean R2", "Cummulative MSE"]
-HOW_MANY = 6 - len(excluded)
+excluded = {"MSE": True,
+            "R2": True,
+            "Running Mean R2": False,
+            "Cummulative MSE": False, 
+            "Prediction Uncertainty": False,
+            "Skips": False,
+            }
+HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
 # PLOT CONFIG
-plot_name = "Sinus Tuned ALL No FIFO"
+plot_name = "Sinus Tuned Selection"
 fig, axs = plt.subplots(HOW_MANY, 1, figsize=(16, 13), sharex=True)
 fig.suptitle(f"{plot_name}", fontsize=15)
 def line_style(st):
@@ -60,18 +66,12 @@ def line_color(st):
 
 for j, dir_name in enumerate(dir_names):
     # LOAD RESULTS
-    # print(os.listdir(f"results"))
     with open(f"results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
         metrics_results = pickle.load(file)
 
-    # Remove the metrics that you do not want to include
-    
-    # excluded = []
-    for out in excluded:
-        metrics_results.pop(out)
-
     for i, metric in enumerate(metrics_results.keys()):
-            
+        if not excluded[metric]:
+            continue
         y = metrics_results[metric] 
         x = np.arange(0, len(y))
         axs[i].plot(x, y, label=dir_name, alpha=0.5,
@@ -79,8 +79,8 @@ for j, dir_name in enumerate(dir_names):
         # axs[i].set_title(metric)
         # PLOT LEGEND ONLY FOR ONE OF THEM
         axs[i].set_ylabel(metric)
-    axs[1].legend(loc='center left', fontsize=12)
-    axs[HOW_MANY-1].set_xlabel('upper left')
+    axs[min(HOW_MANY-1, 2)].legend(loc='center left', fontsize=12)
+    axs[HOW_MANY-1].set_xlabel('Iterations')
 
 plt.tight_layout()
 plt.savefig(f"{plot_name}")
