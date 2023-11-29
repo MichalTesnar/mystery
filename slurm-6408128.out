@@ -1,0 +1,1515 @@
+2023-11-28 23:11:56.180581: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-11-28 23:11:58.409978: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2023-11-28 23:11:58.410076: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2023-11-28 23:11:58.702474: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2023-11-28 23:11:59.313642: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-11-28 23:11:59.323961: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-11-28 23:12:08.113012: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Reloading Tuner from hyperparams/Dagon try2 THRESHOLD_GREEDY/tuner0.json
+Dagon try THRESHOLD_GREEDY
+1387
+Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense (Dense)               (None, 16)                112       
+                                                                 
+ dense_1 (Dense)             (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 163 (652.00 Byte)
+Trainable params: 163 (652.00 Byte)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_2 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_2 (Dense)             (None, 16)                112       
+                                                                 
+ dense_3 (Dense)             (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 163 (652.00 Byte)
+Trainable params: 163 (652.00 Byte)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_2"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_3 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_4 (Dense)             (None, 16)                112       
+                                                                 
+ dense_5 (Dense)             (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 163 (652.00 Byte)
+Trainable params: 163 (652.00 Byte)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_3"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_4 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_6 (Dense)             (None, 16)                112       
+                                                                 
+ dense_7 (Dense)             (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 163 (652.00 Byte)
+Trainable params: 163 (652.00 Byte)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_4"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_5 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_8 (Dense)             (None, 16)                112       
+                                                                 
+ dense_9 (Dense)             (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 163 (652.00 Byte)
+Trainable params: 163 (652.00 Byte)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_5"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_6 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_10 (Dense)            (None, 16)                112       
+                                                                 
+ dense_11 (Dense)            (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 163 (652.00 Byte)
+Trainable params: 163 (652.00 Byte)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_6"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_7 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_12 (Dense)            (None, 16)                112       
+                                                                 
+ dense_13 (Dense)            (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 163 (652.00 Byte)
+Trainable params: 163 (652.00 Byte)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_7"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_8 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_14 (Dense)            (None, 16)                112       
+                                                                 
+ dense_15 (Dense)            (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 163 (652.00 Byte)
+Trainable params: 163 (652.00 Byte)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_8"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_9 (InputLayer)        [(None, 6)]               0         
+                                                                 
+ dense_16 (Dense)            (None, 16)                112       
+                                                                 
+ dense_17 (Dense)            (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 163 (652.00 Byte)
+Trainable params: 163 (652.00 Byte)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+None
+Model: "model_9"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_10 (InputLayer)       [(None, 6)]               0         
+                                                                 
+ dense_18 (Dense)            (None, 16)                112       
+                                                                 
+ dense_19 (Dense)            (None, 3)                 51        
+                                                                 
+=================================================================
+Total params: 163 (652.00 Byte)
+Trainable params: 163 (652.00 Byte)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+Keras Uncertainty will use standalone Keras backendNone
+The results will be saved in results/Dagon try2 THRESHOLD_GREEDY tuned (1)
+Time 62.85: used 7.21% of the points.
+Time 74.50: used 7.28% of the points.
+Time 86.48: used 7.35% of the points.
+Time 97.03: used 7.43% of the points.
+Time 108.40: used 7.50% of the points.
+Time 119.61: used 7.57% of the points.
+Time 131.94: used 7.64% of the points.
+Time 143.71: used 7.71% of the points.
+Time 155.78: used 7.79% of the points.
+Time 168.43: used 7.86% of the points.
+Time 181.82: used 7.93% of the points.
+Time 193.28: used 8.00% of the points.
+Time 205.59: used 8.07% of the points.
+Time 216.45: used 8.15% of the points.
+Time 227.66: used 8.22% of the points.
+Time 238.93: used 8.29% of the points.
+Time 251.76: used 8.36% of the points.
+Time 263.55: used 8.44% of the points.
+Time 274.19: used 8.51% of the points.
+Time 286.10: used 8.58% of the points.
+Time 294.84: used 8.65% of the points.
+Time 305.10: used 8.72% of the points.
+Time 319.77: used 8.80% of the points.
+Time 330.25: used 8.87% of the points.
+Time 342.19: used 8.94% of the points.
+Time 356.60: used 9.01% of the points.
+Time 367.95: used 9.08% of the points.
+Time 377.40: used 9.16% of the points.
+Time 388.35: used 9.23% of the points.
+Time 400.96: used 9.30% of the points.
+Time 411.25: used 9.37% of the points.
+Time 424.46: used 9.44% of the points.
+Time 435.38: used 9.52% of the points.
+Time 447.93: used 9.59% of the points.
+Time 460.01: used 9.66% of the points.
+Time 472.01: used 9.73% of the points.
+Time 472.03: used 9.81% of the points.
+Time 472.06: used 9.88% of the points.
+Time 472.08: used 9.95% of the points.
+Time 484.02: used 10.02% of the points.
+Time 495.62: used 10.09% of the points.
+Time 511.02: used 10.17% of the points.
+Time 523.47: used 10.24% of the points.
+Time 534.35: used 10.31% of the points.
+Time 534.38: used 10.38% of the points.
+Time 534.40: used 10.45% of the points.
+Time 546.57: used 10.53% of the points.
+Time 559.49: used 10.60% of the points.
+Time 559.51: used 10.67% of the points.
+Time 571.15: used 10.74% of the points.
+Time 571.18: used 10.81% of the points.
+Time 571.20: used 10.89% of the points.
+Time 571.22: used 10.96% of the points.
+Time 571.24: used 11.03% of the points.
+Time 571.26: used 11.10% of the points.
+Time 571.28: used 11.18% of the points.
+Time 571.31: used 11.25% of the points.
+Time 571.33: used 11.32% of the points.
+Time 571.35: used 11.39% of the points.
+Time 571.37: used 11.46% of the points.
+Time 571.39: used 11.54% of the points.
+Time 571.41: used 11.61% of the points.
+Time 571.43: used 11.68% of the points.
+Time 571.45: used 11.75% of the points.
+Time 571.48: used 11.82% of the points.
+Time 571.50: used 11.90% of the points.
+Time 583.35: used 11.97% of the points.
+Time 600.18: used 12.04% of the points.
+Time 612.50: used 12.11% of the points.
+Time 622.32: used 12.18% of the points.
+Time 636.35: used 12.26% of the points.
+Time 636.38: used 12.33% of the points.
+Time 647.27: used 12.40% of the points.
+Time 660.54: used 12.47% of the points.
+Time 660.56: used 12.55% of the points.
+Time 671.69: used 12.62% of the points.
+Time 685.16: used 12.69% of the points.
+Time 685.18: used 12.76% of the points.
+Time 696.94: used 12.83% of the points.
+Time 696.96: used 12.91% of the points.
+Time 696.98: used 12.98% of the points.
+Time 697.00: used 13.05% of the points.
+Time 697.03: used 13.12% of the points.
+Time 697.05: used 13.19% of the points.
+Time 697.07: used 13.27% of the points.
+Time 697.09: used 13.34% of the points.
+Time 697.12: used 13.41% of the points.
+Time 697.14: used 13.48% of the points.
+Time 697.16: used 13.55% of the points.
+Time 697.19: used 13.63% of the points.
+Time 697.21: used 13.70% of the points.
+Time 697.23: used 13.77% of the points.
+Time 697.25: used 13.84% of the points.
+Time 697.28: used 13.91% of the points.
+Time 697.30: used 13.99% of the points.
+Time 697.32: used 14.06% of the points.
+Time 697.34: used 14.13% of the points.
+Time 697.37: used 14.20% of the points.
+Time 697.39: used 14.28% of the points.
+Time 697.41: used 14.35% of the points.
+Time 697.43: used 14.42% of the points.
+Time 697.46: used 14.49% of the points.
+Time 697.48: used 14.56% of the points.
+Time 697.50: used 14.64% of the points.
+Time 697.52: used 14.71% of the points.
+Time 697.54: used 14.78% of the points.
+Time 697.57: used 14.85% of the points.
+Time 709.22: used 14.92% of the points.
+Time 709.25: used 15.00% of the points.
+Time 709.27: used 15.07% of the points.
+Time 709.29: used 15.14% of the points.
+Time 709.32: used 15.21% of the points.
+Time 709.34: used 15.28% of the points.
+Time 709.36: used 15.36% of the points.
+Time 709.39: used 15.43% of the points.
+Time 709.41: used 15.50% of the points.
+Time 709.43: used 15.57% of the points.
+Time 709.46: used 15.65% of the points.
+Time 709.48: used 15.72% of the points.
+Time 709.50: used 15.79% of the points.
+Time 709.52: used 15.86% of the points.
+Time 709.55: used 15.93% of the points.
+Time 709.57: used 16.01% of the points.
+Time 709.59: used 16.08% of the points.
+Time 709.61: used 16.15% of the points.
+Time 709.64: used 16.22% of the points.
+Time 709.66: used 16.29% of the points.
+Time 709.68: used 16.37% of the points.
+Time 709.71: used 16.44% of the points.
+Time 709.73: used 16.51% of the points.
+Time 709.75: used 16.58% of the points.
+Time 709.78: used 16.65% of the points.
+Time 709.80: used 16.73% of the points.
+Time 709.82: used 16.80% of the points.
+Time 709.84: used 16.87% of the points.
+Time 709.87: used 16.94% of the points.
+Time 725.12: used 17.02% of the points.
+Time 725.14: used 17.09% of the points.
+Time 725.16: used 17.16% of the points.
+Time 741.32: used 17.23% of the points.
+Time 741.34: used 17.30% of the points.
+Time 741.36: used 17.38% of the points.
+Time 741.38: used 17.45% of the points.
+Time 756.41: used 17.52% of the points.
+Time 768.02: used 17.59% of the points.
+Time 780.72: used 17.66% of the points.
+Time 780.74: used 17.74% of the points.
+Time 794.70: used 17.81% of the points.
+Time 806.13: used 17.88% of the points.
+Time 806.15: used 17.95% of the points.
+Time 815.89: used 18.02% of the points.
+Time 815.91: used 18.10% of the points.
+Time 815.93: used 18.17% of the points.
+Time 815.96: used 18.24% of the points.
+Time 815.98: used 18.31% of the points.
+Time 816.00: used 18.39% of the points.
+Time 816.02: used 18.46% of the points.
+Time 816.05: used 18.53% of the points.
+Time 816.07: used 18.60% of the points.
+Time 816.09: used 18.67% of the points.
+Time 816.11: used 18.75% of the points.
+Time 816.14: used 18.82% of the points.
+Time 816.16: used 18.89% of the points.
+Time 816.18: used 18.96% of the points.
+Time 816.20: used 19.03% of the points.
+Time 816.22: used 19.11% of the points.
+Time 816.25: used 19.18% of the points.
+Time 816.27: used 19.25% of the points.
+Time 816.29: used 19.32% of the points.
+Time 816.31: used 19.39% of the points.
+Time 816.34: used 19.47% of the points.
+Time 816.36: used 19.54% of the points.
+Time 816.38: used 19.61% of the points.
+Time 816.41: used 19.68% of the points.
+Time 816.43: used 19.75% of the points.
+Time 816.46: used 19.83% of the points.
+Time 816.48: used 19.90% of the points.
+Time 816.50: used 19.97% of the points.
+Time 816.53: used 20.04% of the points.
+Time 816.55: used 20.12% of the points.
+Time 829.03: used 20.19% of the points.
+Time 841.60: used 20.26% of the points.
+Time 841.62: used 20.33% of the points.
+Time 841.64: used 20.40% of the points.
+Time 854.76: used 20.48% of the points.
+Time 854.78: used 20.55% of the points.
+Time 854.81: used 20.62% of the points.
+Time 854.83: used 20.69% of the points.
+Time 854.85: used 20.76% of the points.
+Time 854.87: used 20.84% of the points.
+Time 854.90: used 20.91% of the points.
+Time 854.92: used 20.98% of the points.
+Time 854.94: used 21.05% of the points.
+Time 854.96: used 21.12% of the points.
+Time 854.99: used 21.20% of the points.
+Time 855.01: used 21.27% of the points.
+Time 855.03: used 21.34% of the points.
+Time 855.05: used 21.41% of the points.
+Time 855.08: used 21.49% of the points.
+Time 855.10: used 21.56% of the points.
+Time 855.12: used 21.63% of the points.
+Time 855.14: used 21.70% of the points.
+Time 855.17: used 21.77% of the points.
+Time 855.19: used 21.85% of the points.
+Time 855.21: used 21.92% of the points.
+Time 855.23: used 21.99% of the points.
+Time 855.25: used 22.06% of the points.
+Time 855.28: used 22.13% of the points.
+Time 868.29: used 22.21% of the points.
+Time 868.32: used 22.28% of the points.
+Time 868.34: used 22.35% of the points.
+Time 868.36: used 22.42% of the points.
+Time 868.38: used 22.49% of the points.
+Time 868.41: used 22.57% of the points.
+Time 885.25: used 22.64% of the points.
+Time 885.27: used 22.71% of the points.
+Time 885.29: used 22.78% of the points.
+Time 898.95: used 22.86% of the points.
+Time 918.49: used 22.93% of the points.
+Time 918.52: used 23.00% of the points.
+Time 934.14: used 23.07% of the points.
+Time 934.17: used 23.14% of the points.
+Time 949.20: used 23.22% of the points.
+Time 949.23: used 23.29% of the points.
+Time 963.02: used 23.36% of the points.
+Time 963.05: used 23.43% of the points.
+Time 963.07: used 23.50% of the points.
+Time 963.09: used 23.58% of the points.
+Time 963.11: used 23.65% of the points.
+Time 978.67: used 23.72% of the points.
+Time 978.69: used 23.79% of the points.
+Time 978.71: used 23.86% of the points.
+Time 978.74: used 23.94% of the points.
+Time 978.76: used 24.01% of the points.
+Time 978.78: used 24.08% of the points.
+Time 978.80: used 24.15% of the points.
+Time 978.83: used 24.22% of the points.
+Time 978.85: used 24.30% of the points.
+Time 978.87: used 24.37% of the points.
+Time 978.90: used 24.44% of the points.
+Time 978.92: used 24.51% of the points.
+Time 978.94: used 24.59% of the points.
+Time 978.96: used 24.66% of the points.
+Time 978.99: used 24.73% of the points.
+Time 979.01: used 24.80% of the points.
+Time 979.03: used 24.87% of the points.
+Time 979.05: used 24.95% of the points.
+Time 979.08: used 25.02% of the points.
+Time 979.10: used 25.09% of the points.
+Time 979.12: used 25.16% of the points.
+Time 979.14: used 25.23% of the points.
+Time 979.17: used 25.31% of the points.
+Time 979.19: used 25.38% of the points.
+Time 993.32: used 25.45% of the points.
+Time 993.34: used 25.52% of the points.
+Time 993.37: used 25.59% of the points.
+Time 1007.49: used 25.67% of the points.
+Time 1007.52: used 25.74% of the points.
+Time 1018.52: used 25.81% of the points.
+Time 1018.54: used 25.88% of the points.
+Time 1018.57: used 25.96% of the points.
+Time 1018.59: used 26.03% of the points.
+Time 1030.75: used 26.10% of the points.
+Time 1030.78: used 26.17% of the points.
+Time 1030.80: used 26.24% of the points.
+Time 1030.82: used 26.32% of the points.
+Time 1030.85: used 26.39% of the points.
+Time 1030.87: used 26.46% of the points.
+Time 1030.89: used 26.53% of the points.
+Time 1030.91: used 26.60% of the points.
+Time 1030.94: used 26.68% of the points.
+Time 1030.96: used 26.75% of the points.
+Time 1030.98: used 26.82% of the points.
+Time 1031.00: used 26.89% of the points.
+Time 1031.03: used 26.96% of the points.
+Time 1031.05: used 27.04% of the points.
+Time 1031.07: used 27.11% of the points.
+Time 1031.10: used 27.18% of the points.
+Time 1031.12: used 27.25% of the points.
+Time 1031.14: used 27.33% of the points.
+Time 1031.16: used 27.40% of the points.
+Time 1031.19: used 27.47% of the points.
+Time 1031.21: used 27.54% of the points.
+Time 1031.23: used 27.61% of the points.
+Time 1031.25: used 27.69% of the points.
+Time 1031.28: used 27.76% of the points.
+Time 1031.30: used 27.83% of the points.
+Time 1031.32: used 27.90% of the points.
+Time 1031.34: used 27.97% of the points.
+Time 1031.37: used 28.05% of the points.
+Time 1031.39: used 28.12% of the points.
+Time 1031.41: used 28.19% of the points.
+Time 1031.44: used 28.26% of the points.
+Time 1031.46: used 28.33% of the points.
+Time 1031.48: used 28.41% of the points.
+Time 1031.51: used 28.48% of the points.
+Time 1031.53: used 28.55% of the points.
+Time 1031.55: used 28.62% of the points.
+Time 1031.57: used 28.70% of the points.
+Time 1031.60: used 28.77% of the points.
+Time 1031.62: used 28.84% of the points.
+Time 1031.64: used 28.91% of the points.
+Time 1031.66: used 28.98% of the points.
+Time 1031.69: used 29.06% of the points.
+Time 1031.71: used 29.13% of the points.
+Time 1031.73: used 29.20% of the points.
+Time 1031.75: used 29.27% of the points.
+Time 1031.78: used 29.34% of the points.
+Time 1031.80: used 29.42% of the points.
+Time 1031.82: used 29.49% of the points.
+Time 1031.85: used 29.56% of the points.
+Time 1031.87: used 29.63% of the points.
+Time 1031.89: used 29.70% of the points.
+Time 1031.91: used 29.78% of the points.
+Time 1031.94: used 29.85% of the points.
+Time 1031.96: used 29.92% of the points.
+Time 1031.98: used 29.99% of the points.
+Time 1032.00: used 30.06% of the points.
+Time 1032.03: used 30.14% of the points.
+Time 1032.05: used 30.21% of the points.
+Time 1032.07: used 30.28% of the points.
+Time 1032.09: used 30.35% of the points.
+Time 1032.12: used 30.43% of the points.
+Time 1032.14: used 30.50% of the points.
+Time 1045.95: used 30.57% of the points.
+Time 1059.60: used 30.64% of the points.
+Time 1059.63: used 30.71% of the points.
+Time 1075.03: used 30.79% of the points.
+Time 1089.49: used 30.86% of the points.
+Time 1089.51: used 30.93% of the points.
+Time 1089.53: used 31.00% of the points.
+Time 1102.48: used 31.07% of the points.
+Time 1114.96: used 31.15% of the points.
+Time 1129.86: used 31.22% of the points.
+Time 1129.88: used 31.29% of the points.
+Time 1141.40: used 31.36% of the points.
+Time 1141.42: used 31.43% of the points.
+Time 1141.44: used 31.51% of the points.
+Time 1141.47: used 31.58% of the points.
+Time 1153.58: used 31.65% of the points.
+Time 1153.60: used 31.72% of the points.
+Time 1153.62: used 31.80% of the points.
+Time 1168.02: used 31.87% of the points.
+Time 1186.03: used 31.94% of the points.
+Time 1186.05: used 32.01% of the points.
+Time 1186.07: used 32.08% of the points.
+Time 1199.95: used 32.16% of the points.
+Time 1199.97: used 32.23% of the points.
+Time 1200.00: used 32.30% of the points.
+Time 1214.94: used 32.37% of the points.
+Time 1214.96: used 32.44% of the points.
+Time 1214.98: used 32.52% of the points.
+Time 1227.29: used 32.59% of the points.
+Time 1227.32: used 32.66% of the points.
+Time 1227.34: used 32.73% of the points.
+Time 1227.36: used 32.80% of the points.
+Time 1227.39: used 32.88% of the points.
+Time 1227.41: used 32.95% of the points.
+Time 1227.43: used 33.02% of the points.
+Time 1227.45: used 33.09% of the points.
+Time 1227.48: used 33.17% of the points.
+Time 1241.66: used 33.24% of the points.
+Time 1241.68: used 33.31% of the points.
+Time 1241.71: used 33.38% of the points.
+Time 1241.73: used 33.45% of the points.
+Time 1241.76: used 33.53% of the points.
+Time 1254.07: used 33.60% of the points.
+Time 1254.09: used 33.67% of the points.
+Time 1254.11: used 33.74% of the points.
+Time 1254.14: used 33.81% of the points.
+Time 1265.07: used 33.89% of the points.
+Time 1265.10: used 33.96% of the points.
+Time 1265.12: used 34.03% of the points.
+Time 1278.76: used 34.10% of the points.
+Time 1278.78: used 34.17% of the points.
+Time 1278.80: used 34.25% of the points.
+Time 1278.83: used 34.32% of the points.
+Time 1278.85: used 34.39% of the points.
+Time 1278.88: used 34.46% of the points.
+Time 1278.90: used 34.53% of the points.
+Time 1278.92: used 34.61% of the points.
+Time 1278.95: used 34.68% of the points.
+Time 1278.97: used 34.75% of the points.
+Time 1278.99: used 34.82% of the points.
+Time 1279.01: used 34.90% of the points.
+Time 1279.04: used 34.97% of the points.
+Time 1279.06: used 35.04% of the points.
+Time 1279.08: used 35.11% of the points.
+Time 1279.11: used 35.18% of the points.
+Time 1279.13: used 35.26% of the points.
+Time 1279.15: used 35.33% of the points.
+Time 1279.17: used 35.40% of the points.
+Time 1279.19: used 35.47% of the points.
+Time 1279.22: used 35.54% of the points.
+Time 1279.24: used 35.62% of the points.
+Time 1279.26: used 35.69% of the points.
+Time 1279.28: used 35.76% of the points.
+Time 1279.31: used 35.83% of the points.
+Time 1279.33: used 35.90% of the points.
+Time 1279.35: used 35.98% of the points.
+Time 1279.37: used 36.05% of the points.
+Time 1279.40: used 36.12% of the points.
+Time 1279.42: used 36.19% of the points.
+Time 1279.44: used 36.27% of the points.
+Time 1279.47: used 36.34% of the points.
+Time 1279.49: used 36.41% of the points.
+Time 1279.51: used 36.48% of the points.
+Time 1279.53: used 36.55% of the points.
+Time 1279.56: used 36.63% of the points.
+Time 1279.58: used 36.70% of the points.
+Time 1279.60: used 36.77% of the points.
+Time 1279.62: used 36.84% of the points.
+Time 1279.65: used 36.91% of the points.
+Time 1279.67: used 36.99% of the points.
+Time 1279.69: used 37.06% of the points.
+Time 1279.71: used 37.13% of the points.
+Time 1279.73: used 37.20% of the points.
+Time 1279.76: used 37.27% of the points.
+Time 1279.78: used 37.35% of the points.
+Time 1279.80: used 37.42% of the points.
+Time 1279.82: used 37.49% of the points.
+Time 1279.84: used 37.56% of the points.
+Time 1279.87: used 37.64% of the points.
+Time 1279.89: used 37.71% of the points.
+Time 1279.91: used 37.78% of the points.
+Time 1279.93: used 37.85% of the points.
+Time 1279.96: used 37.92% of the points.
+Time 1279.98: used 38.00% of the points.
+Time 1280.00: used 38.07% of the points.
+Time 1280.03: used 38.14% of the points.
+Time 1280.05: used 38.21% of the points.
+Time 1280.07: used 38.28% of the points.
+Time 1280.09: used 38.36% of the points.
+Time 1280.12: used 38.43% of the points.
+Time 1280.14: used 38.50% of the points.
+Time 1280.16: used 38.57% of the points.
+Time 1280.18: used 38.64% of the points.
+Time 1280.21: used 38.72% of the points.
+Time 1280.23: used 38.79% of the points.
+Time 1280.25: used 38.86% of the points.
+Time 1280.28: used 38.93% of the points.
+Time 1280.30: used 39.01% of the points.
+Time 1280.32: used 39.08% of the points.
+Time 1280.35: used 39.15% of the points.
+Time 1280.37: used 39.22% of the points.
+Time 1280.39: used 39.29% of the points.
+Time 1280.41: used 39.37% of the points.
+Time 1292.93: used 39.44% of the points.
+Time 1292.95: used 39.51% of the points.
+Time 1292.98: used 39.58% of the points.
+Time 1293.00: used 39.65% of the points.
+Time 1293.02: used 39.73% of the points.
+Time 1293.04: used 39.80% of the points.
+Time 1293.07: used 39.87% of the points.
+Time 1293.09: used 39.94% of the points.
+Time 1293.11: used 40.01% of the points.
+Time 1293.14: used 40.09% of the points.
+Time 1293.16: used 40.16% of the points.
+Time 1293.18: used 40.23% of the points.
+Time 1293.20: used 40.30% of the points.
+Time 1293.23: used 40.37% of the points.
+Time 1293.25: used 40.45% of the points.
+Time 1293.27: used 40.52% of the points.
+Time 1293.30: used 40.59% of the points.
+Time 1293.32: used 40.66% of the points.
+Time 1293.34: used 40.74% of the points.
+Time 1293.36: used 40.81% of the points.
+Time 1293.39: used 40.88% of the points.
+Time 1293.41: used 40.95% of the points.
+Time 1312.17: used 41.02% of the points.
+Time 1312.20: used 41.10% of the points.
+Time 1312.22: used 41.17% of the points.
+Time 1324.34: used 41.24% of the points.
+Time 1324.36: used 41.31% of the points.
+Time 1324.39: used 41.38% of the points.
+Time 1344.22: used 41.46% of the points.
+Time 1360.91: used 41.53% of the points.
+Time 1360.94: used 41.60% of the points.
+Time 1377.37: used 41.67% of the points.
+Time 1377.39: used 41.74% of the points.
+Time 1377.42: used 41.82% of the points.
+Time 1377.44: used 41.89% of the points.
+Time 1377.46: used 41.96% of the points.
+Time 1377.48: used 42.03% of the points.
+Time 1377.50: used 42.11% of the points.
+Time 1377.53: used 42.18% of the points.
+Time 1377.55: used 42.25% of the points.
+Time 1377.57: used 42.32% of the points.
+Time 1377.59: used 42.39% of the points.
+Time 1377.62: used 42.47% of the points.
+Time 1393.55: used 42.54% of the points.
+Time 1393.57: used 42.61% of the points.
+Time 1393.59: used 42.68% of the points.
+Time 1414.54: used 42.75% of the points.
+Time 1414.56: used 42.83% of the points.
+Time 1414.59: used 42.90% of the points.
+Time 1414.61: used 42.97% of the points.
+Time 1414.64: used 43.04% of the points.
+Time 1414.66: used 43.11% of the points.
+Time 1414.69: used 43.19% of the points.
+Time 1414.71: used 43.26% of the points.
+Time 1414.74: used 43.33% of the points.
+Time 1430.58: used 43.40% of the points.
+Time 1430.60: used 43.48% of the points.
+Time 1430.62: used 43.55% of the points.
+Time 1430.65: used 43.62% of the points.
+Time 1430.67: used 43.69% of the points.
+Time 1430.69: used 43.76% of the points.
+Time 1430.72: used 43.84% of the points.
+Time 1430.74: used 43.91% of the points.
+Time 1430.76: used 43.98% of the points.
+Time 1430.79: used 44.05% of the points.
+Time 1430.81: used 44.12% of the points.
+Time 1430.83: used 44.20% of the points.
+Time 1430.86: used 44.27% of the points.
+Time 1430.88: used 44.34% of the points.
+Time 1430.90: used 44.41% of the points.
+Time 1430.92: used 44.48% of the points.
+Time 1430.95: used 44.56% of the points.
+Time 1430.97: used 44.63% of the points.
+Time 1430.99: used 44.70% of the points.
+Time 1431.02: used 44.77% of the points.
+Time 1431.04: used 44.84% of the points.
+Time 1431.06: used 44.92% of the points.
+Time 1431.08: used 44.99% of the points.
+Time 1431.11: used 45.06% of the points.
+Time 1431.13: used 45.13% of the points.
+Time 1431.15: used 45.21% of the points.
+Time 1431.18: used 45.28% of the points.
+Time 1431.20: used 45.35% of the points.
+Time 1431.22: used 45.42% of the points.
+Time 1431.24: used 45.49% of the points.
+Time 1431.27: used 45.57% of the points.
+Time 1431.29: used 45.64% of the points.
+Time 1431.31: used 45.71% of the points.
+Time 1431.34: used 45.78% of the points.
+Time 1431.36: used 45.85% of the points.
+Time 1431.38: used 45.93% of the points.
+Time 1431.40: used 46.00% of the points.
+Time 1431.43: used 46.07% of the points.
+Time 1431.45: used 46.14% of the points.
+Time 1431.47: used 46.21% of the points.
+Time 1431.50: used 46.29% of the points.
+Time 1431.52: used 46.36% of the points.
+Time 1431.54: used 46.43% of the points.
+Time 1431.57: used 46.50% of the points.
+Time 1431.59: used 46.58% of the points.
+Time 1431.62: used 46.65% of the points.
+Time 1431.64: used 46.72% of the points.
+Time 1431.66: used 46.79% of the points.
+Time 1431.68: used 46.86% of the points.
+Time 1431.71: used 46.94% of the points.
+Time 1431.73: used 47.01% of the points.
+Time 1431.75: used 47.08% of the points.
+Time 1431.78: used 47.15% of the points.
+Time 1431.80: used 47.22% of the points.
+Time 1431.82: used 47.30% of the points.
+Time 1431.85: used 47.37% of the points.
+Time 1431.87: used 47.44% of the points.
+Time 1431.89: used 47.51% of the points.
+Time 1431.91: used 47.58% of the points.
+Time 1431.94: used 47.66% of the points.
+Time 1431.96: used 47.73% of the points.
+Time 1431.98: used 47.80% of the points.
+Time 1432.00: used 47.87% of the points.
+Time 1432.03: used 47.95% of the points.
+Time 1432.05: used 48.02% of the points.
+Time 1432.07: used 48.09% of the points.
+Time 1432.09: used 48.16% of the points.
+Time 1432.12: used 48.23% of the points.
+Time 1432.14: used 48.31% of the points.
+Time 1432.16: used 48.38% of the points.
+Time 1432.19: used 48.45% of the points.
+Time 1432.21: used 48.52% of the points.
+Time 1432.23: used 48.59% of the points.
+Time 1432.25: used 48.67% of the points.
+Time 1432.28: used 48.74% of the points.
+Time 1432.30: used 48.81% of the points.
+Time 1432.32: used 48.88% of the points.
+Time 1432.35: used 48.95% of the points.
+Time 1432.37: used 49.03% of the points.
+Time 1432.39: used 49.10% of the points.
+Time 1432.42: used 49.17% of the points.
+Time 1432.44: used 49.24% of the points.
+Time 1432.46: used 49.32% of the points.
+Time 1432.49: used 49.39% of the points.
+Time 1432.51: used 49.46% of the points.
+Time 1432.53: used 49.53% of the points.
+Time 1432.55: used 49.60% of the points.
+Time 1432.58: used 49.68% of the points.
+Time 1432.60: used 49.75% of the points.
+Time 1432.62: used 49.82% of the points.
+Time 1432.65: used 49.89% of the points.
+Time 1432.67: used 49.96% of the points.
+Time 1432.69: used 50.04% of the points.
+Time 1432.71: used 50.11% of the points.
+Time 1432.74: used 50.18% of the points.
+Time 1432.76: used 50.25% of the points.
+Time 1432.78: used 50.32% of the points.
+Time 1432.81: used 50.40% of the points.
+Time 1432.83: used 50.47% of the points.
+Time 1432.85: used 50.54% of the points.
+Time 1432.87: used 50.61% of the points.
+Time 1432.90: used 50.68% of the points.
+Time 1432.92: used 50.76% of the points.
+Time 1432.94: used 50.83% of the points.
+Time 1432.97: used 50.90% of the points.
+Time 1432.99: used 50.97% of the points.
+Time 1433.01: used 51.05% of the points.
+Time 1433.03: used 51.12% of the points.
+Time 1433.06: used 51.19% of the points.
+Time 1433.08: used 51.26% of the points.
+Time 1433.10: used 51.33% of the points.
+Time 1433.13: used 51.41% of the points.
+Time 1433.15: used 51.48% of the points.
+Time 1433.17: used 51.55% of the points.
+Time 1433.20: used 51.62% of the points.
+Time 1433.22: used 51.69% of the points.
+Time 1433.24: used 51.77% of the points.
+Time 1433.26: used 51.84% of the points.
+Time 1433.29: used 51.91% of the points.
+Time 1433.31: used 51.98% of the points.
+Time 1433.33: used 52.05% of the points.
+Time 1433.36: used 52.13% of the points.
+Time 1433.38: used 52.20% of the points.
+Time 1433.40: used 52.27% of the points.
+Time 1433.43: used 52.34% of the points.
+Time 1433.45: used 52.42% of the points.
+Time 1433.47: used 52.49% of the points.
+Time 1433.50: used 52.56% of the points.
+Time 1433.52: used 52.63% of the points.
+Time 1433.54: used 52.70% of the points.
+Time 1433.57: used 52.78% of the points.
+Time 1433.59: used 52.85% of the points.
+Time 1433.61: used 52.92% of the points.
+Time 1433.64: used 52.99% of the points.
+Time 1445.83: used 53.06% of the points.
+Time 1445.85: used 53.14% of the points.
+Time 1445.88: used 53.21% of the points.
+Time 1445.90: used 53.28% of the points.
+Time 1445.92: used 53.35% of the points.
+Time 1445.94: used 53.42% of the points.
+Time 1445.97: used 53.50% of the points.
+Time 1445.99: used 53.57% of the points.
+Time 1446.01: used 53.64% of the points.
+Time 1446.03: used 53.71% of the points.
+Time 1460.78: used 53.79% of the points.
+Time 1473.05: used 53.86% of the points.
+Time 1473.08: used 53.93% of the points.
+Time 1473.10: used 54.00% of the points.
+Time 1488.26: used 54.07% of the points.
+Time 1488.28: used 54.15% of the points.
+Time 1500.19: used 54.22% of the points.
+Time 1500.21: used 54.29% of the points.
+Time 1500.24: used 54.36% of the points.
+Time 1511.27: used 54.43% of the points.
+Time 1526.45: used 54.51% of the points.
+Time 1526.48: used 54.58% of the points.
+Time 1526.50: used 54.65% of the points.
+Time 1526.52: used 54.72% of the points.
+Time 1526.54: used 54.79% of the points.
+Time 1526.57: used 54.87% of the points.
+Time 1526.59: used 54.94% of the points.
+Time 1526.61: used 55.01% of the points.
+Time 1526.63: used 55.08% of the points.
+Time 1526.66: used 55.16% of the points.
+Time 1526.68: used 55.23% of the points.
+Time 1526.70: used 55.30% of the points.
+Time 1526.72: used 55.37% of the points.
+Time 1526.75: used 55.44% of the points.
+Time 1526.77: used 55.52% of the points.
+Time 1526.79: used 55.59% of the points.
+Time 1526.81: used 55.66% of the points.
+Time 1526.84: used 55.73% of the points.
+Time 1526.86: used 55.80% of the points.
+Time 1526.88: used 55.88% of the points.
+Time 1526.90: used 55.95% of the points.
+Time 1526.92: used 56.02% of the points.
+Time 1526.95: used 56.09% of the points.
+Time 1526.97: used 56.16% of the points.
+Time 1526.99: used 56.24% of the points.
+Time 1527.01: used 56.31% of the points.
+Time 1527.04: used 56.38% of the points.
+Time 1527.06: used 56.45% of the points.
+Time 1527.08: used 56.52% of the points.
+Time 1527.10: used 56.60% of the points.
+Time 1527.12: used 56.67% of the points.
+Time 1527.15: used 56.74% of the points.
+Time 1527.17: used 56.81% of the points.
+Time 1527.19: used 56.89% of the points.
+Time 1527.21: used 56.96% of the points.
+Time 1527.24: used 57.03% of the points.
+Time 1527.26: used 57.10% of the points.
+Time 1527.28: used 57.17% of the points.
+Time 1527.30: used 57.25% of the points.
+Time 1527.32: used 57.32% of the points.
+Time 1527.35: used 57.39% of the points.
+Time 1527.37: used 57.46% of the points.
+Time 1527.39: used 57.53% of the points.
+Time 1527.42: used 57.61% of the points.
+Time 1527.44: used 57.68% of the points.
+Time 1539.02: used 57.75% of the points.
+Time 1539.05: used 57.82% of the points.
+Time 1539.07: used 57.89% of the points.
+Time 1539.09: used 57.97% of the points.
+Time 1539.11: used 58.04% of the points.
+Time 1539.13: used 58.11% of the points.
+Time 1539.16: used 58.18% of the points.
+Time 1539.18: used 58.26% of the points.
+Time 1539.20: used 58.33% of the points.
+Time 1539.22: used 58.40% of the points.
+Time 1539.24: used 58.47% of the points.
+Time 1539.26: used 58.54% of the points.
+Time 1539.29: used 58.62% of the points.
+Time 1539.31: used 58.69% of the points.
+Time 1539.33: used 58.76% of the points.
+Time 1539.35: used 58.83% of the points.
+Time 1539.37: used 58.90% of the points.
+Time 1539.39: used 58.98% of the points.
+Time 1539.42: used 59.05% of the points.
+Time 1539.44: used 59.12% of the points.
+Time 1539.46: used 59.19% of the points.
+Time 1539.48: used 59.26% of the points.
+Time 1539.50: used 59.34% of the points.
+Time 1539.53: used 59.41% of the points.
+Time 1539.55: used 59.48% of the points.
+Time 1539.57: used 59.55% of the points.
+Time 1539.59: used 59.63% of the points.
+Time 1539.61: used 59.70% of the points.
+Time 1539.64: used 59.77% of the points.
+Time 1539.66: used 59.84% of the points.
+Time 1539.68: used 59.91% of the points.
+Time 1539.70: used 59.99% of the points.
+Time 1539.72: used 60.06% of the points.
+Time 1553.34: used 60.13% of the points.
+Time 1553.37: used 60.20% of the points.
+Time 1553.39: used 60.27% of the points.
+Time 1553.41: used 60.35% of the points.
+Time 1553.43: used 60.42% of the points.
+Time 1553.45: used 60.49% of the points.
+Time 1553.48: used 60.56% of the points.
+Time 1553.50: used 60.63% of the points.
+Time 1553.52: used 60.71% of the points.
+Time 1553.54: used 60.78% of the points.
+Time 1553.56: used 60.85% of the points.
+Time 1566.43: used 60.92% of the points.
+Time 1566.45: used 60.99% of the points.
+Time 1566.47: used 61.07% of the points.
+Time 1566.49: used 61.14% of the points.
+Time 1566.52: used 61.21% of the points.
+Time 1566.54: used 61.28% of the points.
+Time 1566.56: used 61.36% of the points.
+Time 1566.59: used 61.43% of the points.
+Time 1566.61: used 61.50% of the points.
+Time 1566.63: used 61.57% of the points.
+Time 1566.65: used 61.64% of the points.
+Time 1566.67: used 61.72% of the points.
+Time 1566.69: used 61.79% of the points.
+Time 1566.72: used 61.86% of the points.
+Time 1566.74: used 61.93% of the points.
+Time 1566.76: used 62.00% of the points.
+Time 1566.78: used 62.08% of the points.
+Time 1566.81: used 62.15% of the points.
+Time 1566.83: used 62.22% of the points.
+Time 1579.03: used 62.29% of the points.
+Time 1579.06: used 62.36% of the points.
+Time 1579.08: used 62.44% of the points.
+Time 1579.10: used 62.51% of the points.
+Time 1579.13: used 62.58% of the points.
+Time 1579.15: used 62.65% of the points.
+Time 1579.17: used 62.73% of the points.
+Time 1579.20: used 62.80% of the points.
+Time 1579.22: used 62.87% of the points.
+Time 1579.24: used 62.94% of the points.
+Time 1579.26: used 63.01% of the points.
+Time 1579.29: used 63.09% of the points.
+Time 1579.31: used 63.16% of the points.
+Time 1579.33: used 63.23% of the points.
+Time 1579.35: used 63.30% of the points.
+Time 1591.76: used 63.37% of the points.
+Time 1591.78: used 63.45% of the points.
+Time 1591.81: used 63.52% of the points.
+Time 1591.83: used 63.59% of the points.
+Time 1591.86: used 63.66% of the points.
+Time 1591.89: used 63.73% of the points.
+Time 1591.91: used 63.81% of the points.
+Time 1591.93: used 63.88% of the points.
+Time 1591.95: used 63.95% of the points.
+Time 1591.97: used 64.02% of the points.
+Time 1592.00: used 64.10% of the points.
+Time 1592.02: used 64.17% of the points.
+Time 1592.04: used 64.24% of the points.
+Time 1592.06: used 64.31% of the points.
+Time 1592.08: used 64.38% of the points.
+Time 1592.11: used 64.46% of the points.
+Time 1592.13: used 64.53% of the points.
+Time 1592.15: used 64.60% of the points.
+Time 1592.17: used 64.67% of the points.
+Time 1592.19: used 64.74% of the points.
+Time 1592.21: used 64.82% of the points.
+Time 1592.24: used 64.89% of the points.
+Time 1592.26: used 64.96% of the points.
+Time 1592.28: used 65.03% of the points.
+Time 1592.31: used 65.10% of the points.
+Time 1592.33: used 65.18% of the points.
+Time 1592.35: used 65.25% of the points.
+Time 1592.37: used 65.32% of the points.
+Time 1592.40: used 65.39% of the points.
+Time 1592.42: used 65.47% of the points.
+Time 1592.44: used 65.54% of the points.
+Time 1592.47: used 65.61% of the points.
+Time 1605.13: used 65.68% of the points.
+Time 1605.15: used 65.75% of the points.
+Time 1605.17: used 65.83% of the points.
+Time 1605.19: used 65.90% of the points.
+Time 1605.22: used 65.97% of the points.
+Time 1605.24: used 66.04% of the points.
+Time 1605.26: used 66.11% of the points.
+Time 1605.28: used 66.19% of the points.
+Time 1605.31: used 66.26% of the points.
+Time 1605.33: used 66.33% of the points.
+Time 1605.35: used 66.40% of the points.
+Time 1605.37: used 66.47% of the points.
+Time 1605.39: used 66.55% of the points.
+Time 1605.42: used 66.62% of the points.
+Time 1605.44: used 66.69% of the points.
+Time 1605.46: used 66.76% of the points.
+Time 1605.48: used 66.83% of the points.
+Time 1605.50: used 66.91% of the points.
+Time 1605.53: used 66.98% of the points.
+Time 1605.55: used 67.05% of the points.
+Time 1605.57: used 67.12% of the points.
+Time 1605.59: used 67.20% of the points.
+Time 1605.61: used 67.27% of the points.
+Time 1605.64: used 67.34% of the points.
+Time 1605.66: used 67.41% of the points.
+Time 1605.68: used 67.48% of the points.
+Time 1605.70: used 67.56% of the points.
+Time 1605.72: used 67.63% of the points.
+Time 1605.75: used 67.70% of the points.
+Time 1605.77: used 67.77% of the points.
+Time 1605.79: used 67.84% of the points.
+Time 1605.81: used 67.92% of the points.
+Time 1605.83: used 67.99% of the points.
+Time 1605.86: used 68.06% of the points.
+Time 1605.88: used 68.13% of the points.
+Time 1605.90: used 68.20% of the points.
+Time 1617.21: used 68.28% of the points.
+Time 1628.86: used 68.35% of the points.
+Time 1628.88: used 68.42% of the points.
+Time 1628.91: used 68.49% of the points.
+Time 1628.93: used 68.57% of the points.
+Time 1628.95: used 68.64% of the points.
+Time 1643.30: used 68.71% of the points.
+Time 1643.32: used 68.78% of the points.
+Time 1643.34: used 68.85% of the points.
+Time 1657.12: used 68.93% of the points.
+Time 1657.15: used 69.00% of the points.
+Time 1657.17: used 69.07% of the points.
+Time 1657.19: used 69.14% of the points.
+Time 1657.22: used 69.21% of the points.
+Time 1657.24: used 69.29% of the points.
+Time 1668.62: used 69.36% of the points.
+Time 1668.64: used 69.43% of the points.
+Time 1668.67: used 69.50% of the points.
+Time 1668.69: used 69.57% of the points.
+Time 1668.72: used 69.65% of the points.
+Time 1668.74: used 69.72% of the points.
+Time 1668.76: used 69.79% of the points.
+Time 1668.78: used 69.86% of the points.
+Time 1668.80: used 69.94% of the points.
+Time 1668.83: used 70.01% of the points.
+Time 1668.85: used 70.08% of the points.
+Time 1668.87: used 70.15% of the points.
+Time 1668.89: used 70.22% of the points.
+Time 1668.91: used 70.30% of the points.
+Time 1668.94: used 70.37% of the points.
+Time 1668.96: used 70.44% of the points.
+Time 1668.98: used 70.51% of the points.
+Time 1669.00: used 70.58% of the points.
+Time 1669.02: used 70.66% of the points.
+Time 1669.05: used 70.73% of the points.
+Time 1669.07: used 70.80% of the points.
+Time 1669.09: used 70.87% of the points.
+Time 1669.11: used 70.94% of the points.
+Time 1669.13: used 71.02% of the points.
+Time 1669.16: used 71.09% of the points.
+Time 1669.18: used 71.16% of the points.
+Time 1669.20: used 71.23% of the points.
+Time 1669.22: used 71.30% of the points.
+Time 1669.24: used 71.38% of the points.
+Time 1669.27: used 71.45% of the points.
+Time 1669.29: used 71.52% of the points.
+Time 1669.31: used 71.59% of the points.
+Time 1669.33: used 71.67% of the points.
+Time 1669.35: used 71.74% of the points.
+Time 1669.38: used 71.81% of the points.
+Time 1669.40: used 71.88% of the points.
+Time 1669.42: used 71.95% of the points.
+Time 1669.44: used 72.03% of the points.
+Time 1669.46: used 72.10% of the points.
+Time 1669.48: used 72.17% of the points.
+Time 1669.50: used 72.24% of the points.
+Time 1669.53: used 72.31% of the points.
+Time 1669.55: used 72.39% of the points.
+Time 1669.57: used 72.46% of the points.
+Time 1669.59: used 72.53% of the points.
+Time 1669.62: used 72.60% of the points.
+Time 1669.64: used 72.67% of the points.
+Time 1669.66: used 72.75% of the points.
+Time 1669.68: used 72.82% of the points.
+Time 1669.70: used 72.89% of the points.
+Time 1669.73: used 72.96% of the points.
+Time 1669.75: used 73.04% of the points.
+Time 1669.77: used 73.11% of the points.
+Time 1669.79: used 73.18% of the points.
+Time 1669.81: used 73.25% of the points.
+Time 1669.84: used 73.32% of the points.
+Time 1669.86: used 73.40% of the points.
+Time 1669.88: used 73.47% of the points.
+Time 1669.90: used 73.54% of the points.
+Time 1669.93: used 73.61% of the points.
+Time 1669.95: used 73.68% of the points.
+Time 1669.97: used 73.76% of the points.
+Time 1669.99: used 73.83% of the points.
+Time 1670.01: used 73.90% of the points.
+Time 1670.03: used 73.97% of the points.
+Time 1670.06: used 74.04% of the points.
+Time 1670.08: used 74.12% of the points.
+Time 1670.10: used 74.19% of the points.
+Time 1670.12: used 74.26% of the points.
+Time 1670.14: used 74.33% of the points.
+Time 1670.17: used 74.41% of the points.
+Time 1670.19: used 74.48% of the points.
+Time 1670.21: used 74.55% of the points.
+Time 1670.23: used 74.62% of the points.
+Time 1670.26: used 74.69% of the points.
+Time 1670.28: used 74.77% of the points.
+Time 1670.30: used 74.84% of the points.
+Time 1670.32: used 74.91% of the points.
+Time 1670.34: used 74.98% of the points.
+Time 1670.37: used 75.05% of the points.
+Time 1670.39: used 75.13% of the points.
+Time 1670.41: used 75.20% of the points.
+Time 1670.43: used 75.27% of the points.
+Time 1670.45: used 75.34% of the points.
+Time 1670.48: used 75.41% of the points.
+Time 1670.50: used 75.49% of the points.
+Time 1670.52: used 75.56% of the points.
+Time 1670.54: used 75.63% of the points.
+Time 1670.56: used 75.70% of the points.
+Time 1670.59: used 75.78% of the points.
+Time 1670.61: used 75.85% of the points.
+Time 1670.63: used 75.92% of the points.
+Time 1670.65: used 75.99% of the points.
+Time 1670.68: used 76.06% of the points.
+Time 1670.70: used 76.14% of the points.
+Time 1670.72: used 76.21% of the points.
+Time 1670.74: used 76.28% of the points.
+Time 1670.76: used 76.35% of the points.
+Time 1670.78: used 76.42% of the points.
+Time 1670.81: used 76.50% of the points.
+Time 1670.83: used 76.57% of the points.
+Time 1670.85: used 76.64% of the points.
+Time 1670.87: used 76.71% of the points.
+Time 1670.89: used 76.78% of the points.
+Time 1670.92: used 76.86% of the points.
+Time 1670.94: used 76.93% of the points.
+Time 1670.96: used 77.00% of the points.
+Time 1670.98: used 77.07% of the points.
+Time 1671.00: used 77.14% of the points.
+Time 1671.03: used 77.22% of the points.
+Time 1671.05: used 77.29% of the points.
+Time 1671.07: used 77.36% of the points.
+Time 1671.09: used 77.43% of the points.
+Time 1671.12: used 77.51% of the points.
+Time 1671.14: used 77.58% of the points.
+Time 1671.16: used 77.65% of the points.
+Time 1671.18: used 77.72% of the points.
+Time 1671.20: used 77.79% of the points.
+Time 1671.23: used 77.87% of the points.
+Time 1671.25: used 77.94% of the points.
+Time 1671.27: used 78.01% of the points.
+Time 1671.30: used 78.08% of the points.
+Time 1671.32: used 78.15% of the points.
+Time 1671.34: used 78.23% of the points.
+Time 1671.37: used 78.30% of the points.
+Time 1671.39: used 78.37% of the points.
+Time 1671.42: used 78.44% of the points.
+Time 1671.44: used 78.51% of the points.
+Time 1671.47: used 78.59% of the points.
+Time 1671.49: used 78.66% of the points.
+Time 1671.51: used 78.73% of the points.
+Time 1671.54: used 78.80% of the points.
+Time 1671.56: used 78.88% of the points.
+Time 1671.58: used 78.95% of the points.
+Time 1671.61: used 79.02% of the points.
+Time 1682.83: used 79.09% of the points.
+Time 1682.85: used 79.16% of the points.
+Time 1682.88: used 79.24% of the points.
+Time 1682.90: used 79.31% of the points.
+Time 1682.92: used 79.38% of the points.
+Time 1682.94: used 79.45% of the points.
+Time 1682.97: used 79.52% of the points.
+Time 1682.99: used 79.60% of the points.
+Time 1683.01: used 79.67% of the points.
+Time 1683.03: used 79.74% of the points.
+Time 1683.05: used 79.81% of the points.
+Time 1683.07: used 79.88% of the points.
+Time 1683.10: used 79.96% of the points.
+Time 1683.12: used 80.03% of the points.
+Time 1683.14: used 80.10% of the points.
+Time 1683.16: used 80.17% of the points.
+Time 1683.18: used 80.25% of the points.
+Time 1683.20: used 80.32% of the points.
+Time 1683.22: used 80.39% of the points.
+Time 1683.25: used 80.46% of the points.
+Time 1683.27: used 80.53% of the points.
+Time 1683.29: used 80.61% of the points.
+Time 1683.31: used 80.68% of the points.
+Time 1683.33: used 80.75% of the points.
+Time 1683.35: used 80.82% of the points.
+Time 1683.38: used 80.89% of the points.
+Time 1683.40: used 80.97% of the points.
+Time 1683.42: used 81.04% of the points.
+Time 1683.44: used 81.11% of the points.
+Time 1683.46: used 81.18% of the points.
+Time 1683.48: used 81.25% of the points.
+Time 1683.51: used 81.33% of the points.
+Time 1683.53: used 81.40% of the points.
+Time 1683.55: used 81.47% of the points.
+Time 1683.57: used 81.54% of the points.
+Time 1683.59: used 81.61% of the points.
+Time 1683.61: used 81.69% of the points.
+Time 1683.64: used 81.76% of the points.
+Time 1683.66: used 81.83% of the points.
+Time 1683.68: used 81.90% of the points.
+Time 1683.70: used 81.98% of the points.
+Time 1683.72: used 82.05% of the points.
+Time 1683.74: used 82.12% of the points.
+Time 1683.76: used 82.19% of the points.
+Time 1683.79: used 82.26% of the points.
+Time 1683.81: used 82.34% of the points.
+Time 1683.83: used 82.41% of the points.
+Time 1683.85: used 82.48% of the points.
+Time 1683.87: used 82.55% of the points.
+Time 1683.89: used 82.62% of the points.
+Time 1683.92: used 82.70% of the points.
+Time 1683.94: used 82.77% of the points.
+Time 1683.96: used 82.84% of the points.
+Time 1683.98: used 82.91% of the points.
+Time 1684.00: used 82.98% of the points.
+Time 1684.03: used 83.06% of the points.
+Time 1684.05: used 83.13% of the points.
+Time 1695.67: used 83.20% of the points.
+Time 1695.69: used 83.27% of the points.
+Time 1695.71: used 83.35% of the points.
+Time 1706.22: used 83.42% of the points.
+Time 1706.24: used 83.49% of the points.
+Time 1706.26: used 83.56% of the points.
+Time 1706.28: used 83.63% of the points.
+Time 1706.31: used 83.71% of the points.
+Time 1706.33: used 83.78% of the points.
+Time 1706.35: used 83.85% of the points.
+Time 1706.37: used 83.92% of the points.
+Time 1706.39: used 83.99% of the points.
+Time 1720.45: used 84.07% of the points.
+Time 1720.47: used 84.14% of the points.
+Time 1720.49: used 84.21% of the points.
+Time 1720.51: used 84.28% of the points.
+Time 1720.53: used 84.35% of the points.
+Time 1720.56: used 84.43% of the points.
+Time 1720.58: used 84.50% of the points.
+Time 1720.60: used 84.57% of the points.
+Time 1720.62: used 84.64% of the points.
+Time 1720.64: used 84.72% of the points.
+Time 1720.67: used 84.79% of the points.
+Time 1720.69: used 84.86% of the points.
+Time 1720.71: used 84.93% of the points.
+Time 1720.73: used 85.00% of the points.
+Time 1720.75: used 85.08% of the points.
+Time 1720.78: used 85.15% of the points.
+Time 1720.80: used 85.22% of the points.
+Time 1720.82: used 85.29% of the points.
+Time 1720.84: used 85.36% of the points.
+Time 1720.86: used 85.44% of the points.
+Time 1720.88: used 85.51% of the points.
+Time 1720.91: used 85.58% of the points.
+Time 1720.93: used 85.65% of the points.
+Time 1720.95: used 85.72% of the points.
+Time 1720.97: used 85.80% of the points.
+Time 1720.99: used 85.87% of the points.
+Time 1721.02: used 85.94% of the points.
+Time 1721.04: used 86.01% of the points.
+Time 1721.06: used 86.09% of the points.
+Time 1721.08: used 86.16% of the points.
+Time 1721.10: used 86.23% of the points.
+Time 1721.13: used 86.30% of the points.
+Time 1721.15: used 86.37% of the points.
+Time 1721.17: used 86.45% of the points.
+Time 1721.19: used 86.52% of the points.
+Time 1721.22: used 86.59% of the points.
+Time 1721.24: used 86.66% of the points.
+Time 1721.26: used 86.73% of the points.
+Time 1721.28: used 86.81% of the points.
+Time 1721.30: used 86.88% of the points.
+Time 1721.32: used 86.95% of the points.
+Time 1721.35: used 87.02% of the points.
+Time 1721.37: used 87.09% of the points.
+Time 1721.39: used 87.17% of the points.
+Time 1721.41: used 87.24% of the points.
+Time 1721.43: used 87.31% of the points.
+Time 1721.46: used 87.38% of the points.
+Time 1721.48: used 87.45% of the points.
+Time 1721.50: used 87.53% of the points.
+Time 1721.52: used 87.60% of the points.
+Time 1721.55: used 87.67% of the points.
+Time 1721.57: used 87.74% of the points.
+Time 1721.59: used 87.82% of the points.
+Time 1721.61: used 87.89% of the points.
+Time 1721.63: used 87.96% of the points.
+Time 1721.65: used 88.03% of the points.
+Time 1734.92: used 88.10% of the points.
+Time 1734.94: used 88.18% of the points.
+Time 1734.96: used 88.25% of the points.
+Time 1734.99: used 88.32% of the points.
+Time 1735.01: used 88.39% of the points.
+Time 1735.03: used 88.46% of the points.
+Time 1735.06: used 88.54% of the points.
+Time 1735.08: used 88.61% of the points.
+Time 1735.10: used 88.68% of the points.
+Time 1735.13: used 88.75% of the points.
+Time 1735.15: used 88.82% of the points.
+Time 1735.17: used 88.90% of the points.
+Time 1735.19: used 88.97% of the points.
+Time 1735.22: used 89.04% of the points.
+Time 1735.24: used 89.11% of the points.
+Time 1735.26: used 89.19% of the points.
+Time 1735.28: used 89.26% of the points.
+Time 1735.31: used 89.33% of the points.
+Time 1735.33: used 89.40% of the points.
+Time 1735.35: used 89.47% of the points.
+Time 1735.37: used 89.55% of the points.
+Time 1735.40: used 89.62% of the points.
+Time 1735.42: used 89.69% of the points.
+Time 1735.44: used 89.76% of the points.
+Time 1735.47: used 89.83% of the points.
+Time 1735.49: used 89.91% of the points.
+Time 1735.51: used 89.98% of the points.
+Time 1735.53: used 90.05% of the points.
+Time 1735.56: used 90.12% of the points.
+Time 1735.58: used 90.19% of the points.
+Time 1735.60: used 90.27% of the points.
+Time 1735.63: used 90.34% of the points.
+Time 1735.65: used 90.41% of the points.
+Time 1735.67: used 90.48% of the points.
+Time 1746.57: used 90.56% of the points.
+Time 1746.60: used 90.63% of the points.
+Time 1746.62: used 90.70% of the points.
+Time 1746.64: used 90.77% of the points.
+Time 1746.66: used 90.84% of the points.
+Time 1746.68: used 90.92% of the points.
+Time 1746.70: used 90.99% of the points.
+Time 1746.73: used 91.06% of the points.
+Time 1746.75: used 91.13% of the points.
+Time 1746.77: used 91.20% of the points.
+Time 1746.79: used 91.28% of the points.
+Time 1746.81: used 91.35% of the points.
+Time 1746.83: used 91.42% of the points.
+Time 1746.85: used 91.49% of the points.
+Time 1746.87: used 91.56% of the points.
+Time 1746.89: used 91.64% of the points.
+Time 1746.92: used 91.71% of the points.
+Time 1746.94: used 91.78% of the points.
+Time 1746.96: used 91.85% of the points.
+Time 1746.98: used 91.93% of the points.
+Time 1747.00: used 92.00% of the points.
+Time 1747.02: used 92.07% of the points.
+Time 1747.04: used 92.14% of the points.
+Time 1747.07: used 92.21% of the points.
+Time 1747.09: used 92.29% of the points.
+Time 1747.11: used 92.36% of the points.
+Time 1747.13: used 92.43% of the points.
+Time 1747.15: used 92.50% of the points.
+Time 1747.17: used 92.57% of the points.
+Time 1747.19: used 92.65% of the points.
+Time 1747.22: used 92.72% of the points.
+Time 1747.24: used 92.79% of the points.
+Time 1747.26: used 92.86% of the points.
+Time 1747.28: used 92.93% of the points.
+Time 1747.30: used 93.01% of the points.
+Time 1747.32: used 93.08% of the points.
+Time 1747.34: used 93.15% of the points.
+Time 1747.37: used 93.22% of the points.
+Time 1747.39: used 93.29% of the points.
+Time 1747.41: used 93.37% of the points.
+Time 1747.43: used 93.44% of the points.
+Time 1747.45: used 93.51% of the points.
+Time 1747.47: used 93.58% of the points.
+Time 1747.49: used 93.66% of the points.
+Time 1747.51: used 93.73% of the points.
+Time 1747.54: used 93.80% of the points.
+Time 1747.56: used 93.87% of the points.
+Time 1747.58: used 93.94% of the points.
+Time 1747.60: used 94.02% of the points.
+Time 1747.62: used 94.09% of the points.
+Time 1747.64: used 94.16% of the points.
+Time 1747.67: used 94.23% of the points.
+Time 1747.69: used 94.30% of the points.
+Time 1747.71: used 94.38% of the points.
+Time 1747.73: used 94.45% of the points.
+Time 1747.75: used 94.52% of the points.
+Time 1747.77: used 94.59% of the points.
+Time 1747.79: used 94.66% of the points.
+Time 1747.81: used 94.74% of the points.
+Time 1747.84: used 94.81% of the points.
+Time 1747.86: used 94.88% of the points.
+Time 1747.88: used 94.95% of the points.
+Time 1747.90: used 95.03% of the points.
+Time 1747.92: used 95.10% of the points.
+Time 1747.94: used 95.17% of the points.
+Time 1747.97: used 95.24% of the points.
+Time 1747.99: used 95.31% of the points.
+Time 1748.01: used 95.39% of the points.
+Time 1748.03: used 95.46% of the points.
+Time 1748.05: used 95.53% of the points.
+Time 1748.07: used 95.60% of the points.
+Time 1748.09: used 95.67% of the points.
+Time 1748.12: used 95.75% of the points.
+Time 1748.14: used 95.82% of the points.
+Time 1748.16: used 95.89% of the points.
+Time 1748.18: used 95.96% of the points.
+Time 1748.20: used 96.03% of the points.
+Time 1748.22: used 96.11% of the points.
+Time 1748.24: used 96.18% of the points.
+Time 1748.27: used 96.25% of the points.
+Time 1748.29: used 96.32% of the points.
+Time 1748.31: used 96.40% of the points.
+Time 1748.33: used 96.47% of the points.
+Time 1748.35: used 96.54% of the points.
+Time 1748.37: used 96.61% of the points.
+Time 1748.39: used 96.68% of the points.
+Time 1748.41: used 96.76% of the points.
+Time 1748.43: used 96.83% of the points.
+Time 1748.45: used 96.90% of the points.
+Time 1748.47: used 96.97% of the points.
+Time 1748.50: used 97.04% of the points.
+Time 1748.52: used 97.12% of the points.
+Time 1748.54: used 97.19% of the points.
+Time 1748.56: used 97.26% of the points.
+Time 1748.58: used 97.33% of the points.
+Time 1748.60: used 97.40% of the points.
+Time 1748.62: used 97.48% of the points.
+Time 1748.64: used 97.55% of the points.
+Time 1748.66: used 97.62% of the points.
+Time 1748.68: used 97.69% of the points.
+Time 1748.71: used 97.76% of the points.
+Time 1748.73: used 97.84% of the points.
+Time 1748.75: used 97.91% of the points.
+Time 1748.77: used 97.98% of the points.
+Time 1748.79: used 98.05% of the points.
+Time 1748.81: used 98.13% of the points.
+Time 1748.83: used 98.20% of the points.
+Time 1748.86: used 98.27% of the points.
+Time 1748.88: used 98.34% of the points.
+Time 1748.90: used 98.41% of the points.
+Time 1748.92: used 98.49% of the points.
+Time 1748.94: used 98.56% of the points.
+Time 1748.96: used 98.63% of the points.
+Time 1748.98: used 98.70% of the points.
+Time 1749.01: used 98.77% of the points.
+Time 1749.03: used 98.85% of the points.
+Time 1749.05: used 98.92% of the points.
+Time 1749.07: used 98.99% of the points.
+Time 1749.09: used 99.06% of the points.
+Time 1749.11: used 99.13% of the points.
+Time 1749.14: used 99.21% of the points.
+Time 1749.16: used 99.28% of the points.
+Time 1749.18: used 99.35% of the points.
+Time 1749.20: used 99.42% of the points.
+Time 1761.49: used 99.50% of the points.
+Time 1761.51: used 99.57% of the points.
+Time 1761.53: used 99.64% of the points.
+Time 1761.55: used 99.71% of the points.
+Time 1761.58: used 99.78% of the points.
+Time 1761.60: used 99.86% of the points.
+Time 1761.62: used 99.93% of the points.
+Time 1761.64: used 100.00% of the points.
+Time 1701211304.15: used 100.00% of the points.
+
+The following have been reloaded with a version change:
+  1) GCCcore/11.2.0 => GCCcore/12.2.0
+  2) XZ/5.2.5-GCCcore-11.2.0 => XZ/5.2.7-GCCcore-12.2.0
+  3) libreadline/8.1-GCCcore-11.2.0 => libreadline/8.2-GCCcore-12.2.0
+  4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
+  5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
+
+[main 86b5182] Pushing online_learning_tuning.py results
+ 4 files changed, 1704 insertions(+), 1 deletion(-)
+ create mode 100644 slurm-6408127.out
+ create mode 100644 slurm-6408128.out
+To github.com:MichalTesnar/mystery
+   f0963e3..86b5182  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6408128 for user s4740556
+Finished at: Tue Nov 28 23:41:48 CET 2023
+
+Job details:
+============
+
+Job ID              : 6408128
+Name                : THRESHOLD_GREEDY
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node67
+Number of Nodes     : 1
+Cores               : 10
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-11-28T23:11:09
+Start               : 2023-11-28T23:11:38
+End                 : 2023-11-28T23:41:48
+Reserved walltime   : 12:00:00
+Used walltime       : 00:30:10
+Used CPU time       : 00:38:25 (efficiency: 12.74%)
+% User (Computation): 97.34%
+% System (I/O)      :  2.66%
+Mem reserved        : 20000M
+Max Mem (Node/step) : 342.69M (node67, per node)
+Full Max Mem usage  : 342.69M
+Total Disk Read     : 2.68M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
