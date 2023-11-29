@@ -1,36 +1,7 @@
 import matplotlib.pyplot as plt
 import pickle
 import numpy as np
-import os
-import sys
 
-sys.path.append('..')
-
-# EXPERIMENT PREFIX
-prefix = "sinus: first real try "
-# DIRECTORIES THAT NEED TO BE CONSIDERED
-dir_names = [
-    # "FIFO tuned (0)",
-    # "FIRO tuned (0)",
-    "RIRO tuned (0)",
-    "THRESHOLD tuned (0)",
-    "GREEDY tuned (0)",
-    "THRESHOLD_GREEDY tuned (0)"
-]
-# IDENTIFIER TO PUT ON THE PLOT
-identifier = "fixed data"
-excluded = {"MSE": True,
-            "R2": True,
-            "Running Mean R2": False,
-            "Cummulative MSE": False, 
-            "Prediction Uncertainty": False,
-            "Skips": False,
-            }
-HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
-# PLOT CONFIG
-plot_name = "Sinus Tuned Selection"
-fig, axs = plt.subplots(HOW_MANY, 1, figsize=(16, 13), sharex=True)
-fig.suptitle(f"{plot_name}", fontsize=15)
 def line_style(st):
     if "FIFO" in st:
         return '-'
@@ -46,7 +17,6 @@ def line_style(st):
         return (0, (5, 2))
     else:
         return(0, (1, 2))
-
 
 def line_color(st):
     if "FIFO" in st:
@@ -64,21 +34,45 @@ def line_color(st):
     else:
         return 'pink'
 
+# EXPERIMENT PREFIX
+prefix = "Dagon try "
+# DIRECTORIES THAT NEED TO BE CONSIDERED
+dir_names = [
+    "FIFO",
+    "FIRO",
+    "RIRO 0.7",
+    "THRESHOLD 0.02",
+    "GREEDY",
+    "THRESHOLD_GREEDY 0.02"
+]
+# IDENTIFIER TO PUT ON THE PLOT
+excluded = {"MSE": False,
+            "R2": False,
+            "Running Mean R2": False,
+            "Cummulative MSE": False, 
+            "Prediction Uncertainty": True,
+            "Skips": True,
+            }
+HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
+# PLOT CONFIG
+plot_name = "Dagon Rest"
+fig, axs = plt.subplots(HOW_MANY, 1, figsize=(16, 13), sharex=True)
+fig.suptitle(f"{plot_name}", fontsize=15)
+
+
 for j, dir_name in enumerate(dir_names):
-    # LOAD RESULTS
     with open(f"results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
         metrics_results = pickle.load(file)
-
-    for i, metric in enumerate(metrics_results.keys()):
+    i = 0
+    for metric in metrics_results.keys():
         if not excluded[metric]:
             continue
         y = metrics_results[metric] 
         x = np.arange(0, len(y))
         axs[i].plot(x, y, label=dir_name, alpha=0.5,
                     linestyle=line_style(dir_name), linewidth=2, color=line_color(dir_name))
-        # axs[i].set_title(metric)
-        # PLOT LEGEND ONLY FOR ONE OF THEM
         axs[i].set_ylabel(metric)
+        i += 1
     axs[min(HOW_MANY-1, 2)].legend(loc='center left', fontsize=12)
     axs[HOW_MANY-1].set_xlabel('Iterations')
 
