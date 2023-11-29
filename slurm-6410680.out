@@ -13859,3 +13859,47 @@ The following have been reloaded with a version change:
   4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
   5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
 
+[main f7a890f] Pushing online_learning_tuning.py results
+ 2 files changed, 13735 insertions(+)
+To github.com:MichalTesnar/mystery
+   3f57105..f7a890f  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6410680 for user s4740556
+Finished at: Wed Nov 29 15:11:58 CET 2023
+
+Job details:
+============
+
+Job ID              : 6410680
+Name                : run RIRO
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node67
+Number of Nodes     : 1
+Cores               : 16
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-11-29T11:17:09
+Start               : 2023-11-29T11:17:09
+End                 : 2023-11-29T15:11:58
+Reserved walltime   : 16:00:00
+Used walltime       : 03:54:49
+Used CPU time       : 05:06:51 (efficiency:  8.17%)
+% User (Computation): 95.70%
+% System (I/O)      :  4.30%
+Mem reserved        : 32000M
+Max Mem (Node/step) : 450.52M (node67, per node)
+Full Max Mem usage  : 450.52M
+Total Disk Read     : 2.68M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
