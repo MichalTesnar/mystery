@@ -1,0 +1,21 @@
+2023-11-29 10:32:01.433644: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-11-29 10:32:01.474182: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2023-11-29 10:32:01.474224: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2023-11-29 10:32:01.475495: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2023-11-29 10:32:01.481522: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-11-29 10:32:01.481805: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-11-29 10:32:06.702058: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Keras Uncertainty will use standalone Keras backendDagon try FIFO
+Traceback (most recent call last):
+  File "/home1/s4740556/mystery/main-auto.py", line 23, in <module>
+    best_hps = tuner.get_best_hyperparameters(num_trials=1)[0] #just takes the best one of list of one
+IndexError: list index out of range
+
+The following have been reloaded with a version change:
+  1) GCCcore/11.2.0 => GCCcore/12.2.0
+  2) XZ/5.2.5-GCCcore-11.2.0 => XZ/5.2.7-GCCcore-12.2.0
+  3) libreadline/8.1-GCCcore-11.2.0 => libreadline/8.2-GCCcore-12.2.0
+  4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
+  5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
+
