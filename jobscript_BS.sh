@@ -8,7 +8,7 @@ module load Python/3.9.6-GCCcore-11.2.0
 
 source $HOME/venvs/mystery/bin/activate
 
-python3 tunes_BS.py $1 # run the script with different arguments
+python3 tune_BS.py $1 # run the script with different arguments
 
 module load git
 git config --global user.email "michal.tesnar007@gmail.com"
