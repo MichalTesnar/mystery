@@ -16,3 +16,51 @@ an editor opened by 'git commit'. Please make sure all processes
 are terminated then try again. If it still fails, a git process
 may have crashed in this repository earlier:
 remove the file manually to continue.
+fatal: Unable to create '/home1/s4740556/mystery/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+Everything up-to-date
+
+###############################################################################
+Hábrók Cluster
+Job 6542842 for user s4740556
+Finished at: Tue Dec  5 19:46:25 CET 2023
+
+Job details:
+============
+
+Job ID              : 6542842
+Name                : LR RIRO
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node83
+Number of Nodes     : 1
+Cores               : 10
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-12-05T19:44:37
+Start               : 2023-12-05T19:46:17
+End                 : 2023-12-05T19:46:25
+Reserved walltime   : 12:00:00
+Used walltime       : 00:00:08
+Used CPU time       : 00:00:01 (efficiency:  1.29%)
+% User (Computation):  0.00%
+% System (I/O)      : 15.57%
+Mem reserved        : 20000M
+Max Mem (Node/step) : 0.00  (Node unknown, N/A)
+Full Max Mem usage  : 0.00 
+Total Disk Read     : 2.28K
+Total Disk Write    : 2.00 
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
