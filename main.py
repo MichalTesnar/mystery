@@ -26,10 +26,10 @@ batch size 2.
 patience 3.
 """
 
-# DATASET_TYPE = "Dagon" 
+DATASET_TYPE = "Dagon" 
 DATASET_TYPE = "Toy"
-# EXP_TYPE = "Offline"
-EXP_TYPE = "Online"
+EXP_TYPE = "Offline"
+# EXP_TYPE = "Online"
 
 experiment_specification = {
     "EXPERIMENT_IDENTIFIER": "testing visual",

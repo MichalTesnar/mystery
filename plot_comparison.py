@@ -31,31 +31,36 @@ def line_color(st):
         return 'black'
     elif "GREEDY" in st:
         return 'orange'
+    elif "BASELINE" in st:  # Added condition for a new color
+        return 'purple'
     else:
         return 'pink'
 
+
 # EXPERIMENT PREFIX
-prefix = "Dagon try "
+prefix = "Dagon try2 "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 dir_names = [
-    "FIFO",
+    # "FIFO",
     "FIRO",
-    "RIRO 0.7",
-    "THRESHOLD 0.02",
+    "RIRO",
+    "THRESHOLD",
     "GREEDY",
-    "THRESHOLD_GREEDY 0.02"
+    "THRESHOLD_GREEDY"
 ]
 # IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": False,
+excluded = {"MSE": True,
             "R2": False,
             "Running Mean R2": False,
-            "Cummulative MSE": False, 
-            "Prediction Uncertainty": True,
-            "Skips": True,
+            "Cummulative MSE": True, 
+            "Prediction Uncertainty": False,
+            "Skips": False,
             }
+R2_BASELINE = 0.8
+MSE_BASELINE = 0.002
 HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
 # PLOT CONFIG
-plot_name = "Dagon Rest"
+plot_name = "Dagon No FIFO All Data Points Rest"
 fig, axs = plt.subplots(HOW_MANY, 1, figsize=(16, 13), sharex=True)
 fig.suptitle(f"{plot_name}", fontsize=15)
 
@@ -72,6 +77,10 @@ for j, dir_name in enumerate(dir_names):
         axs[i].plot(x, y, label=dir_name, alpha=0.5,
                     linestyle=line_style(dir_name), linewidth=2, color=line_color(dir_name))
         axs[i].set_ylabel(metric)
+        if metric == "MSE":
+            axs[i].axhline(y=MSE_BASELINE, color=line_color("BASELINE"), label="Baseline")
+        if metric == "R2":
+            axs[i].axhline(y=R2_BASELINE, color=line_color("BASELINE"), label="Baseline")
         i += 1
     axs[min(HOW_MANY-1, 2)].legend(loc='center left', fontsize=12)
     axs[HOW_MANY-1].set_xlabel('Iterations')
