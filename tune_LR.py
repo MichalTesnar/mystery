@@ -16,12 +16,12 @@ import copy
 import sys
 
 DATASET_TYPE = "Dagon"
-EXP_TYPE = "Offline"
+EXP_TYPE = "Online"
 MODEL_MODE = sys.argv[1] if EXP_TYPE == "Online" else "OFFLINE"
     
 
 es = {
-    "EXPERIMENT_IDENTIFIER": f"Multiple workers {MODEL_MODE}",
+    "EXPERIMENT_IDENTIFIER": f"Tuning LR {MODEL_MODE}",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 50,
     "MODEL_MODE": MODEL_MODE,
@@ -51,10 +51,12 @@ class MyHyperModel(HyperModel):
         # model building function
         def model_fn():
             inp = Input(es["INPUT_LAYER_SIZE"])
-            hp_units = hp.Choice('units', values=[4, 8, 16, 32, 64])
+            # hp_units = hp.Choice('units', values=[4, 8, 16, 32, 64])
+            hp_units = 32
             x = Dense(hp_units, activation="relu")(inp)
             # Hyperparam tune number of layers
-            num_layers = hp.Int('num_layers', min_value=1, max_value=4, step=1)
+            # num_layers = hp.Int('num_layers', min_value=1, max_value=4, step=1)
+            num_layers = 3
             for _ in range(num_layers):
                 # for each add units
                 x = Dense(hp_units, activation="relu")(x)
@@ -62,6 +64,7 @@ class MyHyperModel(HyperModel):
             train_model = Model(inp, mean)
             hp_learning_rate = hp.Choice('learning_rate', values=[
                                          1e-1, 1e-2, 1e-3, 1e-4, 1e-5])
+            # hp_learning_rate = 1e-3
             train_model.compile(loss="mse", optimizer=Adam(
                 learning_rate=hp_learning_rate))
             return train_model
@@ -71,10 +74,10 @@ class MyHyperModel(HyperModel):
         # HAD TO ALTER KERAS BACKEND TO BE ABLE TO DO THIS, not a valid Keras Model
 
     def fit(self, hp, model, x, y, validation_data, callbacks=None, **kwargs):
-        batch_size = hp.Choice('batch_size', values=[1, 2, 4, 8, 16])
-        es["BATCH_SIZE"] = batch_size
-        patience = hp.Choice('patience', values=[3, 5, 9])
-        es["PATIENCE"] = patience
+        # batch_size = hp.Choice('batch_size', values=[1, 2, 4, 8, 16])
+        es["BATCH_SIZE"] = 4
+        # patience = hp.Choice('patience', values=[3, 5, 9])
+        es["PATIENCE"] = 5
         current_dataset = copy.deepcopy(dataset)
         AIOmodel = AIOModelTuning(
                 current_dataset.give_initial_training_set(es["BUFFER_SIZE"]), es, model)
