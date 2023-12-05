@@ -735,3 +735,65 @@ The following have been reloaded with a version change:
   4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
   5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
 
+[main 6a04306] BS results
+ 18 files changed, 1181 insertions(+)
+ create mode 100644 slurm-6542868.out
+ create mode 100644 slurm-6542869.out
+ create mode 100644 slurm-6542870.out
+ create mode 100644 slurm-6542871.out
+ create mode 100644 slurm-6542872.out
+ create mode 100644 slurm-6542873.out
+ create mode 100644 slurm-6542874.out
+ create mode 100644 slurm-6542875.out
+ create mode 100644 slurm-6542876.out
+ create mode 100644 slurm-6542877.out
+ create mode 100644 slurm-6542878.out
+ create mode 100644 slurm-6542879.out
+ create mode 100644 slurm-6542880.out
+ create mode 100644 slurm-6542881.out
+ create mode 100644 slurm-6542882.out
+ create mode 100644 slurm-6542883.out
+ create mode 100644 slurm-6542884.out
+ create mode 100644 slurm-6542885.out
+To github.com:MichalTesnar/mystery
+   67dd703..6a04306  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6542871 for user s4740556
+Finished at: Tue Dec  5 22:27:13 CET 2023
+
+Job details:
+============
+
+Job ID              : 6542871
+Name                : BS THRESHOLD
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node64
+Number of Nodes     : 1
+Cores               : 10
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-12-05T19:51:18
+Start               : 2023-12-05T19:53:00
+End                 : 2023-12-05T22:27:13
+Reserved walltime   : 12:00:00
+Used walltime       : 02:34:13
+Used CPU time       : 03:07:39 (efficiency: 12.17%)
+% User (Computation): 96.15%
+% System (I/O)      :  3.86%
+Mem reserved        : 20000M
+Max Mem (Node/step) : 3.45G (node64, per node)
+Full Max Mem usage  : 3.45G
+Total Disk Read     : 2.69M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
