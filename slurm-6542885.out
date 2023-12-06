@@ -846,3 +846,47 @@ The following have been reloaded with a version change:
   4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
   5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
 
+[main 19be982] LR results
+ 5 files changed, 798 insertions(+)
+To github.com:MichalTesnar/mystery
+   a8cbff7..19be982  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6542885 for user s4740556
+Finished at: Wed Dec  6 03:27:23 CET 2023
+
+Job details:
+============
+
+Job ID              : 6542885
+Name                : LR THRESHOLD_GREEDY
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node64
+Number of Nodes     : 1
+Cores               : 10
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-12-05T19:51:32
+Start               : 2023-12-05T20:00:13
+End                 : 2023-12-06T03:27:23
+Reserved walltime   : 12:00:00
+Used walltime       : 07:27:10
+Used CPU time       : 09:54:07 (efficiency: 13.29%)
+% User (Computation): 96.32%
+% System (I/O)      :  3.68%
+Mem reserved        : 20000M
+Max Mem (Node/step) : 3.45G (node64, per node)
+Full Max Mem usage  : 3.45G
+Total Disk Read     : 2.69M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
