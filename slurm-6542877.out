@@ -739,3 +739,47 @@ The following have been reloaded with a version change:
   4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
   5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
 
+[main 4aed26a] PAT results
+ 7 files changed, 805 insertions(+)
+To github.com:MichalTesnar/mystery
+   2dcbbd4..4aed26a  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6542877 for user s4740556
+Finished at: Tue Dec  5 23:26:20 CET 2023
+
+Job details:
+============
+
+Job ID              : 6542877
+Name                : PAT THRESHOLD
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node92
+Number of Nodes     : 1
+Cores               : 10
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-12-05T19:51:27
+Start               : 2023-12-05T19:55:21
+End                 : 2023-12-05T23:26:20
+Reserved walltime   : 12:00:00
+Used walltime       : 03:30:59
+Used CPU time       : 04:32:21 (efficiency: 12.91%)
+% User (Computation): 95.15%
+% System (I/O)      :  4.85%
+Mem reserved        : 20000M
+Max Mem (Node/step) : 3.38G (node92, per node)
+Full Max Mem usage  : 3.38G
+Total Disk Read     : 2.69M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
