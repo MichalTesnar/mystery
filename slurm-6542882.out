@@ -15594,3 +15594,47 @@ The following have been reloaded with a version change:
   4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
   5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
 
+[main 4b2971a] LR results
+ 4 files changed, 15546 insertions(+)
+To github.com:MichalTesnar/mystery
+   733dbb6..4b2971a  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6542882 for user s4740556
+Finished at: Wed Dec  6 04:44:20 CET 2023
+
+Job details:
+============
+
+Job ID              : 6542882
+Name                : LR RIRO
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node64
+Number of Nodes     : 1
+Cores               : 10
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-12-05T19:51:32
+Start               : 2023-12-05T20:00:13
+End                 : 2023-12-06T04:44:20
+Reserved walltime   : 12:00:00
+Used walltime       : 08:44:07
+Used CPU time       : 11:02:21 (efficiency: 12.64%)
+% User (Computation): 96.82%
+% System (I/O)      :  3.18%
+Mem reserved        : 20000M
+Max Mem (Node/step) : 3.47G (node64, per node)
+Full Max Mem usage  : 3.47G
+Total Disk Read     : 2.69M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
