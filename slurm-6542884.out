@@ -1,0 +1,840 @@
+2023-12-05 20:00:17.974722: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-12-05 20:00:18.011330: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2023-12-05 20:00:18.011365: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2023-12-05 20:00:18.012846: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2023-12-05 20:00:18.019486: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-12-05 20:00:18.019701: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-12-05 20:00:20.841369: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Keras Uncertainty will use standalone Keras backend/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+
+Search: Running Trial #1
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.0001            |learning_rate
+
+
+Trial 1 Complete [00h 08m 49s]
+val_loss: 2.219280233927843
+
+Best val_loss So Far: 2.219280233927843
+Total elapsed time: 00h 08m 49s
+
+Search: Running Trial #2
+
+Value             |Best Value So Far |Hyperparameter
+0.1               |0.0001            |learning_rate
+
+
+Trial 2 Complete [00h 06m 20s]
+val_loss: 2.305530726909638
+
+Best val_loss So Far: 2.219280233927843
+Total elapsed time: 00h 15m 10s
+
+Search: Running Trial #3
+
+Value             |Best Value So Far |Hyperparameter
+0.001             |0.0001            |learning_rate
+
+
+Trial 3 Complete [00h 07m 54s]
+val_loss: 2.084396793667614
+
+Best val_loss So Far: 2.084396793667614
+Total elapsed time: 00h 23m 04s
+
+Search: Running Trial #4
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.001             |learning_rate
+
+
+Trial 4 Complete [00h 08m 57s]
+val_loss: 2.1307734716041344
+
+Best val_loss So Far: 2.084396793667614
+Total elapsed time: 00h 32m 00s
+
+Search: Running Trial #5
+
+Value             |Best Value So Far |Hyperparameter
+0.001             |0.001             |learning_rate
+
+
+Trial 5 Complete [00h 07m 56s]
+val_loss: 1.8094273571824204
+
+Best val_loss So Far: 1.8094273571824204
+Total elapsed time: 00h 39m 56s
+
+Search: Running Trial #6
+
+Value             |Best Value So Far |Hyperparameter
+0.001             |0.001             |learning_rate
+
+
+Trial 6 Complete [00h 07m 52s]
+val_loss: 1.7700830122520188
+
+Best val_loss So Far: 1.7700830122520188
+Total elapsed time: 00h 47m 49s
+
+Search: Running Trial #7
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.001             |learning_rate
+
+
+Trial 7 Complete [00h 08m 53s]
+val_loss: 2.7534249591930147
+
+Best val_loss So Far: 1.7700830122520188
+Total elapsed time: 00h 56m 42s
+
+Search: Running Trial #8
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 8 Complete [00h 06m 08s]
+val_loss: 1.4294213701424932
+
+Best val_loss So Far: 1.4294213701424932
+Total elapsed time: 01h 02m 50s
+
+Search: Running Trial #9
+
+Value             |Best Value So Far |Hyperparameter
+0.1               |0.01              |learning_rate
+
+
+Trial 9 Complete [00h 05m 54s]
+val_loss: 44.828812122344985
+
+Best val_loss So Far: 1.4294213701424932
+Total elapsed time: 01h 08m 44s
+
+Search: Running Trial #10
+
+Value             |Best Value So Far |Hyperparameter
+0.001             |0.01              |learning_rate
+
+
+Trial 10 Complete [00h 07m 40s]
+val_loss: 2.12072140492242
+
+Best val_loss So Far: 1.4294213701424932
+Total elapsed time: 01h 16m 25s
+
+Search: Running Trial #11
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.01              |learning_rate
+
+
+Trial 11 Complete [00h 06m 26s]
+val_loss: 1.385961153383913
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 01h 22m 51s
+
+Search: Running Trial #12
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 12 Complete [00h 23m 19s]
+val_loss: 3.1237013758770322
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 01h 46m 10s
+
+Search: Running Trial #13
+
+Value             |Best Value So Far |Hyperparameter
+0.1               |0.01              |learning_rate
+
+
+Trial 13 Complete [00h 06m 11s]
+val_loss: 2.319046471653315
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 01h 52m 21s
+
+Search: Running Trial #14
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 14 Complete [00h 23m 15s]
+val_loss: 2.488007002349558
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 02h 15m 36s
+
+Search: Running Trial #15
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 15 Complete [00h 24m 27s]
+val_loss: 3.3430880863091033
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 02h 40m 04s
+
+Search: Running Trial #16
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.01              |learning_rate
+
+
+Trial 16 Complete [00h 08m 27s]
+val_loss: 2.4535142915516053
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 02h 48m 31s
+
+Search: Running Trial #17
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 17 Complete [00h 22m 08s]
+val_loss: 2.634349045054667
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 03h 10m 39s
+
+Search: Running Trial #18
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.01              |learning_rate
+
+
+Trial 18 Complete [00h 08m 00s]
+val_loss: 2.444831226920259
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 03h 18m 39s
+
+Search: Running Trial #19
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.01              |learning_rate
+
+
+Trial 19 Complete [00h 05m 40s]
+val_loss: 1.5536062712299417
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 03h 24m 20s
+
+Search: Running Trial #20
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.01              |learning_rate
+
+
+Trial 20 Complete [00h 05m 38s]
+val_loss: 1.4977958053350446
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 03h 29m 58s
+
+Search: Running Trial #21
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.01              |learning_rate
+
+
+Trial 21 Complete [00h 08m 09s]
+val_loss: 2.5425282850347726
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 03h 38m 08s
+
+Search: Running Trial #22
+
+Value             |Best Value So Far |Hyperparameter
+0.001             |0.01              |learning_rate
+
+
+Trial 22 Complete [00h 07m 16s]
+val_loss: 1.9029722396155877
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 03h 45m 24s
+
+Search: Running Trial #23
+
+Value             |Best Value So Far |Hyperparameter
+0.1               |0.01              |learning_rate
+
+
+Trial 23 Complete [00h 05m 51s]
+val_loss: 2.2771910932557353
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 03h 51m 14s
+
+Search: Running Trial #24
+
+Value             |Best Value So Far |Hyperparameter
+0.1               |0.01              |learning_rate
+
+
+Trial 24 Complete [00h 05m 50s]
+val_loss: 7.861835216653756
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 03h 57m 05s
+
+Search: Running Trial #25
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 25 Complete [00h 22m 18s]
+val_loss: 2.621934853237251
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 04h 19m 23s
+
+Search: Running Trial #26
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 26 Complete [00h 23m 11s]
+val_loss: 2.6168477602046103
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 04h 42m 34s
+
+Search: Running Trial #27
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 27 Complete [00h 22m 30s]
+val_loss: 1.9761081432987877
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 05h 05m 05s
+
+Search: Running Trial #28
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.01              |learning_rate
+
+
+Trial 28 Complete [00h 08m 09s]
+val_loss: 3.5297703596538494
+
+Best val_loss So Far: 1.385961153383913
+Total elapsed time: 05h 13m 15s
+
+Search: Running Trial #29
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.01              |learning_rate
+
+
+Trial 29 Complete [00h 05m 54s]
+val_loss: 1.295026280756656
+
+Best val_loss So Far: 1.295026280756656
+Total elapsed time: 05h 19m 08s
+
+Search: Running Trial #30
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.01              |learning_rate
+
+
+Trial 30 Complete [00h 05m 31s]
+val_loss: 1.7169763204352602
+
+Best val_loss So Far: 1.295026280756656
+Total elapsed time: 05h 24m 39s
+
+Search: Running Trial #31
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 31 Complete [00h 22m 38s]
+val_loss: 2.700952874175431
+
+Best val_loss So Far: 1.295026280756656
+Total elapsed time: 05h 47m 17s
+
+Search: Running Trial #32
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 32 Complete [00h 22m 39s]
+val_loss: 3.412285667555086
+
+Best val_loss So Far: 1.295026280756656
+Total elapsed time: 06h 09m 56s
+
+Search: Running Trial #33
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.01              |learning_rate
+
+
+Trial 33 Complete [00h 05m 37s]
+val_loss: 1.2724491162546747
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 06h 15m 33s
+
+Search: Running Trial #34
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.01              |learning_rate
+
+
+Trial 34 Complete [00h 08m 11s]
+val_loss: 2.786090877292487
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 06h 23m 44s
+
+Search: Running Trial #35
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.01              |learning_rate
+
+
+Trial 35 Complete [00h 05m 29s]
+val_loss: 1.4779384431654004
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 06h 29m 14s
+
+Search: Running Trial #36
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.01              |learning_rate
+
+
+Trial 36 Complete [00h 07m 57s]
+val_loss: 2.2545158762870154
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 06h 37m 11s
+
+Search: Running Trial #37
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 37 Complete [00h 23m 11s]
+val_loss: 2.4635541269491426
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 07h 00m 22s
+
+Search: Running Trial #38
+
+Value             |Best Value So Far |Hyperparameter
+0.001             |0.01              |learning_rate
+
+
+Trial 38 Complete [00h 07m 15s]
+val_loss: 1.7441204442032447
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 07h 07m 37s
+
+Search: Running Trial #39
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.01              |learning_rate
+
+
+Trial 39 Complete [00h 07m 59s]
+val_loss: 2.372055362524657
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 07h 15m 35s
+
+Search: Running Trial #40
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 40 Complete [00h 22m 29s]
+val_loss: 2.6319776871081064
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 07h 38m 05s
+
+Search: Running Trial #41
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.01              |learning_rate
+
+
+Trial 41 Complete [00h 05m 42s]
+val_loss: 1.3122061503858404
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 07h 43m 47s
+
+Search: Running Trial #42
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.01              |learning_rate
+
+
+Trial 42 Complete [00h 08m 10s]
+val_loss: 2.9397049397230157
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 07h 51m 57s
+
+Search: Running Trial #43
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.01              |learning_rate
+
+
+Trial 43 Complete [00h 05m 42s]
+val_loss: 1.39053364406372
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 07h 57m 39s
+
+Search: Running Trial #44
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 44 Complete [00h 22m 25s]
+val_loss: 3.2852661203721483
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 08h 20m 04s
+
+Search: Running Trial #45
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.01              |learning_rate
+
+
+Trial 45 Complete [00h 08m 15s]
+val_loss: 2.24611647067399
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 08h 28m 19s
+
+Search: Running Trial #46
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 46 Complete [00h 23m 18s]
+val_loss: 2.555847507612458
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 08h 51m 37s
+
+Search: Running Trial #47
+
+Value             |Best Value So Far |Hyperparameter
+0.001             |0.01              |learning_rate
+
+
+Trial 47 Complete [00h 07m 19s]
+val_loss: 1.597445952481236
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 08h 58m 56s
+
+Search: Running Trial #48
+
+Value             |Best Value So Far |Hyperparameter
+0.001             |0.01              |learning_rate
+
+
+Trial 48 Complete [00h 07m 16s]
+val_loss: 2.1748249710633836
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 09h 06m 12s
+
+Search: Running Trial #49
+
+Value             |Best Value So Far |Hyperparameter
+0.001             |0.01              |learning_rate
+
+
+Trial 49 Complete [00h 07m 19s]
+val_loss: 2.0581391533387117
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 09h 13m 32s
+
+Search: Running Trial #50
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 50 Complete [00h 22m 26s]
+val_loss: 2.6550684098539694
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 09h 35m 58s
+
+Search: Running Trial #51
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.01              |learning_rate
+
+
+Trial 51 Complete [00h 08m 12s]
+val_loss: 2.061184709698989
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 09h 44m 10s
+
+Search: Running Trial #52
+
+Value             |Best Value So Far |Hyperparameter
+0.001             |0.01              |learning_rate
+
+
+Trial 52 Complete [00h 07m 16s]
+val_loss: 1.825120320350958
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 09h 51m 27s
+
+Search: Running Trial #53
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.01              |learning_rate
+
+
+Trial 53 Complete [00h 08m 02s]
+val_loss: 2.269097200755417
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 09h 59m 29s
+
+Search: Running Trial #54
+
+Value             |Best Value So Far |Hyperparameter
+0.1               |0.01              |learning_rate
+
+
+Trial 54 Complete [00h 05m 44s]
+val_loss: 5.61236197270196
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 10h 05m 14s
+
+Search: Running Trial #55
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.01              |learning_rate
+
+
+Trial 55 Complete [00h 08m 18s]
+val_loss: 1.7699026485969285
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 10h 13m 32s
+
+Search: Running Trial #56
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.01              |learning_rate
+
+
+Trial 56 Complete [00h 08m 04s]
+val_loss: 2.198961258191488
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 10h 21m 36s
+
+Search: Running Trial #57
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 57 Complete [00h 23m 33s]
+val_loss: 3.0131550873148014
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 10h 45m 09s
+
+Search: Running Trial #58
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.01              |learning_rate
+
+
+Trial 58 Complete [00h 05m 32s]
+val_loss: 1.4240237009422516
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 10h 50m 42s
+
+Search: Running Trial #59
+
+Value             |Best Value So Far |Hyperparameter
+0.1               |0.01              |learning_rate
+
+
+Trial 59 Complete [00h 05m 49s]
+val_loss: 38.99548068642618
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 10h 56m 30s
+
+Search: Running Trial #60
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.01              |learning_rate
+
+
+Trial 60 Complete [00h 22m 08s]
+val_loss: 2.2145364217717085
+
+Best val_loss So Far: 1.2724491162546747
+Total elapsed time: 11h 18m 38s
+
+The following have been reloaded with a version change:
+  1) GCCcore/11.2.0 => GCCcore/12.2.0
+  2) XZ/5.2.5-GCCcore-11.2.0 => XZ/5.2.7-GCCcore-12.2.0
+  3) libreadline/8.1-GCCcore-11.2.0 => libreadline/8.2-GCCcore-12.2.0
+  4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
+  5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
+

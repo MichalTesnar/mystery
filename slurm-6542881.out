@@ -1,0 +1,796 @@
+2023-12-05 20:00:17.974179: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-12-05 20:00:18.010950: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2023-12-05 20:00:18.010984: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2023-12-05 20:00:18.012067: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2023-12-05 20:00:18.017405: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2023-12-05 20:00:18.017609: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-12-05 20:00:20.841368: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Keras Uncertainty will use standalone Keras backend/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/home1/s4740556/venvs/mystery/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:419: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+
+Search: Running Trial #1
+
+Value             |Best Value So Far |Hyperparameter
+0.1               |0.1               |learning_rate
+
+
+Trial 1 Complete [00h 05m 53s]
+val_loss: 2.5855828914149055
+
+Best val_loss So Far: 2.5855828914149055
+Total elapsed time: 00h 05m 53s
+
+Search: Running Trial #2
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.1               |learning_rate
+
+
+Trial 2 Complete [00h 08m 19s]
+val_loss: 2.878077910378059
+
+Best val_loss So Far: 2.5855828914149055
+Total elapsed time: 00h 14m 12s
+
+Search: Running Trial #3
+
+Value             |Best Value So Far |Hyperparameter
+0.001             |0.1               |learning_rate
+
+
+Trial 3 Complete [00h 07m 28s]
+val_loss: 2.067550109892055
+
+Best val_loss So Far: 2.067550109892055
+Total elapsed time: 00h 21m 40s
+
+Search: Running Trial #4
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.001             |learning_rate
+
+
+Trial 4 Complete [00h 08m 18s]
+val_loss: 2.2492033240610145
+
+Best val_loss So Far: 2.067550109892055
+Total elapsed time: 00h 29m 58s
+
+Search: Running Trial #5
+
+Value             |Best Value So Far |Hyperparameter
+0.0001            |0.001             |learning_rate
+
+
+Trial 5 Complete [00h 08m 19s]
+val_loss: 1.802856901853248
+
+Best val_loss So Far: 1.802856901853248
+Total elapsed time: 00h 38m 17s
+
+Search: Running Trial #6
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.0001            |learning_rate
+
+
+Trial 6 Complete [00h 22m 49s]
+val_loss: 1.9057217438159333
+
+Best val_loss So Far: 1.802856901853248
+Total elapsed time: 01h 01m 06s
+
+Search: Running Trial #7
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.0001            |learning_rate
+
+
+Trial 7 Complete [00h 06m 11s]
+val_loss: 1.6103210464633746
+
+Best val_loss So Far: 1.6103210464633746
+Total elapsed time: 01h 07m 18s
+
+Search: Running Trial #8
+
+Value             |Best Value So Far |Hyperparameter
+0.001             |0.01              |learning_rate
+
+
+Trial 8 Complete [00h 07m 18s]
+val_loss: 1.3160166239430162
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 01h 14m 35s
+
+Search: Running Trial #9
+
+Value             |Best Value So Far |Hyperparameter
+0.001             |0.001             |learning_rate
+
+
+Trial 9 Complete [00h 07m 23s]
+val_loss: 1.8951713324620805
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 01h 21m 58s
+
+Search: Running Trial #10
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 10 Complete [00h 06m 13s]
+val_loss: 1.5918924667198084
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 01h 28m 11s
+
+Search: Running Trial #11
+
+Value             |Best Value So Far |Hyperparameter
+0.1               |0.001             |learning_rate
+
+
+Trial 11 Complete [00h 05m 47s]
+val_loss: 2.29076115221813
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 01h 33m 57s
+
+Search: Running Trial #12
+
+Value             |Best Value So Far |Hyperparameter
+1e-05             |0.001             |learning_rate
+
+
+Trial 12 Complete [00h 23m 23s]
+val_loss: 3.5988913322317186
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 01h 57m 20s
+
+Search: Running Trial #13
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 13 Complete [00h 06m 06s]
+val_loss: 1.6717616314518045
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 02h 03m 26s
+
+Search: Running Trial #14
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 14 Complete [00h 06m 11s]
+val_loss: 1.5629640601832282
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 02h 09m 37s
+
+Search: Running Trial #15
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 15 Complete [00h 06m 11s]
+val_loss: 1.7201609143923076
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 02h 15m 49s
+
+Search: Running Trial #16
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 16 Complete [00h 06m 11s]
+val_loss: 1.6438128090110318
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 02h 21m 59s
+
+Search: Running Trial #17
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 17 Complete [00h 06m 10s]
+val_loss: 1.775865624690878
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 02h 28m 10s
+
+Search: Running Trial #18
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 18 Complete [00h 06m 13s]
+val_loss: 1.7718989196522485
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 02h 34m 22s
+
+Search: Running Trial #19
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 19 Complete [00h 06m 15s]
+val_loss: 1.3705737328734882
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 02h 40m 38s
+
+Search: Running Trial #20
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 20 Complete [00h 06m 05s]
+val_loss: 2.019517815832434
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 02h 46m 43s
+
+Search: Running Trial #21
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 21 Complete [00h 06m 17s]
+val_loss: 1.5848125024088515
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 02h 53m 00s
+
+Search: Running Trial #22
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 22 Complete [00h 06m 10s]
+val_loss: 1.787188695165618
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 02h 59m 10s
+
+Search: Running Trial #23
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 23 Complete [00h 06m 10s]
+val_loss: 1.5701470210634432
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 03h 05m 19s
+
+Search: Running Trial #24
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 24 Complete [00h 06m 08s]
+val_loss: 1.7711386449378106
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 03h 11m 28s
+
+Search: Running Trial #25
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 25 Complete [00h 06m 07s]
+val_loss: 1.8913125984113788
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 03h 17m 35s
+
+Search: Running Trial #26
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 26 Complete [00h 06m 06s]
+val_loss: 1.7140888766995783
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 03h 23m 41s
+
+Search: Running Trial #27
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 27 Complete [00h 06m 03s]
+val_loss: 1.9477303022968362
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 03h 29m 45s
+
+Search: Running Trial #28
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 28 Complete [00h 06m 13s]
+val_loss: 1.760281983120689
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 03h 35m 58s
+
+Search: Running Trial #29
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 29 Complete [00h 06m 11s]
+val_loss: 1.6105042529003368
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 03h 42m 10s
+
+Search: Running Trial #30
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 30 Complete [00h 06m 12s]
+val_loss: 1.5017334138011118
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 03h 48m 22s
+
+Search: Running Trial #31
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 31 Complete [00h 06m 02s]
+val_loss: 1.8016174939172016
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 03h 54m 25s
+
+Search: Running Trial #32
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 32 Complete [00h 06m 10s]
+val_loss: 1.57253386080265
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 04h 00m 35s
+
+Search: Running Trial #33
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 33 Complete [00h 06m 11s]
+val_loss: 1.566691182553769
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 04h 06m 46s
+
+Search: Running Trial #34
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 34 Complete [00h 06m 14s]
+val_loss: 1.4921449407421317
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 04h 13m 00s
+
+Search: Running Trial #35
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 35 Complete [00h 06m 16s]
+val_loss: 1.446007697489755
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 04h 19m 16s
+
+Search: Running Trial #36
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 36 Complete [00h 06m 08s]
+val_loss: 1.7766077549293122
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 04h 25m 24s
+
+Search: Running Trial #37
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 37 Complete [00h 06m 09s]
+val_loss: 1.6327245512913022
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 04h 31m 33s
+
+Search: Running Trial #38
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 38 Complete [00h 06m 08s]
+val_loss: 1.7804163869084983
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 04h 37m 42s
+
+Search: Running Trial #39
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 39 Complete [00h 06m 16s]
+val_loss: 1.6958649502745986
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 04h 43m 58s
+
+Search: Running Trial #40
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 40 Complete [00h 06m 16s]
+val_loss: 1.5211384358077205
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 04h 50m 13s
+
+Search: Running Trial #41
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 41 Complete [00h 06m 18s]
+val_loss: 1.570195510469633
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 04h 56m 31s
+
+Search: Running Trial #42
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 42 Complete [00h 06m 11s]
+val_loss: 1.4494174084272888
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 05h 02m 42s
+
+Search: Running Trial #43
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 43 Complete [00h 06m 19s]
+val_loss: 1.3842364362087747
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 05h 09m 01s
+
+Search: Running Trial #44
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 44 Complete [00h 06m 10s]
+val_loss: 1.8041385910634342
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 05h 15m 12s
+
+Search: Running Trial #45
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 45 Complete [00h 06m 10s]
+val_loss: 1.8526503155971397
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 05h 21m 23s
+
+Search: Running Trial #46
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 46 Complete [00h 06m 04s]
+val_loss: 1.8916276436427537
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 05h 27m 27s
+
+Search: Running Trial #47
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 47 Complete [00h 06m 12s]
+val_loss: 1.774601906281093
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 05h 33m 38s
+
+Search: Running Trial #48
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 48 Complete [00h 06m 11s]
+val_loss: 1.6430417299270639
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 05h 39m 50s
+
+Search: Running Trial #49
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 49 Complete [00h 06m 12s]
+val_loss: 1.5667459163172495
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 05h 46m 02s
+
+Search: Running Trial #50
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 50 Complete [00h 06m 15s]
+val_loss: 1.7085405120561874
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 05h 52m 18s
+
+Search: Running Trial #51
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 51 Complete [00h 06m 12s]
+val_loss: 1.4903569380784867
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 05h 58m 30s
+
+Search: Running Trial #52
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 52 Complete [00h 06m 12s]
+val_loss: 1.8912618134556147
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 06h 04m 42s
+
+Search: Running Trial #53
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 53 Complete [00h 06m 13s]
+val_loss: 1.4031678119610087
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 06h 10m 55s
+
+Search: Running Trial #54
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 54 Complete [00h 06m 07s]
+val_loss: 1.7581348542509407
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 06h 17m 02s
+
+Search: Running Trial #55
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 55 Complete [00h 06m 10s]
+val_loss: 1.7914488426056387
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 06h 23m 12s
+
+Search: Running Trial #56
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 56 Complete [00h 06m 16s]
+val_loss: 1.5515431538224227
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 06h 29m 29s
+
+Search: Running Trial #57
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 57 Complete [00h 06m 12s]
+val_loss: 1.5740713556778827
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 06h 35m 40s
+
+Search: Running Trial #58
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 58 Complete [00h 06m 12s]
+val_loss: 1.698580315400814
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 06h 41m 52s
+
+Search: Running Trial #59
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 59 Complete [00h 06m 07s]
+val_loss: 1.6848781165377846
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 06h 47m 59s
+
+Search: Running Trial #60
+
+Value             |Best Value So Far |Hyperparameter
+0.01              |0.001             |learning_rate
+
+
+Trial 60 Complete [00h 06m 06s]
+val_loss: 1.5935831182989584
+
+Best val_loss So Far: 1.3160166239430162
+Total elapsed time: 06h 54m 05s
+
+The following have been reloaded with a version change:
+  1) GCCcore/11.2.0 => GCCcore/12.2.0
+  2) XZ/5.2.5-GCCcore-11.2.0 => XZ/5.2.7-GCCcore-12.2.0
+  3) libreadline/8.1-GCCcore-11.2.0 => libreadline/8.2-GCCcore-12.2.0
+  4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
+  5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
+
+[main a8cbff7] LR results
+ 11 files changed, 1002 insertions(+)
+To github.com:MichalTesnar/mystery
+   4aed26a..a8cbff7  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6542881 for user s4740556
+Finished at: Wed Dec  6 02:54:51 CET 2023
+
+Job details:
+============
+
+Job ID              : 6542881
+Name                : LR FIRO
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node64
+Number of Nodes     : 1
+Cores               : 10
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-12-05T19:51:32
+Start               : 2023-12-05T20:00:13
+End                 : 2023-12-06T02:54:51
+Reserved walltime   : 12:00:00
+Used walltime       : 06:54:38
+Used CPU time       : 08:33:01 (efficiency: 12.37%)
+% User (Computation): 96.60%
+% System (I/O)      :  3.40%
+Mem reserved        : 20000M
+Max Mem (Node/step) : 3.59G (node64, per node)
+Full Max Mem usage  : 3.59G
+Total Disk Read     : 2.69M
+Total Disk Write    : 40.64K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
