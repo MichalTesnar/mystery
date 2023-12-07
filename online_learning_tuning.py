@@ -16,7 +16,7 @@ import copy
 import sys
 
 DATASET_TYPE = "Dagon"
-EXP_TYPE = "Offline"
+EXP_TYPE = "Online"
 MODEL_MODE = sys.argv[1] if EXP_TYPE == "Online" else "OFFLINE"
     
 
