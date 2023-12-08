@@ -14,3 +14,969 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 2023-12-07 22:26:47.753790: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
 2023-12-07 22:26:47.754140: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Keras Uncertainty will use standalone Keras backendKeras Uncertainty will use standalone Keras backend
+Search: Running Trial #1
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+2                 |2                 |num_layers
+0.01              |0.01              |learning_rate
+
+
+Trial 1 Complete [00h 00m 14s]
+val_loss: 0.05575231366747553
+
+Best val_loss So Far: 0.05575231366747553
+Total elapsed time: 00h 00m 14s
+
+Search: Running Trial #2
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+1                 |2                 |num_layers
+1e-05             |0.01              |learning_rate
+1                 |1                 |batch_size
+3                 |3                 |patience
+
+
+Trial 2 Complete [00h 14m 28s]
+val_loss: 0.12337796218263732
+
+Best val_loss So Far: 0.05575231366747553
+Total elapsed time: 00h 14m 42s
+
+Search: Running Trial #3
+
+Value             |Best Value So Far |Hyperparameter
+16                |4                 |units
+1                 |2                 |num_layers
+0.0001            |0.01              |learning_rate
+8                 |1                 |batch_size
+3                 |3                 |patience
+
+
+Trial 3 Complete [00h 00m 39s]
+val_loss: 0.3131189086248587
+
+Best val_loss So Far: 0.05575231366747553
+Total elapsed time: 00h 15m 21s
+
+Search: Running Trial #4
+
+Value             |Best Value So Far |Hyperparameter
+32                |4                 |units
+2                 |2                 |num_layers
+1e-05             |0.01              |learning_rate
+2                 |1                 |batch_size
+5                 |3                 |patience
+
+
+Trial 4 Complete [00h 02m 07s]
+val_loss: 0.05152626532488194
+
+Best val_loss So Far: 0.05152626532488194
+Total elapsed time: 00h 17m 28s
+
+Search: Running Trial #5
+
+Value             |Best Value So Far |Hyperparameter
+64                |32                |units
+4                 |2                 |num_layers
+0.01              |1e-05             |learning_rate
+1                 |2                 |batch_size
+3                 |5                 |patience
+
+
+Trial 5 Complete [00h 00m 12s]
+val_loss: 0.011110006688332891
+
+Best val_loss So Far: 0.011110006688332891
+Total elapsed time: 00h 17m 40s
+
+Search: Running Trial #6
+
+Value             |Best Value So Far |Hyperparameter
+64                |64                |units
+1                 |4                 |num_layers
+0.0001            |0.01              |learning_rate
+8                 |1                 |batch_size
+9                 |3                 |patience
+
+
+Trial 6 Complete [00h 00m 29s]
+val_loss: 0.06980143200882058
+
+Best val_loss So Far: 0.011110006688332891
+Total elapsed time: 00h 18m 10s
+
+Search: Running Trial #7
+
+Value             |Best Value So Far |Hyperparameter
+4                 |64                |units
+4                 |4                 |num_layers
+0.001             |0.01              |learning_rate
+1                 |1                 |batch_size
+3                 |3                 |patience
+
+
+Trial 7 Complete [00h 00m 28s]
+val_loss: 0.012789143153480221
+
+Best val_loss So Far: 0.011110006688332891
+Total elapsed time: 00h 18m 37s
+
+Search: Running Trial #8
+
+Value             |Best Value So Far |Hyperparameter
+32                |64                |units
+4                 |4                 |num_layers
+0.01              |0.01              |learning_rate
+2                 |1                 |batch_size
+9                 |3                 |patience
+
+
+Trial 8 Complete [00h 00m 14s]
+val_loss: 0.01220794748841401
+
+Best val_loss So Far: 0.011110006688332891
+Total elapsed time: 00h 18m 51s
+
+Search: Running Trial #9
+
+Value             |Best Value So Far |Hyperparameter
+64                |64                |units
+1                 |4                 |num_layers
+0.01              |0.01              |learning_rate
+1                 |1                 |batch_size
+3                 |3                 |patience
+
+
+Trial 9 Complete [00h 00m 09s]
+val_loss: 0.057162693968169226
+
+Best val_loss So Far: 0.011110006688332891
+Total elapsed time: 00h 19m 00s
+
+Search: Running Trial #10
+
+Value             |Best Value So Far |Hyperparameter
+16                |64                |units
+2                 |4                 |num_layers
+0.01              |0.01              |learning_rate
+8                 |1                 |batch_size
+5                 |3                 |patience
+
+
+Trial 10 Complete [00h 00m 10s]
+val_loss: 0.019546137257508336
+
+Best val_loss So Far: 0.011110006688332891
+Total elapsed time: 00h 19m 10s
+
+Search: Running Trial #11
+
+Value             |Best Value So Far |Hyperparameter
+64                |64                |units
+3                 |4                 |num_layers
+0.001             |0.01              |learning_rate
+1                 |1                 |batch_size
+5                 |3                 |patience
+
+
+Trial 11 Complete [00h 00m 12s]
+val_loss: 0.029163697987881106
+
+Best val_loss So Far: 0.011110006688332891
+Total elapsed time: 00h 19m 22s
+
+Search: Running Trial #12
+
+Value             |Best Value So Far |Hyperparameter
+16                |64                |units
+1                 |4                 |num_layers
+0.0001            |0.01              |learning_rate
+4                 |1                 |batch_size
+3                 |3                 |patience
+
+
+Trial 12 Complete [00h 00m 46s]
+val_loss: 0.3989833301842266
+
+Best val_loss So Far: 0.011110006688332891
+Total elapsed time: 00h 20m 07s
+
+Search: Running Trial #13
+
+Value             |Best Value So Far |Hyperparameter
+64                |64                |units
+3                 |4                 |num_layers
+0.1               |0.01              |learning_rate
+16                |1                 |batch_size
+9                 |3                 |patience
+
+
+Trial 13 Complete [00h 00m 10s]
+val_loss: 17.65376600744542
+
+Best val_loss So Far: 0.011110006688332891
+Total elapsed time: 00h 20m 17s
+
+Search: Running Trial #14
+
+Value             |Best Value So Far |Hyperparameter
+4                 |64                |units
+2                 |4                 |num_layers
+1e-05             |0.01              |learning_rate
+16                |1                 |batch_size
+3                 |3                 |patience
+
+
+Trial 14 Complete [00h 04m 31s]
+val_loss: 0.03465175949281909
+
+Best val_loss So Far: 0.011110006688332891
+Total elapsed time: 00h 24m 48s
+
+Search: Running Trial #15
+
+Value             |Best Value So Far |Hyperparameter
+16                |64                |units
+1                 |4                 |num_layers
+0.01              |0.01              |learning_rate
+1                 |1                 |batch_size
+5                 |3                 |patience
+
+
+Trial 15 Complete [00h 00m 11s]
+val_loss: 0.2194843904947573
+
+Best val_loss So Far: 0.011110006688332891
+Total elapsed time: 00h 24m 59s
+
+Search: Running Trial #16
+
+Value             |Best Value So Far |Hyperparameter
+4                 |64                |units
+3                 |4                 |num_layers
+0.0001            |0.01              |learning_rate
+2                 |1                 |batch_size
+9                 |3                 |patience
+
+
+Trial 16 Complete [00h 03m 20s]
+val_loss: 0.06962069373692452
+
+Best val_loss So Far: 0.011110006688332891
+Total elapsed time: 00h 28m 21s
+
+Search: Running Trial #17
+
+Value             |Best Value So Far |Hyperparameter
+4                 |64                |units
+1                 |4                 |num_layers
+0.001             |0.01              |learning_rate
+8                 |1                 |batch_size
+5                 |3                 |patience
+
+
+Trial 17 Complete [00h 00m 34s]
+val_loss: 0.1829680196668906
+
+Best val_loss So Far: 0.011110006688332891
+Total elapsed time: 00h 28m 56s
+
+Search: Running Trial #18
+
+Value             |Best Value So Far |Hyperparameter
+4                 |64                |units
+4                 |4                 |num_layers
+0.1               |0.01              |learning_rate
+1                 |1                 |batch_size
+9                 |3                 |patience
+
+
+Trial 18 Complete [00h 00m 14s]
+val_loss: 0.010781060198906772
+
+Best val_loss So Far: 0.010781060198906772
+Total elapsed time: 00h 29m 10s
+
+Search: Running Trial #19
+
+Value             |Best Value So Far |Hyperparameter
+32                |4                 |units
+4                 |4                 |num_layers
+1e-05             |0.1               |learning_rate
+1                 |1                 |batch_size
+9                 |9                 |patience
+
+
+Trial 19 Complete [00h 02m 44s]
+val_loss: 0.06308697685325285
+
+Best val_loss So Far: 0.010781060198906772
+Total elapsed time: 00h 31m 55s
+
+Search: Running Trial #20
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+3                 |4                 |num_layers
+0.1               |0.1               |learning_rate
+16                |1                 |batch_size
+3                 |9                 |patience
+
+
+Trial 20 Complete [00h 00m 08s]
+val_loss: 0.010055893768731202
+
+Best val_loss So Far: 0.010055893768731202
+Total elapsed time: 00h 32m 04s
+
+Search: Running Trial #21
+
+Value             |Best Value So Far |Hyperparameter
+64                |4                 |units
+1                 |3                 |num_layers
+1e-05             |0.1               |learning_rate
+1                 |16                |batch_size
+9                 |3                 |patience
+
+
+Trial 21 Complete [00h 02m 08s]
+val_loss: 0.06648830255758978
+
+Best val_loss So Far: 0.010055893768731202
+Total elapsed time: 00h 34m 13s
+
+Search: Running Trial #22
+
+Value             |Best Value So Far |Hyperparameter
+16                |4                 |units
+4                 |3                 |num_layers
+1e-05             |0.1               |learning_rate
+4                 |16                |batch_size
+3                 |3                 |patience
+
+
+Trial 22 Complete [00h 02m 47s]
+val_loss: 0.017157528387839172
+
+Best val_loss So Far: 0.010055893768731202
+Total elapsed time: 00h 37m 00s
+
+Search: Running Trial #23
+
+Value             |Best Value So Far |Hyperparameter
+8                 |4                 |units
+1                 |3                 |num_layers
+0.1               |0.1               |learning_rate
+8                 |16                |batch_size
+3                 |3                 |patience
+
+
+Trial 23 Complete [00h 00m 07s]
+val_loss: 0.7819803144267576
+
+Best val_loss So Far: 0.010055893768731202
+Total elapsed time: 00h 37m 08s
+
+Search: Running Trial #24
+
+Value             |Best Value So Far |Hyperparameter
+8                 |4                 |units
+1                 |3                 |num_layers
+1e-05             |0.1               |learning_rate
+8                 |16                |batch_size
+9                 |3                 |patience
+
+
+Trial 24 Complete [00h 08m 59s]
+val_loss: 0.164073115701021
+
+Best val_loss So Far: 0.010055893768731202
+Total elapsed time: 00h 46m 07s
+
+Search: Running Trial #25
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+4                 |3                 |num_layers
+1e-05             |0.1               |learning_rate
+16                |16                |batch_size
+5                 |3                 |patience
+
+
+Trial 25 Complete [00h 04m 43s]
+val_loss: 0.015279998002133111
+
+Best val_loss So Far: 0.010055893768731202
+Total elapsed time: 00h 50m 51s
+
+Search: Running Trial #26
+
+Value             |Best Value So Far |Hyperparameter
+64                |4                 |units
+4                 |3                 |num_layers
+1e-05             |0.1               |learning_rate
+1                 |16                |batch_size
+3                 |3                 |patience
+
+
+Trial 26 Complete [00h 01m 07s]
+val_loss: 0.015383693908673701
+
+Best val_loss So Far: 0.010055893768731202
+Total elapsed time: 00h 51m 59s
+
+Search: Running Trial #27
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+1                 |3                 |num_layers
+1e-05             |0.1               |learning_rate
+1                 |16                |batch_size
+9                 |3                 |patience
+
+
+Trial 27 Complete [00h 27m 36s]
+val_loss: 0.06933180754530106
+
+Best val_loss So Far: 0.010055893768731202
+Total elapsed time: 01h 19m 35s
+
+Search: Running Trial #28
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+1                 |3                 |num_layers
+0.1               |0.1               |learning_rate
+1                 |16                |batch_size
+9                 |3                 |patience
+
+
+Trial 28 Complete [00h 00m 10s]
+val_loss: 0.14902243874019752
+
+Best val_loss So Far: 0.010055893768731202
+Total elapsed time: 01h 19m 46s
+
+Search: Running Trial #29
+
+Value             |Best Value So Far |Hyperparameter
+64                |4                 |units
+1                 |3                 |num_layers
+1e-05             |0.1               |learning_rate
+1                 |16                |batch_size
+3                 |3                 |patience
+
+
+Trial 29 Complete [00h 01m 20s]
+val_loss: 0.12436044084247085
+
+Best val_loss So Far: 0.010055893768731202
+Total elapsed time: 01h 21m 06s
+
+Search: Running Trial #30
+
+Value             |Best Value So Far |Hyperparameter
+64                |4                 |units
+1                 |3                 |num_layers
+1e-05             |0.1               |learning_rate
+16                |16                |batch_size
+3                 |3                 |patience
+
+
+Trial 30 Complete [00h 00m 55s]
+val_loss: 0.14142982280206282
+
+Best val_loss So Far: 0.010055893768731202
+Total elapsed time: 01h 22m 02s
+
+Search: Running Trial #31
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+4                 |3                 |num_layers
+0.1               |0.1               |learning_rate
+2                 |16                |batch_size
+3                 |3                 |patience
+
+
+Trial 31 Complete [00h 00m 10s]
+val_loss: 0.010498366678290348
+
+Best val_loss So Far: 0.010055893768731202
+Total elapsed time: 01h 22m 12s
+
+Search: Running Trial #32
+
+Value             |Best Value So Far |Hyperparameter
+64                |4                 |units
+4                 |3                 |num_layers
+1e-05             |0.1               |learning_rate
+16                |16                |batch_size
+3                 |3                 |patience
+
+
+Trial 32 Complete [00h 00m 41s]
+val_loss: 0.029943343898634903
+
+Best val_loss So Far: 0.010055893768731202
+Total elapsed time: 01h 22m 54s
+
+Search: Running Trial #33
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+4                 |3                 |num_layers
+0.001             |0.1               |learning_rate
+16                |16                |batch_size
+3                 |3                 |patience
+
+
+Trial 33 Complete [00h 00m 15s]
+val_loss: 0.009862153781367192
+
+Best val_loss So Far: 0.009862153781367192
+Total elapsed time: 01h 23m 10s
+
+Search: Running Trial #34
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+4                 |4                 |num_layers
+1e-05             |0.001             |learning_rate
+1                 |16                |batch_size
+9                 |3                 |patience
+
+
+Trial 34 Complete [00h 25m 03s]
+val_loss: 0.029301185972896448
+
+Best val_loss So Far: 0.009862153781367192
+Total elapsed time: 01h 48m 13s
+
+Search: Running Trial #35
+
+Value             |Best Value So Far |Hyperparameter
+16                |4                 |units
+4                 |4                 |num_layers
+0.01              |0.001             |learning_rate
+1                 |16                |batch_size
+5                 |3                 |patience
+
+
+Trial 35 Complete [00h 00m 18s]
+val_loss: 0.011167658620278204
+
+Best val_loss So Far: 0.009862153781367192
+Total elapsed time: 01h 48m 32s
+
+Search: Running Trial #36
+
+Value             |Best Value So Far |Hyperparameter
+64                |4                 |units
+4                 |4                 |num_layers
+0.01              |0.001             |learning_rate
+1                 |16                |batch_size
+9                 |3                 |patience
+
+
+Trial 36 Complete [00h 00m 18s]
+val_loss: 0.010266846582767837
+
+Best val_loss So Far: 0.009862153781367192
+Total elapsed time: 01h 48m 51s
+
+Search: Running Trial #37
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+4                 |4                 |num_layers
+1e-05             |0.001             |learning_rate
+1                 |16                |batch_size
+3                 |3                 |patience
+
+
+Trial 37 Complete [00h 09m 34s]
+val_loss: 0.026283031821948
+
+Best val_loss So Far: 0.009862153781367192
+Total elapsed time: 01h 58m 25s
+
+Search: Running Trial #38
+
+Value             |Best Value So Far |Hyperparameter
+64                |4                 |units
+1                 |4                 |num_layers
+1e-05             |0.001             |learning_rate
+16                |16                |batch_size
+9                 |3                 |patience
+
+
+Trial 38 Complete [00h 01m 30s]
+val_loss: 0.07348376561959666
+
+Best val_loss So Far: 0.009862153781367192
+Total elapsed time: 01h 59m 56s
+
+Search: Running Trial #39
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+4                 |4                 |num_layers
+1e-05             |0.001             |learning_rate
+16                |16                |batch_size
+3                 |3                 |patience
+
+
+Trial 39 Complete [00h 05m 01s]
+val_loss: 0.02122488486567017
+
+Best val_loss So Far: 0.009862153781367192
+Total elapsed time: 02h 04m 57s
+
+Search: Running Trial #40
+
+Value             |Best Value So Far |Hyperparameter
+64                |4                 |units
+1                 |4                 |num_layers
+0.1               |0.001             |learning_rate
+1                 |16                |batch_size
+9                 |3                 |patience
+
+
+Trial 40 Complete [00h 00m 14s]
+val_loss: 16.427057923232752
+
+Best val_loss So Far: 0.009862153781367192
+Total elapsed time: 02h 05m 11s
+
+Search: Running Trial #41
+
+Value             |Best Value So Far |Hyperparameter
+8                 |4                 |units
+1                 |4                 |num_layers
+0.1               |0.001             |learning_rate
+1                 |16                |batch_size
+3                 |3                 |patience
+
+
+Trial 41 Complete [00h 00m 09s]
+val_loss: 0.03754242195582299
+
+Best val_loss So Far: 0.009862153781367192
+Total elapsed time: 02h 05m 21s
+
+Search: Running Trial #42
+
+Value             |Best Value So Far |Hyperparameter
+64                |4                 |units
+4                 |4                 |num_layers
+1e-05             |0.001             |learning_rate
+8                 |16                |batch_size
+9                 |3                 |patience
+
+
+Trial 42 Complete [00h 01m 23s]
+val_loss: 0.034298989858122034
+
+Best val_loss So Far: 0.009862153781367192
+Total elapsed time: 02h 06m 44s
+
+Search: Running Trial #43
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+4                 |4                 |num_layers
+1e-05             |0.001             |learning_rate
+16                |16                |batch_size
+9                 |3                 |patience
+
+
+Trial 43 Complete [00h 07m 53s]
+val_loss: 0.0154256673801198
+
+Best val_loss So Far: 0.009862153781367192
+Total elapsed time: 02h 14m 38s
+
+Search: Running Trial #44
+
+Value             |Best Value So Far |Hyperparameter
+32                |4                 |units
+2                 |4                 |num_layers
+0.001             |0.001             |learning_rate
+1                 |16                |batch_size
+3                 |3                 |patience
+
+
+Trial 44 Complete [00h 00m 11s]
+val_loss: 0.07178211819402212
+
+Best val_loss So Far: 0.009862153781367192
+Total elapsed time: 02h 14m 50s
+
+Search: Running Trial #45
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+1                 |4                 |num_layers
+0.001             |0.001             |learning_rate
+1                 |16                |batch_size
+5                 |3                 |patience
+
+
+Trial 45 Complete [00h 00m 39s]
+val_loss: 0.17403784302227573
+
+Best val_loss So Far: 0.009862153781367192
+Total elapsed time: 02h 15m 30s
+
+Search: Running Trial #46
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+1                 |4                 |num_layers
+0.1               |0.001             |learning_rate
+16                |16                |batch_size
+9                 |3                 |patience
+
+
+Trial 46 Complete [00h 00m 08s]
+val_loss: 0.045705443437874214
+
+Best val_loss So Far: 0.009862153781367192
+Total elapsed time: 02h 15m 38s
+
+Search: Running Trial #47
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+4                 |4                 |num_layers
+0.01              |0.001             |learning_rate
+8                 |16                |batch_size
+9                 |3                 |patience
+
+
+Trial 47 Complete [00h 00m 14s]
+val_loss: 0.008975489872814903
+
+Best val_loss So Far: 0.008975489872814903
+Total elapsed time: 02h 15m 52s
+
+Search: Running Trial #48
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+2                 |4                 |num_layers
+0.1               |0.01              |learning_rate
+4                 |8                 |batch_size
+5                 |9                 |patience
+
+
+Trial 48 Complete [00h 00m 09s]
+val_loss: 0.03779781403616968
+
+Best val_loss So Far: 0.008975489872814903
+Total elapsed time: 02h 16m 02s
+
+Search: Running Trial #49
+
+Value             |Best Value So Far |Hyperparameter
+16                |4                 |units
+4                 |4                 |num_layers
+0.001             |0.01              |learning_rate
+1                 |8                 |batch_size
+9                 |9                 |patience
+
+
+Trial 49 Complete [00h 00m 26s]
+val_loss: 0.024834178551835413
+
+Best val_loss So Far: 0.008975489872814903
+Total elapsed time: 02h 16m 28s
+
+Search: Running Trial #50
+
+Value             |Best Value So Far |Hyperparameter
+64                |4                 |units
+2                 |4                 |num_layers
+1e-05             |0.01              |learning_rate
+4                 |8                 |batch_size
+9                 |9                 |patience
+
+
+Trial 50 Complete [00h 01m 19s]
+val_loss: 0.033585889222696244
+
+Best val_loss So Far: 0.008975489872814903
+Total elapsed time: 02h 17m 48s
+
+Search: Running Trial #51
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+1                 |4                 |num_layers
+1e-05             |0.01              |learning_rate
+16                |8                 |batch_size
+9                 |9                 |patience
+
+
+Trial 51 Complete [00h 11m 01s]
+val_loss: 0.11476740292718436
+
+Best val_loss So Far: 0.008975489872814903
+Total elapsed time: 02h 28m 49s
+
+Search: Running Trial #52
+
+Value             |Best Value So Far |Hyperparameter
+64                |4                 |units
+1                 |4                 |num_layers
+0.01              |0.01              |learning_rate
+16                |8                 |batch_size
+3                 |9                 |patience
+
+
+Trial 52 Complete [00h 00m 08s]
+val_loss: 0.031157118188452595
+
+Best val_loss So Far: 0.008975489872814903
+Total elapsed time: 02h 28m 58s
+
+Search: Running Trial #53
+
+Value             |Best Value So Far |Hyperparameter
+32                |4                 |units
+4                 |4                 |num_layers
+0.01              |0.01              |learning_rate
+8                 |8                 |batch_size
+3                 |9                 |patience
+
+
+Trial 53 Complete [00h 00m 11s]
+val_loss: 0.012371486882313862
+
+Best val_loss So Far: 0.008975489872814903
+Total elapsed time: 02h 29m 09s
+
+Search: Running Trial #54
+
+Value             |Best Value So Far |Hyperparameter
+64                |4                 |units
+4                 |4                 |num_layers
+0.0001            |0.01              |learning_rate
+2                 |8                 |batch_size
+5                 |9                 |patience
+
+
+Trial 54 Complete [00h 00m 23s]
+val_loss: 0.035840558584238534
+
+Best val_loss So Far: 0.008975489872814903
+Total elapsed time: 02h 29m 32s
+
+Search: Running Trial #55
+
+Value             |Best Value So Far |Hyperparameter
+64                |4                 |units
+2                 |4                 |num_layers
+0.001             |0.01              |learning_rate
+4                 |8                 |batch_size
+3                 |9                 |patience
+
+
+Trial 55 Complete [00h 00m 10s]
+val_loss: 0.03361842624059372
+
+Best val_loss So Far: 0.008975489872814903
+Total elapsed time: 02h 29m 42s
+
+Search: Running Trial #56
+
+Value             |Best Value So Far |Hyperparameter
+16                |4                 |units
+4                 |4                 |num_layers
+1e-05             |0.01              |learning_rate
+4                 |8                 |batch_size
+9                 |9                 |patience
+
+
+Trial 56 Complete [00h 04m 32s]
+val_loss: 0.029602656383944267
+
+Best val_loss So Far: 0.008975489872814903
+Total elapsed time: 02h 34m 15s
+
+Search: Running Trial #57
+
+Value             |Best Value So Far |Hyperparameter
+16                |4                 |units
+3                 |4                 |num_layers
+0.001             |0.01              |learning_rate
+16                |8                 |batch_size
+3                 |9                 |patience
+
+
+Trial 57 Complete [00h 00m 14s]
+val_loss: 0.18300435579265573
+
+Best val_loss So Far: 0.008975489872814903
+Total elapsed time: 02h 34m 29s
+
+Search: Running Trial #58
+
+Value             |Best Value So Far |Hyperparameter
+64                |4                 |units
+1                 |4                 |num_layers
+1e-05             |0.01              |learning_rate
+4                 |8                 |batch_size
+5                 |9                 |patience
+
+
+Trial 58 Complete [00h 01m 30s]
+val_loss: 0.04653402149215111
+
+Best val_loss So Far: 0.008975489872814903
+Total elapsed time: 02h 35m 59s
+
+Search: Running Trial #59
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+4                 |4                 |num_layers
+0.1               |0.01              |learning_rate
+16                |8                 |batch_size
+3                 |9                 |patience
+
+
+Trial 59 Complete [00h 00m 10s]
+val_loss: 0.009908028812026619
+
+Best val_loss So Far: 0.008975489872814903
+Total elapsed time: 02h 36m 09s
+
+Search: Running Trial #60
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |units
+1                 |4                 |num_layers
+1e-05             |0.01              |learning_rate
+16                |8                 |batch_size
+3                 |9                 |patience
+
+
+Trial 60 Complete [00h 06m 11s]
+val_loss: 0.25441855071036673
+
+Best val_loss So Far: 0.008975489872814903
+Total elapsed time: 02h 42m 21s
+
+The following have been reloaded with a version change:
+  1) GCCcore/11.2.0 => GCCcore/12.2.0
+  2) XZ/5.2.5-GCCcore-11.2.0 => XZ/5.2.7-GCCcore-12.2.0
+  3) libreadline/8.1-GCCcore-11.2.0 => libreadline/8.2-GCCcore-12.2.0
+  4) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.3-GCCcore-12.2.0
+  5) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.12-GCCcore-12.2.0
+
