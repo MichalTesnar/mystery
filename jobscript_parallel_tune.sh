@@ -10,11 +10,11 @@ source $HOME/venvs/mystery/bin/activate
 
 
 # python3 online_learning_tuning.py $1 # run the script with different arguments
-bash main_worker.sh &
-bash other_worker.sh 0 "FIFO" &
-bash other_worker.sh 1 "FIFO" &
-bash other_worker.sh 2 "FIFO" &
-bash other_worker.sh 3 "FIFO" &
+bash main_worker.sh FIFO &
+bash other_worker.sh 0 FIFO &
+bash other_worker.sh 1 FIFO &
+bash other_worker.sh 2 FIFO &
+bash other_worker.sh 3 FIFO &
 
 
 module load git
