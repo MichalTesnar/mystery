@@ -21,14 +21,14 @@ MODEL_MODE = sys.argv[1] if EXP_TYPE == "Online" else "OFFLINE"
     
 
 es = {
-    "EXPERIMENT_IDENTIFIER": f"Multiple workers {MODEL_MODE}",
+    "EXPERIMENT_IDENTIFIER": f"Full data {MODEL_MODE}",
     "EXPERIMENT_TYPE": DATASET_TYPE,
-    "BUFFER_SIZE": 50,
+    "BUFFER_SIZE": 100,
     "MODEL_MODE": MODEL_MODE,
     "DATASET_MODE": "subsampled_sequential",
     "NUMBER_OF_LAYERS": 4,
     "UNITS_PER_LAYER": 32,
-    "DATASET_SIZE": 0.05 if EXP_TYPE == "Online" else 1,
+    "DATASET_SIZE": 1 if EXP_TYPE == "Online" else 1,
     "MAX_EPOCHS": 100 if EXP_TYPE == "Online" else 100*1000,
     "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
@@ -60,12 +60,10 @@ class MyHyperModel(HyperModel):
                 x = Dense(hp_units, activation="relu")(x)
             mean = Dense(es["OUTPUT_LAYER_SIZE"], activation="linear")(x)
             train_model = Model(inp, mean)
-            hp_learning_rate = hp.Choice('learning_rate', values=[
-                                         1e-1, 1e-2, 1e-3, 1e-4, 1e-5])
+            hp_learning_rate = hp.Choice('learning_rate', values=[1e-2, 1e-3, 1e-4, 1e-5])
             train_model.compile(loss="mse", optimizer=Adam(
                 learning_rate=hp_learning_rate))
             return train_model
-        # lol
 
         return SimpleEnsemble(model_fn, num_estimators=es["NUMBER_OF_ESTIMATORS"])
         # HAD TO ALTER KERAS BACKEND TO BE ABLE TO DO THIS, not a valid Keras Model
@@ -85,14 +83,16 @@ class MyHyperModel(HyperModel):
             i = 0
             training_flag = True
             while current_dataset.data_available():
+                # print(f"Point:{i}/{whole}")
                 if training_flag:
                     AIOmodel.retrain(verbose=False)
-                    i += 1
+                    
                     metrics.collect_metrics(AIOmodel)
                 training_flag = False
                 while not training_flag and current_dataset.data_available():
                     new_point = current_dataset.get_new_point()
                     training_flag = AIOmodel.update_own_training_set(new_point)
+                    i += 1
                     if not training_flag and current_dataset.data_available():
                         metrics.pad_metrics()
             # fit on cummulative MSE loss
