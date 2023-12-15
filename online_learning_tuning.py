@@ -48,6 +48,7 @@ X_val, y_val = dataset.get_validation_set
 
 class MyHyperModel(HyperModel):
     def build(self, hp):
+        print("Building that B*TCH")
         # model building function
         def model_fn():
             inp = Input(es["INPUT_LAYER_SIZE"])
@@ -69,6 +70,7 @@ class MyHyperModel(HyperModel):
         # HAD TO ALTER KERAS BACKEND TO BE ABLE TO DO THIS, not a valid Keras Model
 
     def fit(self, hp, model, x, y, validation_data, callbacks=None, **kwargs):
+        print("Tuning that B*TCH")
         batch_size = hp.Choice('batch_size', values=[1, 2, 4, 8, 16])
         es["BATCH_SIZE"] = batch_size
         patience = hp.Choice('patience', values=[3, 5, 9])
@@ -83,7 +85,7 @@ class MyHyperModel(HyperModel):
             i = 0
             training_flag = True
             while current_dataset.data_available():
-                # print(f"Point:{i}/{whole}")
+                print(f"Point:{i}/{whole}")
                 if training_flag:
                     AIOmodel.retrain(verbose=False)
                     

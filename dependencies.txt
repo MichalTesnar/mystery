@@ -4,7 +4,7 @@ pandas
 keras
 matplotlib
 keras
-keras_uncertainty 
 tensorflow
 keras_tuner
 PyYAML
+keras_uncertainty 
