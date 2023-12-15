@@ -85,8 +85,9 @@ class AIOModel():
 
         elif self.experiment_specification["MODEL_MODE"] == "TIME_HEURISTIC":
             ## @TODO
-            raise NotImplemented("This method is not implemented.")
-
+            #raise NotImplemented("This method is not implemented.")
+            return True
+        
         ################## UQ METHODS ##################
         elif self.experiment_specification["MODEL_MODE"] == "GREEDY":
             # obtain uncertainties on the training set and on the new point
@@ -138,7 +139,7 @@ class AIOModel():
             self.y_train[idx] = new_y
             return True
         
-        raise NotImplemented("This method is not implemented.")
+        #raise NotImplemented("This method is not implemented.")
 
     def retrain(self, verbose=False):
         """
