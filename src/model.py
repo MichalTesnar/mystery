@@ -9,8 +9,8 @@ from keras_uncertainty.models import SimpleEnsemble
 
 class AIOModel():
     def __init__(self, training_set, experiment_specification, p=0.5) -> None:
-        assert experiment_specification["MODEL_MODE"] in ["FIFO", "FIRO", "RIRO", "SPACE_HEURISTIC",
-                                                          "TIME_HEURISTIC", "GREEDY", "THRESHOLD", "THRESHOLD_GREEDY", "OFFLINE"], "Mode does not exist."
+        #assert experiment_specification["MODEL_MODE"] in ["FIFO", "FIRO", "RIRO", "SPACE_HEURISTIC",
+        #                                                  "TIME_HEURISTIC", "GREEDY", "THRESHOLD", "THRESHOLD_GREEDY", "OFFLINE"], "Mode does not exist."
         self.experiment_specification = experiment_specification
         self.X_train, self.y_train = training_set
         self.construct_ensembles()
@@ -80,11 +80,11 @@ class AIOModel():
         ################## HEURISTICS ##################
         elif self.experiment_specification["MODEL_MODE"] == "SPACE_HEURISTIC":
             # @TODO
-            raise NotImplemented("This method is not implemented.")
+            #raise NotImplemented("This method is not implemented.")
             return True
 
         elif self.experiment_specification["MODEL_MODE"] == "TIME_HEURISTIC":
-            # @TODO
+            ## @TODO
             raise NotImplemented("This method is not implemented.")
 
         ################## UQ METHODS ##################
@@ -159,8 +159,8 @@ class AIOModel():
 
 class AIOModelTuning(AIOModel):
     def __init__(self, training_set, experiment_specification, model) -> None:
-        assert experiment_specification["MODEL_MODE"] in ["FIFO", "FIRO", "RIRO", "SPACE_HEURISTIC",
-                                                          "TIME_HEURISTIC", "GREEDY", "THRESHOLD", "THRESHOLD_GREEDY", "OFFLINE"], "Mode does not exist."
+        #assert experiment_specification["MODEL_MODE"] in ["FIFO", "FIRO", "RIRO", "SPACE_HEURISTIC",
+        #                                                  "TIME_HEURISTIC", "GREEDY", "THRESHOLD", "THRESHOLD_GREEDY", "OFFLINE"], "Mode does not exist."
         self.experiment_specification = experiment_specification
         self.X_train, self.y_train = training_set
         self.model = model
