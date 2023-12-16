@@ -1,0 +1,7 @@
+keras==2.13.1
+keras==2.15.0
+Keras_Uncertainty==0.0.1
+matplotlib==3.7.2
+numpy==1.24.3
+pandas==2.0.3
+scikit_learn==1.3.0
