@@ -86,3 +86,44 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 2023-12-19 10:19:58.508891: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
 2023-12-19 10:19:58.508912: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
 2023-12-19 10:19:58.508916: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+slurmstepd: error: *** JOB 6583669 ON node71 CANCELLED AT 2023-12-19T10:33:55 ***
+
+###############################################################################
+Hábrók Cluster
+Job 6583669 for user s4740556
+Finished at: Tue Dec 19 10:33:56 CET 2023
+
+Job details:
+============
+
+Job ID              : 6583669
+Name                : jobscript_parallel_tune.sh
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node71
+Number of Nodes     : 1
+Cores               : 16
+Number of Tasks     : 1
+State               : CANCELLED by 34740556,CANCELLED
+Submit              : 2023-12-19T10:19:53
+Start               : 2023-12-19T10:19:54
+End                 : 2023-12-19T10:33:56
+Reserved walltime   : 1-00:00:00
+Used walltime       :   00:14:02
+Used CPU time       :   02:23:52 (efficiency: 64.07%)
+% User (Computation): 96.18%
+% System (I/O)      :  3.82%
+Mem reserved        : 32000M
+Max Mem (Node/step) : 4.24G (node71, per node)
+Full Max Mem usage  : 4.24G
+Total Disk Read     : 619.23M
+Total Disk Write    : 149.97K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

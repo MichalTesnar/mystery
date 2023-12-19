@@ -26,7 +26,7 @@ bash other_worker.sh 11 $1 &
 bash other_worker.sh 12 $1 &
 bash other_worker.sh 13 $1 &
 bash other_worker.sh 14 $1 &
-bash other_worker.sh 15 $1 &
+bash other_worker.sh 15 $1
 
 module load git
 git config --global user.email "michal.tesnar007@gmail.com"

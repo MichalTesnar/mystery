@@ -125,3 +125,48 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 2023-12-19 10:32:04.686622: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[main bf14ce8] FULL DATA, GREEDY
+ 3 files changed, 341 insertions(+)
+ create mode 100644 slurm-6585182.out
+To github.com:MichalTesnar/mystery
+   7b01302..bf14ce8  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6585182 for user s4740556
+Finished at: Tue Dec 19 10:32:07 CET 2023
+
+Job details:
+============
+
+Job ID              : 6585182
+Name                : jobscript_parallel_tune.sh
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node89
+Number of Nodes     : 1
+Cores               : 32
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-12-19T10:32:01
+Start               : 2023-12-19T10:32:02
+End                 : 2023-12-19T10:32:07
+Reserved walltime   : 1-00:00:00
+Used walltime       :   00:00:05
+Used CPU time       :   00:00:24 (efficiency: 15.62%)
+% User (Computation): 67.46%
+% System (I/O)      : 32.53%
+Mem reserved        : 62.50G
+Max Mem (Node/step) : 1.66G (node89, per node)
+Full Max Mem usage  : 1.66G
+Total Disk Read     : 2.28K
+Total Disk Write    : 2.00 
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
