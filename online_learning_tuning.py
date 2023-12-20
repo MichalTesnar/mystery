@@ -21,7 +21,7 @@ MODEL_MODE = sys.argv[1] if EXP_TYPE == "Online" else "OFFLINE"
     
 
 es = {
-    "EXPERIMENT_IDENTIFIER": f"Full data1 {MODEL_MODE}",
+    "EXPERIMENT_IDENTIFIER": f"Full data fast {MODEL_MODE}",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 100,
     "MODEL_MODE": MODEL_MODE,
