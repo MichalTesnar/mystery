@@ -6,6 +6,7 @@ import time
 import numpy as np
 from keras_tuner import BayesianOptimization
 import sys
+from hyperparams.finder import get_best_params
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 tf.get_logger().setLevel('INFO')
@@ -14,19 +15,20 @@ np.random.seed(107)
 
 MODEL_MODE = sys.argv[1]
 
-tuner = BayesianOptimization(lambda x : None,
-                objective='val_loss',
-                directory='hyperparams',
-                project_name=f"Dagon try {MODEL_MODE}")
-print(f"Dagon try {MODEL_MODE}")
-# Get the optimal hyperparameters
-best_hps = tuner.get_best_hyperparameters(num_trials=1)[0] #just takes the best one of list of one
+identifier = "Full data"
 
-layers = best_hps.get('num_layers')
-units = best_hps.get('units')
-learning_rate = best_hps.get('learning_rate')
-batch_size = best_hps.get('batch_size')
-patience = best_hps.get('patience')
+directory = f"hyperparams/{identifier} {MODEL_MODE}"
+best_hps = get_best_params(directory)
+layers = best_hps['num_layers']
+units = best_hps['units']
+learning_rate = best_hps['learning_rate']
+batch_size = best_hps['batch_size']
+patience = best_hps['patience']
+print(f"layers {layers} \n\
+units {units}\n\
+learning_rate {learning_rate}\n\
+batch_size {batch_size}\n\
+patience {patience}")
 
 DATASET_TYPE = "Dagon" 
 # DATASET_TYPE = "Toy"
@@ -34,7 +36,7 @@ DATASET_TYPE = "Dagon"
 EXP_TYPE = "Online"
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": f"Dagon try2 {MODEL_MODE} tuned",
+    "EXPERIMENT_IDENTIFIER": f"{identifier} {MODEL_MODE} tuned",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 100,
     "MODEL_MODE": MODEL_MODE,
@@ -45,7 +47,7 @@ experiment_specification = {
     "LEARNING_RATE": learning_rate,
     "BATCH_SIZE": batch_size,
     "PATIENCE": patience,
-    "MAX_EPOCHS": 200,
+    "MAX_EPOCHS": 1,
     "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
