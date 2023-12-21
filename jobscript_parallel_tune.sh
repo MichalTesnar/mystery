@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --time=24:00:00
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=60
+#SBATCH --cpus-per-task=59
 #SBATCH --partition=regular
 
 module load Python/3.9.6-GCCcore-11.2.0
@@ -69,8 +69,7 @@ bash other_worker.sh 54 $1 &
 bash other_worker.sh 55 $1 &
 bash other_worker.sh 56 $1 &
 bash other_worker.sh 57 $1 &
-bash other_worker.sh 58 $1 &
-bash other_worker.sh 59 $1
+bash other_worker.sh 58 $1
 
 module load git
 git config --global user.email "michal.tesnar007@gmail.com"
