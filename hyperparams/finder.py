@@ -9,9 +9,13 @@ def find_min_score(folder_path):
         with open(file_path, 'r') as f:
             data = json.load(f)
             score = data.get('score', float('inf'))
-            if score < min_score:
-                min_score = score
-                min_score_file = file_path
+            
+            # print(score)
+            if score != None:
+                # print(data)
+                if score < min_score:
+                    min_score = score
+                    min_score_file = file_path
     return min_score_file
 
 def get_params(file_path):

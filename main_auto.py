@@ -29,7 +29,7 @@ units {units}\n\
 learning_rate {learning_rate}\n\
 batch_size {batch_size}\n\
 patience {patience}")
-
+exit()
 DATASET_TYPE = "Dagon" 
 # DATASET_TYPE = "Toy"
 # EXP_TYPE = "Offline"
