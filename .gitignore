@@ -1,8 +1,0 @@
-*.jpg
-*.png
-*.pkl
-*.json
-*.pyc
-!ensembles.png
-!mcdropout.png
-results/
