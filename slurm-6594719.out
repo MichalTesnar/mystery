@@ -10319,3 +10319,58 @@ The following have been reloaded with a version change:
   3) ncurses/6.2-GCCcore-11.2.0 => ncurses/6.4-GCCcore-12.3.0
   4) zlib/1.2.11-GCCcore-11.2.0 => zlib/1.2.13-GCCcore-12.3.0
 
+[main f932a61] FULL DATA, THRESHOLD
+ 19 files changed, 15338 insertions(+), 3 deletions(-)
+ create mode 100644 slurm-6585455.out
+ create mode 100644 slurm-6590328.out
+ create mode 100644 slurm-6590330.out
+ create mode 100644 slurm-6590331.out
+ create mode 100644 slurm-6590333.out
+ create mode 100644 slurm-6590335.out
+ create mode 100644 slurm-6590336.out
+ create mode 100644 slurm-6592753.out
+ create mode 100644 slurm-6594719.out
+ create mode 100644 slurm-6596423.out
+ create mode 100644 slurm-6597173.out
+To github.com:MichalTesnar/mystery
+   aa8dfd9..f932a61  main -> main
+
+###############################################################################
+Hábrók Cluster
+Job 6594719 for user s4740556
+Finished at: Wed Dec 20 18:36:09 CET 2023
+
+Job details:
+============
+
+Job ID              : 6594719
+Name                : jobscript_parallel_tune.sh
+User                : s4740556
+Partition           : regularmedium
+Nodes               : node85
+Number of Nodes     : 1
+Cores               : 32
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-12-19T19:56:02
+Start               : 2023-12-19T19:56:47
+End                 : 2023-12-20T18:36:09
+Reserved walltime   : 1-00:00:00
+Used walltime       :    19:25:30
+Used CPU time       : 17-03:46:21 (efficiency: 66.24%)
+% User (Computation): 95.84%
+% System (I/O)      :  4.16%
+Mem reserved        : 62.50G
+Max Mem (Node/step) : 12.43G (node85, per node)
+Full Max Mem usage  : 12.43G
+Total Disk Read     : 1.15G
+Total Disk Write    : 982.13K
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
