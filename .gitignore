@@ -1,0 +1,8 @@
+*.png
+*.pyc
+*.out
+*.json
+*.pkl
+/hyperparams
+/results
+/src/__pycache__

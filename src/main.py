@@ -1,57 +1,38 @@
-from src.metrics import Metrics
-from src.model import AIOModel
-from src.dataset import DagonAUVDataset, SinusiodToyExample
+from metrics import Metrics
+from model import AIOModel
+from dataset import DagonAUVDataset, SinusiodToyExample
 import os
 import time
 import numpy as np
-from keras_tuner import BayesianOptimization
-import sys
-from src.utils import get_best_params
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 tf.get_logger().setLevel('INFO')
 
 np.random.seed(107)
 
-MODEL_MODE = sys.argv[1]
 
-identifier = "Full data"
-
-directory = f"hyperparams/{identifier} {MODEL_MODE}"
-best_hps = get_best_params(directory)
-layers = best_hps['num_layers']
-units = best_hps['units']
-learning_rate = best_hps['learning_rate']
-batch_size = best_hps['batch_size']
-patience = best_hps['patience']
-print(f"layers {layers} \n\
-units {units}\n\
-learning_rate {learning_rate}\n\
-batch_size {batch_size}\n\
-patience {patience}")
-exit()
 DATASET_TYPE = "Dagon" 
-# DATASET_TYPE = "Toy"
-# EXP_TYPE = "Offline"
-EXP_TYPE = "Online"
+DATASET_TYPE = "Toy"
+EXP_TYPE = "Offline"
+# EXP_TYPE = "Online"
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": f"{identifier} {MODEL_MODE} tuned",
+    "EXPERIMENT_IDENTIFIER": "testing visual",
     "EXPERIMENT_TYPE": DATASET_TYPE,
-    "BUFFER_SIZE": 100,
-    "MODEL_MODE": MODEL_MODE,
+    "BUFFER_SIZE": 50,
+    "MODEL_MODE": "THRESHOLD",
     "DATASET_MODE": "subsampled_sequential",
-    "NUMBER_OF_LAYERS": layers,
-    "UNITS_PER_LAYER": units,
-    "DATASET_SIZE": 1,
-    "LEARNING_RATE": learning_rate,
-    "BATCH_SIZE": batch_size,
-    "PATIENCE": patience,
-    "MAX_EPOCHS": 1,
+    "NUMBER_OF_LAYERS": 4,
+    "UNITS_PER_LAYER": 32,
+    "DATASET_SIZE": 0.05,
+    "LEARNING_RATE": 0.001,
+    "BATCH_SIZE": 1,
+    "PATIENCE": 10,
+    "MAX_EPOCHS": 200,
     "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
-    "UNCERTAINTY_THRESHOLD": 0.02,
+    "UNCERTAINTY_THRESHOLD": 0.1,
     "RUNNING_MEAN_WINDOW": 10,
     "NUMBER_OF_ESTIMATORS": 10
 }
@@ -60,8 +41,6 @@ if experiment_specification["EXPERIMENT_TYPE"] == "Dagon":
     dataset = DagonAUVDataset(experiment_specification)
 elif experiment_specification["EXPERIMENT_TYPE"] == "Toy":
     dataset = SinusiodToyExample(experiment_specification)
-
-print(dataset.get_current_training_set_size)
 
 if EXP_TYPE == "Online":
     model = AIOModel(dataset.give_initial_training_set(
@@ -73,7 +52,7 @@ if EXP_TYPE == "Online":
     while dataset.data_available():
         if training_flag:
             history = model.retrain()
-            # print(history[-1])
+            print(history[-1])
             metrics.collect_metrics(model)
             if DATASET_TYPE == "Toy":
                 metrics.extra_plots(model)

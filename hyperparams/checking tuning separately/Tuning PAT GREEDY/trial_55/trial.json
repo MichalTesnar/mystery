@@ -1,1 +1,0 @@
-{"trial_id": "55", "hyperparameters": {"space": [{"class_name": "Choice", "config": {"name": "patience", "default": 3, "conditions": [], "values": [3, 5, 9], "ordered": true}}], "values": {"patience": 9}}, "metrics": {"metrics": {}}, "score": null, "best_step": 0, "status": "RUNNING", "message": null}
