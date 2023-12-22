@@ -6,7 +6,7 @@ import time
 import numpy as np
 from keras_tuner import BayesianOptimization
 import sys
-from hyperparams.finder import get_best_params
+from src.utils import get_best_params
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 tf.get_logger().setLevel('INFO')

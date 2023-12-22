@@ -1,6 +1,6 @@
-from src.metrics import Metrics
-from src.model import AIOModel
-from src.dataset import DagonAUVDataset, SinusiodToyExample
+from metrics import Metrics
+from model import AIOModel
+from dataset import DagonAUVDataset, SinusiodToyExample
 import os
 import time
 import numpy as np
@@ -41,8 +41,6 @@ if experiment_specification["EXPERIMENT_TYPE"] == "Dagon":
     dataset = DagonAUVDataset(experiment_specification)
 elif experiment_specification["EXPERIMENT_TYPE"] == "Toy":
     dataset = SinusiodToyExample(experiment_specification)
-
-print(dataset.get_current_training_set_size)
 
 if EXP_TYPE == "Online":
     model = AIOModel(dataset.give_initial_training_set(

@@ -86,6 +86,6 @@ for j, dir_name in enumerate(dir_names):
     axs[HOW_MANY-1].set_xlabel('Iterations')
 
 plt.tight_layout()
-plt.savefig(f"{plot_name}")
+# plt.savefig(f"{plot_name}")
 plt.show()
 plt.close()
