@@ -1,5 +1,7 @@
 *.png
 *.pyc
 *.out
+*.json
+*.pkl
 /hyperparams
 /results
