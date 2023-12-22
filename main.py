@@ -10,21 +10,6 @@ tf.get_logger().setLevel('INFO')
 
 np.random.seed(107)
 
-"""
-SINUS
-number of layers 2.
-units per layer 53
-learning rate 0.1. --> 0.001
-batch size 2.
-patience 4.
-
-DAGON
-number of layers 2.
-units per layer 15
-learning rate 0.1 --> 0.001
-batch size 2.
-patience 3.
-"""
 
 DATASET_TYPE = "Dagon" 
 DATASET_TYPE = "Toy"
