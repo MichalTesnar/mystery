@@ -1,1 +1,0 @@
-{"trial_id": "49", "hyperparameters": {"space": [{"class_name": "Choice", "config": {"name": "batch_size", "default": 1, "conditions": [], "values": [1, 2, 4, 8, 16], "ordered": true}}], "values": {"batch_size": 1}}, "metrics": {"metrics": {}}, "score": null, "best_step": 0, "status": "RUNNING", "message": null}
