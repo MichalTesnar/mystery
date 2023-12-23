@@ -20,12 +20,12 @@ bash other_worker.sh 7 $1 &
 bash other_worker.sh 8 $1 &
 bash other_worker.sh 9 $1 &
 bash other_worker.sh 10 $1
+wait
+# module load git
+# git config --global user.email "michal.tesnar007@gmail.com"
+# git config --global user.name "MichalTesnar"
+# git add --a
+# git commit -m "$1, full data 10"
+# git push
 
-module load git
-git config --global user.email "michal.tesnar007@gmail.com"
-git config --global user.name "MichalTesnar"
-git add --a
-git commit -m "$1, full data 10"
-git push
-
-deactivate
+# deactivate

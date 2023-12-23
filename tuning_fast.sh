@@ -70,12 +70,12 @@ bash other_worker.sh 56 $1 $2 &
 bash other_worker.sh 57 $1 $2 &
 bash other_worker.sh 58 $1 $2 &
 bash other_worker.sh 59 $1 $2 
+wait
+# module load git
+# git config --global user.email "michal.tesnar007@gmail.com"
+# git config --global user.name "MichalTesnar"
+# git add --a
+# git commit -m "$1, full data fast"
+# git push
 
-module load git
-git config --global user.email "michal.tesnar007@gmail.com"
-git config --global user.name "MichalTesnar"
-git add --a
-git commit -m "$1, full data fast"
-git push
-
-deactivate
+# deactivate
