@@ -3,6 +3,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=10
 #SBATCH --partition=regular
+#SBATCH --job-name=$1
 
 module load Python/3.9.6-GCCcore-11.2.0
 
