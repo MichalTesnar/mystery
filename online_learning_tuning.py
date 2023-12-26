@@ -20,12 +20,12 @@ import sys
 # sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 
 DATASET_TYPE = "Dagon"
-EXP_TYPE = "Offline"
+EXP_TYPE = "Online"
 MODEL_MODE = sys.argv[1] if EXP_TYPE == "Online" else "OFFLINE"
     
 
 es = {
-    "EXPERIMENT_IDENTIFIER": f"Full data {MODEL_MODE}",
+    "EXPERIMENT_IDENTIFIER": f"Full data fix {MODEL_MODE}",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 100,
     "MODEL_MODE": MODEL_MODE,
