@@ -29,7 +29,6 @@ units {units}\n\
 learning_rate {learning_rate}\n\
 batch_size {batch_size}\n\
 patience {patience}")
-exit()
 DATASET_TYPE = "Dagon" 
 # DATASET_TYPE = "Toy"
 # EXP_TYPE = "Offline"
@@ -47,15 +46,14 @@ experiment_specification = {
     "LEARNING_RATE": learning_rate,
     "BATCH_SIZE": batch_size,
     "PATIENCE": patience,
-    "MAX_EPOCHS": 1,
+    "MAX_EPOCHS": 100,
     "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
     "UNCERTAINTY_THRESHOLD": 0.02,
-    "RUNNING_MEAN_WINDOW": 10,
+    "RUNNING_MEAN_WINDOW": 50,
     "NUMBER_OF_ESTIMATORS": 10
 }
-
 if experiment_specification["EXPERIMENT_TYPE"] == "Dagon":
     dataset = DagonAUVDataset(experiment_specification)
 elif experiment_specification["EXPERIMENT_TYPE"] == "Toy":
