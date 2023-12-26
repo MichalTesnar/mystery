@@ -10,9 +10,8 @@ tf.get_logger().setLevel('INFO')
 
 np.random.seed(107)
 
-
 DATASET_TYPE = "Dagon" 
-DATASET_TYPE = "Toy"
+# DATASET_TYPE = "Toy"
 EXP_TYPE = "Offline"
 # EXP_TYPE = "Online"
 
@@ -22,18 +21,18 @@ experiment_specification = {
     "BUFFER_SIZE": 50,
     "MODEL_MODE": "THRESHOLD",
     "DATASET_MODE": "subsampled_sequential",
-    "NUMBER_OF_LAYERS": 4,
-    "UNITS_PER_LAYER": 32,
+    "NUMBER_OF_LAYERS": 3,
+    "UNITS_PER_LAYER": 64,
     "DATASET_SIZE": 0.05,
     "LEARNING_RATE": 0.001,
     "BATCH_SIZE": 1,
     "PATIENCE": 10,
-    "MAX_EPOCHS": 200,
+    "MAX_EPOCHS": 100,
     "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
     "UNCERTAINTY_THRESHOLD": 0.1,
-    "RUNNING_MEAN_WINDOW": 10,
+    "RUNNING_MEAN_WINDOW": 50,
     "NUMBER_OF_ESTIMATORS": 10
 }
 
