@@ -15,13 +15,17 @@ from src.model import AIOModelTuning, AIOModel
 import copy
 import sys
 
+import tensorflow as tf
+
+sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+
 DATASET_TYPE = "Dagon"
-EXP_TYPE = "Online"
+EXP_TYPE = "Offline"
 MODEL_MODE = sys.argv[1] if EXP_TYPE == "Online" else "OFFLINE"
     
 
 es = {
-    "EXPERIMENT_IDENTIFIER": f"Full data fast {MODEL_MODE}",
+    "EXPERIMENT_IDENTIFIER": f"Full data {MODEL_MODE}",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 100,
     "MODEL_MODE": MODEL_MODE,
@@ -29,7 +33,7 @@ es = {
     "NUMBER_OF_LAYERS": 4,
     "UNITS_PER_LAYER": 32,
     "DATASET_SIZE": 1 if EXP_TYPE == "Online" else 1,
-    "MAX_EPOCHS": 100 if EXP_TYPE == "Online" else 100*1000,
+    "MAX_EPOCHS": 100 if EXP_TYPE == "Online" else 100*7000,
     "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
@@ -101,7 +105,7 @@ class MyHyperModel(HyperModel):
             return metrics.metrics_results["Cummulative MSE"][-1]
         elif EXP_TYPE == "Offline":
             metrics = MetricsTuning(1, es, dataset.get_validation_set)
-            AIOmodel.retrain()
+            AIOmodel.retrain(verbose=True)
             metrics.collect_metrics(model)
             return metrics.metrics_results["MSE"][-1]
 

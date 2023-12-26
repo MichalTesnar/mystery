@@ -71,7 +71,7 @@ if EXP_TYPE == "Online":
 elif EXP_TYPE == "Offline":
     model = AIOModel(dataset.get_training_set, experiment_specification)
     metrics = Metrics(1, experiment_specification, dataset.get_test_set)
-    model.retrain()
+    model.retrain(verbose=True)
     metrics.collect_metrics(model)
     print(metrics.metrics_results)
     metrics.plot()
