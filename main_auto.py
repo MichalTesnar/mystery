@@ -15,6 +15,11 @@ np.random.seed(107)
 
 MODEL_MODE = sys.argv[1]
 
+ACCEPT_PROBABILITY = 0.5 if MODEL_MODE != "RIRO" else float(sys.argv[2])
+UNCERTAINTY_THRESHOLD = 0.5 if "THRESHOLD" not in MODEL_MODE else float(sys.argv[2])
+
+EXTRA_PARAM = UNCERTAINTY_THRESHOLD if "THRESHOLD" in MODEL_MODE else ACCEPT_PROBABILITY if MODEL_MODE == "RIRO" else ""
+
 identifier = "Full data"
 
 directory = f"hyperparams/{identifier} {MODEL_MODE}"
@@ -35,7 +40,7 @@ DATASET_TYPE = "Dagon"
 EXP_TYPE = "Online"
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": f"{identifier} {MODEL_MODE} tuned",
+    "EXPERIMENT_IDENTIFIER": f"{identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 100,
     "MODEL_MODE": MODEL_MODE,
@@ -47,10 +52,10 @@ experiment_specification = {
     "BATCH_SIZE": batch_size,
     "PATIENCE": patience,
     "MAX_EPOCHS": 100,
-    "ACCEPT_PROBABILITY": 0.7,
+    "ACCEPT_PROBABILITY": ACCEPT_PROBABILITY,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
-    "UNCERTAINTY_THRESHOLD": 0.02,
+    "UNCERTAINTY_THRESHOLD": UNCERTAINTY_THRESHOLD,
     "RUNNING_MEAN_WINDOW": 50,
     "NUMBER_OF_ESTIMATORS": 10
 }

@@ -41,23 +41,24 @@ def line_color(st):
 prefix = "Full data "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 dir_names = [
-    # "FIFO",
-    # "FIRO",
-    # "RIRO",
-    # "THRESHOLD",
-    # "GREEDY",
-    "THRESHOLD_GREEDY"
+    # "OFFLINE tuned (0)",
+    "FIFO tuned (0)",
+    # "FIRO tuned (0)",
+    # "RIRO tuned (0)",
+    # "GREEDY tuned (0)",
+    # "THRESHOLD tuned (0)",
+    # "THRESHOLD_GREEDY tuned (0)",
 ]
 # IDENTIFIER TO PUT ON THE PLOT
 excluded = {"MSE": False,
-            "R2": True,
-            "Running Mean R2": True,
+            "R2": False,
+            "Running Mean R2": False,
             "Cummulative MSE": False, 
-            "Prediction Uncertainty": False,
+            "Prediction Uncertainty": True,
             "Skips": False,
             }
-R2_BASELINE = 0.8
-MSE_BASELINE = 0.002
+# R2_BASELINE = 0.8
+# MSE_BASELINE = 0.002
 HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
 # PLOT CONFIG
 plot_name = "Dagon No FIFO All Data Points Rest"
@@ -68,7 +69,19 @@ fig.suptitle(f"{plot_name}", fontsize=15)
 for j, dir_name in enumerate(dir_names):
     with open(f"results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
         metrics_results = pickle.load(file)
+    # if "OFFLINE" in dir_name:
+    #     # R2_BASELINE = metrics_results["R2"]
+    #     # print(R2_BASELINE)
+    #     MSE_BASELINE = metrics_results["MSE"]
+    #     print(MSE_BASELINE)
+    #     continue
     i = 0
+
+    try:
+        len(axs)
+    except:
+        axs = [axs]
+
     for metric in metrics_results.keys():
         if not excluded[metric]:
             continue
@@ -77,10 +90,11 @@ for j, dir_name in enumerate(dir_names):
         axs[i].plot(x, y, label=dir_name, alpha=0.5,
                     linestyle=line_style(dir_name), linewidth=2, color=line_color(dir_name))
         axs[i].set_ylabel(metric)
-        if metric == "MSE":
-            axs[i].axhline(y=MSE_BASELINE, color=line_color("BASELINE"), label="Baseline")
-        if metric == "R2":
-            axs[i].axhline(y=R2_BASELINE, color=line_color("BASELINE"), label="Baseline")
+        axs[i].axhline(0.1, color=line_color("BASELINE"), label="Baseline")
+        # if metric == "MSE":
+        #     axs[i].axhline(y=MSE_BASELINE, color=line_color("BASELINE"), label="Baseline")
+        # if metric == "R2":
+        #     axs[i].axhline(y=R2_BASELINE, color=line_color("BASELINE"), label="Baseline")
         i += 1
     axs[min(HOW_MANY-1, 2)].legend(loc='center left', fontsize=12)
     axs[HOW_MANY-1].set_xlabel('Iterations')
