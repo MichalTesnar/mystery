@@ -15,8 +15,8 @@ np.random.seed(107)
 
 MODEL_MODE = sys.argv[1]
 
-ACCEPT_PROBABILITY = 0.5 if MODEL_MODE != "RIRO" else float(sys.argv[2])
-UNCERTAINTY_THRESHOLD = 0.5 if "THRESHOLD" not in MODEL_MODE else float(sys.argv[2])
+ACCEPT_PROBABILITY = 0.7 if MODEL_MODE != "RIRO" else float(sys.argv[2])
+UNCERTAINTY_THRESHOLD = 0.02 if "THRESHOLD" not in MODEL_MODE else float(sys.argv[2])
 
 EXTRA_PARAM = UNCERTAINTY_THRESHOLD if "THRESHOLD" in MODEL_MODE else ACCEPT_PROBABILITY if MODEL_MODE == "RIRO" else ""
 
