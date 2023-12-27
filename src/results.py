@@ -42,16 +42,25 @@ prefix = "Full data "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 dir_names = [
     # "OFFLINE tuned (0)",
-    "FIFO tuned (0)",
+    # "FIFO tuned (0)",
     # "FIRO tuned (0)",
     # "RIRO tuned (0)",
     # "GREEDY tuned (0)",
     # "THRESHOLD tuned (0)",
     # "THRESHOLD_GREEDY tuned (0)",
+"THRESHOLD 0.0016 tuned (0)",
+"THRESHOLD 0.0023 tuned (0)",
+"THRESHOLD 0.0036 tuned (0)",
+"THRESHOLD 0.0056 tuned (0)",
+"THRESHOLD 0.0075 tuned (0)",
+"THRESHOLD 0.0096 tuned (0)",
+"THRESHOLD 0.012 tuned (0)",
+"THRESHOLD 0.0156 tuned (0)",
+"THRESHOLD 0.0228 tuned (0)"
 ]
 # IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": False,
-            "R2": False,
+excluded = {"MSE": True,
+            "R2": True,
             "Running Mean R2": False,
             "Cummulative MSE": False, 
             "Prediction Uncertainty": True,
@@ -76,7 +85,7 @@ for j, dir_name in enumerate(dir_names):
     #     print(MSE_BASELINE)
     #     continue
     i = 0
-
+    
     try:
         len(axs)
     except:
@@ -85,7 +94,8 @@ for j, dir_name in enumerate(dir_names):
     for metric in metrics_results.keys():
         if not excluded[metric]:
             continue
-        y = metrics_results[metric] 
+        y = metrics_results[metric]
+        print(y)
         x = np.arange(0, len(y))
         axs[i].plot(x, y, label=dir_name, alpha=0.5,
                     linestyle=line_style(dir_name), linewidth=2, color=line_color(dir_name))

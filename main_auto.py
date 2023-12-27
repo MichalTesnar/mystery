@@ -36,12 +36,13 @@ batch_size {batch_size}\n\
 patience {patience}")
 DATASET_TYPE = "Dagon" 
 # DATASET_TYPE = "Toy"
-EXP_TYPE = "Offline"
-# EXP_TYPE = "Online"
+# EXP_TYPE = "Offline"
+EXP_TYPE = "Online"
 
 experiment_specification = {
     "EXPERIMENT_IDENTIFIER": f"{identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
     "EXPERIMENT_TYPE": DATASET_TYPE,
+    "EXPERIMENTATION_TYPE": EXP_TYPE,
     "BUFFER_SIZE": 100,
     "MODEL_MODE": MODEL_MODE,
     "DATASET_MODE": "subsampled_sequential",
