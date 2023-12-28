@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=24:00:00
+#SBATCH --time=48:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --partition=regular
@@ -14,7 +14,7 @@ module load git
 git config --global user.email "michal.tesnar007@gmail.com"
 git config --global user.name "MichalTesnar"
 git add --a
-git commit -m "Pushing online_learning_tuning.py results"
+git commit -m "Pushing results $1"
 git push
 
 deactivate

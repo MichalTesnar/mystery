@@ -1,45 +1,33 @@
+import tensorflow as tf
 from src.metrics import Metrics
 from src.model import AIOModel
 from src.dataset import DagonAUVDataset, SinusiodToyExample
 import os
 import time
 import numpy as np
-from keras_tuner import BayesianOptimization
 import sys
-from src.utils import get_best_params
+from src.utils import get_best_params, print_best_params
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-import tensorflow as tf
 tf.get_logger().setLevel('INFO')
 
 np.random.seed(107)
 
 MODEL_MODE = sys.argv[1]
-
+EXTRA_PARAM = ""
 ACCEPT_PROBABILITY = 0.7
 if MODEL_MODE == "RIRO" and len(sys.argv) > 2:
     ACCEPT_PROBABILITY = float(sys.argv[2])
+    EXTRA_PARAM = ACCEPT_PROBABILITY
 UNCERTAINTY_THRESHOLD = 0.02
 if "THRESHOLD" in MODEL_MODE and len(sys.argv) > 2:
     UNCERTAINTY_THRESHOLD = float(sys.argv[2])
-
-EXTRA_PARAM = "" #UNCERTAINTY_THRESHOLD if "THRESHOLD" in MODEL_MODE else ACCEPT_PROBABILITY if MODEL_MODE == "RIRO" else ""
+    EXTRA_PARAM = UNCERTAINTY_THRESHOLD
 
 identifier = "Full data"
-
 directory = f"hyperparams/{identifier} {MODEL_MODE}"
 best_hps = get_best_params(directory)
-layers = best_hps['num_layers']
-units = best_hps['units']
-learning_rate = best_hps['learning_rate']
-batch_size = best_hps['batch_size']
-patience = best_hps['patience']
-print(f"layers {layers} \n\
-units {units}\n\
-learning_rate {learning_rate}\n\
-batch_size {batch_size}\n\
-patience {patience}")
-DATASET_TYPE = "Dagon" 
-# DATASET_TYPE = "Toy"
+print_best_params(best_hps)
+DATASET_TYPE = "Dagon"  # "Toy"
 
 experiment_specification = {
     "EXPERIMENT_IDENTIFIER": f"{identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
@@ -47,32 +35,30 @@ experiment_specification = {
     "BUFFER_SIZE": 100,
     "MODEL_MODE": MODEL_MODE,
     "DATASET_MODE": "subsampled_sequential",
-    "NUMBER_OF_LAYERS": layers,
-    "UNITS_PER_LAYER": units,
+    "NUMBER_OF_LAYERS": best_hps['num_layers'],
+    "UNITS_PER_LAYER": best_hps['units'],
     "DATASET_SIZE": 1,
-    "LEARNING_RATE": learning_rate,
-    "BATCH_SIZE": batch_size,
-    "PATIENCE": patience,
+    "LEARNING_RATE": best_hps['learning_rate'],
+    "BATCH_SIZE": best_hps['batch_size'],
+    "PATIENCE": best_hps['patience'],
     "MAX_EPOCHS": 100 if MODEL_MODE != "OFFLINE" else 100*7000,
     "ACCEPT_PROBABILITY": ACCEPT_PROBABILITY,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
     "UNCERTAINTY_THRESHOLD": UNCERTAINTY_THRESHOLD,
-    "RUNNING_MEAN_WINDOW": 50,
     "NUMBER_OF_ESTIMATORS": 10
 }
+
 if experiment_specification["EXPERIMENT_TYPE"] == "Dagon":
     dataset = DagonAUVDataset(experiment_specification)
 elif experiment_specification["EXPERIMENT_TYPE"] == "Toy":
     dataset = SinusiodToyExample(experiment_specification)
 
-print(dataset.get_current_training_set_size)
-
 if MODEL_MODE != "OFFLINE":
     model = AIOModel(dataset.give_initial_training_set(
         experiment_specification["BUFFER_SIZE"]), experiment_specification)
-    metrics = Metrics(dataset.get_current_training_set_size, # account for extra iteration at the end
-                    experiment_specification, dataset.get_test_set)
+    metrics = Metrics(dataset.get_current_training_set_size,  # account for extra iteration at the end
+                      experiment_specification, dataset.get_test_set)
     start_time = time.time()
     training_flag = True
     while dataset.data_available():
@@ -98,7 +84,7 @@ if MODEL_MODE != "OFFLINE":
 else:
     model = AIOModel(dataset.get_training_set, experiment_specification)
     metrics = Metrics(1, experiment_specification, dataset.get_test_set)
-    model.retrain(verbose=True)
+    # model.retrain(verbose=True)
     metrics.collect_metrics(model)
     print(metrics.metrics_results)
     # metrics.plot()
