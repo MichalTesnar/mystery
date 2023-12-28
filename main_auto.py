@@ -15,10 +15,14 @@ np.random.seed(107)
 
 MODEL_MODE = sys.argv[1]
 
-ACCEPT_PROBABILITY = 0.7 if MODEL_MODE != "RIRO" else float(sys.argv[2])
-UNCERTAINTY_THRESHOLD = 0.02 if "THRESHOLD" not in MODEL_MODE else float(sys.argv[2])
+ACCEPT_PROBABILITY = 0.7
+if MODEL_MODE == "RIRO" and len(sys.argv) > 2:
+    ACCEPT_PROBABILITY = float(sys.argv[2])
+UNCERTAINTY_THRESHOLD = 0.02
+if "THRESHOLD" in MODEL_MODE and len(sys.argv) > 2:
+    UNCERTAINTY_THRESHOLD = float(sys.argv[2])
 
-EXTRA_PARAM = UNCERTAINTY_THRESHOLD if "THRESHOLD" in MODEL_MODE else ACCEPT_PROBABILITY if MODEL_MODE == "RIRO" else ""
+EXTRA_PARAM = "" #UNCERTAINTY_THRESHOLD if "THRESHOLD" in MODEL_MODE else ACCEPT_PROBABILITY if MODEL_MODE == "RIRO" else ""
 
 identifier = "Full data"
 
@@ -36,13 +40,10 @@ batch_size {batch_size}\n\
 patience {patience}")
 DATASET_TYPE = "Dagon" 
 # DATASET_TYPE = "Toy"
-# EXP_TYPE = "Offline"
-EXP_TYPE = "Online"
 
 experiment_specification = {
     "EXPERIMENT_IDENTIFIER": f"{identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
     "EXPERIMENT_TYPE": DATASET_TYPE,
-    "EXPERIMENTATION_TYPE": EXP_TYPE,
     "BUFFER_SIZE": 100,
     "MODEL_MODE": MODEL_MODE,
     "DATASET_MODE": "subsampled_sequential",
@@ -52,7 +53,7 @@ experiment_specification = {
     "LEARNING_RATE": learning_rate,
     "BATCH_SIZE": batch_size,
     "PATIENCE": patience,
-    "MAX_EPOCHS": 100,
+    "MAX_EPOCHS": 100 if MODEL_MODE != "OFFLINE" else 100*7000,
     "ACCEPT_PROBABILITY": ACCEPT_PROBABILITY,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
@@ -67,7 +68,7 @@ elif experiment_specification["EXPERIMENT_TYPE"] == "Toy":
 
 print(dataset.get_current_training_set_size)
 
-if EXP_TYPE == "Online":
+if MODEL_MODE != "OFFLINE":
     model = AIOModel(dataset.give_initial_training_set(
         experiment_specification["BUFFER_SIZE"]), experiment_specification)
     metrics = Metrics(dataset.get_current_training_set_size, # account for extra iteration at the end
@@ -91,14 +92,14 @@ if EXP_TYPE == "Online":
 
     dataset.data_available(verbose=True)
 
-    metrics.plot()
+    # metrics.plot()
     metrics.save()
 
-elif EXP_TYPE == "Offline":
+else:
     model = AIOModel(dataset.get_training_set, experiment_specification)
     metrics = Metrics(1, experiment_specification, dataset.get_test_set)
-    model.retrain()
+    model.retrain(verbose=True)
     metrics.collect_metrics(model)
     print(metrics.metrics_results)
-    metrics.plot()
+    # metrics.plot()
     metrics.save()

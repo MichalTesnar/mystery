@@ -10,7 +10,6 @@ Calculation of the metrics of the model.
 Saves the values as a pickle, also the graph and the specification of the model.
 """
 
-
 class Metrics():
     def __init__(self, iterations=0, experiment_specification={}, test_set=([],[]), load=False) -> None:
         self.identifier = experiment_specification["EXPERIMENT_IDENTIFIER"]
@@ -86,7 +85,7 @@ class Metrics():
         if key == "MSE":
             return np.sum(np.square(self._test_y - pred_mean))/self.test_set_size
         elif key == "R2":
-            return r2_score(pred_mean, self._test_y)
+            return r2_score(self._test_y, pred_mean) # using mean of R2 of all variables
         elif key == "Running Mean R2":
             if self.current_data_index > self.model_specification["RUNNING_MEAN_WINDOW"]:
                 return np.mean(self.metrics_results["R2"][self.current_data_index-self.model_specification["RUNNING_MEAN_WINDOW"]:self.current_data_index])

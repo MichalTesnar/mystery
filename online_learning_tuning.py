@@ -20,8 +20,7 @@ import sys
 # sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 
 DATASET_TYPE = "Dagon"
-EXP_TYPE = "Online"
-MODEL_MODE = sys.argv[1] if EXP_TYPE == "Online" else "OFFLINE"
+MODEL_MODE = sys.argv[1]
     
 
 es = {
@@ -32,8 +31,8 @@ es = {
     "DATASET_MODE": "subsampled_sequential",
     "NUMBER_OF_LAYERS": 4,
     "UNITS_PER_LAYER": 32,
-    "DATASET_SIZE": 1 if EXP_TYPE == "Online" else 1,
-    "MAX_EPOCHS": 100 if EXP_TYPE == "Online" else 100*7000,
+    "DATASET_SIZE": 1 if MODEL_MODE != "OFFLINE" else 1,
+    "MAX_EPOCHS": 100 if MODEL_MODE != "OFFLINE" else 100*7000,
     "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
@@ -52,7 +51,6 @@ X_val, y_val = dataset.get_validation_set
 
 class MyHyperModel(HyperModel):
     def build(self, hp):
-        print("Building that B*TCH")
         # model building function
         def model_fn():
             inp = Input(es["INPUT_LAYER_SIZE"])
@@ -74,7 +72,6 @@ class MyHyperModel(HyperModel):
         # HAD TO ALTER KERAS BACKEND TO BE ABLE TO DO THIS, not a valid Keras Model
 
     def fit(self, hp, model, x, y, validation_data, callbacks=None, **kwargs):
-        print("Tuning that B*TCH")
         batch_size = hp.Choice('batch_size', values=[1, 2, 4, 8, 16])
         es["BATCH_SIZE"] = batch_size
         patience = hp.Choice('patience', values=[3, 5, 9])
@@ -85,7 +82,7 @@ class MyHyperModel(HyperModel):
         metrics = MetricsTuning(
                 current_dataset.get_current_training_set_size, es, dataset.get_validation_set)
         whole = current_dataset.get_current_training_set_size
-        if EXP_TYPE == "Online":
+        if MODEL_MODE != "OFFLINE":
             i = 0
             training_flag = True
             while current_dataset.data_available():
@@ -103,7 +100,7 @@ class MyHyperModel(HyperModel):
                         metrics.pad_metrics()
             # fit on cummulative MSE loss
             return metrics.metrics_results["Cummulative MSE"][-1]
-        elif EXP_TYPE == "Offline":
+        else:
             metrics = MetricsTuning(1, es, dataset.get_validation_set)
             AIOmodel.retrain(verbose=True)
             metrics.collect_metrics(model)

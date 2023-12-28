@@ -42,21 +42,12 @@ prefix = "Full data "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 dir_names = [
     # "OFFLINE tuned (0)",
-    # "FIFO tuned (0)",
-    # "FIRO tuned (0)",
-    # "RIRO tuned (0)",
-    # "GREEDY tuned (0)",
-    # "THRESHOLD tuned (0)",
-    # "THRESHOLD_GREEDY tuned (0)",
-"THRESHOLD 0.0016 tuned (0)",
-"THRESHOLD 0.0023 tuned (0)",
-"THRESHOLD 0.0036 tuned (0)",
-"THRESHOLD 0.0056 tuned (0)",
-"THRESHOLD 0.0075 tuned (0)",
-"THRESHOLD 0.0096 tuned (0)",
-"THRESHOLD 0.012 tuned (0)",
-"THRESHOLD 0.0156 tuned (0)",
-"THRESHOLD 0.0228 tuned (0)"
+    "FIFO tuned (0)",
+    "FIRO tuned (0)",
+    "RIRO tuned (0)",
+    "GREEDY tuned (0)",
+    "THRESHOLD tuned (0)",
+    "THRESHOLD_GREEDY tuned (0)"
 ]
 # IDENTIFIER TO PUT ON THE PLOT
 excluded = {"MSE": True,
@@ -67,7 +58,7 @@ excluded = {"MSE": True,
             "Skips": False,
             }
 # R2_BASELINE = 0.8
-# MSE_BASELINE = 0.002
+MSE_BASELINE = 0.00697501
 HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
 # PLOT CONFIG
 plot_name = "Dagon No FIFO All Data Points Rest"
@@ -95,14 +86,12 @@ for j, dir_name in enumerate(dir_names):
         if not excluded[metric]:
             continue
         y = metrics_results[metric]
-        print(y)
         x = np.arange(0, len(y))
         axs[i].plot(x, y, label=dir_name, alpha=0.5,
                     linestyle=line_style(dir_name), linewidth=2, color=line_color(dir_name))
         axs[i].set_ylabel(metric)
-        axs[i].axhline(0.1, color=line_color("BASELINE"), label="Baseline")
-        # if metric == "MSE":
-        #     axs[i].axhline(y=MSE_BASELINE, color=line_color("BASELINE"), label="Baseline")
+        if metric == "MSE":
+            axs[i].axhline(y=MSE_BASELINE, color=line_color("BASELINE"), label="Baseline")
         # if metric == "R2":
         #     axs[i].axhline(y=R2_BASELINE, color=line_color("BASELINE"), label="Baseline")
         i += 1
