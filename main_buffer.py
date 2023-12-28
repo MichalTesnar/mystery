@@ -12,16 +12,11 @@ tf.get_logger().setLevel('INFO')
 
 np.random.seed(107)
 
+assert False == True, "HARDCODE BEST VALUES P and T FOR ALL METHODS"
+
 MODEL_MODE = sys.argv[1]
-EXTRA_PARAM = ""
-ACCEPT_PROBABILITY = 0.7
-if MODEL_MODE == "RIRO" and len(sys.argv) > 2:
-    ACCEPT_PROBABILITY = float(sys.argv[2])
-    EXTRA_PARAM = ACCEPT_PROBABILITY
-UNCERTAINTY_THRESHOLD = 0.02
-if "THRESHOLD" in MODEL_MODE and len(sys.argv) > 2:
-    UNCERTAINTY_THRESHOLD = float(sys.argv[2])
-    EXTRA_PARAM = UNCERTAINTY_THRESHOLD
+BUFFER_SIZE = sys.argv[2]
+EXTRA_PARAM = BUFFER_SIZE
 
 identifier = "Full data"
 directory = f"hyperparams/{identifier} {MODEL_MODE}"
@@ -32,7 +27,7 @@ DATASET_TYPE = "Dagon"  # "Toy"
 experiment_specification = {
     "EXPERIMENT_IDENTIFIER": f"{identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
     "EXPERIMENT_TYPE": DATASET_TYPE,
-    "BUFFER_SIZE": 100,
+    "BUFFER_SIZE": BUFFER_SIZE,
     "MODEL_MODE": MODEL_MODE,
     "DATASET_MODE": "subsampled_sequential",
     "NUMBER_OF_LAYERS": best_hps['num_layers'],
@@ -84,7 +79,7 @@ if MODEL_MODE != "OFFLINE":
 else:
     model = AIOModel(dataset.get_training_set, experiment_specification)
     metrics = Metrics(1, experiment_specification, dataset.get_test_set)
-    model.retrain(verbose=True)
+    # model.retrain(verbose=True)
     metrics.collect_metrics(model)
     print(metrics.metrics_results)
     # metrics.plot()
