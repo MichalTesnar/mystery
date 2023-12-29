@@ -23,9 +23,17 @@ if "THRESHOLD" in MODEL_MODE and len(sys.argv) > 2:
     UNCERTAINTY_THRESHOLD = float(sys.argv[2])
     EXTRA_PARAM = UNCERTAINTY_THRESHOLD
 
-identifier = "Full data"
+identifier = "Full data fix"
 directory = f"hyperparams/{identifier} {MODEL_MODE}"
 best_hps = get_best_params(directory)
+# if MODEL_MODE == "OFFLINE":
+#     best_hps = {}
+#     best_hps['num_layers'] = 4
+#     best_hps['units'] = 64
+#     best_hps['learning_rate'] = 0.001
+#     best_hps['batch_size'] = 8
+#     best_hps['patience'] = 5
+
 print_best_params(best_hps)
 DATASET_TYPE = "Dagon"  # "Toy"
 
@@ -64,7 +72,6 @@ if MODEL_MODE != "OFFLINE":
     while dataset.data_available():
         if training_flag:
             history = model.retrain()
-            # print(history[-1])
             metrics.collect_metrics(model)
             if DATASET_TYPE == "Toy":
                 metrics.extra_plots(model)
@@ -77,8 +84,6 @@ if MODEL_MODE != "OFFLINE":
                 metrics.pad_metrics()
 
     dataset.data_available(verbose=True)
-
-    # metrics.plot()
     metrics.save()
 
 else:
@@ -87,5 +92,4 @@ else:
     model.retrain(verbose=True)
     metrics.collect_metrics(model)
     print(metrics.metrics_results)
-    # metrics.plot()
     metrics.save()

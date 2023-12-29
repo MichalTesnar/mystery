@@ -41,24 +41,22 @@ def line_color(st):
 prefix = "Full data "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 dir_names = [
-    # "OFFLINE tuned (0)",
-    "FIFO tuned (0)",
-    "FIRO tuned (0)",
-    "RIRO tuned (0)",
-    "GREEDY tuned (0)",
-    "THRESHOLD tuned (0)",
-    "THRESHOLD_GREEDY tuned (0)"
+    "OFFLINE  tuned (0)",
+    # "FIFO  tuned (0)",
+    "FIRO  tuned (0)",
+    "RIRO  tuned (0)",
+    "GREEDY  tuned (0)",
+    "THRESHOLD  tuned (0)",
+    "THRESHOLD_GREEDY  tuned (0)"
 ]
 # IDENTIFIER TO PUT ON THE PLOT
 excluded = {"MSE": True,
             "R2": True,
-            "Running Mean R2": False,
             "Cummulative MSE": False, 
             "Prediction Uncertainty": True,
             "Skips": False,
             }
-# R2_BASELINE = 0.8
-MSE_BASELINE = 0.00697501
+
 HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
 # PLOT CONFIG
 plot_name = "Dagon No FIFO All Data Points Rest"
@@ -69,14 +67,7 @@ fig.suptitle(f"{plot_name}", fontsize=15)
 for j, dir_name in enumerate(dir_names):
     with open(f"results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
         metrics_results = pickle.load(file)
-    # if "OFFLINE" in dir_name:
-    #     # R2_BASELINE = metrics_results["R2"]
-    #     # print(R2_BASELINE)
-    #     MSE_BASELINE = metrics_results["MSE"]
-    #     print(MSE_BASELINE)
-    #     continue
     i = 0
-    
     try:
         len(axs)
     except:
@@ -85,13 +76,19 @@ for j, dir_name in enumerate(dir_names):
     for metric in metrics_results.keys():
         if not excluded[metric]:
             continue
+        
         y = metrics_results[metric]
+
+        if metric == "R2":
+            y = np.maximum(0, y)
         x = np.arange(0, len(y))
         axs[i].plot(x, y, label=dir_name, alpha=0.5,
                     linestyle=line_style(dir_name), linewidth=2, color=line_color(dir_name))
         axs[i].set_ylabel(metric)
-        if metric == "MSE":
-            axs[i].axhline(y=MSE_BASELINE, color=line_color("BASELINE"), label="Baseline")
+        
+        
+        if "OFFLINE" in dir_name and metric in ["MSE", "R2"]:
+            axs[i].axhline(y=y, color=line_color("BASELINE"), label="Baseline")
         # if metric == "R2":
         #     axs[i].axhline(y=R2_BASELINE, color=line_color("BASELINE"), label="Baseline")
         i += 1

@@ -56,23 +56,22 @@ dir_names = [
 # "THRESHOLD_GREEDY 0.0056 tuned (0)",
 # "THRESHOLD_GREEDY 0.0075 tuned (0)",
 # "THRESHOLD_GREEDY 0.0096 tuned (0)",
-# "THRESHOLD_GREEDY 0.012 tuned (0)",
-# "THRESHOLD_GREEDY 0.0156 tuned (0)",
-# "THRESHOLD_GREEDY 0.0228 tuned (0)"
-"RIRO 0.1 tuned (0)",
-"RIRO 0.2 tuned (0)",
-"RIRO 0.3 tuned (0)",
-"RIRO 0.4 tuned (0)",
-"RIRO 0.5 tuned (0)",
-"RIRO 0.6 tuned (0)",
-"RIRO 0.7 tuned (0)",
-"RIRO 0.8 tuned (0)",
-"RIRO 0.9 tuned (0)",
+"THRESHOLD_GREEDY 0.012 tuned (0)",
+"THRESHOLD_GREEDY 0.0156 tuned (0)",
+"THRESHOLD_GREEDY 0.0228 tuned (0)"
+# "RIRO 0.1 tuned (0)",
+# "RIRO 0.2 tuned (0)",
+# "RIRO 0.3 tuned (0)",
+# "RIRO 0.4 tuned (0)",
+# "RIRO 0.5 tuned (0)",
+# "RIRO 0.6 tuned (0)",
+# "RIRO 0.7 tuned (0)",
+# "RIRO 0.8 tuned (0)",
+# "RIRO 0.9 tuned (0)",
 ]
 # IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": False,
-            "R2": False,
-            "Running Mean R2": True,
+excluded = {"MSE": True,
+            "R2": True,
             "Cummulative MSE": True, 
             "Prediction Uncertainty": False,
             "Skips": True,
@@ -89,12 +88,6 @@ fig.suptitle(f"{plot_name}", fontsize=15)
 for j, dir_name in enumerate(dir_names):
     with open(f"results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
         metrics_results = pickle.load(file)
-    # if "OFFLINE" in dir_name:
-    #     # R2_BASELINE = metrics_results["R2"]
-    #     # print(R2_BASELINE)
-    #     MSE_BASELINE = metrics_results["MSE"]
-    #     print(MSE_BASELINE)
-    #     continue
     i = 0
     
     try:
@@ -106,6 +99,8 @@ for j, dir_name in enumerate(dir_names):
         if not excluded[metric]:
             continue
         y = metrics_results[metric]
+        if metric == "R2":
+            y = np.maximum(0, y)
         x = np.arange(0, len(y))
         axs[i].plot(x, y, label=dir_name, alpha=0.5,
                     linestyle=line_style(dir_name), linewidth=2, color=line_color(dir_name))
