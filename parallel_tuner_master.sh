@@ -7,5 +7,5 @@ for ((i=0; i<${#arguments[@]}; i++))
 do
     current_port=$((start_port + i))
     arg="${arguments[i]}"
-    sbatch --job-name="tune $arg" tuning_fast.sh $current_port "$arg"
+    sbatch --job-name="tune $arg" tuning_fast.sh "$arg" $current_port
 done
