@@ -25,7 +25,7 @@ print_best_params(best_hps)
 DATASET_TYPE = "Dagon"  # "Toy"
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": f"{identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
+    "EXPERIMENT_IDENTIFIER": f"{identifier} {MODEL_MODE} {EXTRA_PARAM} BUFFER tuned",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": BUFFER_SIZE,
     "MODEL_MODE": MODEL_MODE,

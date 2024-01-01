@@ -2,30 +2,28 @@ import matplotlib.pyplot as plt
 import pickle
 import numpy as np
 
-# Get the Viridis color map
-colors = plt.get_cmap('viridis')(np.linspace(0, 1, 9))
-
 def line_style(st):
     return '-'
 
+colors = plt.get_cmap('viridis')(np.linspace(0, 1, 9))
 def line_color(st):
-    if "0.0016" in st or "0.1" in st:
+    if "0.0016" in st or "0.1" in st or " 10" in st:
         return colors[0]
-    elif "0.0023" in st or "0.2" in st:
+    elif "0.0023" in st or "0.2" in st or " 25" in st:
         return colors[1]
-    elif "0.0036" in st or "0.3" in st:
+    elif "0.0036" in st or "0.3" in st or " 50" in st:
         return colors[2]
-    elif "0.0056" in st or "0.4" in st:
+    elif "0.0056" in st or "0.4" in st or " 100" in st:
         return colors[3]
-    elif "0.0075" in st or "0.5" in st:
+    elif "0.0075" in st or "0.5" in st or " 200" in st:
         return colors[4]
-    elif "0.0096" in st or "0.6" in st:
+    elif "0.0096" in st or "0.6" in st or " 400" in st:
         return colors[5]
-    elif "0.012" in st or "0.7" in st:  # Added condition for a new color
+    elif "0.012" in st or "0.7" in st:
         return colors[6]
-    elif "0.0156" in st or "0.8" in st:  # Added condition for a new color
+    elif "0.0156" in st or "0.8" in st:
         return colors[7]
-    elif "0.0228" in st or "0.9" in st:  # Added condition for a new color
+    elif "0.0228" in st or "0.9" in st:
         return colors[8]
     
 def extracted_name(st):
@@ -75,6 +73,10 @@ elif "RIRO" in plot_name:
     "RIRO 0.7 tuned (0)",
     "RIRO 0.8 tuned (0)",
     "RIRO 0.9 tuned (0)",
+    ]
+elif "Buffer" in plot_name:
+    dir_names = [
+    "TBA"
     ]
 # IDENTIFIER TO PUT ON THE PLOT
 excluded = {"MSE": True,
