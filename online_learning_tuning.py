@@ -21,12 +21,12 @@ DATASET_TYPE = "Dagon"
 MODEL_MODE = sys.argv[1]
 
 es = {
-    "EXPERIMENT_IDENTIFIER": f"Full data fix {MODEL_MODE}",
+    "EXPERIMENT_IDENTIFIER": f"Full data fix IT {MODEL_MODE}",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 100,
     "MODEL_MODE": MODEL_MODE,
     "DATASET_MODE": "subsampled_sequential",
-    "DATASET_SIZE": 1,
+    "DATASET_SIZE": 0.02,
     "MAX_EPOCHS": 100 if MODEL_MODE != "OFFLINE" else 100*7000,
     "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
@@ -65,11 +65,10 @@ class MyHyperModel(HyperModel):
 
     def fit(self, hp, model, x, y, validation_data, callbacks=None, **kwargs):
         current_dataset = copy.deepcopy(dataset)
-        metrics = MetricsTuning(current_dataset.get_current_training_set_size, es, current_dataset.get_validation_set)
-        whole = current_dataset.get_current_training_set_size
-
         if MODEL_MODE != "OFFLINE":
             AIOmodel = AIOModelTuning(current_dataset.give_initial_training_set(es["BUFFER_SIZE"]), es, model)
+            metrics = MetricsTuning(current_dataset.get_current_training_set_size, es, current_dataset.get_validation_set)
+            whole = current_dataset.get_current_training_set_size
             i = 0
             training_flag = True
             while current_dataset.data_available():
@@ -78,7 +77,7 @@ class MyHyperModel(HyperModel):
                     AIOmodel.retrain(verbose=False)
                     metrics.collect_metrics(AIOmodel)
                     if DATASET_TYPE == "Toy":
-                        metrics.extra_plots(model)
+                        metrics.extra_plots(AIOmodel)
                 training_flag = False
                 while not training_flag and current_dataset.data_available():
                     new_point = current_dataset.get_new_point()
