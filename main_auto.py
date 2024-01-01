@@ -26,14 +26,6 @@ if "THRESHOLD" in MODEL_MODE and len(sys.argv) > 2:
 identifier = "Full data fix"
 directory = f"hyperparams/{identifier} {MODEL_MODE}"
 best_hps = get_best_params(directory)
-# if MODEL_MODE == "OFFLINE":
-#     best_hps = {}
-#     best_hps['num_layers'] = 4
-#     best_hps['units'] = 64
-#     best_hps['learning_rate'] = 0.001
-#     best_hps['batch_size'] = 8
-#     best_hps['patience'] = 5
-
 print_best_params(best_hps)
 DATASET_TYPE = "Dagon"  # "Toy"
 

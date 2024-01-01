@@ -2,7 +2,9 @@ import matplotlib.pyplot as plt
 import pickle
 import numpy as np
 
+
 def line_style(st):
+    return '-'
     if "FIFO" in st:
         return '-'
     elif "FIRO" in st:
@@ -16,53 +18,77 @@ def line_style(st):
     elif "GREEDY" in st:
         return (0, (5, 2))
     else:
-        return(0, (1, 2))
+        return (0, (1, 2))
+
+
+def extracted_name(st):
+    if "FIFO" in st:
+        return "FIFO"
+    elif "FIRO" in st:
+        return "FIRO"
+    elif "RIRO" in st:
+        return 'RIRO'
+    elif "THRESHOLD_GREEDY" in st:
+        return "Threshold-Greedy"
+    elif "THRESHOLD" in st:
+        return "Threshold"
+    elif "GREEDY" in st:
+        return "Greedy"
+    elif "OFFLINE" in st:  # Added condition for a new color
+        return "Offline"
+
 
 def line_color(st):
     if "FIFO" in st:
-        return 'green'
+        return 'limegreen'
     elif "FIRO" in st:
         return 'blue'
     elif "RIRO" in st:
-        return 'red'
+        return 'magenta'
     elif "THRESHOLD_GREEDY" in st:
-        return 'brown'
+        return 'darkorange'
     elif "THRESHOLD" in st:
-        return 'black'
+        return 'gold'
     elif "GREEDY" in st:
-        return 'orange'
+        return 'red'
     elif "BASELINE" in st:  # Added condition for a new color
-        return 'purple'
+        return 'black'
     else:
         return 'pink'
 
 
 # EXPERIMENT PREFIX
-prefix = "Full data fix "
+prefix = "Full data "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 dir_names = [
     "OFFLINE  tuned (0)",
     # "FIFO  tuned (0)",
-    # "FIRO  tuned (0)",
-    # "RIRO  tuned (0)",
-    # "GREEDY  tuned (0)",
-    # "THRESHOLD  tuned (0)",
-    # "THRESHOLD_GREEDY  tuned (0)"
+    "FIRO  tuned (0)",
+    "RIRO  tuned (0)",
+    "GREEDY  tuned (0)",
+    "THRESHOLD  tuned (0)",
+    "THRESHOLD_GREEDY  tuned (0)"
 ]
 # IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": True,
-            "R2": True,
-            "Cummulative MSE": False, 
-            "Prediction Uncertainty": True,
-            "Skips": False,
+excluded = {"MSE": False,
+            "R2": False,
+            "Cummulative MSE": False,
+            "Prediction Uncertainty": False,
+            "Skips": True,
             }
 
 HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
 # PLOT CONFIG
-plot_name = "Dagon No FIFO All Data Points Rest"
-fig, axs = plt.subplots(HOW_MANY, 1, figsize=(16, 13), sharex=True)
-fig.suptitle(f"{plot_name}", fontsize=15)
+plot_name = "ALL"
+fig, axs = plt.subplots(HOW_MANY, 1, figsize=(16, 11), sharex=True)
+FONT_SIZE = 20
+FONT_SIZE_TICKS = 15
+
+fig.suptitle(f"{plot_name}", fontsize=FONT_SIZE)
 # convert axs to array
+
+plt.xticks(fontsize=FONT_SIZE_TICKS)
+plt.yticks(fontsize=FONT_SIZE_TICKS)
 try:
     len(axs)
 except:
@@ -72,27 +98,32 @@ for j, dir_name in enumerate(dir_names):
     with open(f"results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
         metrics_results = pickle.load(file)
     i = 0
-    
 
     for metric in metrics_results.keys():
         if not excluded[metric]:
             continue
-        
-        y = metrics_results[metric]
 
-        if metric == "R2":
-            y = np.maximum(0, y)
+        y = metrics_results[metric]
         x = np.arange(0, len(y))
-        axs[i].plot(x, y, label=dir_name, alpha=0.5,
-                    linestyle=line_style(dir_name), linewidth=2, color=line_color(dir_name))
-        axs[i].set_ylabel(metric)
-        
-        
+        # if metric == "R2":
+        #     y = np.maximum(-.5, y)
+
         if "OFFLINE" in dir_name and metric in ["MSE", "R2"]:
-            axs[i].axhline(y=y, color=line_color("BASELINE"), label="Baseline")
+            axs[i].axhline(y=y, color=line_color("BASELINE"), label=extracted_name(dir_name))
+        else:
+            axs[i].plot(x, y, label=extracted_name(dir_name), alpha=0.5,
+                        linestyle=line_style(dir_name), linewidth=1.5, color=line_color(dir_name))
+            axs[i].set_ylabel(metric, fontsize=FONT_SIZE)
+
         i += 1
-    axs[min(HOW_MANY-1, 2)].legend(loc='center left', fontsize=12)
-    axs[HOW_MANY-1].set_xlabel('Iterations')
+    if excluded["R2"]:
+        location = 'lower right'
+    elif excluded["MSE"] or excluded["Cummulative MSE"] or excluded["Skips"]:
+        location = 'upper left'
+    elif excluded["Prediction Uncertainty"]:
+        location = 'upper right'
+    axs[min(HOW_MANY-1, 2)].legend(loc=location, fontsize=FONT_SIZE)
+    axs[HOW_MANY-1].set_xlabel('Iterations', fontsize=FONT_SIZE)
 
 plt.tight_layout()
 # plt.savefig(f"{plot_name}")

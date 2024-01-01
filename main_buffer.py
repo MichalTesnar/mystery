@@ -18,7 +18,7 @@ MODEL_MODE = sys.argv[1]
 BUFFER_SIZE = sys.argv[2]
 EXTRA_PARAM = BUFFER_SIZE
 
-identifier = "Full data"
+identifier = "Full data fix"
 directory = f"hyperparams/{identifier} {MODEL_MODE}"
 best_hps = get_best_params(directory)
 print_best_params(best_hps)
@@ -59,7 +59,6 @@ if MODEL_MODE != "OFFLINE":
     while dataset.data_available():
         if training_flag:
             history = model.retrain()
-            # print(history[-1])
             metrics.collect_metrics(model)
             if DATASET_TYPE == "Toy":
                 metrics.extra_plots(model)
@@ -72,15 +71,12 @@ if MODEL_MODE != "OFFLINE":
                 metrics.pad_metrics()
 
     dataset.data_available(verbose=True)
-
-    # metrics.plot()
     metrics.save()
 
 else:
     model = AIOModel(dataset.get_training_set, experiment_specification)
     metrics = Metrics(1, experiment_specification, dataset.get_test_set)
-    # model.retrain(verbose=True)
+    model.retrain(verbose=True)
     metrics.collect_metrics(model)
     print(metrics.metrics_results)
-    # metrics.plot()
     metrics.save()

@@ -21,7 +21,7 @@ module load git
 git config --global user.email "michal.tesnar007@gmail.com"
 git config --global user.name "MichalTesnar"
 git add --a
-git commit -m "THRESHOLD_GREEDY different values"
+git commit -m "$1 Buffer Fun"
 git push
 
 deactivate
