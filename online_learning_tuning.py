@@ -21,12 +21,12 @@ DATASET_TYPE = "Dagon"
 MODEL_MODE = sys.argv[1]
 
 es = {
-    "EXPERIMENT_IDENTIFIER": f"Full data fix IT {MODEL_MODE}",
+    "EXPERIMENT_IDENTIFIER": f"Full data fix {MODEL_MODE}",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 100,
     "MODEL_MODE": MODEL_MODE,
     "DATASET_MODE": "subsampled_sequential",
-    "DATASET_SIZE": 0.02,
+    "DATASET_SIZE": 1,
     "MAX_EPOCHS": 100 if MODEL_MODE != "OFFLINE" else 100*7000,
     "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
