@@ -28,7 +28,7 @@ directory = f"hyperparams/{identifier} {MODEL_MODE}"
 best_hps = get_best_params(directory)
 print_best_params(best_hps)
 DATASET_TYPE = "Dagon"  # "Toy"
-exit()
+
 experiment_specification = {
     "EXPERIMENT_IDENTIFIER": f"{identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
     "EXPERIMENT_TYPE": DATASET_TYPE,
