@@ -16,7 +16,7 @@ def find_min_score(folder_path):
                 if score < min_score:
                     min_score = score
                     min_score_file = file_path
-    # print(f"MIN SCORE WAS {min_score}")
+    print(f"MIN SCORE WAS {min_score}")
     return min_score_file
 
 def get_params(file_path):
