@@ -12,8 +12,6 @@ tf.get_logger().setLevel('INFO')
 
 np.random.seed(107)
 
-assert False == True, "HARDCODE BEST VALUES P and T FOR ALL METHODS"
-
 MODEL_MODE = sys.argv[1]
 BUFFER_SIZE = sys.argv[2]
 EXTRA_PARAM = BUFFER_SIZE
