@@ -13,7 +13,7 @@ tf.get_logger().setLevel('INFO')
 np.random.seed(107)
 
 MODEL_MODE = sys.argv[1]
-BUFFER_SIZE = sys.argv[2]
+BUFFER_SIZE = int(sys.argv[2])
 EXTRA_PARAM = BUFFER_SIZE
 UNCERTAINTY_THRESHOLD = 0
 if MODEL_MODE == "THRESHOLD_GREEDY":
@@ -23,6 +23,7 @@ elif MODEL_MODE == "THRESHOLD":
 
 identifier = "Full data fix"
 directory = f"hyperparams/{identifier} {MODEL_MODE}"
+print(directory)
 best_hps = get_best_params(directory)
 print_best_params(best_hps)
 DATASET_TYPE = "Dagon"  # "Toy"
