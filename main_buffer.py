@@ -18,6 +18,11 @@ MODEL_MODE = sys.argv[1]
 BUFFER_SIZE = sys.argv[2]
 EXTRA_PARAM = BUFFER_SIZE
 
+if MODEL_MODE == "THRESHOLD_GREEDY":
+    UNCERTAINTY_THRESHOLD = 0.0228
+elif MODEL_MODE == "THRESHOLD":
+    UNCERTAINTY_THRESHOLD = 0.0156
+
 identifier = "Full data fix"
 directory = f"hyperparams/{identifier} {MODEL_MODE}"
 best_hps = get_best_params(directory)
@@ -37,7 +42,7 @@ experiment_specification = {
     "BATCH_SIZE": best_hps['batch_size'],
     "PATIENCE": best_hps['patience'],
     "MAX_EPOCHS": 100 if MODEL_MODE != "OFFLINE" else 100*7000,
-    "ACCEPT_PROBABILITY": ACCEPT_PROBABILITY,
+    "ACCEPT_PROBABILITY": 0.2,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
     "UNCERTAINTY_THRESHOLD": UNCERTAINTY_THRESHOLD,

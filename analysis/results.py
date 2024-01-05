@@ -58,23 +58,34 @@ def line_color(st):
 
 
 # EXPERIMENT PREFIX
-prefix = "Full data "
+prefix = "Full data fix "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
+# dir_names = [
+#     "OFFLINE  tuned (0)",
+#     "FIFO  tuned (0)",
+#     "FIRO  tuned (0)",
+#     "RIRO  tuned (0)",
+#     "GREEDY  tuned (0)",
+#     "THRESHOLD  tuned (0)",
+#     "THRESHOLD_GREEDY  tuned (0)"
+# ]
+
 dir_names = [
     "OFFLINE  tuned (0)",
-    # "FIFO  tuned (0)",
+    "FIFO  tuned (0)",
     "FIRO  tuned (0)",
-    "RIRO  tuned (0)",
+    "RIRO 0.2 tuned (0)",
     "GREEDY  tuned (0)",
-    "THRESHOLD  tuned (0)",
-    "THRESHOLD_GREEDY  tuned (0)"
+    "THRESHOLD 0.0156 tuned (0)",
+    "THRESHOLD_GREEDY 0.0228 tuned (0)"
 ]
+
 # IDENTIFIER TO PUT ON THE PLOT
 excluded = {"MSE": False,
-            "R2": False,
-            "Cummulative MSE": False,
+            "R2": True,
+            "Cummulative MSE": True,
             "Prediction Uncertainty": False,
-            "Skips": True,
+            "Skips": False,
             }
 
 HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
@@ -105,8 +116,8 @@ for j, dir_name in enumerate(dir_names):
 
         y = metrics_results[metric]
         x = np.arange(0, len(y))
-        # if metric == "R2":
-        #     y = np.maximum(-.5, y)
+        if metric == "R2":
+            y = np.maximum(-.5, y)
 
         if "OFFLINE" in dir_name and metric in ["MSE", "R2"]:
             axs[i].axhline(y=y, color=line_color("BASELINE"), label=extracted_name(dir_name))

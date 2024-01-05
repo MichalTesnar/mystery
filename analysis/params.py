@@ -34,17 +34,17 @@ def extracted_name(st):
     
 
 # EXPERIMENT PREFIX
-prefix = "Full data "
+prefix = "Full data fix "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 plot_name = "Threshold Greedy"
 
 if "Threshold Greedy" in plot_name:
     dir_names = [
-    # "THRESHOLD_GREEDY 0.0016 tuned (0)",
-    # "THRESHOLD_GREEDY 0.0023 tuned (0)",
-    # "THRESHOLD_GREEDY 0.0036 tuned (0)",
-    # "THRESHOLD_GREEDY 0.0056 tuned (0)",
-    # "THRESHOLD_GREEDY 0.0075 tuned (0)",
+    "THRESHOLD_GREEDY 0.0016 tuned (0)",
+    "THRESHOLD_GREEDY 0.0023 tuned (0)",
+    "THRESHOLD_GREEDY 0.0036 tuned (0)",
+    "THRESHOLD_GREEDY 0.0056 tuned (0)",
+    "THRESHOLD_GREEDY 0.0075 tuned (0)",
     "THRESHOLD_GREEDY 0.0096 tuned (0)",
     "THRESHOLD_GREEDY 0.012 tuned (0)",
     "THRESHOLD_GREEDY 0.0156 tuned (0)",
@@ -79,11 +79,11 @@ elif "Buffer" in plot_name:
     "TBA"
     ]
 # IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": True,
+excluded = {"MSE": False,
             "R2": False,
-            "Cummulative MSE": False, 
+            "Cummulative MSE": True, 
             "Prediction Uncertainty": False,
-            "Skips": True,
+            "Skips": False,
             }
 HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
 # PLOT CONFIG
@@ -116,8 +116,8 @@ for j, dir_name in enumerate(dir_names):
         if metric == "Skips":
             print(dir_name, y[-1])
         x = np.arange(0, len(y))
-        # if metric == "R2":
-        #     y = np.maximum(-.5, y)
+        if metric == "R2":
+            y = np.maximum(-.5, y)
 
         if "OFFLINE" in dir_name and metric in ["MSE", "R2"]:
             axs[i].axhline(y=y, color=line_color("BASELINE"), label=extracted_name(dir_name))
