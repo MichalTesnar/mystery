@@ -36,9 +36,36 @@ def extracted_name(st):
 # EXPERIMENT PREFIX
 prefix = "Full data fix "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
-plot_name = "Threshold Greedy"
+plot_name = "BUFFER RIRO"
 
-if "Threshold Greedy" in plot_name:
+if "BUFFER Threshold Greedy" in plot_name:
+    dir_names = [
+    "THRESHOLD_GREEDY 10 BUFFER tuned (0)",
+    "THRESHOLD_GREEDY 25 BUFFER tuned (0)",
+    "THRESHOLD_GREEDY 50 BUFFER tuned (0)",
+    "THRESHOLD_GREEDY 100 BUFFER tuned (0)",
+    "THRESHOLD_GREEDY 200 BUFFER tuned (0)",
+    "THRESHOLD_GREEDY 400 BUFFER tuned (0)"
+    ]
+if "BUFFER RIRO" in plot_name:
+    dir_names = [
+    "RIRO 10 BUFFER tuned (0)",
+    "RIRO 25 BUFFER tuned (0)",
+    "RIRO 50 BUFFER tuned (0)",
+    "RIRO 100 BUFFER tuned (0)",
+    "RIRO 200 BUFFER tuned (0)",
+    "RIRO 400 BUFFER tuned (0)"
+    ]
+elif "BUFFER Threshold" in plot_name:
+    dir_names = [
+    "THRESHOLD 10 BUFFER tuned (0)",
+    "THRESHOLD 25 BUFFER tuned (0)",
+    "THRESHOLD 50 BUFFER tuned (0)",
+    "THRESHOLD 100 BUFFER tuned (0)",
+    "THRESHOLD 200 BUFFER tuned (0)",
+    "THRESHOLD 400 BUFFER tuned (0)"
+    ]
+elif "Threshold Greedy" in plot_name:
     dir_names = [
     "THRESHOLD_GREEDY 0.0016 tuned (0)",
     "THRESHOLD_GREEDY 0.0023 tuned (0)",
@@ -79,7 +106,7 @@ elif "Buffer" in plot_name:
     "TBA"
     ]
 # IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": False,
+excluded = {"MSE": True,
             "R2": False,
             "Cummulative MSE": True, 
             "Prediction Uncertainty": False,
