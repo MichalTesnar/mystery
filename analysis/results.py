@@ -60,15 +60,15 @@ def line_color(st):
 # EXPERIMENT PREFIX
 prefix = "Full data fix "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
-# dir_names = [
-#     "OFFLINE  tuned (0)",
-#     "FIFO  tuned (0)",
-#     "FIRO  tuned (0)",
-#     "RIRO  tuned (0)",
-#     "GREEDY  tuned (0)",
-#     "THRESHOLD  tuned (0)",
-#     "THRESHOLD_GREEDY  tuned (0)"
-# ]
+dir_names = [
+    "OFFLINE  tuned (0)",
+    "FIFO  tuned (0)",
+    "FIRO  tuned (0)",
+    "RIRO  tuned (0)",
+    "GREEDY  tuned (0)",
+    "THRESHOLD  tuned (0)",
+    "THRESHOLD_GREEDY  tuned (0)"
+]
 
 dir_names = [
     "OFFLINE  tuned (0)",
@@ -82,20 +82,20 @@ dir_names = [
 
 # IDENTIFIER TO PUT ON THE PLOT
 excluded = {"MSE": False,
-            "R2": True,
-            "Cummulative MSE": True,
+            "R2": False,
+            "Cummulative MSE": False,
             "Prediction Uncertainty": False,
-            "Skips": False,
+            "Skips": True,
             }
-
+true_labels = [label for label, value in excluded.items() if value]
 HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
 # PLOT CONFIG
-plot_name = "ALL"
+plot_name = "best_params_" + "_".join(true_labels)
 fig, axs = plt.subplots(HOW_MANY, 1, figsize=(16, 11), sharex=True)
 FONT_SIZE = 20
 FONT_SIZE_TICKS = 15
 
-fig.suptitle(f"{plot_name}", fontsize=FONT_SIZE)
+# fig.suptitle(f"{plot_name}", fontsize=FONT_SIZE)
 # convert axs to array
 
 plt.xticks(fontsize=FONT_SIZE_TICKS)
@@ -116,11 +116,16 @@ for j, dir_name in enumerate(dir_names):
 
         y = metrics_results[metric]
         x = np.arange(0, len(y))
+        if metric == "MSE":
+            y = np.minimum(0.035, y)
+        if metric == "Prediction Uncertainty":
+            y = np.minimum(0.15, y)
         if metric == "R2":
-            y = np.maximum(-.5, y)
+            y = np.maximum(-1.5, y)
 
-        if "OFFLINE" in dir_name and metric in ["MSE", "R2"]:
-            axs[i].axhline(y=y, color=line_color("BASELINE"), label=extracted_name(dir_name))
+        if "OFFLINE" in dir_name:
+            if metric in ["MSE", "R2"]:
+                axs[i].axhline(y=y, color=line_color("BASELINE"), label=extracted_name(dir_name))
         else:
             axs[i].plot(x, y, label=extracted_name(dir_name), alpha=0.5,
                         linestyle=line_style(dir_name), linewidth=1.5, color=line_color(dir_name))
@@ -137,6 +142,6 @@ for j, dir_name in enumerate(dir_names):
     axs[HOW_MANY-1].set_xlabel('Iterations', fontsize=FONT_SIZE)
 
 plt.tight_layout()
-# plt.savefig(f"{plot_name}")
+plt.savefig(f"{plot_name}")
 plt.show()
 plt.close()
