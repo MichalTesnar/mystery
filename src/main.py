@@ -13,26 +13,26 @@ np.random.seed(107)
 DATASET_TYPE = "Dagon" 
 # DATASET_TYPE = "Toy"
 EXP_TYPE = "Offline"
-# EXP_TYPE = "Online"
+EXP_TYPE = "Online"
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": "testing visual",
+    "EXPERIMENT_IDENTIFIER": "flipout test",
     "EXPERIMENT_TYPE": DATASET_TYPE,
-    "BUFFER_SIZE": 50,
-    "MODEL_MODE": "THRESHOLD",
+    "UQ_MODEL": "FLIPOUT",
+    "BUFFER_SIZE": 100,
+    "MODEL_MODE": "FIFO",
     "DATASET_MODE": "subsampled_sequential",
-    "NUMBER_OF_LAYERS": 3,
-    "UNITS_PER_LAYER": 64,
+    "NUMBER_OF_LAYERS": 1,
+    "UNITS_PER_LAYER": 16,
     "DATASET_SIZE": 0.05,
-    "LEARNING_RATE": 0.001,
-    "BATCH_SIZE": 1,
-    "PATIENCE": 10,
+    "LEARNING_RATE": 0.01,
+    "BATCH_SIZE": 4,
+    "PATIENCE": 9,
     "MAX_EPOCHS": 100,
-    "ACCEPT_PROBABILITY": 0.7,
+    "ACCEPT_PROBABILITY": 0.2,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
     "UNCERTAINTY_THRESHOLD": 0.1,
-    "RUNNING_MEAN_WINDOW": 50,
     "NUMBER_OF_ESTIMATORS": 10
 }
 
@@ -41,17 +41,16 @@ if experiment_specification["EXPERIMENT_TYPE"] == "Dagon":
 elif experiment_specification["EXPERIMENT_TYPE"] == "Toy":
     dataset = SinusiodToyExample(experiment_specification)
 
-if EXP_TYPE == "Online":
+if experiment_specification["MODEL_MODE"] != "OFFLINE":
     model = AIOModel(dataset.give_initial_training_set(
         experiment_specification["BUFFER_SIZE"]), experiment_specification)
-    metrics = Metrics(dataset.get_current_training_set_size, # account for extra iteration at the end
-                    experiment_specification, dataset.get_test_set)
+    metrics = Metrics(dataset.get_current_training_set_size,  # account for extra iteration at the end
+                      experiment_specification, dataset.get_test_set)
     start_time = time.time()
     training_flag = True
     while dataset.data_available():
         if training_flag:
             history = model.retrain()
-            print(history[-1])
             metrics.collect_metrics(model)
             if DATASET_TYPE == "Toy":
                 metrics.extra_plots(model)
@@ -64,15 +63,12 @@ if EXP_TYPE == "Online":
                 metrics.pad_metrics()
 
     dataset.data_available(verbose=True)
-
-    metrics.plot()
     metrics.save()
 
-elif EXP_TYPE == "Offline":
+else:
     model = AIOModel(dataset.get_training_set, experiment_specification)
     metrics = Metrics(1, experiment_specification, dataset.get_test_set)
     model.retrain(verbose=True)
     metrics.collect_metrics(model)
     print(metrics.metrics_results)
-    metrics.plot()
     metrics.save()

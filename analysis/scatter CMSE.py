@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pickle
 import numpy as np
+import re
 
 def line_style(st):
     return '-'
@@ -37,10 +38,8 @@ def extracted_name(st):
 # EXPERIMENT PREFIX
 prefix = "Full data fix "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
-plot_name = "RIRO"
 
-if "BUFFER Threshold Greedy" in plot_name:
-    dir_names = [
+BUFFER_Threshold_Greedy = [
     "THRESHOLD_GREEDY 10 BUFFER tuned (0)",
     "THRESHOLD_GREEDY 25 BUFFER tuned (0)",
     "THRESHOLD_GREEDY 50 BUFFER tuned (0)",
@@ -48,8 +47,7 @@ if "BUFFER Threshold Greedy" in plot_name:
     "THRESHOLD_GREEDY 200 BUFFER tuned (0)",
     "THRESHOLD_GREEDY 400 BUFFER tuned (0)"
     ]
-elif "BUFFER RIRO" in plot_name:
-    dir_names = [
+BUFFER_RIRO = [
     "RIRO 10 BUFFER tuned (0)",
     "RIRO 25 BUFFER tuned (0)",
     "RIRO 50 BUFFER tuned (0)",
@@ -57,8 +55,7 @@ elif "BUFFER RIRO" in plot_name:
     "RIRO 200 BUFFER tuned (0)",
     "RIRO 400 BUFFER tuned (0)"
     ]
-elif "BUFFER FIRO" in plot_name:
-    dir_names = [
+BUFFER_FIRO = [
     "FIRO 10 BUFFER tuned (0)",
     "FIRO 25 BUFFER tuned (0)",
     "FIRO 50 BUFFER tuned (0)",
@@ -66,8 +63,7 @@ elif "BUFFER FIRO" in plot_name:
     "FIRO 200 BUFFER tuned (0)",
     "FIRO 400 BUFFER tuned (0)"
     ]
-elif "BUFFER Greedy" in plot_name:
-    dir_names = [
+BUFFER_Greedy = [
     "GREEDY 10 BUFFER tuned (2)",
     "GREEDY 25 BUFFER tuned (2)",
     "GREEDY 50 BUFFER tuned (2)",
@@ -75,8 +71,7 @@ elif "BUFFER Greedy" in plot_name:
     "GREEDY 200 BUFFER tuned (2)",
     "GREEDY 400 BUFFER tuned (2)"
     ]
-elif "BUFFER Threshold" in plot_name:
-    dir_names = [
+BUFFER_Threshold = [
     "THRESHOLD 10 BUFFER tuned (0)",
     "THRESHOLD 25 BUFFER tuned (0)",
     "THRESHOLD 50 BUFFER tuned (0)",
@@ -85,8 +80,7 @@ elif "BUFFER Threshold" in plot_name:
     "THRESHOLD 400 BUFFER tuned (0)"
     ]
 
-elif "BUFFER FIFO" in plot_name:
-    dir_names = [
+BUFFER_FIFO = [
     "FIFO 10 BUFFER tuned (0)",
     "FIFO 25 BUFFER tuned (0)",
     "FIFO 50 BUFFER tuned (0)",
@@ -94,8 +88,7 @@ elif "BUFFER FIFO" in plot_name:
     "FIFO 200 BUFFER tuned (0)",
     "FIFO 400 BUFFER tuned (0)"
     ]
-elif "Threshold Greedy" in plot_name:
-    dir_names = [
+Threshold_Greedy = [
     "THRESHOLD_GREEDY 0.0016 tuned (0)",
     "THRESHOLD_GREEDY 0.0023 tuned (0)",
     "THRESHOLD_GREEDY 0.0036 tuned (0)",
@@ -106,8 +99,7 @@ elif "Threshold Greedy" in plot_name:
     "THRESHOLD_GREEDY 0.0156 tuned (0)",
     "THRESHOLD_GREEDY 0.0228 tuned (0)"
         ]
-elif "Threshold" in plot_name:
-    dir_names = [
+Threshold = [
     "THRESHOLD 0.0016 tuned (0)",
     "THRESHOLD 0.0023 tuned (0)",
     "THRESHOLD 0.0036 tuned (0)",
@@ -118,8 +110,7 @@ elif "Threshold" in plot_name:
     "THRESHOLD 0.0156 tuned (0)",
     "THRESHOLD 0.0228 tuned (0)"
     ]
-elif "RIRO" in plot_name:
-    dir_names = [
+RIRO = [
     "RIRO 0.1 tuned (0)",
     "RIRO 0.2 tuned (0)",
     "RIRO 0.3 tuned (0)",
@@ -129,22 +120,29 @@ elif "RIRO" in plot_name:
     "RIRO 0.7 tuned (0)",
     "RIRO 0.8 tuned (0)",
     "RIRO 0.9 tuned (0)",
-    ]
+]
 
-colors = plt.get_cmap('gist_rainbow')(np.linspace(0, 1, len(dir_names)))
-# IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": 1,
-            "R2": 1,
-            "Cummulative MSE": 1, 
-            "Prediction Uncertainty": 1,
-            "Skips": 0,
-            }
-true_labels = [label for label, value in excluded.items() if value]
-HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
+def find_number(text):
+    pattern = r'\b(\d+\.\d+|\d+)\b'  # Updated pattern to allow integers and decimal numbers
+
+    matches = re.findall(pattern, text)
+
+    if matches:
+        # Filter out numbers within brackets
+        filtered_numbers = [float(match) for match in matches if '(' not in match]
+        
+        if filtered_numbers:
+            return filtered_numbers[0]
+        else:
+            raise ValueError("No valid number found in the given string.")
+    else:
+        raise ValueError("No number found in the given string.")
+
+
 # PLOT CONFIG
-plot_name = plot_name + "_" + "_".join(true_labels)
 
-fig, axs = plt.subplots(HOW_MANY, 1, figsize=(16, 11), sharex=True)
+
+fig, axs = plt.subplots(1, 1, figsize=(16, 11), sharex=True)
 FONT_SIZE = 20
 FONT_SIZE_TICKS = 15
 
@@ -157,57 +155,48 @@ try:
 except:
     axs = [axs]
 
-y_max = -float("inf")
+dirs_RIRO = ([RIRO], 'RIRO CMSE')
 
-for j, dir_name in enumerate(dir_names):
-    with open(f"results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
-        metrics_results = pickle.load(file)
-    i = 0
+dirs_Thresholds = ([
+    Threshold,
+    Threshold_Greedy
+], 'Thresholds CMSE')
 
-    for metric in metrics_results.keys():
-        
+dirs_BUFFER = ([
+    BUFFER_FIFO,
+    BUFFER_FIRO,
+    BUFFER_RIRO,
+    BUFFER_Greedy,
+    BUFFER_Threshold,
+    BUFFER_Threshold_Greedy
+], 'BUFFER CMSE')
 
-        if not excluded[metric]:
-            print(metrics_results[metric][-1])
-            continue
 
-        y = metrics_results[metric]
+dirs_to_handle, plot_name = dirs_RIRO
 
-        y_max = max(y_max, len(y))
+colors = plt.get_cmap('gist_rainbow')(np.linspace(0, 1, len(dirs_to_handle[0])))
 
-        if len(y) < y_max:
-            zeros_array = np.full((y_max - len(y),), np.nan) # print(np.zeros(, dtype=y.dtype).shape)
-            y = np.concatenate((zeros_array, y))
 
-        if metric == "Skips":
-            print(dir_name, y[-1])
-        x = np.arange(0, len(y))
-        if metric == "MSE":
-            y = np.minimum(1, y)
-        if metric == "R2":
-            y = np.maximum(-1.5, y)
+for dir_names in dirs_to_handle:
+    params = []
+    resulting_CMSE = []
 
-        # axs[i].axhline(y=0.001, color=line_color("BASELINE"), label=extracted_name(dir_name))
+    for j, dir_name in enumerate(dir_names):
+        with open(f"results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
+            metrics_results = pickle.load(file)
 
-        if "OFFLINE" in dir_name and metric in ["MSE", "R2"]:
-            axs[i].axhline(y=y, color=line_color("BASELINE"), label=extracted_name(dir_name))
-        else:
-            axs[i].plot(x, y, label=extracted_name(dir_name), alpha=0.5,
-                        linestyle=line_style(dir_name), linewidth=1.5, color=line_color(dir_name))
-            axs[i].set_ylabel(metric, fontsize=FONT_SIZE)
+        y = metrics_results["Cummulative MSE"][-1]
+        resulting_CMSE.append(y)
+        x = find_number(dir_name)
+        params.append(x)
 
-        i += 1
-    if excluded["R2"]:
-        location = 'lower right'
-    if excluded["MSE"] or excluded["Cummulative MSE"] or excluded["Skips"]:
-        location = 'upper left'
-    elif excluded["Prediction Uncertainty"]:
-        location = 'upper right'
-    axs[min(HOW_MANY-1, 2)].legend(loc=location, fontsize=FONT_SIZE)
-    axs[HOW_MANY-1].set_xlabel('Iterations', fontsize=FONT_SIZE)
+    axs[0].plot(params, resulting_CMSE, marker='o', linestyle='-', label=str(dir_name.split(" ")[0]))
+    # axs[0].legend(fontsize=FONT_SIZE)
+
 
 plt.tight_layout()
 plt.savefig(f"{plot_name}.pdf", format="pdf", bbox_inches="tight")
+
 plt.show()
 plt.close()
 
