@@ -51,22 +51,9 @@ class AIOModel():
             for _ in range(self.experiment_specification["NUMBER_OF_LAYERS"] - 1):
                     x = Dense(
                         self.experiment_specification["UNITS_PER_LAYER"], activation="relu")(x)
-
-
             x = FlipoutDense(self.experiment_specification["OUTPUT_LAYER_SIZE"],
                       kl_weight, **prior_params, bias_distribution=True, activation="linear")(x)
             model = Model(inp, x)
-
-
-            # model = Sequential()
-            # # model.add(FlipoutDense(32, kl_weight, **prior_params, prior=False, bias_distribution=True, activation="relu", input_shape=(self.experiment_specification["INPUT_LAYER_SIZE"],)))
-            # model.add(Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu", input_shape=(self.experiment_specification["INPUT_LAYER_SIZE"],)))
-            # for _ in range(self.experiment_specification["NUMBER_OF_LAYERS"] - 2):
-            #     model.add(Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu",))
-            # model.add(FlipoutDense(self.experiment_specification["UNITS_PER_LAYER"],kl_weight, **prior_params, bias_distribution=True, activation="linear"))
-            # model.add(FlipoutDense(self.experiment_specification["OUTPUT_LAYER_SIZE"],
-            #           kl_weight, **prior_params, bias_distribution=True, activation="linear"))
-    
             model.compile(loss="mean_squared_error", optimizer="adam")
 
             print(model.summary())

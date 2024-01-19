@@ -61,7 +61,7 @@ def line_color(st):
 prefix = ""
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 dir_names = [
-    "flipout test (1)",
+    "flipout test (2)",
 ]
 
 # IDENTIFIER TO PUT ON THE PLOT

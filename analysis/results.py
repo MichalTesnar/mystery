@@ -61,39 +61,39 @@ def line_color(st):
 # EXPERIMENT PREFIX
 prefix = "Full data fix "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
-dir_names = [
-    "OFFLINE  tuned (0)",
-    "FIFO  tuned (0)",
-    "FIRO  tuned (0)",
-    "RIRO  tuned (0)",
-    "GREEDY  tuned (0)",
-    "THRESHOLD  tuned (0)",
-    "THRESHOLD_GREEDY  tuned (0)"
-]
-
 # dir_names = [
 #     "OFFLINE  tuned (0)",
 #     "FIFO  tuned (0)",
 #     "FIRO  tuned (0)",
-#     "RIRO 0.2 tuned (0)",
+#     "RIRO  tuned (0)",
 #     "GREEDY  tuned (0)",
-#     "THRESHOLD 0.0156 tuned (0)",
-#     "THRESHOLD_GREEDY 0.0228 tuned (0)"
+#     "THRESHOLD  tuned (0)",
+#     "THRESHOLD_GREEDY  tuned (0)"
 # ]
 
+dir_names = [
+    "OFFLINE  tuned (0)",
+    "FIFO  tuned (0)",
+    "FIRO  tuned (0)",
+    "RIRO 0.2 tuned (0)",
+    "GREEDY  tuned (0)",
+    "THRESHOLD 0.0156 tuned (0)",
+    "THRESHOLD_GREEDY 0.0228 tuned (0)"
+]
+
 # IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": True,
-            "R2": True,
-            "Cummulative MSE": True,
+excluded = {"MSE": False,
+            "R2": False,
+            "Cummulative MSE": False,
             "Prediction Uncertainty": True,
             "Skips": False,
             }
 true_labels = [label for label, value in excluded.items() if value]
 HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
 # PLOT CONFIG
-plot_name = "best_params_" + "_".join(true_labels)
+plot_name = "final_go_" + "_".join(true_labels)
 fig, axs = plt.subplots(HOW_MANY, 1, figsize=(14, 11), sharex=True)
-FONT_SIZE = 15
+FONT_SIZE = 20
 FONT_SIZE_TICKS = 15
 
 # fig.suptitle(f"{plot_name}", fontsize=FONT_SIZE)
@@ -141,12 +141,12 @@ for j, dir_name in enumerate(dir_names):
         axs[i].set_ylabel(metric, fontsize=FONT_SIZE)
 
         i += 1
-    # if excluded["R2"]:
-    #     location = 'lower right'
-    # elif excluded["MSE"] or excluded["Cummulative MSE"] or excluded["Skips"]:
-    location = 'upper left'
-    # elif excluded["Prediction Uncertainty"]:
-    #     location = 'upper right'
+    if excluded["R2"]:
+        location = 'lower right'
+    elif excluded["MSE"] or excluded["Cummulative MSE"] or excluded["Skips"]:
+        location = 'upper left'
+    elif excluded["Prediction Uncertainty"]:
+        location = 'upper right'
     axs[min(HOW_MANY-1, 2)].legend(loc=location, fontsize=FONT_SIZE-3)
     axs[HOW_MANY-1].set_xlabel('Iterations', fontsize=FONT_SIZE)
 

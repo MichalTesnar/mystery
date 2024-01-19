@@ -3,6 +3,8 @@
 *.out
 *.json
 *.pkl
+*.mp4
+*.gif
 /hyperparams
 /results
 /src/__pycache__

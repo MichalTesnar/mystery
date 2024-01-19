@@ -37,7 +37,9 @@ def extracted_name(st):
 # EXPERIMENT PREFIX
 prefix = "Full data fix "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
-plot_name = "RIRO"
+import sys
+# plot_name = "BUFFER Threshold Greedy"
+plot_name = sys.argv[1]
 
 if "BUFFER Threshold Greedy" in plot_name:
     dir_names = [
@@ -133,10 +135,10 @@ elif "RIRO" in plot_name:
 
 colors = plt.get_cmap('gist_rainbow')(np.linspace(0, 1, len(dir_names)))
 # IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": 1,
+excluded = {"MSE": 0,
             "R2": 1,
-            "Cummulative MSE": 1, 
-            "Prediction Uncertainty": 1,
+            "Cummulative MSE": 0, 
+            "Prediction Uncertainty": 0,
             "Skips": 0,
             }
 true_labels = [label for label, value in excluded.items() if value]
@@ -208,7 +210,7 @@ for j, dir_name in enumerate(dir_names):
 
 plt.tight_layout()
 plt.savefig(f"{plot_name}.pdf", format="pdf", bbox_inches="tight")
-plt.show()
+# plt.show()
 plt.close()
 
 

@@ -23,7 +23,7 @@ if "THRESHOLD" in MODEL_MODE and len(sys.argv) > 2:
     UNCERTAINTY_THRESHOLD = float(sys.argv[2])
     EXTRA_PARAM = UNCERTAINTY_THRESHOLD
 
-identifier = "Full data fix"
+identifier = "Full Flipout"
 directory = f"hyperparams/{identifier} {MODEL_MODE}"
 best_hps = get_best_params(directory)
 print_best_params(best_hps)
@@ -33,6 +33,7 @@ experiment_specification = {
     "EXPERIMENT_IDENTIFIER": f"{identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 100,
+    "UQ_MODEL": "FLIPOUT",
     "MODEL_MODE": MODEL_MODE,
     "DATASET_MODE": "subsampled_sequential",
     "NUMBER_OF_LAYERS": best_hps['num_layers'],

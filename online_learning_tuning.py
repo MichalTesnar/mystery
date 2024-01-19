@@ -4,6 +4,7 @@ from keras.models import Model
 from keras.optimizers import Adam
 # UQ
 from keras_uncertainty.models import SimpleEnsemble
+from keras_uncertainty.layers import FlipoutDense
 # Tuner
 from keras_tuner import BayesianOptimization, HyperModel
 # My stuff
@@ -21,9 +22,10 @@ DATASET_TYPE = "Dagon"
 MODEL_MODE = sys.argv[1]
 
 es = {
-    "EXPERIMENT_IDENTIFIER": f"Full data fix {MODEL_MODE}",
+    "EXPERIMENT_IDENTIFIER": f"Full Flipout {MODEL_MODE}",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 100,
+    "UQ_MODEL": "FLIPOUT",
     "MODEL_MODE": MODEL_MODE,
     "DATASET_MODE": "subsampled_sequential",
     "DATASET_SIZE": 1,
@@ -40,34 +42,79 @@ if es["EXPERIMENT_TYPE"] == "Dagon":
 elif es["EXPERIMENT_TYPE"] == "Toy":
     dataset = SinusiodToyExample(es)
 
+
 class MyHyperModel(HyperModel):
     def build(self, hp):
         # model building function
-        def model_fn():
-            inp = Input(es["INPUT_LAYER_SIZE"])
-            hp_units = hp.Choice('units', values=[4, 8, 16, 32, 64])
-            x = Dense(hp_units, activation="relu")(inp)
-            num_layers = hp.Int('num_layers', min_value=1, max_value=4, step=1)
-            for _ in range(num_layers): # for each add units
-                x = Dense(hp_units, activation="relu")(x)
-            mean = Dense(es["OUTPUT_LAYER_SIZE"], activation="linear")(x)
-            train_model = Model(inp, mean)
-            hp_learning_rate = hp.Choice('learning_rate', values=[1e-2, 1e-3, 1e-4, 1e-5])
-            train_model.compile(loss="mse", optimizer=Adam(learning_rate=hp_learning_rate))
+
+        if es["UQ_MODEL"] == "SIMPLE_ENSEMBLE":
+            def model_fn():
+                inp = Input(es["INPUT_LAYER_SIZE"])
+                hp_units = hp.Choice('units', values=[4, 8, 16, 32, 64])
+                x = Dense(hp_units, activation="relu")(inp)
+                num_layers = hp.Int(
+                    'num_layers', min_value=1, max_value=4, step=1)
+                for _ in range(num_layers):  # for each add units
+                    x = Dense(hp_units, activation="relu")(x)
+                mean = Dense(es["OUTPUT_LAYER_SIZE"], activation="linear")(x)
+                train_model = Model(inp, mean)
+                hp_learning_rate = hp.Choice('learning_rate', values=[
+                                             1e-2, 1e-3, 1e-4, 1e-5])
+                train_model.compile(loss="mse", optimizer=Adam(
+                    learning_rate=hp_learning_rate))
+                batch_size = hp.Choice('batch_size', values=[1, 2, 4, 8, 16])
+                es["BATCH_SIZE"] = batch_size
+                patience = hp.Choice('patience', values=[3, 5, 9])
+                es["PATIENCE"] = patience
+                return train_model
+
+            return SimpleEnsemble(model_fn, num_estimators=es["NUMBER_OF_ESTIMATORS"])
+            # HAD TO ALTER KERAS BACKEND TO BE ABLE TO DO THIS, not a valid Keras Model
+        else:
             batch_size = hp.Choice('batch_size', values=[1, 2, 4, 8, 16])
             es["BATCH_SIZE"] = batch_size
             patience = hp.Choice('patience', values=[3, 5, 9])
             es["PATIENCE"] = patience
-            return train_model
 
-        return SimpleEnsemble(model_fn, num_estimators=es["NUMBER_OF_ESTIMATORS"])
-        # HAD TO ALTER KERAS BACKEND TO BE ABLE TO DO THIS, not a valid Keras Model
+            num_batches = es["BUFFER_SIZE"] / es["BATCH_SIZE"]
+
+            kl_weight = 1.0 / num_batches
+            prior_params = {
+                'prior_sigma_1': 5.0,
+                'prior_sigma_2': 2.0,
+                'prior_pi': 0.5
+            }
+
+            inp = Input(
+                shape=(es["INPUT_LAYER_SIZE"],))
+            hp_units = hp.Choice('units', values=[4, 8, 16, 32, 64])
+
+            x = Dense(hp_units, activation="relu")(inp)
+
+            num_layers = hp.Int('num_layers', min_value=1, max_value=4, step=1)
+
+            for _ in range(num_layers):
+                x = Dense(hp_units, activation="relu")(x)
+
+            x = FlipoutDense(es["OUTPUT_LAYER_SIZE"],
+                             kl_weight, **prior_params, bias_distribution=True, activation="linear")(x)
+            model = Model(inp, x)
+
+            hp_learning_rate = hp.Choice('learning_rate', values=[
+                                         1e-2, 1e-3, 1e-4, 1e-5])
+
+            model.compile(loss="mean_squared_error", optimizer=Adam(
+                learning_rate=hp_learning_rate))
+
+            return model
 
     def fit(self, hp, model, x, y, validation_data, callbacks=None, **kwargs):
         current_dataset = copy.deepcopy(dataset)
         if MODEL_MODE != "OFFLINE":
-            AIOmodel = AIOModelTuning(current_dataset.give_initial_training_set(es["BUFFER_SIZE"]), es, model)
-            metrics = MetricsTuning(current_dataset.get_current_training_set_size, es, current_dataset.get_validation_set)
+            AIOmodel = AIOModelTuning(
+                current_dataset.give_initial_training_set(es["BUFFER_SIZE"]), es, model)
+            metrics = MetricsTuning(
+                current_dataset.get_current_training_set_size, es, current_dataset.get_validation_set)
             whole = current_dataset.get_current_training_set_size
             i = 0
             training_flag = True
