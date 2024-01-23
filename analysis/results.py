@@ -61,17 +61,17 @@ def line_color(st):
 # EXPERIMENT PREFIX
 prefix = "Full data fix "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
-# dir_names = [
-#     "OFFLINE  tuned (0)",
-#     "FIFO  tuned (0)",
-#     "FIRO  tuned (0)",
-#     "RIRO  tuned (0)",
-#     "GREEDY  tuned (0)",
-#     "THRESHOLD  tuned (0)",
-#     "THRESHOLD_GREEDY  tuned (0)"
-# ]
+first_go = ([
+    "OFFLINE  tuned (0)",
+    "FIFO  tuned (0)",
+    "FIRO  tuned (0)",
+    "RIRO  tuned (0)",
+    "GREEDY  tuned (0)",
+    "THRESHOLD  tuned (0)",
+    "THRESHOLD_GREEDY  tuned (0)"
+], "first_go_")
 
-dir_names = [
+final_go = ([
     "OFFLINE  tuned (0)",
     "FIFO  tuned (0)",
     "FIRO  tuned (0)",
@@ -79,21 +79,23 @@ dir_names = [
     "GREEDY  tuned (0)",
     "THRESHOLD 0.0156 tuned (0)",
     "THRESHOLD_GREEDY 0.0228 tuned (0)"
-]
+], "final_go_")
+
+dir_names, plot_name_start = final_go
 
 # IDENTIFIER TO PUT ON THE PLOT
 excluded = {"MSE": False,
             "R2": False,
             "Cummulative MSE": False,
-            "Prediction Uncertainty": True,
-            "Skips": False,
+            "Prediction Uncertainty": False,
+            "Skips": True,
             }
 true_labels = [label for label, value in excluded.items() if value]
 HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
 # PLOT CONFIG
-plot_name = "final_go_" + "_".join(true_labels)
-fig, axs = plt.subplots(HOW_MANY, 1, figsize=(14, 11), sharex=True)
-FONT_SIZE = 20
+plot_name = plot_name_start + "_".join(true_labels)
+fig, axs = plt.subplots(HOW_MANY, 1, figsize=(16, 11), sharex=True) # 20, 11 for wide figures
+FONT_SIZE = 25 #  15 for wide figures
 FONT_SIZE_TICKS = 15
 
 # fig.suptitle(f"{plot_name}", fontsize=FONT_SIZE)
@@ -118,17 +120,19 @@ for j, dir_name in enumerate(dir_names):
 
     for metric in metrics_results.keys():
         if not excluded[metric]:
-            print(dir_name, f"{len(metrics_results[metric])-metrics_results[metric][-1]}/{len(metrics_results[metric])}")
+            # print(dir_name, f"{len(metrics_results[metric])-metrics_results[metric][-1]}/{len(metrics_results[metric])}")
             continue
 
         y = metrics_results[metric]
         x = np.arange(0, len(y))
         if metric == "MSE":
             y = np.minimum(0.035, y)
+            print(metric, dir_name, np.min(y))
         if metric == "Prediction Uncertainty":
             y = np.minimum(0.15, y)
         if metric == "R2":
             y = np.maximum(-1.5, y)
+            print(metric, dir_name, np.max(y))
 
         if "OFFLINE" in dir_name:
             if metric in ["MSE", "R2"]:
@@ -141,12 +145,13 @@ for j, dir_name in enumerate(dir_names):
         axs[i].set_ylabel(metric, fontsize=FONT_SIZE)
 
         i += 1
-    if excluded["R2"]:
-        location = 'lower right'
-    elif excluded["MSE"] or excluded["Cummulative MSE"] or excluded["Skips"]:
-        location = 'upper left'
-    elif excluded["Prediction Uncertainty"]:
-        location = 'upper right'
+    location = "upper left"
+    # if excluded["R2"]:
+    #     location = 'lower right'
+    # elif excluded["MSE"] or excluded["Cummulative MSE"] or excluded["Skips"]:
+    #     location = 'upper left'
+    # elif excluded["Prediction Uncertainty"]:
+    #     location = 'upper right'
     axs[min(HOW_MANY-1, 2)].legend(loc=location, fontsize=FONT_SIZE-3)
     axs[HOW_MANY-1].set_xlabel('Iterations', fontsize=FONT_SIZE)
 

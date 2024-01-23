@@ -135,7 +135,7 @@ elif "RIRO" in plot_name:
 
 colors = plt.get_cmap('gist_rainbow')(np.linspace(0, 1, len(dir_names)))
 # IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": 0,
+excluded = {"MSE": 1,
             "R2": 1,
             "Cummulative MSE": 0, 
             "Prediction Uncertainty": 0,
@@ -175,7 +175,15 @@ for j, dir_name in enumerate(dir_names):
 
         y = metrics_results[metric]
 
+
         y_max = max(y_max, len(y))
+
+        if metric == "MSE":
+            y = np.minimum(1, y)
+            print(metric, dir_name, np.min(y))
+        if metric == "R2":
+            y = np.maximum(-1.5, y)
+            print(metric, dir_name, np.max(y))
 
         if len(y) < y_max:
             zeros_array = np.full((y_max - len(y),), np.nan) # print(np.zeros(, dtype=y.dtype).shape)
@@ -184,10 +192,7 @@ for j, dir_name in enumerate(dir_names):
         if metric == "Skips":
             print(dir_name, y[-1])
         x = np.arange(0, len(y))
-        if metric == "MSE":
-            y = np.minimum(1, y)
-        if metric == "R2":
-            y = np.maximum(-1.5, y)
+        
 
         # axs[i].axhline(y=0.001, color=line_color("BASELINE"), label=extracted_name(dir_name))
 
@@ -210,7 +215,7 @@ for j, dir_name in enumerate(dir_names):
 
 plt.tight_layout()
 plt.savefig(f"{plot_name}.pdf", format="pdf", bbox_inches="tight")
-# plt.show()
+plt.show()
 plt.close()
 
 

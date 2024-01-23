@@ -27,6 +27,24 @@ def line_color(st):
         return colors[7]
     elif "0.0228" in st or "0.9" in st:
         return colors[8]
+    
+def line_color2(st):
+    if "FIFO" in st:
+        return 'limegreen'
+    elif "FIRO" in st:
+        return 'blue'
+    elif "RIRO" in st:
+        return 'magenta'
+    elif "THRESHOLD_GREEDY" in st:
+        return 'darkorange'
+    elif "THRESHOLD" in st:
+        return 'gold'
+    elif "GREEDY" in st:
+        return 'red'
+    elif "BASELINE" in st:  # Added condition for a new color
+        return 'black'
+    else:
+        return 'pink'
 
 
 def extracted_name(st):
@@ -197,7 +215,7 @@ for dir_names in dirs_to_handle:
         params.append(x)
 
     axs[0].plot(params, resulting_CMSE, marker='o',
-                linestyle='-', label=extracted_name(str(dir_name.split(" ")[0])))
+                linestyle='-', color=line_color2(dir_name), label=extracted_name(str(dir_name.split(" ")[0])))
 
     axs[0].set_xlabel(plot_string, fontsize=FONT_SIZE)
     axs[0].set_ylabel("Cumulative MSE", fontsize=FONT_SIZE)

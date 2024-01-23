@@ -198,12 +198,13 @@ class AIOModel():
         """
         Predict on the given set of points, also output uncertainty.
         """
+        
         if self.experiment_specification["UQ_MODEL"] == "SIMPLE_ENSEMBLE":
             pred_mean, pred_std = self.model(points)
             return pred_mean, pred_std
         elif self.experiment_specification["UQ_MODEL"] == "FLIPOUT":
             st_model = StochasticRegressor(self.model)
-            pred_mean, pred_std = st_model.predict(points, num_samples=50)
+            pred_mean, pred_std = st_model.predict(points, num_samples=10)
             return pred_mean, pred_std
         else:
             raise NotImplemented("This UQ model is not implemented.")
