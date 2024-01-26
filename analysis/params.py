@@ -79,6 +79,7 @@ elif "BUFFER Greedy" in plot_name:
     ]
 elif "BUFFER Threshold" in plot_name:
     dir_names = [
+    "OFFLINE  tuned (0)",
     "THRESHOLD 10 BUFFER tuned (0)",
     "THRESHOLD 25 BUFFER tuned (0)",
     "THRESHOLD 50 BUFFER tuned (0)",
@@ -135,7 +136,7 @@ elif "RIRO" in plot_name:
 
 colors = plt.get_cmap('gist_rainbow')(np.linspace(0, 1, len(dir_names)))
 # IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": 1,
+excluded = {"MSE": 0,
             "R2": 1,
             "Cummulative MSE": 0, 
             "Prediction Uncertainty": 0,
