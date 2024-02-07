@@ -5,7 +5,10 @@ import re
 
 
 def line_style(st):
-    return '-'
+    if "FIFO" in st or "FIRO" in st or "RIRO" in st or "OFFLINE" in st:
+        return '--'
+    else:
+        return '-'
 
 
 def line_color(st):
@@ -183,7 +186,7 @@ dirs_RIRO = ([RIRO], 'RIRO CMSE', r'Values of $P$ in RIRO')
 
 dirs_Threshold = ([Threshold], 'Threshold CMSE', r'Values of $t$ in Threshold')
 
-dirs_ThresholdGreedy = ([Threshold], 'Threshold-Greedy CMSE', r'Values of $t$ in Threshold-Greedy')
+dirs_ThresholdGreedy = ([Threshold_Greedy], 'Threshold-Greedy CMSE', r'Values of $t$ in Threshold-Greedy')
 
 dirs_BUFFER = ([
     BUFFER_FIFO,
@@ -215,7 +218,7 @@ for dir_names in dirs_to_handle:
         params.append(x)
 
     axs[0].plot(params, resulting_CMSE, marker='o',
-                linestyle='-', color=line_color2(dir_name), label=extracted_name(str(dir_name.split(" ")[0])))
+                linestyle=line_style(dir_name), color=line_color2(dir_name), label=extracted_name(str(dir_name.split(" ")[0])))
 
     axs[0].set_xlabel(plot_string, fontsize=FONT_SIZE)
     axs[0].set_ylabel("Cumulative MSE", fontsize=FONT_SIZE)

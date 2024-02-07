@@ -10,29 +10,29 @@ tf.get_logger().setLevel('INFO')
 
 np.random.seed(107)
 
-DATASET_TYPE = "Dagon" 
-# DATASET_TYPE = "Toy"
-EXP_TYPE = "Offline"
+# DATASET_TYPE = "Dagon" 
+DATASET_TYPE = "Toy"
+# EXP_TYPE = "Offline"
 EXP_TYPE = "Online"
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": "flipout test",
+    "EXPERIMENT_IDENTIFIER": "Visualization of RIRO",
     "EXPERIMENT_TYPE": DATASET_TYPE,
-    "UQ_MODEL": "FLIPOUT",
-    "BUFFER_SIZE": 100,
+    "UQ_MODEL": "SIMPLE_ENSEMBLE",
+    "BUFFER_SIZE": 10,
     "MODEL_MODE": "RIRO",
     "DATASET_MODE": "subsampled_sequential",
-    "NUMBER_OF_LAYERS": 1,
+    "NUMBER_OF_LAYERS": 2,
     "UNITS_PER_LAYER": 16,
-    "DATASET_SIZE": 0.05,
+    "DATASET_SIZE": 0.01,
     "LEARNING_RATE": 0.01,
-    "BATCH_SIZE": 4,
+    "BATCH_SIZE": 2,
     "PATIENCE": 9,
     "MAX_EPOCHS": 100,
-    "ACCEPT_PROBABILITY": 0.5,
+    "ACCEPT_PROBABILITY": 0.7,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
-    "UNCERTAINTY_THRESHOLD": 0.1,
+    "UNCERTAINTY_THRESHOLD": 0.3,
     "NUMBER_OF_ESTIMATORS": 10
 }
 

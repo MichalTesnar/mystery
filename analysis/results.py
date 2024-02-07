@@ -4,23 +4,18 @@ import pickle
 import numpy as np
 
 
-def line_style(st):
-    return '-'
-    if "FIFO" in st:
-        return '-'
-    elif "FIRO" in st:
-        return '--'
-    elif "RIRO" in st:
-        return '-.'
-    elif "THRESHOLD_GREEDY" in st:
-        return ':'
-    elif "THRESHOLD" in st:
-        return (0, (3, 1, 1, 1))
-    elif "GREEDY" in st:
-        return (0, (5, 2))
+def get_alpha(st):
+    return 0.8
+    if "FIFO" in st or "FIRO" in st or "RIRO" in st or "OFFLINE" in st:
+        return 0.8
     else:
-        return (0, (1, 2))
+        return 0.2
 
+def line_style(st):
+    if "FIFO" in st or "FIRO" in st or "RIRO" in st or "OFFLINE" in st:
+        return '--'
+    else:
+        return '-'
 
 def extracted_name(st):
     if "FIFO" in st:
@@ -81,28 +76,29 @@ final_go = ([
     "THRESHOLD_GREEDY 0.0228 tuned (0)"
 ], "final_go_")
 
-dir_names, plot_name_start = final_go
+dir_names, plot_name_start = first_go
 
 # IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": False,
-            "R2": False,
-            "Cummulative MSE": False,
-            "Prediction Uncertainty": False,
-            "Skips": True,
+excluded = {"MSE": True,
+            "R2": True,
+            "Cummulative MSE": True,
+            "Prediction Uncertainty": True,
+            "Skips": False,
             }
 true_labels = [label for label, value in excluded.items() if value]
 HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
 # PLOT CONFIG
 plot_name = plot_name_start + "_".join(true_labels)
-fig, axs = plt.subplots(HOW_MANY, 1, figsize=(16, 11), sharex=True) # 20, 11 for wide figures
-FONT_SIZE = 25 #  15 for wide figures
-FONT_SIZE_TICKS = 15
+fig, axs = plt.subplots(HOW_MANY, 1, figsize=(
+    20, 11), sharex=True)  # 20, 11 for wide figures
+FONT_SIZE = 15 # 30  # 15 for wide figures
+FONT_SIZE_TICKS = 20
 
 # fig.suptitle(f"{plot_name}", fontsize=FONT_SIZE)
 # convert axs to array
 
-matplotlib.rc('xtick', labelsize=FONT_SIZE_TICKS) 
-matplotlib.rc('ytick', labelsize=FONT_SIZE_TICKS) 
+matplotlib.rc('xtick', labelsize=FONT_SIZE_TICKS)
+matplotlib.rc('ytick', labelsize=FONT_SIZE_TICKS)
 
 try:
     len(axs)
@@ -110,8 +106,8 @@ except:
     axs = [axs]
 
 for ax in axs:
-    ax.tick_params('y', labelsize=FONT_SIZE_TICKS) 
-    ax.tick_params('x', labelsize=FONT_SIZE_TICKS) 
+    ax.tick_params('y', labelsize=FONT_SIZE_TICKS)
+    ax.tick_params('x', labelsize=FONT_SIZE_TICKS)
 
 for j, dir_name in enumerate(dir_names):
     with open(f"results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
@@ -136,13 +132,16 @@ for j, dir_name in enumerate(dir_names):
 
         if "OFFLINE" in dir_name:
             if metric in ["MSE", "R2"]:
-                axs[i].axhline(y=y, color=line_color("BASELINE"), label=extracted_name(dir_name))
+                axs[i].axhline(y=y, color=line_color("BASELINE"), label=extracted_name(
+                    dir_name), alpha=get_alpha(dir_name), linestyle=line_style(dir_name),linewidth=1)
             else:
-                axs[i].axhline(y=np.nan, color=line_color("BASELINE"), label=extracted_name(dir_name))
+                axs[i].axhline(y=np.nan, color=line_color(
+                    "BASELINE"), label=extracted_name(dir_name), linestyle=line_style(dir_name))
         else:
-            axs[i].plot(x, y, label=extracted_name(dir_name), alpha=0.5,
-                        linestyle=line_style(dir_name), linewidth=1.5, color=line_color(dir_name))
+            axs[i].plot(x, y, label=extracted_name(dir_name), alpha=get_alpha(dir_name),
+                        linestyle=line_style(dir_name), linewidth=1, color=line_color(dir_name))
         axs[i].set_ylabel(metric, fontsize=FONT_SIZE)
+        axs[i].margins(x=0.0)
 
         i += 1
     location = "upper left"
@@ -154,9 +153,9 @@ for j, dir_name in enumerate(dir_names):
     #     location = 'upper right'
     axs[min(HOW_MANY-1, 2)].legend(loc=location, fontsize=FONT_SIZE-3)
     axs[HOW_MANY-1].set_xlabel('Iterations', fontsize=FONT_SIZE)
-
+plt.margins(x=0)
 plt.tick_params(axis='both', which='major', labelsize=FONT_SIZE_TICKS)
 plt.tight_layout()
-plt.savefig(f"{plot_name}.pdf", format="pdf", bbox_inches="tight")
+plt.savefig(f"{plot_name}.pdf", format="pdf", bbox_inches="tight", pad_inches=0)
 plt.show()
 plt.close()

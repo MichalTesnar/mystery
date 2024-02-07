@@ -137,7 +137,7 @@ class SinusiodToyExample(Dataset):
         Load the data from the storage.
         """
         sample_rate = int(10000*size)
-        domain = np.linspace(-6, 10, num=sample_rate)
+        domain = np.linspace(-6, 6, num=sample_rate)
         # np.random.shuffle(domain)
         domain_y = self.toy_function(domain)
         self._df = pd.DataFrame({'x': domain, 'y': domain_y})
@@ -150,6 +150,6 @@ class SinusiodToyExample(Dataset):
         output = []
         for inp in input:
             std = max(0.03 / (1.0 + exp(-inp)), 0)
-            out = inp*sin(inp) + np.random.normal(0, std) + inp*np.random.normal(0, std)
-            output.append(2*out)
+            out = sin(inp) #+ np.random.normal(0, std) + inp*np.random.normal(0, std)
+            output.append(5*out)
         return np.array(output)
