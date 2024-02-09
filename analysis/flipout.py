@@ -61,7 +61,7 @@ def line_color(st):
 prefix = ""
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 dir_names = [
-    "DROPOUT Full data fix THRESHOLD  tuned (1)",
+    "Flipout Full data fix THRESHOLD  tuned (1)",
 ]
 
 # IDENTIFIER TO PUT ON THE PLOT
