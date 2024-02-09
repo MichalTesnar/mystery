@@ -78,8 +78,8 @@ if MODEL_MODE != "OFFLINE":
             training_flag = model.update_own_training_set(new_point)
             if not training_flag and dataset.data_available():
                 metrics.pad_metrics()
+        metrics.save()
     dataset.data_available(verbose=True)
-    metrics.save()
 
 else:
     model = AIOModel(dataset.get_training_set, experiment_specification)
