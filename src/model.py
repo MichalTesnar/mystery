@@ -5,7 +5,7 @@ from keras.layers import Input, Dense
 from keras.optimizers import Adam
 from keras.callbacks import EarlyStopping
 from keras_uncertainty.models import SimpleEnsemble, StochasticRegressor
-from keras_uncertainty.layers import FlipoutDense
+from keras_uncertainty.layers import FlipoutDense, StochasticDropout
 
 
 class AIOModel():
@@ -55,9 +55,24 @@ class AIOModel():
                       kl_weight, **prior_params, bias_distribution=True, activation="linear")(x)
             model = Model(inp, x)
             model.compile(loss="mean_squared_error", optimizer="adam")
-
             print(model.summary())
+            self.model = model
+        
+        elif self.experiment_specification["UQ_MODEL"] == "DROPOUT":
 
+            prob=0.2 
+
+            model = Sequential()
+            model.add(Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu", input_shape=(self.experiment_specification["INPUT_LAYER_SIZE"],)))
+            model.add(StochasticDropout(prob))
+
+            for _ in range(self.experiment_specification["NUMBER_OF_LAYERS"] - 1):
+                model.add(StochasticDropout(prob))
+                model.add(Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu"))
+            
+            model.add(Dense(self.experiment_specification["OUTPUT_LAYER_SIZE"], activation="linear"))
+            model.compile(loss="mean_squared_error", optimizer="adam")
+            print(model.summary())
             self.model = model
 
         else:
@@ -185,12 +200,11 @@ class AIOModel():
             history = self.model.fit(self.X_train, self.y_train, verbose=verbose, epochs=self.experiment_specification["MAX_EPOCHS"], callbacks=[
                 early_stop], batch_size=self.experiment_specification["BATCH_SIZE"])
             return history
-        elif self.experiment_specification["UQ_MODEL"] == "FLIPOUT":
+        elif self.experiment_specification["UQ_MODEL"] == "FLIPOUT" or self.experiment_specification["UQ_MODEL"] == "DROPOUT":
             early_stop = EarlyStopping(
                 monitor='loss', patience=self.experiment_specification["PATIENCE"])
             history = self.model.fit(self.X_train, self.y_train, verbose=verbose, epochs=self.experiment_specification["MAX_EPOCHS"], callbacks=[
                 early_stop], batch_size=self.experiment_specification["BATCH_SIZE"])
-
             return history
         raise NotImplemented("This UQ model is not implemented.")
 
@@ -202,7 +216,7 @@ class AIOModel():
         if self.experiment_specification["UQ_MODEL"] == "SIMPLE_ENSEMBLE":
             pred_mean, pred_std = self.model(points)
             return pred_mean, pred_std
-        elif self.experiment_specification["UQ_MODEL"] == "FLIPOUT":
+        elif self.experiment_specification["UQ_MODEL"] == "FLIPOUT" or self.experiment_specification["UQ_MODEL"] == "DROPOUT":
             st_model = StochasticRegressor(self.model)
             pred_mean, pred_std = st_model.predict(points, num_samples=10)
             return pred_mean, pred_std

@@ -32,11 +32,13 @@ best_hps = get_best_params(directory)
 print_best_params(best_hps)
 DATASET_TYPE = "Dagon"  # "Toy"
 
+UQ_MODEL = "DROPOUT" # FLIPOUT
+
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": f"Flipout {identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
+    "EXPERIMENT_IDENTIFIER": f"{UQ_MODEL} {identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 100,
-    "UQ_MODEL": "FLIPOUT",
+    "UQ_MODEL": UQ_MODEL,
     "MODEL_MODE": MODEL_MODE,
     "DATASET_MODE": "subsampled_sequential",
     "NUMBER_OF_LAYERS": best_hps['num_layers'],
@@ -78,6 +80,7 @@ if MODEL_MODE != "OFFLINE":
             training_flag = model.update_own_training_set(new_point)
             if not training_flag and dataset.data_available():
                 metrics.pad_metrics()
+    
         metrics.save()
     dataset.data_available(verbose=True)
 
