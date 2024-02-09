@@ -52,7 +52,7 @@ def line_color2(st):
 
 def extracted_name(st):
     st = st.replace("tuned (0)", "")
-    st = st.replace("THRESHOLD_GREEDY", "Threshold Greedy")
+    st = st.replace("THRESHOLD_GREEDY", "Threshold-Greedy")
     st = st.replace("THRESHOLD", "Threshold")
     st = st.replace("BUFFER", "")
     st = st.replace("GREEDY", "Greedy")
@@ -188,6 +188,8 @@ dirs_Threshold = ([Threshold], 'Threshold CMSE', r'Values of $t$ in Threshold')
 
 dirs_ThresholdGreedy = ([Threshold_Greedy], 'Threshold-Greedy CMSE', r'Values of $t$ in Threshold-Greedy')
 
+dirs_Thresholds_BOTH = ([Threshold, Threshold_Greedy], 'Threshold Both CMSE', r'Values of $t$ in Threshold and Threshold-Greedy')
+
 dirs_BUFFER = ([
     BUFFER_FIFO,
     BUFFER_FIRO,
@@ -198,7 +200,7 @@ dirs_BUFFER = ([
 ], 'BUFFER CMSE', r'Buffer Sizes')
 
 
-dirs_to_handle, plot_name, plot_string = dirs_BUFFER
+dirs_to_handle, plot_name, plot_string = dirs_Thresholds_BOTH
 
 colors = plt.get_cmap('gist_rainbow')(
     np.linspace(0, 1, len(dirs_to_handle[0])))
@@ -223,7 +225,7 @@ for dir_names in dirs_to_handle:
     axs[0].set_xlabel(plot_string, fontsize=FONT_SIZE)
     axs[0].set_ylabel("Cumulative MSE", fontsize=FONT_SIZE)
 
-    if plot_name == 'BUFFER CMSE':
+    if plot_name == 'BUFFER CMSE' or plot_name == "Threshold Both CMSE":
         axs[0].legend(fontsize=FONT_SIZE)
 
 plt.tight_layout()

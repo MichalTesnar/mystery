@@ -6,9 +6,12 @@ import os
 import time
 import numpy as np
 import sys
+import random
 from src.utils import get_best_params, print_best_params
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 tf.get_logger().setLevel('INFO')
+
+random.seed(107)
 
 np.random.seed(107)
 
@@ -23,14 +26,14 @@ if "THRESHOLD" in MODEL_MODE and len(sys.argv) > 2:
     UNCERTAINTY_THRESHOLD = float(sys.argv[2])
     EXTRA_PARAM = UNCERTAINTY_THRESHOLD
 
-identifier = "Full Flipout"
+identifier = "Full data fix"
 directory = f"hyperparams/{identifier} {MODEL_MODE}"
 best_hps = get_best_params(directory)
 print_best_params(best_hps)
 DATASET_TYPE = "Dagon"  # "Toy"
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": f"{identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
+    "EXPERIMENT_IDENTIFIER": f"Flipout {identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 100,
     "UQ_MODEL": "FLIPOUT",
@@ -75,7 +78,6 @@ if MODEL_MODE != "OFFLINE":
             training_flag = model.update_own_training_set(new_point)
             if not training_flag and dataset.data_available():
                 metrics.pad_metrics()
-
     dataset.data_available(verbose=True)
     metrics.save()
 
