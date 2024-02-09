@@ -99,7 +99,7 @@ for j, dir_name in enumerate(dir_names):
             continue
 
         y = metrics_results[metric]
-        print(len(y))
+        print(np.count_nonzero(y))
         x = np.arange(0, len(y))
         if metric == "MSE":
             y = np.minimum(0.035, y)
