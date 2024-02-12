@@ -55,15 +55,15 @@ def line_color(st):
 
 # EXPERIMENT PREFIX
 
-flipout = ("Flipout Full data fix ", [
-    "FIFO  tuned (2)",
-    "FIRO  tuned (2)",
-    "RIRO  tuned (1)",
-    "GREEDY  tuned (2)",
-    "THRESHOLD  tuned (2)",
-    "THRESHOLD_GREEDY  tuned (2)"
+flipout = ("FLIPOUT Full data fix ", [
+    "FIFO  tuned (0)",
+    "FIRO  tuned (0)",
+    "RIRO  tuned (0)",
+    "GREEDY  tuned (0)",
+    "THRESHOLD  tuned (0)",
+    "THRESHOLD_GREEDY  tuned (0)"
     ],
-    "flipout_")
+    "FLIPOUT_")
 
 dropout = ("DROPOUT Full data fix ", [
     "FIFO  tuned (0)",
@@ -72,7 +72,7 @@ dropout = ("DROPOUT Full data fix ", [
     "GREEDY  tuned (0)",
     "THRESHOLD  tuned (0)",
     "THRESHOLD_GREEDY  tuned (0)"
-], "dropout_")
+], "DROPOUT_")
 
 first_go = ("Full data fix ", [
     "OFFLINE  tuned (0)",
@@ -137,7 +137,7 @@ for j, dir_name in enumerate(dir_names):
             # print(dir_name, f"{len(metrics_results[metric])-metrics_results[metric][-1]}/{len(metrics_results[metric])}")
             continue
 
-        y = metrics_results[metric]
+        y = metrics_results[metric][:1000]
         x = np.arange(0, len(y))
         # if metric == "MSE":
         #     y = np.minimum(0.035, y)

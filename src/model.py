@@ -47,15 +47,24 @@ class AIOModel():
             }
 
             model = Sequential()
-            model.add(Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu", input_shape=(self.experiment_specification["INPUT_LAYER_SIZE"],)))
-
+            model.add(FlipoutDense(self.experiment_specification["UNITS_PER_LAYER"], kl_weight, **prior_params, bias_distribution=True, activation="relu", input_shape=(self.experiment_specification["INPUT_LAYER_SIZE"],)))
             for _ in range(self.experiment_specification["NUMBER_OF_LAYERS"] - 1):
-                model.add(Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu"))
+                model.add(FlipoutDense(self.experiment_specification["UNITS_PER_LAYER"], kl_weight, **prior_params, bias_distribution=True, activation="relu"))
             
             model.add(FlipoutDense(self.experiment_specification["OUTPUT_LAYER_SIZE"], kl_weight, **prior_params, bias_distribution=True, activation="linear"))
             model.compile(loss="mean_squared_error", optimizer="adam")
             print(model.summary())
             self.model = model
+            # model = Sequential()
+            # model.add(Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu", input_shape=(self.experiment_specification["INPUT_LAYER_SIZE"],)))
+
+            # for _ in range(self.experiment_specification["NUMBER_OF_LAYERS"] - 1):
+            #     model.add(Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu"))
+            
+            # model.add(FlipoutDense(self.experiment_specification["OUTPUT_LAYER_SIZE"], kl_weight, **prior_params, bias_distribution=True, activation="linear"))
+            # model.compile(loss="mean_squared_error", optimizer="adam")
+            # print(model.summary())
+            # self.model = model
 
             # inp = Input(shape=(self.experiment_specification["INPUT_LAYER_SIZE"],))
             # x = Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu")(inp)
