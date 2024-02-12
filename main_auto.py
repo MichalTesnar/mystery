@@ -35,6 +35,13 @@ DATASET_TYPE = "Dagon"  # "Toy"
 # UQ_MODEL = "DROPOUT" # FLIPOUT
 UQ_MODEL = "FLIPOUT"
 
+epochs = 100
+
+if MODEL_MODE == "OFFLINE":
+    epochs = 100*7000
+elif UQ_MODEL == "FLIPOUT":
+    epochs = 300
+
 experiment_specification = {
     "EXPERIMENT_IDENTIFIER": f"{UQ_MODEL} {identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
     "EXPERIMENT_TYPE": DATASET_TYPE,
@@ -48,7 +55,7 @@ experiment_specification = {
     "LEARNING_RATE": best_hps['learning_rate'],
     "BATCH_SIZE": best_hps['batch_size'],
     "PATIENCE": best_hps['patience'],
-    "MAX_EPOCHS": 100 if MODEL_MODE != "OFFLINE" else 100*7000,
+    "MAX_EPOCHS": epochs,
     "ACCEPT_PROBABILITY": ACCEPT_PROBABILITY,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,

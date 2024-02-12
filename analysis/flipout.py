@@ -61,7 +61,7 @@ def line_color(st):
 prefix = ""
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 dir_names = [
-    "FLIPOUT Full data fix FIFO  tuned (1)"
+    "FLIPOUT Full data fix FIFO  tuned (2)"
 ]
 
 # IDENTIFIER TO PUT ON THE PLOT

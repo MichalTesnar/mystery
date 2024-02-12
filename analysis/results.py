@@ -97,7 +97,7 @@ final_go = ("Full data fix ", [
 prefix, dir_names, plot_name_start = flipout
 
 # IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": True,
+excluded = {"MSE": False,
             "R2": False,
             "Cummulative MSE": True,
             "Prediction Uncertainty": False,
@@ -137,7 +137,8 @@ for j, dir_name in enumerate(dir_names):
             # print(dir_name, f"{len(metrics_results[metric])-metrics_results[metric][-1]}/{len(metrics_results[metric])}")
             continue
 
-        y = metrics_results[metric][:1000]
+        y = np.log(metrics_results[metric])
+        # y = metrics_results[metric]
         x = np.arange(0, len(y))
         # if metric == "MSE":
         #     y = np.minimum(0.035, y)
