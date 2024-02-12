@@ -42,6 +42,7 @@ class Metrics():
         Apply the metrics and save the results.
         """
         pred_mean, pred_std = model.predict(self._test_X)
+        print(pred_mean)
         for metric in self.metrics_results.keys():
             if metric != "Prediction Uncertainty":
                 self.metrics_results[metric][self.current_data_index] = self.calculate_metric(
@@ -82,6 +83,9 @@ class Metrics():
         Calculates the individual metrics.
         """
         if key == "MSE":
+            print(pred_mean[0])
+            print(self._test_y[0])
+            print(np.sum(np.square(self._test_y[0] - pred_mean[0])))
             return np.sum(np.square(self._test_y - pred_mean))/self.test_set_size
         elif key == "R2":
             return r2_score(self._test_y, pred_mean) # using mean of R2 of all variables

@@ -54,9 +54,27 @@ def line_color(st):
 
 
 # EXPERIMENT PREFIX
-prefix = "Full data fix "
-# DIRECTORIES THAT NEED TO BE CONSIDERED
-first_go = ([
+
+flipout = ("Flipout Full data fix ", [
+    "FIFO  tuned (2)",
+    "FIRO  tuned (2)",
+    "RIRO  tuned (1)",
+    "GREEDY  tuned (2)",
+    "THRESHOLD  tuned (2)",
+    "THRESHOLD_GREEDY  tuned (2)"
+    ],
+    "flipout_")
+
+dropout = ("DROPOUT Full data fix ", [
+    "FIFO  tuned (0)",
+    "FIRO  tuned (0)",
+    "RIRO  tuned (0)",
+    "GREEDY  tuned (0)",
+    "THRESHOLD  tuned (0)",
+    "THRESHOLD_GREEDY  tuned (0)"
+], "dropout_")
+
+first_go = ("Full data fix ", [
     "OFFLINE  tuned (0)",
     "FIFO  tuned (0)",
     "FIRO  tuned (0)",
@@ -66,7 +84,7 @@ first_go = ([
     "THRESHOLD_GREEDY  tuned (0)"
 ], "first_go_")
 
-final_go = ([
+final_go = ("Full data fix ", [
     "OFFLINE  tuned (0)",
     "FIFO  tuned (0)",
     "FIRO  tuned (0)",
@@ -76,13 +94,13 @@ final_go = ([
     "THRESHOLD_GREEDY 0.0228 tuned (0)"
 ], "final_go_")
 
-dir_names, plot_name_start = first_go
+prefix, dir_names, plot_name_start = flipout
 
 # IDENTIFIER TO PUT ON THE PLOT
 excluded = {"MSE": True,
-            "R2": True,
+            "R2": False,
             "Cummulative MSE": True,
-            "Prediction Uncertainty": True,
+            "Prediction Uncertainty": False,
             "Skips": False,
             }
 true_labels = [label for label, value in excluded.items() if value]
@@ -90,8 +108,8 @@ HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
 # PLOT CONFIG
 plot_name = plot_name_start + "_".join(true_labels)
 fig, axs = plt.subplots(HOW_MANY, 1, figsize=(
-    20, 11), sharex=True)  # 20, 11 for wide figures
-FONT_SIZE = 15 # 30  # 15 for wide figures
+    16, 11), sharex=True)  # 20, 11 for wide figures
+FONT_SIZE = 15  # 15 for wide figures 25 otherwise
 FONT_SIZE_TICKS = 20
 
 # fig.suptitle(f"{plot_name}", fontsize=FONT_SIZE)
@@ -121,14 +139,14 @@ for j, dir_name in enumerate(dir_names):
 
         y = metrics_results[metric]
         x = np.arange(0, len(y))
-        if metric == "MSE":
-            y = np.minimum(0.035, y)
-            print(metric, dir_name, np.min(y))
-        if metric == "Prediction Uncertainty":
-            y = np.minimum(0.15, y)
-        if metric == "R2":
-            y = np.maximum(-1.5, y)
-            print(metric, dir_name, np.max(y))
+        # if metric == "MSE":
+        #     y = np.minimum(0.035, y)
+        #     print(metric, dir_name, np.min(y))
+        # if metric == "Prediction Uncertainty":
+        #     y = np.minimum(0.15, y)
+        # if metric == "R2":
+        #     y = np.maximum(-1.5, y)
+        #     print(metric, dir_name, np.max(y))
 
         if "OFFLINE" in dir_name:
             if metric in ["MSE", "R2"]:
@@ -141,7 +159,7 @@ for j, dir_name in enumerate(dir_names):
             axs[i].plot(x, y, label=extracted_name(dir_name), alpha=get_alpha(dir_name),
                         linestyle=line_style(dir_name), linewidth=1, color=line_color(dir_name))
         axs[i].set_ylabel(metric, fontsize=FONT_SIZE)
-        axs[i].margins(x=0.0)
+        # axs[i].margins(x=0.0)
 
         i += 1
     location = "upper left"
@@ -153,9 +171,10 @@ for j, dir_name in enumerate(dir_names):
     #     location = 'upper right'
     axs[min(HOW_MANY-1, 2)].legend(loc=location, fontsize=FONT_SIZE-3)
     axs[HOW_MANY-1].set_xlabel('Iterations', fontsize=FONT_SIZE)
-plt.margins(x=0)
+# plt.margins(x=0)
 plt.tick_params(axis='both', which='major', labelsize=FONT_SIZE_TICKS)
 plt.tight_layout()
-plt.savefig(f"{plot_name}.pdf", format="pdf", bbox_inches="tight", pad_inches=0)
+# plt.savefig(f"{plot_name}.pdf", format="pdf", bbox_inches="tight", pad_inches=0)
+plt.savefig(f"{plot_name}.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 plt.close()

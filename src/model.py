@@ -45,18 +45,30 @@ class AIOModel():
                 'prior_sigma_2': 2.0,
                 'prior_pi': 0.5
             }
-            inp = Input(shape=(self.experiment_specification["INPUT_LAYER_SIZE"],))
-            x = Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu")(inp)
+
+            model = Sequential()
+            model.add(Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu", input_shape=(self.experiment_specification["INPUT_LAYER_SIZE"],)))
 
             for _ in range(self.experiment_specification["NUMBER_OF_LAYERS"] - 1):
-                    x = Dense(
-                        self.experiment_specification["UNITS_PER_LAYER"], activation="relu")(x)
-            x = FlipoutDense(self.experiment_specification["OUTPUT_LAYER_SIZE"],
-                      kl_weight, **prior_params, bias_distribution=True, activation="linear")(x)
-            model = Model(inp, x)
+                model.add(Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu"))
+            
+            model.add(FlipoutDense(self.experiment_specification["OUTPUT_LAYER_SIZE"], kl_weight, **prior_params, bias_distribution=True, activation="linear"))
             model.compile(loss="mean_squared_error", optimizer="adam")
             print(model.summary())
             self.model = model
+
+            # inp = Input(shape=(self.experiment_specification["INPUT_LAYER_SIZE"],))
+            # x = Dense(self.experiment_specification["UNITS_PER_LAYER"], activation="relu")(inp)
+
+            # for _ in range(self.experiment_specification["NUMBER_OF_LAYERS"] - 1):
+            #         x = Dense(
+            #             self.experiment_specification["UNITS_PER_LAYER"], activation="relu")(x)
+            # x = FlipoutDense(self.experiment_specification["OUTPUT_LAYER_SIZE"],
+            #           kl_weight, **prior_params, bias_distribution=True, activation="linear")(x)
+            # model = Model(inp, x)
+            # model.compile(loss="mean_squared_error", optimizer="adam")
+            # print(model.summary())
+            # self.model = model
         
         elif self.experiment_specification["UQ_MODEL"] == "DROPOUT":
 

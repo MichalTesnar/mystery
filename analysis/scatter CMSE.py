@@ -182,7 +182,7 @@ try:
 except:
     axs = [axs]
 
-dirs_RIRO = ([RIRO], 'RIRO CMSE', r'Values of $P$ in RIRO')
+dirs_RIRO = ([RIRO], 'RIRO CMSE', r'Values of $p$ in RIRO')
 
 dirs_Threshold = ([Threshold], 'Threshold CMSE', r'Values of $t$ in Threshold')
 
@@ -200,7 +200,7 @@ dirs_BUFFER = ([
 ], 'BUFFER CMSE', r'Buffer Sizes')
 
 
-dirs_to_handle, plot_name, plot_string = dirs_Thresholds_BOTH
+dirs_to_handle, plot_name, plot_string = dirs_ThresholdGreedy
 
 colors = plt.get_cmap('gist_rainbow')(
     np.linspace(0, 1, len(dirs_to_handle[0])))

@@ -61,7 +61,7 @@ def line_color(st):
 prefix = ""
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 dir_names = [
-    "Flipout Full data fix THRESHOLD  tuned (1)",
+    "FLIPOUT Full data fix RIRO  tuned (0)"
 ]
 
 # IDENTIFIER TO PUT ON THE PLOT
@@ -97,16 +97,18 @@ for j, dir_name in enumerate(dir_names):
     for metric in metrics_results.keys():
         if not excluded[metric]:
             continue
-
+        
         y = metrics_results[metric]
-        print(np.count_nonzero(y))
+        length = np.count_nonzero(y)
+        y = y[:length]
+        # print(y)
         x = np.arange(0, len(y))
-        if metric == "MSE":
-            y = np.minimum(0.035, y)
-        if metric == "Prediction Uncertainty":
-            y = np.minimum(0.15, y)
-        if metric == "R2":
-            y = np.maximum(-1.5, y)
+        # if metric == "MSE":
+        #     y = np.minimum(0.035, y)
+        # if metric == "Prediction Uncertainty":
+        #     y = np.minimum(0.15, y)
+        # if metric == "R2":
+        #     y = np.maximum(-1.5, y)
 
         if "OFFLINE" in dir_name:
             if metric in ["MSE", "R2"]:

@@ -32,7 +32,8 @@ best_hps = get_best_params(directory)
 print_best_params(best_hps)
 DATASET_TYPE = "Dagon"  # "Toy"
 
-UQ_MODEL = "DROPOUT" # FLIPOUT
+# UQ_MODEL = "DROPOUT" # FLIPOUT
+UQ_MODEL = "FLIPOUT"
 
 experiment_specification = {
     "EXPERIMENT_IDENTIFIER": f"{UQ_MODEL} {identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
@@ -82,6 +83,7 @@ if MODEL_MODE != "OFFLINE":
                 metrics.pad_metrics()
     
         metrics.save()
+        
     dataset.data_available(verbose=True)
 
 else:
