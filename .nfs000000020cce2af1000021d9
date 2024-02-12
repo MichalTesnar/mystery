@@ -227,3 +227,4 @@ _________________________________________________________________
 2024-02-11 14:36:16.110306: W tensorflow/core/data/root_dataset.cc:342] Optimization loop failed: CANCELLED: Operation was cancelled
 2024-02-11 21:39:32.214383: W tensorflow/core/data/root_dataset.cc:342] Optimization loop failed: CANCELLED: Operation was cancelled
 2024-02-12 20:47:02.518466: W tensorflow/core/data/root_dataset.cc:342] Optimization loop failed: CANCELLED: Operation was cancelled
+2024-02-12 21:50:09.594986: W tensorflow/core/data/root_dataset.cc:342] Optimization loop failed: CANCELLED: Operation was cancelled
