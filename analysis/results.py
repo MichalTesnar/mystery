@@ -94,10 +94,10 @@ final_go = ("Full data fix ", [
     "THRESHOLD_GREEDY 0.0228 tuned (0)"
 ], "final_go_")
 
-prefix, dir_names, plot_name_start = flipout
+prefix, dir_names, plot_name_start = dropout
 
 # IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": False,
+excluded = {"MSE": True,
             "R2": False,
             "Cummulative MSE": True,
             "Prediction Uncertainty": False,
@@ -137,17 +137,17 @@ for j, dir_name in enumerate(dir_names):
             # print(dir_name, f"{len(metrics_results[metric])-metrics_results[metric][-1]}/{len(metrics_results[metric])}")
             continue
 
-        y = np.log(metrics_results[metric])
-        # y = metrics_results[metric]
+        # y = np.log(metrics_results[metric][:1000])
+        y = metrics_results[metric]
         x = np.arange(0, len(y))
-        # if metric == "MSE":
-        #     y = np.minimum(0.035, y)
-        #     print(metric, dir_name, np.min(y))
-        # if metric == "Prediction Uncertainty":
-        #     y = np.minimum(0.15, y)
-        # if metric == "R2":
-        #     y = np.maximum(-1.5, y)
-        #     print(metric, dir_name, np.max(y))
+        if metric == "MSE":
+            y = np.minimum(0.035, y)
+            print(metric, dir_name, np.min(y))
+        if metric == "Prediction Uncertainty":
+            y = np.minimum(0.15, y)
+        if metric == "R2":
+            y = np.maximum(-1.5, y)
+            print(metric, dir_name, np.max(y))
 
         if "OFFLINE" in dir_name:
             if metric in ["MSE", "R2"]:

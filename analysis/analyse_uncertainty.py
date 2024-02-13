@@ -1,15 +1,15 @@
 import matplotlib.pyplot as plt
 import pickle
 
-prefix = "Full data "
+prefix = "DROPOUT Full data fix "
 plot_name = "Analyse Uncertainty"
 fig, axs = plt.subplots(1, 1, figsize=(16, 13))
 fig.suptitle(f"{plot_name}", fontsize=15)
-
-dir_name = "FIFO tuned (0)"
+# "DROPOUT Full data fix FIFO  tuned (0)"
+dir_name = "FIFO  tuned (0)"
 with open(f"results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
     metrics_results_FIFO = pickle.load(file)
-dir_name = "FIRO tuned (0)"
+dir_name = "FIRO  tuned (0)"
 with open(f"results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
     metrics_results_FIRO = pickle.load(file)
 
