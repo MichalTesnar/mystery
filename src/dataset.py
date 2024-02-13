@@ -4,11 +4,11 @@ from math import sin, exp
 import time
 
 class Dataset():
-    def __init__(self, experiment_specification):
+    def __init__(self, experiment_specification, normalize=False):
         assert experiment_specification["DATASET_SIZE"] > 0 and experiment_specification["DATASET_SIZE"] <= 1, "Choose valid (sub)set size."
         assert experiment_specification["DATASET_MODE"] in ["random", "sequential",
                         "subsampled_sequential"], "Dataset mode not implemented."
-        self._load_data(experiment_specification["DATASET_SIZE"])
+        self._load_data(experiment_specification["DATASET_SIZE"], normalize=normalize)
         
         self._X = self._df.iloc[:, 0:experiment_specification["INPUT_LAYER_SIZE"]]
         self._y = self._df.iloc[:, experiment_specification["INPUT_LAYER_SIZE"]:]
@@ -122,14 +122,24 @@ class Dataset():
     
 
 class DagonAUVDataset(Dataset):
-    def _load_data(self, size):
+    def _load_data(self, size, normalize=False):
         """
         Load the data from the storage.
         """
         file_path = "dagon_dataset.csv"
         to_read = int(size*11566)
         self._df = pd.read_csv(file_path, skiprows=1, nrows=to_read)
-
+        if normalize:
+            # Normalize each numeric column to the range [0, 1]
+            numeric_columns = self._df.select_dtypes(include=['float64', 'int64']).columns
+            for column in numeric_columns:
+                min_value = self._df[column].min()
+                max_value = self._df[column].max()
+                self._df[column] = (self._df[column] - min_value) / (max_value - min_value)
+            
+            # save to csv
+        # self._df.to_csv("dagon_dataset_normalized.csv", index=False)
+        # exit()
 
 class SinusiodToyExample(Dataset):
     def _load_data(self, size):

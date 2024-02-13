@@ -32,15 +32,18 @@ best_hps = get_best_params(directory)
 print_best_params(best_hps)
 DATASET_TYPE = "Dagon"  # "Toy"
 
-UQ_MODEL = "DROPOUT"
-# UQ_MODEL = "FLIPOUT"
+# UQ_MODEL = "DROPOUT"
+UQ_MODEL = "FLIPOUT"
 
 epochs = 100
-
 if MODEL_MODE == "OFFLINE":
     epochs = 100*7000
 elif UQ_MODEL == "FLIPOUT":
     epochs = 300
+
+normalize = False
+if UQ_MODEL == "FLIPOUT":
+    normalize = True
 
 experiment_specification = {
     "EXPERIMENT_IDENTIFIER": f"{UQ_MODEL} {identifier} {MODEL_MODE} {EXTRA_PARAM} tuned",
@@ -64,7 +67,7 @@ experiment_specification = {
 }
 
 if experiment_specification["EXPERIMENT_TYPE"] == "Dagon":
-    dataset = DagonAUVDataset(experiment_specification)
+    dataset = DagonAUVDataset(experiment_specification, normalize=normalize)
 elif experiment_specification["EXPERIMENT_TYPE"] == "Toy":
     dataset = SinusiodToyExample(experiment_specification)
 

@@ -137,8 +137,8 @@ elif "RIRO" in plot_name:
 colors = plt.get_cmap('gist_rainbow')(np.linspace(0, 1, len(dir_names)))
 # IDENTIFIER TO PUT ON THE PLOT
 excluded = {"MSE": 0,
-            "R2": 1,
-            "Cummulative MSE": 0, 
+            "R2": 0,
+            "Cummulative MSE": 1, 
             "Prediction Uncertainty": 0,
             "Skips": 0,
             }
