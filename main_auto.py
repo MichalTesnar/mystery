@@ -15,16 +15,25 @@ random.seed(107)
 
 np.random.seed(107)
 
+# UQ_MODEL = "DROPOUT"
+UQ_MODEL = "FLIPOUT"
+
 MODEL_MODE = sys.argv[1]
 EXTRA_PARAM = ""
 ACCEPT_PROBABILITY = 0.7
-if MODEL_MODE == "RIRO" and len(sys.argv) > 2:
-    ACCEPT_PROBABILITY = float(sys.argv[2])
-    EXTRA_PARAM = ACCEPT_PROBABILITY
 UNCERTAINTY_THRESHOLD = 0.02
-if "THRESHOLD" in MODEL_MODE and len(sys.argv) > 2:
-    UNCERTAINTY_THRESHOLD = float(sys.argv[2])
-    EXTRA_PARAM = UNCERTAINTY_THRESHOLD
+FLIPOUT_PRIOR_PI = 0.5
+if "FLIPOUT" not in UQ_MODEL:
+    if MODEL_MODE == "RIRO" and len(sys.argv) > 2:
+        ACCEPT_PROBABILITY = float(sys.argv[2])
+        EXTRA_PARAM = ACCEPT_PROBABILITY
+    if "THRESHOLD" in MODEL_MODE and len(sys.argv) > 2:
+        UNCERTAINTY_THRESHOLD = float(sys.argv[2])
+        EXTRA_PARAM = UNCERTAINTY_THRESHOLD
+elif len(sys.argv) > 2:
+    FLIPOUT_PRIOR_PI = float(sys.argv[2])
+    EXTRA_PARAM = FLIPOUT_PRIOR_PI
+
 
 identifier = "Full data fix"
 directory = f"hyperparams/{identifier} {MODEL_MODE}"
@@ -32,8 +41,7 @@ best_hps = get_best_params(directory)
 print_best_params(best_hps)
 DATASET_TYPE = "Dagon"  # "Toy"
 
-UQ_MODEL = "DROPOUT"
-# UQ_MODEL = "FLIPOUT"
+
 
 epochs = 100
 if MODEL_MODE == "OFFLINE":
@@ -50,6 +58,7 @@ experiment_specification = {
     "EXPERIMENT_TYPE": DATASET_TYPE,
     "BUFFER_SIZE": 100,
     "UQ_MODEL": UQ_MODEL,
+    "FLIPOUT_PRIOR_PI": FLIPOUT_PRIOR_PI,
     "MODEL_MODE": MODEL_MODE,
     "DATASET_MODE": "subsampled_sequential",
     "NUMBER_OF_LAYERS": best_hps['num_layers'],
