@@ -35,7 +35,7 @@ def extracted_name(st):
     
 
 # EXPERIMENT PREFIX
-prefix = "Full data fix "
+prefix = "DROPOUT Full data fix "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 import sys
 # plot_name = "BUFFER Threshold Greedy"
@@ -99,27 +99,36 @@ elif "BUFFER FIFO" in plot_name:
     ]
 elif "Threshold Greedy" in plot_name:
     dir_names = [
-    "THRESHOLD_GREEDY 0.0016 tuned (0)",
-    "THRESHOLD_GREEDY 0.0023 tuned (0)",
-    "THRESHOLD_GREEDY 0.0036 tuned (0)",
-    "THRESHOLD_GREEDY 0.0056 tuned (0)",
-    "THRESHOLD_GREEDY 0.0075 tuned (0)",
-    "THRESHOLD_GREEDY 0.0096 tuned (0)",
-    "THRESHOLD_GREEDY 0.012 tuned (0)",
-    "THRESHOLD_GREEDY 0.0156 tuned (0)",
-    "THRESHOLD_GREEDY 0.0228 tuned (0)"
+    "THRESHOLD_GREEDY 0.0001 tuned (1)",
+    "THRESHOLD_GREEDY 0.0033 tuned (1)",
+    "THRESHOLD_GREEDY 0.0057 tuned (1)",
+    "THRESHOLD_GREEDY 0.0078 tuned (1)",
+    "THRESHOLD_GREEDY 0.0099 tuned (1)",
+    "THRESHOLD_GREEDY 0.0121 tuned (1)",
+    "THRESHOLD_GREEDY 0.0147 tuned (1)",
+    "THRESHOLD_GREEDY 0.018 tuned (1)",
+    "THRESHOLD_GREEDY 0.0229 tuned (1)"
         ]
 elif "Threshold" in plot_name:
     dir_names = [
-    "THRESHOLD 0.0016 tuned (0)",
-    "THRESHOLD 0.0023 tuned (0)",
-    "THRESHOLD 0.0036 tuned (0)",
-    "THRESHOLD 0.0056 tuned (0)",
-    "THRESHOLD 0.0075 tuned (0)",
-    "THRESHOLD 0.0096 tuned (0)",
-    "THRESHOLD 0.012 tuned (0)",
-    "THRESHOLD 0.0156 tuned (0)",
-    "THRESHOLD 0.0228 tuned (0)"
+    # "THRESHOLD 0.0016 tuned (0)",
+    # "THRESHOLD 0.0023 tuned (0)",
+    # "THRESHOLD 0.0036 tuned (0)",
+    # "THRESHOLD 0.0056 tuned (0)",
+    # "THRESHOLD 0.0075 tuned (0)",
+    # "THRESHOLD 0.0096 tuned (0)",
+    # "THRESHOLD 0.012 tuned (0)",
+    # "THRESHOLD 0.0156 tuned (0)",
+    # "THRESHOLD 0.0228 tuned (0)"
+    "THRESHOLD 0.0001 tuned (0)",
+    "THRESHOLD 0.0033 tuned (0)",
+    "THRESHOLD 0.0057 tuned (0)",
+    "THRESHOLD 0.0078 tuned (0)",
+    "THRESHOLD 0.0099 tuned (0)",
+    "THRESHOLD 0.0121 tuned (0)",
+    "THRESHOLD 0.0147 tuned (0)",
+    "THRESHOLD 0.018 tuned (0)",
+    "THRESHOLD 0.0229 tuned (0)"
     ]
 elif "RIRO" in plot_name:
     dir_names = [
@@ -137,7 +146,7 @@ elif "RIRO" in plot_name:
 colors = plt.get_cmap('gist_rainbow')(np.linspace(0, 1, len(dir_names)))
 # IDENTIFIER TO PUT ON THE PLOT
 excluded = {"MSE": 0,
-            "R2": 0,
+            "R2": 1,
             "Cummulative MSE": 1, 
             "Prediction Uncertainty": 0,
             "Skips": 0,
@@ -180,7 +189,7 @@ for j, dir_name in enumerate(dir_names):
         y_max = max(y_max, len(y))
 
         if metric == "MSE":
-            y = np.minimum(1, y)
+            y = np.minimum(0.1, y)
             print(metric, dir_name, np.min(y))
         if metric == "R2":
             y = np.maximum(-1.5, y)

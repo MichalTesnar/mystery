@@ -32,8 +32,8 @@ best_hps = get_best_params(directory)
 print_best_params(best_hps)
 DATASET_TYPE = "Dagon"  # "Toy"
 
-# UQ_MODEL = "DROPOUT"
-UQ_MODEL = "FLIPOUT"
+UQ_MODEL = "DROPOUT"
+# UQ_MODEL = "FLIPOUT"
 
 epochs = 100
 if MODEL_MODE == "OFFLINE":

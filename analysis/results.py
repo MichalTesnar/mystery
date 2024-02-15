@@ -56,12 +56,12 @@ def line_color(st):
 # EXPERIMENT PREFIX
 
 flipout = ("FLIPOUT Full data fix ", [
-    "FIFO  tuned (0)",
-    "FIRO  tuned (0)",
-    "RIRO  tuned (0)",
-    "GREEDY  tuned (0)",
-    "THRESHOLD  tuned (0)",
-    "THRESHOLD_GREEDY  tuned (0)"
+    "FIFO  tuned (1)",
+    "FIRO  tuned (1)",
+    "RIRO  tuned (1)",
+    "GREEDY  tuned (1)",
+    "THRESHOLD  tuned (1)",
+    "THRESHOLD_GREEDY  tuned (1)"
     ],
     "FLIPOUT_")
 
@@ -94,12 +94,12 @@ final_go = ("Full data fix ", [
     "THRESHOLD_GREEDY 0.0228 tuned (0)"
 ], "final_go_")
 
-prefix, dir_names, plot_name_start = dropout
+prefix, dir_names, plot_name_start = flipout
 
 # IDENTIFIER TO PUT ON THE PLOT
 excluded = {"MSE": True,
             "R2": False,
-            "Cummulative MSE": True,
+            "Cummulative MSE": False,
             "Prediction Uncertainty": False,
             "Skips": False,
             }
@@ -140,14 +140,14 @@ for j, dir_name in enumerate(dir_names):
         # y = np.log(metrics_results[metric][:1000])
         y = metrics_results[metric]
         x = np.arange(0, len(y))
-        if metric == "MSE":
-            y = np.minimum(0.035, y)
-            print(metric, dir_name, np.min(y))
-        if metric == "Prediction Uncertainty":
-            y = np.minimum(0.15, y)
-        if metric == "R2":
-            y = np.maximum(-1.5, y)
-            print(metric, dir_name, np.max(y))
+        # if metric == "MSE":
+        #     y = np.minimum(0.035, y)
+        #     print(metric, dir_name, np.min(y))
+        # if metric == "Prediction Uncertainty":
+        #     y = np.minimum(0.15, y)
+        # if metric == "R2":
+        #     y = np.maximum(-1.5, y)
+        #     print(metric, dir_name, np.max(y))
 
         if "OFFLINE" in dir_name:
             if metric in ["MSE", "R2"]:
