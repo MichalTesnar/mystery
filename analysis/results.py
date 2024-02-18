@@ -94,14 +94,14 @@ final_go = ("Full data fix ", [
     "THRESHOLD_GREEDY 0.0228 tuned (0)"
 ], "final_go_")
 
-prefix, dir_names, plot_name_start = flipout
+prefix, dir_names, plot_name_start = first_go
 
 # IDENTIFIER TO PUT ON THE PLOT
-excluded = {"MSE": True,
-            "R2": False,
-            "Cummulative MSE": False,
-            "Prediction Uncertainty": False,
-            "Skips": False,
+excluded = {"MSE": 0,
+            "R2": 0,
+            "Cummulative MSE": 0,
+            "Prediction Uncertainty": 0,
+            "Skips": 1,
             }
 true_labels = [label for label, value in excluded.items() if value]
 HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
@@ -109,7 +109,7 @@ HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
 plot_name = plot_name_start + "_".join(true_labels)
 fig, axs = plt.subplots(HOW_MANY, 1, figsize=(
     16, 11), sharex=True)  # 20, 11 for wide figures
-FONT_SIZE = 15  # 15 for wide figures 25 otherwise
+FONT_SIZE = 25  # 15 for wide figures 25 otherwise
 FONT_SIZE_TICKS = 20
 
 # fig.suptitle(f"{plot_name}", fontsize=FONT_SIZE)
@@ -128,7 +128,7 @@ for ax in axs:
     ax.tick_params('x', labelsize=FONT_SIZE_TICKS)
 
 for j, dir_name in enumerate(dir_names):
-    with open(f"results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
+    with open(f"archived_results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
         metrics_results = pickle.load(file)
     i = 0
 
@@ -140,14 +140,14 @@ for j, dir_name in enumerate(dir_names):
         # y = np.log(metrics_results[metric][:1000])
         y = metrics_results[metric]
         x = np.arange(0, len(y))
-        # if metric == "MSE":
-        #     y = np.minimum(0.035, y)
-        #     print(metric, dir_name, np.min(y))
-        # if metric == "Prediction Uncertainty":
-        #     y = np.minimum(0.15, y)
-        # if metric == "R2":
-        #     y = np.maximum(-1.5, y)
-        #     print(metric, dir_name, np.max(y))
+        if metric == "MSE":
+            y = np.minimum(0.035, y)
+            print(metric, dir_name, np.min(y))
+        if metric == "Prediction Uncertainty":
+            y = np.minimum(0.15, y)
+        if metric == "R2":
+            y = np.maximum(-1.5, y)
+            print(metric, dir_name, np.max(y))
 
         if "OFFLINE" in dir_name:
             if metric in ["MSE", "R2"]:
@@ -164,12 +164,12 @@ for j, dir_name in enumerate(dir_names):
 
         i += 1
     location = "upper left"
-    # if excluded["R2"]:
-    #     location = 'lower right'
-    # elif excluded["MSE"] or excluded["Cummulative MSE"] or excluded["Skips"]:
-    #     location = 'upper left'
-    # elif excluded["Prediction Uncertainty"]:
-    #     location = 'upper right'
+    if excluded["R2"]:
+        location = 'lower right'
+    elif excluded["MSE"] or excluded["Cummulative MSE"] or excluded["Skips"]:
+        location = 'upper left'
+    elif excluded["Prediction Uncertainty"]:
+        location = 'upper right'
     axs[min(HOW_MANY-1, 2)].legend(loc=location, fontsize=FONT_SIZE-3)
     axs[HOW_MANY-1].set_xlabel('Iterations', fontsize=FONT_SIZE)
 # plt.margins(x=0)

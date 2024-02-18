@@ -36,6 +36,7 @@ def extracted_name(st):
 
 # EXPERIMENT PREFIX
 prefix = "DROPOUT Full data fix "
+# prefix = "FLIPOUT Full data fix "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 import sys
 # plot_name = "BUFFER Threshold Greedy"
@@ -142,11 +143,24 @@ elif "RIRO" in plot_name:
     "RIRO 0.8 tuned (0)",
     "RIRO 0.9 tuned (0)",
     ]
+    
+elif "FLIPOUT FIFO" in plot_name:
+    dir_names = [
+    "FIFO 0.1 tuned (0)",
+    "FIFO 0.2 tuned (0)",
+    "FIFO 0.3 tuned (0)",
+    "FIFO 0.4 tuned (0)",
+    "FIFO 0.5 tuned (0)",
+    "FIFO 0.6 tuned (0)",
+    "FIFO 0.7 tuned (0)",
+    "FIFO 0.8 tuned (0)",
+    "FIFO 0.9 tuned (0)",
+    ]
 
 colors = plt.get_cmap('gist_rainbow')(np.linspace(0, 1, len(dir_names)))
 # IDENTIFIER TO PUT ON THE PLOT
 excluded = {"MSE": 0,
-            "R2": 1,
+            "R2": 0,
             "Cummulative MSE": 1, 
             "Prediction Uncertainty": 0,
             "Skips": 0,

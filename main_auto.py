@@ -20,9 +20,11 @@ UQ_MODEL = "FLIPOUT"
 
 MODEL_MODE = sys.argv[1]
 EXTRA_PARAM = ""
+
 ACCEPT_PROBABILITY = 0.7
 UNCERTAINTY_THRESHOLD = 0.02
 FLIPOUT_PRIOR_PI = 0.5
+
 if "FLIPOUT" not in UQ_MODEL:
     if MODEL_MODE == "RIRO" and len(sys.argv) > 2:
         ACCEPT_PROBABILITY = float(sys.argv[2])

@@ -15,12 +15,15 @@ np.random.seed(107)
 MODEL_MODE = sys.argv[1]
 BUFFER_SIZE = int(sys.argv[2])
 EXTRA_PARAM = BUFFER_SIZE
-UNCERTAINTY_THRESHOLD = 0
-if MODEL_MODE == "THRESHOLD_GREEDY":
-    UNCERTAINTY_THRESHOLD = 0.0228
-elif MODEL_MODE == "THRESHOLD":
-    UNCERTAINTY_THRESHOLD = 0.0156
 
+# UNCERTAINTY_THRESHOLD = 0
+# if MODEL_MODE == "THRESHOLD_GREEDY":
+#     UNCERTAINTY_THRESHOLD = 0.0228
+# elif MODEL_MODE == "THRESHOLD":
+#     UNCERTAINTY_THRESHOLD = 0.0156
+UNCERTAINTY_THRESHOLD = 0.018 # hardcode for DROPOUT
+# ACCEPT_PROBABILITY = 0.2 # hardcode for EMSEMBLE
+ACCEPT_PROBABILITY = 0.3  # hardcode for DROPOUT
 identifier = "Full data fix"
 directory = f"hyperparams/{identifier} {MODEL_MODE}"
 print(directory)
@@ -29,8 +32,9 @@ print_best_params(best_hps)
 DATASET_TYPE = "Dagon"  # "Toy"
 
 experiment_specification = {
-    "EXPERIMENT_IDENTIFIER": f"{identifier} {MODEL_MODE} {EXTRA_PARAM} BUFFER tuned",
+    "EXPERIMENT_IDENTIFIER": f"DROPOUT {identifier} {MODEL_MODE} {EXTRA_PARAM} BUFFER tuned",
     "EXPERIMENT_TYPE": DATASET_TYPE,
+    "UQ_MODEL": "DROPOUT",
     "BUFFER_SIZE": BUFFER_SIZE,
     "MODEL_MODE": MODEL_MODE,
     "DATASET_MODE": "subsampled_sequential",
@@ -41,7 +45,7 @@ experiment_specification = {
     "BATCH_SIZE": best_hps['batch_size'],
     "PATIENCE": best_hps['patience'],
     "MAX_EPOCHS": 100 if MODEL_MODE != "OFFLINE" else 100*7000,
-    "ACCEPT_PROBABILITY": 0.2,
+    "ACCEPT_PROBABILITY": ACCEPT_PROBABILITY,
     "INPUT_LAYER_SIZE": 6 if DATASET_TYPE == "Dagon" else 1,
     "OUTPUT_LAYER_SIZE": 3 if DATASET_TYPE == "Dagon" else 1,
     "UNCERTAINTY_THRESHOLD": UNCERTAINTY_THRESHOLD,
@@ -74,8 +78,8 @@ if MODEL_MODE != "OFFLINE":
             if not training_flag and dataset.data_available():
                 metrics.pad_metrics()
 
+        metrics.save()
     dataset.data_available(verbose=True)
-    metrics.save()
 
 else:
     model = AIOModel(dataset.get_training_set, experiment_specification)
