@@ -11,9 +11,9 @@ from src.utils import get_best_params, print_best_params
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 tf.get_logger().setLevel('INFO')
 
-random.seed(10181290)
+random.seed(68)
 
-np.random.seed(10782188181)
+np.random.seed(42)
 
 # UQ_MODEL = "DROPOUT"
 UQ_MODEL = "FLIPOUT"
