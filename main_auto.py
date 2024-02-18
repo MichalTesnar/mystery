@@ -11,9 +11,9 @@ from src.utils import get_best_params, print_best_params
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 tf.get_logger().setLevel('INFO')
 
-random.seed(107)
+random.seed(10181290)
 
-np.random.seed(107)
+np.random.seed(10782188181)
 
 # UQ_MODEL = "DROPOUT"
 UQ_MODEL = "FLIPOUT"
@@ -23,7 +23,7 @@ EXTRA_PARAM = ""
 
 ACCEPT_PROBABILITY = 0.7
 UNCERTAINTY_THRESHOLD = 0.02
-FLIPOUT_PRIOR_PI = 0.5
+FLIPOUT_PRIOR_PI = 0.6
 
 if "FLIPOUT" not in UQ_MODEL:
     if MODEL_MODE == "RIRO" and len(sys.argv) > 2:
