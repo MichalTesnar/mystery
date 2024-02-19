@@ -60,7 +60,8 @@ def extracted_name(st):
 
 
 # EXPERIMENT PREFIX
-prefix = "Full data fix "
+# prefix = "Full data fix "
+prefix = "DROPOUT Full data fix "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 
 BUFFER_Threshold_Greedy = [
@@ -88,12 +89,12 @@ BUFFER_FIRO = [
     "FIRO 400 BUFFER tuned (0)"
 ]
 BUFFER_Greedy = [
-    "GREEDY 10 BUFFER tuned (2)",
-    "GREEDY 25 BUFFER tuned (2)",
-    "GREEDY 50 BUFFER tuned (2)",
-    "GREEDY 100 BUFFER tuned (2)",
-    "GREEDY 200 BUFFER tuned (2)",
-    "GREEDY 400 BUFFER tuned (2)"
+    "GREEDY 10 BUFFER tuned (0)",
+    "GREEDY 25 BUFFER tuned (0)",
+    "GREEDY 50 BUFFER tuned (0)",
+    "GREEDY 100 BUFFER tuned (0)",
+    "GREEDY 200 BUFFER tuned (0)",
+    "GREEDY 400 BUFFER tuned (0)"
 ]
 BUFFER_Threshold = [
     "THRESHOLD 10 BUFFER tuned (0)",
@@ -200,7 +201,7 @@ dirs_BUFFER = ([
 ], 'BUFFER CMSE', r'Buffer Sizes')
 
 
-dirs_to_handle, plot_name, plot_string = dirs_ThresholdGreedy
+dirs_to_handle, plot_name, plot_string = dirs_BUFFER
 
 colors = plt.get_cmap('gist_rainbow')(
     np.linspace(0, 1, len(dirs_to_handle[0])))
