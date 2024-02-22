@@ -28,15 +28,19 @@ def line_color(st):
     
 def extracted_name(st):
     st = st.replace("tuned (0)", "")
+    st = st.replace("tuned (1)", "")
+    st = st.replace("tuned (2)", "")
     st = st.replace("THRESHOLD_GREEDY", "Threshold Greedy")
     st = st.replace("THRESHOLD", "Threshold")
+    st = st.replace("GREEDY", "Greedy")
     st = st.replace("BUFFER", "")
     return st
     
 
 # EXPERIMENT PREFIX
-prefix = "DROPOUT Full data fix "
+# prefix = "DROPOUT Full data fix "
 # prefix = "FLIPOUT Full data fix "
+prefix = "Full data fix "
 # DIRECTORIES THAT NEED TO BE CONSIDERED
 import sys
 # plot_name = "BUFFER Threshold Greedy"
@@ -80,7 +84,7 @@ elif "BUFFER Greedy" in plot_name:
     ]
 elif "BUFFER Threshold" in plot_name:
     dir_names = [
-    "OFFLINE  tuned (0)",
+    # "OFFLINE  tuned (0)",
     "THRESHOLD 10 BUFFER tuned (0)",
     "THRESHOLD 25 BUFFER tuned (0)",
     "THRESHOLD 50 BUFFER tuned (0)",
@@ -100,36 +104,45 @@ elif "BUFFER FIFO" in plot_name:
     ]
 elif "Threshold Greedy" in plot_name:
     dir_names = [
-    "THRESHOLD_GREEDY 0.0001 tuned (1)",
-    "THRESHOLD_GREEDY 0.0033 tuned (1)",
-    "THRESHOLD_GREEDY 0.0057 tuned (1)",
-    "THRESHOLD_GREEDY 0.0078 tuned (1)",
-    "THRESHOLD_GREEDY 0.0099 tuned (1)",
-    "THRESHOLD_GREEDY 0.0121 tuned (1)",
-    "THRESHOLD_GREEDY 0.0147 tuned (1)",
-    "THRESHOLD_GREEDY 0.018 tuned (1)",
-    "THRESHOLD_GREEDY 0.0229 tuned (1)"
+    # "THRESHOLD_GREEDY 0.0001 tuned (1)",
+    # "THRESHOLD_GREEDY 0.0033 tuned (1)",
+    # "THRESHOLD_GREEDY 0.0057 tuned (1)",
+    # "THRESHOLD_GREEDY 0.0078 tuned (1)",
+    # "THRESHOLD_GREEDY 0.0099 tuned (1)",
+    # "THRESHOLD_GREEDY 0.0121 tuned (1)",
+    # "THRESHOLD_GREEDY 0.0147 tuned (1)",
+    # "THRESHOLD_GREEDY 0.018 tuned (1)",
+    # "THRESHOLD_GREEDY 0.0229 tuned (1)"
+    "THRESHOLD_GREEDY 0.0016 tuned (0)",
+    "THRESHOLD_GREEDY 0.0023 tuned (0)",
+    "THRESHOLD_GREEDY 0.0036 tuned (0)",
+    "THRESHOLD_GREEDY 0.0056 tuned (0)",
+    "THRESHOLD_GREEDY 0.0075 tuned (0)",
+    "THRESHOLD_GREEDY 0.0096 tuned (0)",
+    "THRESHOLD_GREEDY 0.012 tuned (0)",
+    "THRESHOLD_GREEDY 0.0156 tuned (0)",
+    "THRESHOLD_GREEDY 0.0228 tuned (0)"
         ]
 elif "Threshold" in plot_name:
     dir_names = [
-    # "THRESHOLD 0.0016 tuned (0)",
-    # "THRESHOLD 0.0023 tuned (0)",
-    # "THRESHOLD 0.0036 tuned (0)",
-    # "THRESHOLD 0.0056 tuned (0)",
-    # "THRESHOLD 0.0075 tuned (0)",
-    # "THRESHOLD 0.0096 tuned (0)",
-    # "THRESHOLD 0.012 tuned (0)",
-    # "THRESHOLD 0.0156 tuned (0)",
-    # "THRESHOLD 0.0228 tuned (0)"
-    "THRESHOLD 0.0001 tuned (0)",
-    "THRESHOLD 0.0033 tuned (0)",
-    "THRESHOLD 0.0057 tuned (0)",
-    "THRESHOLD 0.0078 tuned (0)",
-    "THRESHOLD 0.0099 tuned (0)",
-    "THRESHOLD 0.0121 tuned (0)",
-    "THRESHOLD 0.0147 tuned (0)",
-    "THRESHOLD 0.018 tuned (0)",
-    "THRESHOLD 0.0229 tuned (0)"
+    "THRESHOLD 0.0016 tuned (0)",
+    "THRESHOLD 0.0023 tuned (0)",
+    "THRESHOLD 0.0036 tuned (0)",
+    "THRESHOLD 0.0056 tuned (0)",
+    "THRESHOLD 0.0075 tuned (0)",
+    "THRESHOLD 0.0096 tuned (0)",
+    "THRESHOLD 0.012 tuned (0)",
+    "THRESHOLD 0.0156 tuned (0)",
+    "THRESHOLD 0.0228 tuned (0)"
+    # "THRESHOLD 0.0001 tuned (0)",
+    # "THRESHOLD 0.0033 tuned (0)",
+    # "THRESHOLD 0.0057 tuned (0)",
+    # "THRESHOLD 0.0078 tuned (0)",
+    # "THRESHOLD 0.0099 tuned (0)",
+    # "THRESHOLD 0.0121 tuned (0)",
+    # "THRESHOLD 0.0147 tuned (0)",
+    # "THRESHOLD 0.018 tuned (0)",
+    # "THRESHOLD 0.0229 tuned (0)"
     ]
 elif "RIRO" in plot_name:
     dir_names = [
@@ -159,88 +172,106 @@ elif "FLIPOUT FIFO" in plot_name:
 
 colors = plt.get_cmap('gist_rainbow')(np.linspace(0, 1, len(dir_names)))
 # IDENTIFIER TO PUT ON THE PLOT
+
 excluded = {"MSE": 0,
             "R2": 0,
-            "Cummulative MSE": 1, 
+            "Cummulative MSE": 0,
             "Prediction Uncertainty": 0,
             "Skips": 0,
             }
-true_labels = [label for label, value in excluded.items() if value]
-HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
-# PLOT CONFIG
-plot_name = plot_name + "_" + "_".join(true_labels)
 
-fig, axs = plt.subplots(HOW_MANY, 1, figsize=(16, 11), sharex=True)
-FONT_SIZE = 20
-FONT_SIZE_TICKS = 15
+for i in range(2):
 
-# fig.suptitle(f"{plot_name}", fontsize=FONT_SIZE)
-plt.xticks(fontsize=FONT_SIZE_TICKS)
-plt.yticks(fontsize=FONT_SIZE_TICKS)
+    excluded = {"MSE": 0,
+            "R2": 0,
+            "Cummulative MSE": 0,
+            "Prediction Uncertainty": 0,
+            "Skips": 0,
+            }
+    if i == 0:
+        excluded["Cummulative MSE"] = 1
+    if i == 1:
+        excluded["R2"] = 1
 
-try:
-    len(axs)
-except:
-    axs = [axs]
+    true_labels = [label for label, value in excluded.items() if value]
+    HOW_MANY = sum([1 if i else 0 for i in excluded.values()])
+    # PLOT CONFIG
+    plot_name = plot_name + "_" + "_".join(true_labels)
 
-y_max = -float("inf")
+    fig, axs = plt.subplots(HOW_MANY, 1, figsize=(18, 11), sharex=True) # 
+    FONT_SIZE = 35
+    FONT_SIZE_TICKS = 20
 
-for j, dir_name in enumerate(dir_names):
-    with open(f"results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
-        metrics_results = pickle.load(file)
-    i = 0
+    # fig.suptitle(f"{plot_name}", fontsize=FONT_SIZE)
+    plt.xticks(fontsize=FONT_SIZE_TICKS)
+    plt.yticks(fontsize=FONT_SIZE_TICKS)
 
-    for metric in metrics_results.keys():
-        
+    try:
+        len(axs)
+    except:
+        axs = [axs]
 
-        if not excluded[metric]:
-            print(metrics_results[metric][-1])
-            continue
+    y_max = -float("inf")
 
-        y = metrics_results[metric]
+    for j, dir_name in enumerate(dir_names):
+        with open(f"archived_results/{prefix}{dir_name}/metrics_results.pkl", 'rb') as file:
+            metrics_results = pickle.load(file)
+        i = 0
+
+        for metric in metrics_results.keys():
+            
+
+            if not excluded[metric]:
+                print(metrics_results[metric][-1])
+                continue
+
+            y = metrics_results[metric]
+
+            if metric == "Cummulative MSE":
+                metric = "Cumulative MSE"
 
 
-        y_max = max(y_max, len(y))
+            y_max = max(y_max, len(y))
 
-        if metric == "MSE":
-            y = np.minimum(0.1, y)
-            print(metric, dir_name, np.min(y))
-        if metric == "R2":
-            y = np.maximum(-1.5, y)
-            print(metric, dir_name, np.max(y))
+            if metric == "MSE":
+                y = np.minimum(0.1, y)
+                print(metric, dir_name, np.min(y))
+            if metric == "R2":
+                y = np.maximum(-1.5, y)
+                print(metric, dir_name, np.max(y))
 
-        if len(y) < y_max:
-            zeros_array = np.full((y_max - len(y),), np.nan) # print(np.zeros(, dtype=y.dtype).shape)
-            y = np.concatenate((zeros_array, y))
+            if len(y) < y_max:
+                zeros_array = np.full((y_max - len(y),), np.nan) # print(np.zeros(, dtype=y.dtype).shape)
+                y = np.concatenate((zeros_array, y))
 
-        if metric == "Skips":
-            print(dir_name, y[-1])
-        x = np.arange(0, len(y))
-        
+            if metric == "Skips":
+                print(dir_name, y[-1])
+            x = np.arange(0, len(y))
+            
 
-        # axs[i].axhline(y=0.001, color=line_color("BASELINE"), label=extracted_name(dir_name))
+            # axs[i].axhline(y=0.001, color=line_color("BASELINE"), label=extracted_name(dir_name))
 
-        if "OFFLINE" in dir_name and metric in ["MSE", "R2"]:
-            axs[i].axhline(y=y, color=line_color("BASELINE"), label=extracted_name(dir_name))
-        else:
-            axs[i].plot(x, y, label=extracted_name(dir_name), alpha=0.5,
-                        linestyle=line_style(dir_name), linewidth=1.5, color=line_color(dir_name))
-            axs[i].set_ylabel(metric, fontsize=FONT_SIZE)
+            if "OFFLINE" in dir_name and metric in ["MSE", "R2"]:
+                axs[i].axhline(y=y, color=line_color("BASELINE"), label=extracted_name(dir_name))
+            else:
+                axs[i].plot(x, y, label=extracted_name(dir_name), alpha=0.5,
+                            linestyle=line_style(dir_name), linewidth=1.5, color=line_color(dir_name))
+                axs[i].set_ylabel(metric, fontsize=FONT_SIZE)
 
-        i += 1
-    if excluded["R2"]:
-        location = 'lower right'
-    if excluded["MSE"] or excluded["Cummulative MSE"] or excluded["Skips"]:
-        location = 'upper left'
-    elif excluded["Prediction Uncertainty"]:
-        location = 'upper right'
-    axs[min(HOW_MANY-1, 2)].legend(loc=location, fontsize=FONT_SIZE)
-    axs[HOW_MANY-1].set_xlabel('Iterations', fontsize=FONT_SIZE)
+            i += 1
+        if excluded["R2"]:
+            location = 'lower right'
+        if excluded["MSE"] or excluded["Cummulative MSE"] or excluded["Skips"]:
+            location = 'upper left'
+        elif excluded["Prediction Uncertainty"]:
+            location = 'upper right'
+        axs[min(HOW_MANY-1, 2)].legend(loc=location, fontsize=FONT_SIZE)
+        axs[HOW_MANY-1].set_xlabel('Iterations', fontsize=FONT_SIZE)
 
-plt.tight_layout()
-plt.savefig(f"{plot_name}.pdf", format="pdf", bbox_inches="tight")
-plt.show()
-plt.close()
+    plt.tight_layout()
+    plt.savefig(f"{plot_name}.pdf", format="pdf", bbox_inches="tight")
+    # plt.show()
+    plt.close()
 
 
 
