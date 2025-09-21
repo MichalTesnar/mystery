@@ -142,7 +142,7 @@ class DagonAUVDataset(Dataset):
         # exit()
 
 class SinusiodToyExample(Dataset):
-    def _load_data(self, size):
+    def _load_data(self, size, normalize=False):
         """
         Load the data from the storage.
         """
